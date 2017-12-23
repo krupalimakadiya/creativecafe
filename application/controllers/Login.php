@@ -4,23 +4,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 
-    public function index() {
+    public function construct() {
+        parent::__construct();
         $this->load->model('login_model');
+    }
+
+    public function index() {
         $this->load->view('login_frm');
     }
 
-    function checkdata() { 
-            $this->load->model('login_model');
-            $checkdata = $this->login_model->validate($_POST['email'], $_POST['password']);
-            if (isset($checkdata['admin_id'])) {
-                $userdata = $data['checkdata'];
-                $this->session->set_userdata('email', $userdata['email']);
-                $this->session->set_userdata('password', $userdata['password']);
-                redirect("welcome/index");
-            } else {
-                $this->session->set_flashdata('message', 'pls enter validate data..');
-                redirect("login/index");
-            }
+    public function checkdata() {
+        $this->load->model('login_model');
+
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+        $data = $this->login_model->validate($email, $password);
+
+        if (isset($data["admin_id"])) {
+
+            $this->session->set_userdata('admin_id', $data['admin_id']);
+            $this->session->set_userdata('email', $data['email']);
+            redirect("welcome/index");
         }
+
+        $this->session->set_flashdata('message', $data['message']);
+        redirect("login/index");
     }
-    
+
+    public function logout() {
+
+        $this->session->unset_userdata($data);
+        $this->session->sess_destroy();
+        redirect("login/index");
+    }
+
+}
