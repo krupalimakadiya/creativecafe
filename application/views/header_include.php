@@ -10,6 +10,9 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url() ?>AdminLTE/bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
+   <!-- DataTables -->
+  <link rel="stylesheet" href="<?php echo base_url() ?>AdminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+ 
   <link rel="stylesheet" href="<?php echo base_url() ?>AdminLTE/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->

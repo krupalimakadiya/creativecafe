@@ -27,14 +27,20 @@
         <li class="active treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-            </span>
+                 </a>
+        </li>
+        <li class="active treeview">
+              <a href="<?PHP echo site_url('user/user_add')?>">
+                             
+            <i class="fa fa-dashboard"></i> <span>User Master</span>
+            
           </a>
         </li>
      
          <li class="active treeview">
           <a href="#">
             <i class="fa fa-circle"></i> <span>next</span>
-            </span>
+          
           </a>
         </li>
         
