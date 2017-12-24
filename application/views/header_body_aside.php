@@ -29,14 +29,38 @@
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             </a>
         </li>
+        <li>
+            <a href="<?PHP echo site_url('user/index') ?>">
 
-        <li class=" treeview">
-            <a href="<?PHP echo site_url('user/user_add') ?>">
                 <i class="fa fa-dashboard"></i> <span>User Master</span>
+
             </a>
         </li>
+        <li>
+            <a href="<?PHP echo site_url('artist/user_view') ?>">
 
+                <i class="fa fa-dashboard"></i> <span>Artist Master</span>
+
+            </a>
+        </li>
         <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Master</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="<?PHP echo site_url('country/index') ?>"><i class="fa fa-circle-o"></i> Country master</a></li>
+            <li><a href="<?PHP echo site_url('state/index') ?>"><i class="fa fa-circle-o"></i> State master</a></li>
+            <li><a href="<?PHP echo site_url('city/index') ?>"><i class="fa fa-circle-o"></i> City_master</a></li>
+            <li><a href="<?PHP echo site_url('art_category/index')?>"><i class="fa fa-circle-o"></i> Art_category_master</a></li>
+          
+          </ul>
+        </li>
+        
+        
+        <li>
             <a href="#">
                 <i class="fa fa-circle"></i> <span>next</span>
 

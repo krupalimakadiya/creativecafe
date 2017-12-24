@@ -6,7 +6,7 @@ class Login_model extends CI_Model {
 
     public function validate($email, $password) {
         if ($email == null && $password == null) {
-            $data = array("status" => "fail", "message" => "Invalid username/password.");
+            $data = array("status" => "fail", "message" =>" Invalid username/password.");
          /* <div class="alert alert-danger alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h4><i class="icon fa fa-warning"></i> Alert!</h4>
