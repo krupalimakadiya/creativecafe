@@ -24,9 +24,17 @@ class User extends CI_Controller {
         $this->load->view('v_user_form', $data);
     }
     
-    /*public function user_add() {
-
-        $this->load->view('v_user_form');
+        public function update_status_active($user_id) {
+        $status = $this->input->get('status');
+        $this->user_model->update_active($user_id, $status);
+        redirect('user/index');
     }
-*/
+
+    public function update_status_deactive($user_id) {
+        $status = $this->input->get('status');
+        $this->user_model->update_deactive($user_id, $status);
+        redirect('user/index');
+    }
+
+    
 }

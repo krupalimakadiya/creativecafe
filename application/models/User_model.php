@@ -12,5 +12,24 @@ class User_model extends CI_model {
         $query = $this->db->query("select * from user_master");
         return $query->result();
     }
+    
+     public function update_active($user_id, $status) {
+        $data = array(
+            'user_id' => $user_id,
+            'status' => 1
+        );
+        $this->db->where('user_id', $user_id);
+        $this->db->update('user_master', $data);
+    }
 
+    public function update_deactive($user_id, $status) {
+        $data = array(
+            'user_id' => $user_id,
+            'status' => 0
+        );
+        $this->db->where('user_id', $user_id);
+        $this->db->update('user_master', $data);
+    }
+
+ 
 }
