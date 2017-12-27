@@ -27,6 +27,11 @@ class State extends CI_Controller {
         $this->load->view('v_state_view', $data);
     }
     
+    public function delete($state_id) {
+        $this->state_model->delete($state_id);
+        redirect("state/index");
+    }
+
    public function update_status_active($state_id) {
         $status = $this->input->get('status');
         $this->state_model->update_active($state_id, $status);

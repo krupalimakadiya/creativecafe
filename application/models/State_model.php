@@ -19,6 +19,11 @@ class State_model extends CI_model {
         return $query->row_array();
     }
 
+    public function delete($state_id) {
+        $this->db->where('state_id', $state_id);
+        $this->db->delete('state_master');
+    }
+
     public function update_active($state_id, $status) {
         $data = array(
             'state_id' => $state_id,

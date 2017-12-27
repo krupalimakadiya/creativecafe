@@ -41,17 +41,44 @@
                         </div>
                                   <!-- /.box-header -->
                         <div class="box-body">
-                            <form role="form">
+                            <?php
+                            if(isset($update_data))
+                            {
+                           ?>
+                            <form role="form" name="countryfrm" method="POST" action="<?php echo site_url("country/editp")?>">
                                 <!-- text input -->
+                                <input type="hidden" class="form-control" name="country_id" value="<?php echo $update_data['country_id']?>">
+                                
                                 <div class="form-group">
                                     <label>country name</label>
-                                    <input type="text" class="form-control" placeholder="Enter your country name...">
+                                    <input type="text" class="form-control" name="country_name" value="<?php echo $update_data['country_name']?>">
+                                    
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" name="submit" class="btn btn-primary">submit
                                     </button>
                                 </div>
                             </form>
+                            <?php
+                            }
+                            else
+                            {
+                            ?>
+                            <form role="form" name="countryfrm" method="POST" action="<?php echo site_url("country/addp")?>">
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>country name</label>
+                                    <input type="text" class="form-control" name="country_name" placeholder="Enter your country name...">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" name="submit" class="btn btn-primary">submit
+                                    </button>
+                                </div>
+                            </form>
+                            
+                            <?php
+                            }
+                            ?>
                         </div>
                         <!-- /.box-body -->
                     </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php
+           <?php
         include('header_include.php');
         ?>
     </head>
@@ -25,7 +25,6 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-
                     <section class="content">
                         <!-- Default box -->
                         <div class="box box-info">
@@ -39,97 +38,94 @@
 
 
                             <div class="box-body">
-                                <div class="table-responsive">
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>First_name</th>
+                                            <th>Last_name</th>
+                                            <th>City</th>
+                                            <th>Email</th>
+                                            <th>Password</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?PHP
+                                        foreach ($user_list as $user) {
+                                            ?>
                                             <tr>
-                                                <th>Id</th>
-                                                <th>First_name</th>
-                                                <th>Last_name</th>
-                                                <th>City</th>
-                                                <th>Email</th>
-                                               
-                                                <th>Password</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?PHP
-                                            foreach ($user_list as $user) {
-                                                ?>
-                                                <tr>
-                                                    <td><?PHP echo $user->user_id ?> </td>
-                                                    <td><?PHP echo $user->first_name ?></td>
-                                                    <td><?PHP echo $user->last_name ?></td>
-                                                    <td><?PHP echo $user->city ?></td>
-                                                    <td><?PHP echo $user->email ?></td>
-                                                    <td><?PHP echo $user->password ?></td>
-                                                    <td><?php
-                                                        if ($user->status == '0') {
-                                                            ?>
-                                                            <i class="glyphicon glyphicon-ok" style="color:green" ></i>
-                                                            <?php
-                                                        } else {
-                                                            ?>
-                                                            <i class="glyphicon glyphicon-remove" style="color:red"></i>
-                                                            <?php
-                                                        }
-                                                        ?></td>
-                                                    <td> <div class="btn-group">
-                                                            <button type="button" class="btn btn-primary">Action</button>
+                                                <td><?PHP echo $user->user_id ?> </td>
+                                                <td><?PHP echo $user->first_name ?></td>
+                                                <td><?PHP echo $user->last_name ?></td>
+                                                <td><?PHP echo $user->city ?></td>
+                                                <td><?PHP echo $user->email ?></td>
+                                                <td><?PHP echo $user->password ?></td>
+                                                <td><?php
+                                                    if ($user->status == '0') {
+                                                        ?>
+                                                    <i class="glyphicon glyphicon-remove" style="color:red"></i>
+                                                        <?php
+                                                    } else {
+                                                        ?>
+                                                        <i class="glyphicon glyphicon-ok" style="color:green" ></i>
 
-                                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                                                <span class="caret"></span> <!-- caret -->
-                                                            </button>
+                                                        <?php
+                                                    }
+                                                    ?></td>
+                                                <td> <div class="dropdown">
+                                                       
+                                                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Action
+                                                             <span class="caret"></span> <!-- caret -->
+                                                        </button>
 
-                                                            <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                                <li>    <a href="<?php echo site_url("user/update_status_deactive/$user->user_id") ?>"><i class=" fa fa-search"></i><label>View</label></a></li>                     
-                                                                <li>    <a href="<?php echo site_url("user/update_status_deactive/$user->user_id") ?>"><i class="fa fa-edit"></i><label>Edit</label></a></li>
-                                                                <li>    <a href="<?php echo site_url("user/update_status_deactive/$user->user_id") ?>"><i class="fa fa-trash"></i><label>Delete</label></a></li>
-                                                                <li class="divider"></li>
-                                                                <li><?php
-                                                                    if ($user->status == '0') {
-                                                                        ?>
-                                                                        <a href="<?php echo site_url("user/update_status_active/$user->user_id") ?>" class="btn btn-success">Active</a>
-                                                                        <?php
-                                                                    } else {
-                                                                        ?>
-                                                                        <a href="<?php echo site_url("user/update_status_deactive/$user->user_id") ?>" class="btn btn-danger">Deactive</a>
-                                                                        <?php
-                                                                    }
-                                                                    ?></li>
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-    <?PHP
-}
-?>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                                        <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
+                                                            <li> <a href="<?php echo site_url("") ?>"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                            <li>    <a href="<?php echo site_url("user/edit_data/$user->user_id") ?>"><i class="fa fa-edit"></i><label>Edit</label></a></li>
+                                                            <li>    <a href="<?php echo site_url("user/delete/$user->user_id") ?>"><i class="fa fa-trash"></i><label>Delete</label></a></li>
+                                                            <li><?php
+                                                if ($user->status == '0') {
+                                                        ?>
+                                                                <a href="<?php echo site_url("user/update_status_active/$user->user_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
+                                                                <a href="<?php echo site_url("user/update_status_deactive/$user->user_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
+                                                                    <?php
+                                                                }
+                                                                ?></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <?PHP
+                                            }
+                                            ?>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
                                 <div class="btn-group">
-                                                            <button type="button" class="btn btn-primary">Action</button>
+                                    <button type="button" class="btn btn-primary">Action</button>
 
-                                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                                                <span class="caret"></span> <!-- caret -->
-                                                            </button>
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                        <span class="caret"></span> <!-- caret -->
+                                    </button>
 
-                                                            <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                                <li>    <a href="<?php echo site_url("user/update_status_deactive/$user->user_id") ?>"><i class=" fa fa-search"></i><label>Multiple Delete</label></a></li>                     
-                                                                <li>    <a href="<?php echo site_url("user/update_status_deactive/$user->user_id") ?>"><i class="fa fa-edit"></i><label>Select All</label></a></li>
-                                                                <li>    <a href="<?php echo site_url("user/update_status_deactive/$user->user_id") ?>"><i class="fa fa-trash"></i><label>Deselect All</label></a></li>
-                                                               
-                                                                </ul>
-                                                        </div>
+                                    <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
+                                        <li>    <a href="<?php echo site_url("user/update_status_deactive/$user->user_id") ?>"><i class=" fa fa-search"></i><label>Multiple Delete</label></a></li>                     
+                                        <li>    <a href="<?php echo site_url("user/update_status_deactive/$user->user_id") ?>"><i class="fa fa-edit"></i><label>Select All</label></a></li>
+                                        <li>    <a href="<?php echo site_url("user/update_status_deactive/$user->user_id") ?>"><i class="fa fa-trash"></i><label>Deselect All</label></a></li>
+
+                                    </ul>
+                                </div>
                                 <p align="right"><i class="glyphicon glyphicon-ok" style="color:green" ></i>&nbsp;&nbsp;&nbsp;&nbsp;<label>Indicates Activated</label>
                                     <br/>
                                     <i class="glyphicon glyphicon-remove" style="color:red" ></i>&nbsp;<label>Indicates Deactivated</label>
-                                                            </p>
+                                </p>
                             </div>
                         </div>
                         <!-- /.box -->
@@ -147,9 +143,9 @@
             <!-- /.content-wrapper -->
 
             <footer class="main-footer">
-<?php
-include('footer_body.php');
-?>
+                <?php
+                include('footer_body.php');
+                ?>
             </footer>
 
 
@@ -158,8 +154,8 @@ include('footer_body.php');
             <div class="control-sidebar-bg"></div>
         </div>
         <!-- ./wrapper -->
-<?php
-include('footer_include.php');
-?>
+        <?php
+        include('footer_include.php');
+        ?>
     </body>
 </html>

@@ -5,6 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class User_model extends CI_model {
 
     public function index() {
+       
         $this->load->view('v_user_view');
     }
 
@@ -31,5 +32,11 @@ class User_model extends CI_model {
         $this->db->update('user_master', $data);
     }
 
+    public function delete($user_id)
+    {
+            $this->db->where('user_id', $user_id);
+        $this->db->delete('user_master');
+        
+    }      
  
 }
