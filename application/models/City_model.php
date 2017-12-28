@@ -9,7 +9,7 @@ class City_model extends CI_model {
         return $query->result();
     }
 
-   public function getcityid($city_name) {
+   public function getcityid($city_name) {//for active and deactive record
         $query = $this->db->query("select * from city_master where city_name='$city_name'");
         return $query->row_array();
     }
