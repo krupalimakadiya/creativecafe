@@ -10,7 +10,7 @@ class Country_model extends CI_model {
     }
 
       public function insert($country_data) {
-        $data = array('country_name' => $country_data,'status'=>1); //1= active //0-deactive
+        $data = array('country_name' => $country_data); //1= active //0-deactive
         $this->db->insert('country_master', $data);
     }
         public function check_data($country_name) {
