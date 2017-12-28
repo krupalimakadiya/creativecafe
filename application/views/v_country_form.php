@@ -40,6 +40,10 @@
                             </a>
                         </div>
                                   <!-- /.box-header -->
+                                  
+                                  <?php
+                                  echo $this->session->flashdata('message');
+                                  ?>
                         <div class="box-body">
                             <?php
                             if(isset($update_data))

@@ -9,26 +9,26 @@ class City_model extends CI_model {
         return $query->result();
     }
 
-   public function getcountryid($country_name) {
-        $query = $this->db->query("select * from country_master where country_name='$country_name'");
+   public function getcityid($city_name) {
+        $query = $this->db->query("select * from city_master where city_name='$city_name'");
         return $query->row_array();
     }
 
-    public function update_active($state_id, $status) {
+    public function update_active($city_id, $status) {
         $data = array(
-            'state_id' => $state_id,
+            'city_id' => $city_id,
             'status' => 1
         );
-        $this->db->where('state_id', $state_id);
-        $this->db->update('state_master', $data);
+        $this->db->where('city_id', $city_id);
+        $this->db->update('city_master', $data);
     }
 
-    public function update_deactive($state_id, $status) {
+    public function update_deactive($city_id, $status) {
         $data = array(
-            'state_id' => $state_id,
+            'city_id' => $city_id,
             'status' => 0
         );
-        $this->db->where('state_id', $state_id);
-        $this->db->update('state_master', $data);
+        $this->db->where('city_id', $city_id);
+        $this->db->update('city_master', $data);
     }
 }

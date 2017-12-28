@@ -6,24 +6,7 @@
         ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
-        <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p><?php echo $country['country_id']?></p><br/>
-                        <p><?php echo $country['country_name']?></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="wrapper">
 
             <header class="main-header">
@@ -51,6 +34,19 @@
                                     <a href="<?php echo site_url("country/add_country") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
                                     <a href="<?php echo site_url("country/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
                                     <a href="<?php echo site_url("country/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
+
+                                <?php
+                                $message = $this->session->flashdata('message');
+                                if ($message != ' ') {
+                                    ?>
+                                    <div class="alert alert-success">
+                                        <span class="semibold">Note:</span>&nbsp;&nbsp;
+    <?= $message ?>
+                                    </div>
+                                        <?php
+                                    }
+                                    ?>
+
                             </div>
 
 
@@ -65,15 +61,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?PHP
-                                        foreach ($country_list as $country) {
-                                            ?>
+<?PHP
+$cnt = 1;
+foreach ($country_list as $country) {
+    ?>
                                             <tr>
-                                                <td><?PHP echo $country->country_id ?> </td>
+                                                <td><?PHP echo $cnt++; ?> </td>
                                                 <td><?PHP echo $country->country_name ?></td>
                                                 <td><?php
-                                                    if ($country->status == '0') {
-                                                        ?>
+                                        if ($country->status == '0') {
+                                            ?>
                                                         <i class="glyphicon glyphicon-remove" style="color:red"></i>
                                                         <?php
                                                     } else {
@@ -83,19 +80,20 @@
                                                         <?php
                                                     }
                                                     ?></td>
-                                                <td> <div class="dropdown">
+                                                <td> 
+                                                    <div class="dropdown">
 
                                                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Action
                                                             <span class="caret"></span> <!-- caret -->
                                                         </button>
 
                                                         <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                            <li> <a onclick="openView();"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                            <li> <a onclick="openView(<?= $country->country_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
                                                             <li>    <a href="<?php echo site_url("country/edit_data/$country->country_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                             <li>    <a href="<?php echo site_url("country/delete/$country->country_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                             <li><?php
-                                                                if ($country->status == '0') {
-                                                                    ?>
+                                                    if ($country->status == '0') {
+                                                        ?>
                                                                     <a href="<?php echo site_url("country/update_status_active/$country->country_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                     <?php
                                                                 } else {
@@ -106,10 +104,54 @@
                                                                 ?></li>
                                                         </ul>
                                                     </div>
+
+                                                    <div id="myModal<?= $country->country_id ?>" class="modal fade" role="dialog">
+                                                        <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                    <h4 class="modal-title"><label>Country Data</label></h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                        <p>
+                                                                        <lable>Country ID:</lable>&nbsp;&nbsp;&nbsp;<?php echo $country->country_id ?></p></<br/></br>
+                                                                     <p><lable>Country name:</lable>&nbsp;&nbsp;&nbsp;<?php echo $country->country_name ?></p><br/>
+                                                                        <p> <?php if ($country->status == '0') {
+                                                                    ?>
+                                                                            <lable>Status:</lable>&nbsp;&nbsp;&nbsp;   <i class="glyphicon glyphicon-remove" style="color:red"><label>Deactive</label></i>
+                                                                                <?php
+                                                                            } else {
+                                                                                ?>
+                                                                            <lable>Status:</lable>&nbsp;&nbsp;&nbsp; <i class="glyphicon glyphicon-ok" style="color:green" ><label>Active</label></i>
+                                                                            <?php
+                                                                        }
+                                                                        ?>
+                                                                        </p>
+                                                                    <!--<table  width="40%">
+                                                                        <tr>
+                                                                            <td><label>Country ID</label></td>
+                                                                            <td>:&nbsp;&nbsp;<?php echo $country->country_id ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><label>Country Name</label></td>
+                                                                            <td>:&nbsp;&nbsp;<?php echo $country->country_name ?></td>
+                                                                        </tr>
+                                                                        
+                                                                    </table>-->
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
                                                 </td>
-                                                <?PHP
-                                            }
-                                            ?>
+    <?PHP
+}
+?>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -152,9 +194,9 @@
             <!-- /.content-wrapper -->
 
             <footer class="main-footer">
-                <?php
-                include('footer_body.php');
-                ?>
+<?php
+include('footer_body.php');
+?>
             </footer>
 
 
@@ -163,12 +205,12 @@
             <div class="control-sidebar-bg"></div>
         </div>
         <!-- ./wrapper -->
-        <?php
-        include('footer_include.php');
-        ?>
+<?php
+include('footer_include.php');
+?>
         <script type="text/javascript">
-            function openView() {
-                $('#myModal').modal('show');
+            function openView(id) {
+                $('#myModal' + id).modal('show');
             }
         </script>
     </body>

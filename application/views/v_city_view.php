@@ -30,9 +30,21 @@
                             <div class="box-header with-border">
                                 <h3 class="box-title"><label>City Master</label></h3>
                                 <p align="right">
-                                    <a href="<?php echo site_url("city/add_user") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
+                                    <a href="<?php echo site_url("city/add_city") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
                                     <a href="<?php echo site_url("city/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
                                     <a href="<?php echo site_url("city/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
+                                <?php
+                                $message = $this->session->flashdata('message');
+                                if ($message != ' ') {
+                                    ?>
+                                    <div class="alert alert-success">
+                                        <span class="semibold">Note:</span>&nbsp;&nbsp;
+    <?= $message ?>
+                                    </div>
+                                        <?php
+                                    }
+                                    ?>
+
                             </div>
 
 
@@ -50,10 +62,11 @@
                                     </thead>
                                     <tbody>
                                            <?PHP
+                                           $cnt=1;
                                                 foreach ($city_list as $city) {
                                                 ?>
                                                 <tr>
-                                                    <td><?PHP echo $city->state_id ?> </td>
+                                                    <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $city->country_name ?></td>
                                                     <td><?PHP echo $city->state_name ?></td>
                                                     <td><?PHP echo $city->city_name ?></td>
@@ -81,7 +94,7 @@
                                                             <li>    <a href="<?php echo site_url("city/edit_data/$city->city_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                             <li>    <a href="<?php echo site_url("city/delete/$city->city_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                             <li><?php
-                                                if ($country->status == '0') {
+                                                if ($city->status == '0') {
                                                         ?>
                                                                 <a href="<?php echo site_url("city/update_status_active/$city->city_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                     <?php

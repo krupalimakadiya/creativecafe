@@ -34,6 +34,7 @@ public function view_country() {
             redirect('country/index');
         } else {
             $this->country_model->insert($_POST['country_name']);
+             $this->session->set_flashdata('message','insert successfully...');
             redirect('country/index');
         }
     }
@@ -46,6 +47,8 @@ public function view_country() {
 
     public function editp() {
         $this->country_model->update_data($_POST['country_id'], $_POST['country_name']);
+          $this->session->set_flashdata('message','record updated successfully...');
+           
         redirect("country/index");
     }
 
