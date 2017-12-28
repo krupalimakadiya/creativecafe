@@ -29,11 +29,12 @@ public function view_country() {
     }
 
     public function addp() {
-        $country_data = $this->country_model->check_data($_POST['country_name'],$_POST['status']);
+        $country_data = $this->country_model->check_data($_POST['country_name']);
         if (isset($country_data)) {
             redirect('country/index');
         } else {
-            $this->country_model->insert($_POST['country_name'],$_POST['status']);
+            $this->country_model->insert($_POST['country_name']);
+            redirect('country/index');
         }
     }
 
