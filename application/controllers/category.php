@@ -29,14 +29,21 @@ class category extends CI_Controller {
     }
 
    public function addp() {
-        $category_data = $this->category_model->check_data($_POST['art_category_name'],$_POST['status']);
+        $data['category_data'] = $this->category_model->check_data($_POST['art_category_name']);
+      //  print_r( $data['category_data']);
+        //die();
         if (isset($category_data)) {
             redirect('category/index');
         } else {
-            $this->category_model->insert($_POST['art_category_name'],$_POST['status']);
+            $this->category_model->insert($_POST['art_category_name']);
+                $this->session->set_flashdata('message','insert successfully...');
+            redirect('category/index');
         }
     }
 
+     
+    
+    
     public function importp() {
         $file = $_FILES['upload']['tmp_name'];
         $handle = fopen($file, "r");
@@ -73,9 +80,8 @@ class category extends CI_Controller {
     public function edit_data($art_category_id) {
         $data['update_data'] = $this->category_model->edit_data($art_category_id);
         $data['category_list'] = $this->category_model->getcategorylist();
-        print_r( $data['category_list']);
-       die();
-        $this->load->view('add_category', $data);
+   
+        $this->load->view('v_art_category_form', $data);
     }
 
     public function editp() {

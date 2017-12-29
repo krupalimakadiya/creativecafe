@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Category_model extends CI_Model {
 
     public function insert($category_data) {
-        $data = array('art_category_name' => $category_data,'status'=>1);
+        $data = array('art_category_name' => $category_data);
         $this->db->insert('art_category_master', $data);
     }
 
@@ -21,6 +21,7 @@ class Category_model extends CI_Model {
 
     public function edit_data($art_category_id) {
         $query = $this->db->query("select * from art_category_master where art_category_id='$art_category_id'");
+    
         return $query->row_array();
     }
 
