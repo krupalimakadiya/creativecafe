@@ -14,9 +14,34 @@ class State_model extends CI_model {
         return $query->result();
     }
 
-   public function getcountryid($country_name) {
-        $query = $this->db->query("select * from country_master where country_name='$country_name'");
+    /* public function getcountryid($country_name) {
+      $query = $this->db->query("select * from country_master where country_name='$country_name'");
+      return $query->row_array();
+      } */
+
+    public function insert($country_id, $state_name) {
+        $data = array('country_id' => $country_id,
+            'state_name' => $state_name);
+        $this->db->insert('state_master', $data);
+    }
+
+    public function check_data($country_id, $state_name) {
+        $query = $this->db->query("select * from state_master where country_id='$country_id' AND state_name='$state_name' ");
         return $query->row_array();
+    }
+
+    public function edit_data($state_id) {
+        $query = $this->db->query("select * from country_master as c, state_master as s where state_id='$state_id'");
+        return $query->row_array();
+    }
+
+    public function update_data($state_id, $country_id, $state_name) {
+        $data = array(
+            'country_id' => $country_id,
+            'state_name' => $state_name,
+        );
+        $this->db->where('state_id', $state_id);
+        $this->db->update('state_master', $data);
     }
 
     public function delete($state_id) {
@@ -41,4 +66,5 @@ class State_model extends CI_model {
         $this->db->where('state_id', $state_id);
         $this->db->update('state_master', $data);
     }
+
 }

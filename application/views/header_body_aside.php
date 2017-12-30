@@ -51,22 +51,22 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?PHP echo site_url('country/index') ?>"><i class="fa fa-circle-o"></i> Country master</a></li>
-            <li><a href="<?PHP echo site_url('state/index') ?>"><i class="fa fa-circle-o"></i> State master</a></li>
-            <li><a href="<?PHP echo site_url('city/index') ?>"><i class="fa fa-circle-o"></i> City_master</a></li>
-            <li><a href="<?PHP echo site_url('category/index')?>"><i class="fa fa-circle-o"></i> Art_category_master</a></li>
+            <li class="active"><a href="<?PHP echo site_url('country/index') ?>"><i class="fa fa-circle-o"></i> Country Master</a></li>
+            <li><a href="<?PHP echo site_url('state/index') ?>"><i class="fa fa-circle-o"></i> State Master</a></li>
+            <li><a href="<?PHP echo site_url('city/index') ?>"><i class="fa fa-circle-o"></i> City Master</a></li>
+            <li><a href="<?PHP echo site_url('category/index')?>"><i class="fa fa-circle-o"></i> Art Category Master</a></li>
           
           </ul>
         </li>
         
         
-        <li>
+        <!--<li>
             <a href="#">
                 <i class="fa fa-circle"></i> <span>next</span>
 
             </a>
         </li>
-
+-->
     </ul>
 </section>
 <!-- /.sidebar -->

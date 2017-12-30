@@ -30,9 +30,23 @@
                             <div class="box-header with-border">
                                 <h3 class="box-title"><label>State Master</label></h3>
                                 <p align="right">
-                                    <a href="<?php echo site_url("state/add_user") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
+                                    <a href="<?php echo site_url("state/add_state") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
                                     <a href="<?php echo site_url("state/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
                                     <a href="<?php echo site_url("state/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
+                  
+                            <?php
+                                $message = $this->session->flashdata('message');
+                                if ($message != ' ') {
+                                    ?>
+                                    <div class="alert alert-success">       <!--green model-->
+                                        <span class="semibold">Note:</span>&nbsp;&nbsp;
+                                        <?= $message ?>
+                                    </div>
+                                <?php
+                                }
+                                    ?>
+
+                            
                             </div>
 
 
@@ -49,10 +63,11 @@
                                     </thead>
                                     <tbody>
                                            <?PHP
+                                           $cnt=1;
                                                 foreach ($state_list as $state) {
                                                 ?>
                                                 <tr>
-                                                    <td><?PHP echo $state->state_id ?> </td>
+                                                    <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $state->country_name ?></td>
                                                     <td><?PHP echo $state->state_name ?></td>
                                                     
@@ -75,7 +90,7 @@
                                                         </button>
 
                                                         <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                            <li> <a href="<?php echo site_url("") ?>"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                            <li> <a onclick="openView(<?= $state->state_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
                                                             <li>    <a href="<?php echo site_url("state/edit_data/$state->state_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                             <li>    <a href="<?php echo site_url("state/delete/$state->state_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                             <li><?php
@@ -91,6 +106,38 @@
                                                                 ?></li>
                                                         </ul>
                                                     </div>
+                                                        <div id="myModal<?= $state->state_id ?>" class="modal fade" role="dialog">
+                                                            <div class="modal-dialog">
+                                                                <!-- Modal content-->
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        <h4 class="modal-title"><label>State Data</label></h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                             <table  width="60%">
+                                                                        <tr>
+                                                                            <td><label>State ID</label></td>
+                                                                            <td>:&nbsp;&nbsp;<?php echo $state->state_id ?></td>
+                                                                        </tr>
+                                                                                 <tr>
+                                                                            <td><label>Country Name</label></td>
+                                                                            <td>:&nbsp;&nbsp;<?php echo $state->country_name ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><label>State Name</label></td>
+                                                                            <td>:&nbsp;&nbsp;<?php echo $state->state_name ?></td>
+                                                                        </tr>
+                                                                        </table>
+                                                                   
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                 </td>
                                                 <?PHP
                                             }
@@ -110,9 +157,9 @@
                                     </button>
 
                                     <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                        <li>    <a href="<?php echo site_url("state/update_status_deactive/$state->state_id") ?>"><i class=" fa fa-search"></i><label>Multiple Delete</label></a></li>                     
-                                        <li>    <a href="<?php echo site_url("state/update_status_deactive/$state->state_id") ?>"><i class="fa fa-edit"></i><label>Select All</label></a></li>
-                                        <li>    <a href="<?php echo site_url("state/update_status_deactive/$state->state_id") ?>"><i class="fa fa-trash"></i><label>Deselect All</label></a></li>
+                                        <li>    <a href="<?php echo site_url("") ?>"><i class=" fa fa-search"></i><label>Multiple Delete</label></a></li>                     
+                                        <li>    <a href="<?php echo site_url("") ?>"><i class="fa fa-edit"></i><label>Select All</label></a></li>
+                                        <li>    <a href="<?php echo site_url("") ?>"><i class="fa fa-trash"></i><label>Deselect All</label></a></li>
 
                                     </ul>
                                 </div>
@@ -151,5 +198,10 @@
         <?php
         include('footer_include.php');
         ?>
+         <script type="text/javascript">
+            function openView(id) {
+                $('#myModal' + id).modal('show');
+            }
+        </script>
     </body>
 </html>

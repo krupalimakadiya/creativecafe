@@ -29,10 +29,9 @@ class category extends CI_Controller {
     }
 
    public function addp() {
-        $data['category_data'] = $this->category_model->check_data($_POST['art_category_name']);
-      //  print_r( $data['category_data']);
-        //die();
+        $category_data = $this->category_model->check_data($_POST['art_category_name']); 
         if (isset($category_data)) {
+                $this->session->set_flashdata('message','record already exists..');
             redirect('category/index');
         } else {
             $this->category_model->insert($_POST['art_category_name']);

@@ -58,17 +58,18 @@
                         </div>
 
                         <div class="box-body">
-                            <?php
+                          <?php
                             if (isset($update_data)) {
                                 ?>
-                                <form role="form" name="cityfrm" method="POST" action="<?php echo site_url('city/editp') ?>">
-                                    <!-- text input -->
-                                                <input type="hidden" name="city_id" value="<?php echo $update_data['city_id'] ?>" />
 
+                                <form name="cityfrm" method="POST" action="<?php echo site_url("city/editp") ?>" role="form" >
+                                    <input type="hidden" name="city_id" value="<?php echo $update_data['city_id'] ?>" />
+
+                                    <!-- text input -->
                                     <div class="form-group">
-                                        <label>Country name</label>
-                                        <select class="form-control" name="country_id" id="country_id" >
-                                                                <?php
+                                        <label>Country_name</label>                                     
+                                        <select name="country_id" id="country_id" class="form-control">
+                                            <?php
                                             foreach ($country_list as $country) {
                                                 if ($country->country_id == $update_data['country_id']) {
                                                     ?>
@@ -81,15 +82,14 @@
                                                 }
                                             }
                                             ?>
-                        
                                         </select>
-
                                     </div>
 
                                     <div class="form-group">
-                                        <label>State name</label>
-                                        <select class="form-control" name="state_id" id="state_id" >
-                                                                                    <?php
+                                        <label>State Name</label>
+                                        <select name="state_id" id="state_id" class="form-control">
+
+                                            <?php
                                             foreach ($state_list as $state) {
                                                 if ($state->state_id == $update_data['state_id']) {
                                                     ?>
@@ -98,31 +98,31 @@
                                                 }
                                             }
                                             ?>
-</select>
-
+                                        </select>
                                     </div>
 
 
                                     <div class="form-group">
                                         <label>City Name</label>
-                                    <input type="text" class="form-control"name="city_name" value="<?php echo $update_data['city_name'] ?>" >
-  </div>
+                                        <input type="text" class="form-control"name="city_name" value="<?php echo $update_data['city_name'] ?>" >
 
-                                    <div class="form-group">
-                                        <input type="submit" name="submit" class="btn btn-primary"/>
                                     </div>
 
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+                                    </div>
                                 </form>
-
                                 <?php
                             } else {
                                 ?>
-                                <form role="form" name="cityfrm" method="POST" action="<?php echo site_url('city/addp') ?>" role="form">
+
+                                <form name="cityfrm" method="POST" action="<?php echo site_url("city/addp") ?>" role="form" >
+
                                     <!-- text input -->
                                     <div class="form-group">
-                                        <label>Country name</label>
-                                        <select class="form-control" name="country_id" id="country_id" >
-                                           <option >--select--</option>
+                                        <label>Select Country_name</label>
+                                        <select name="country_id" id="country_id" class="form-control">
+                                            <option >--select--</option>
                                             <?php
                                             foreach ($country_list as $country) {
                                                 ?>
@@ -130,32 +130,27 @@
                                                 <?php
                                             }
                                             ?>
-                                         </select>
+                                        </select>
                                     </div>
-
                                     <div class="form-group">
-                                        <label>State name</label>
-                                        <select class="form-control" name="country_id" id="country_id" >
-                                                    <option></option>
-                                    </select>
-
+                                        <label>Select State Name</label>
+                                        <td><select name="state_id" id="state_id" class="form-control">
+                                                <option></option>
+                                            </select>
                                     </div>
-
 
                                     <div class="form-group">
                                         <label>City Name</label>
-                                        <input type="text" class="form-control" placeholder="Enter your city name...">
+                                        <input type="text" class="form-control"name="city_name"  placeholder="Enter City Name....">
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="submit" name="submit" class="btn btn-primary"/>
+                                        <button type="submit" class="btn btn-primary" value="submit">Submit</button>
                                     </div>
-
                                 </form>
-
-    <?php
-}
-?>
+                                <?php
+                            }
+                            ?>
                         </div>
                         <!-- /.box-body -->
                     </div>
