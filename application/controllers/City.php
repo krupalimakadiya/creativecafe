@@ -51,7 +51,7 @@ class city extends MY_Controller {
         $data['state_list'] = $this->state_model->getstatelist();
         $data['city_list'] = $this->city_model->getcitylist();
 
-        $this->load->view('v_city_add', $data);
+        $this->load->view('v_city_form', $data);
     }
 
     public function editp() {
