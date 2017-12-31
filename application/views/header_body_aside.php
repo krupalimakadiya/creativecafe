@@ -37,7 +37,7 @@
             </a>
         </li>
         <li>
-            <a href="<?PHP echo site_url('artist/user_view') ?>">
+            <a href="<?PHP echo site_url('artist/artist_view') ?>">
 
                 <i class="fa fa-dashboard"></i> <span>Artist Master</span>
 

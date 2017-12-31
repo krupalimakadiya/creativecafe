@@ -26,6 +26,27 @@
 
             });
         </script>
+        <script>
+            $("document").ready(function () {
+                // $("#state").hide();
+                $("#state_id").change(function () {
+                    $("#city_id").show();
+                    var id = $(this).val();
+
+                    $.ajax({
+                        url: "<?php echo site_url("city/drop_city") ?>",
+                        type: "POST",
+                        data: {state_id: id},
+                        success: function (result) {
+                            //alert(result);
+                            $("#city_id").html(result);
+                        }
+
+                    });
+                });
+
+            });
+        </script>
 
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
