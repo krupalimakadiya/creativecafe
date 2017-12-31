@@ -39,9 +39,6 @@ class category extends MY_Controller {
             redirect('category/index');
         }
     }
-
-     
-    
     
     public function importp() {
         $file = $_FILES['upload']['tmp_name'];

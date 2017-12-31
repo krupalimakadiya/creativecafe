@@ -35,6 +35,9 @@
                                     <a href="<?php echo site_url("city/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
                                 <?php
                                 $message = $this->session->flashdata('message');
+                                if(isset($message))
+                                {
+                                
                                 if ($message != ' ') {
                                     ?>
                                     <div class="alert alert-success">
@@ -42,7 +45,7 @@
     <?= $message ?>
                                     </div>
                                         <?php
-                                    }
+                                }    }
                                     ?>
 
                             </div>

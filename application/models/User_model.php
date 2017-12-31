@@ -33,6 +33,16 @@ class User_model extends CI_model {
         return $query->row_array();
     }
 
+    public function drop_state($country_id) {
+        $query = $this->db->query("select * from  state_master where country_id='$country_id' ");
+        return $query->result();
+    }
+
+    public function drop_city($state_id) {
+        $query = $this->db->query("select * from  city_master where state_id='$state_id' ");
+        return $query->result();
+    }
+
     public function edit_data($user_id) {
         $query = $this->db->query("select * from  user_master  where user_id='$user_id' ");
         return $query->row_array();

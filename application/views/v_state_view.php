@@ -36,6 +36,9 @@
                   
                             <?php
                                 $message = $this->session->flashdata('message');
+                                if(isset($message))
+                                {
+                                
                                 if ($message != ' ') {
                                     ?>
                                     <div class="alert alert-success">       <!--green model-->
@@ -43,7 +46,7 @@
                                         <?= $message ?>
                                     </div>
                                 <?php
-                                }
+                                }}
                                     ?>
 
                             

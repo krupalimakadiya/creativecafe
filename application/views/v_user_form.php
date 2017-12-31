@@ -13,7 +13,7 @@
                     var id = $(this).val();
 
                     $.ajax({
-                        url: "<?php echo site_url("city/drop_state") ?>",
+                        url: "<?php echo site_url("user/drop_state") ?>",
                         type: "POST",
                         data: {country_id: id},
                         success: function (result) {
@@ -34,7 +34,7 @@
                     var id = $(this).val();
 
                     $.ajax({
-                        url: "<?php echo site_url("city/drop_city") ?>",
+                        url: "<?php echo site_url("user/drop_city") ?>",
                         type: "POST",
                         data: {state_id: id},
                         success: function (result) {
@@ -96,43 +96,58 @@
                                 </div>
                                 
                                     <!-- text input -->
-                                    <div class="form-group">
+                                                 <div class="form-group">
                                         <label>Country_name</label>                                     
                                         <select name="country_id" id="country_id" class="form-control">
                                             <?php
                                             foreach ($country_list as $country) {
                                                 if ($country->country_id == $update_data['country_id']) {
                                                     ?>
-                                                    <option selected value="<?php echo $update_data['country_id'] ?>"><?php echo $country->country_name ?></option>
+                                                    <option selected value="<?php echo $country->country_id ?>"><?php echo $country->country_name ?></option>
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <option value="<?php echo $update_data['country_id'] ?>"><?php echo $country->country_name ?></option>
+                                                    <option value="<?php echo $country->country_id ?>"><?php echo $country->country_name ?></option>
                                                     <?php
                                                 }
                                             }
                                             ?>
-                                        </select>
+                                        </select>             
                                     </div>
 
                                     <div class="form-group">
                                         <label>State Name</label>
                                         <select name="state_id" id="state_id" class="form-control">
-
                                             <?php
                                             foreach ($state_list as $state) {
                                                 if ($state->state_id == $update_data['state_id']) {
                                                     ?>
-                                                    <option selected value="<?php echo $state->state_id ?>"> <?php echo $state->state_name ?></option>
+                                                                                               <!-- <option selected value="<?//php echo $state->state_id ?>"> <?php //echo $state->state_name       ?></option>-->
+                                                    <option value="<?php echo $state->state_id; ?>"selected="selected"><?php echo $state->state_name; ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select></div>
+
+                                    <div class="form-group">
+                                        <label>City Name</label>
+                                        <select name="city_id" id="city_id" class="form-control">
+
+                                            <?php
+                                            foreach ($city_list as $city) {
+                                                if ($city->city_id == $update_data['city_id']) {
+                                                    ?>
+                                                    <option value="<?php echo $city->city_id; ?>"selected="selected"><?php echo $city->city_name; ?></option>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <option value="<?php echo $city->city_id; ?>"><?php echo $city->city_name; ?></option>
                                                     <?php
                                                 }
                                             }
                                             ?>
                                         </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>City Name</label>
-                                        <input type="text" class="form-control"name="city_id" value="<?php echo $update_data['city_id'] ?>" >
                                     </div>
 
                                      <div class="form-group">
@@ -170,9 +185,9 @@
                                     <input type="text" class="form-control" name="last_name" placeholder="Enter your last name...">
                                 </div>
                                 
-                                    <div class="form-group">
+                                       <div class="form-group">
                                         <label>Select Country_name</label>
-                                        <select name="country_id" id="country_id" class="form-control">
+                                        <select name="country_id" class="form-control" id="country_id">
                                             <option >--select--</option>
                                             <?php
                                             foreach ($country_list as $country) {
@@ -183,17 +198,20 @@
                                             ?>
                                         </select>
                                     </div>
+
                                     <div class="form-group">
                                         <label>Select State Name</label>
-                                        <td><select name="state_id" id="state_id" class="form-control">
-                                                <option></option>
-                                            </select>
+                                        <select name="state_id" id="state_id" class="form-control">
+                                            <option></option>
+
+                                        </select>
                                     </div>
 
                                     <div class="form-group">
                                         <label>City Name</label>
-                                        <input type="text" class="form-control"name="city_id" id="city_id"  placeholder="Enter City Name....">
+                                        <select name="city_id" id="city_id" class="form-control"><option></option></select>
                                     </div>
+
       <div class="form-group">
                                     <label>Pincode</label>
                                     <input type="text" class="form-control" name="pincode" placeholder="Enter your pincode...">
@@ -219,67 +237,6 @@
                             }
                             ?>
                         </div>
-                            <!--<form role="form">
-                                <div class="form-group">
-                                    <label>First name</label>
-                                    <input type="text" class="form-control" name="first_name" placeholder="Enter your first name...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Last name</label>
-                                    <input type="text" class="form-control" name="last_name" placeholder="Enter your last name...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Country</label>
-                                    <select class="form-control">
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
-                                        <option>option 5</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>State</label>
-                                    <select class="form-control">
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
-                                        <option>option 5</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>City</label>
-                                    <select class="form-control">
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
-                                        <option>option 5</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Pincode</label>
-                                    <input type="text" class="form-control" name="pincode" placeholder="Enter your pincode...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Email ID</label>
-                                    <input type="text" class="form-control" name="mobile" placeholder="Enter your email...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Mobile</label>
-                                    <input type="text" class="form-control" name="mobile" placeholder="Enter your mobile number...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" name="password" placeholder="Enter your password...">
-                                </div>
-
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary" value="submit">Submit</button>
-                                </div>
-
-                            </form>-->
                         </div>
                         <!-- /.box-body -->
                     </div>

@@ -79,6 +79,7 @@ class city extends MY_Controller {
         //     print_r( $data['update_data']);
     }
 
+     
         public function update_status_active($city_id) {
         $status = $this->input->get('status');
         $this->city_model->update_active($city_id, $status);

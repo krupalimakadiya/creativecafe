@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-           <?php
+        <?php
         include('header_include.php');
         ?>
     </head>
@@ -34,23 +34,21 @@
                                     <a href="<?php echo site_url("user/add_user") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
                                     <a href="<?php echo site_url("user/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
                                     <a href="<?php echo site_url("user/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
-                           <?php
+                                <?php
                                 $message = $this->session->flashdata('message');
-                                if ($message != ' ') {
-                                    ?>
-                                    <div class="alert alert-success">
-                                        <span class="semibold">Note:</span>&nbsp;&nbsp;
-    <?= $message ?>
-                                    </div>
+                                if (isset($message)) {
+
+                                    if ($message != ' ') {
+                                        ?>
+                                        <div class="alert alert-success">
+                                            <span class="semibold">Note:</span>&nbsp;&nbsp;
+                                            <?= $message ?>
+                                        </div>
                                         <?php
                                     }
-                                    ?>
-                            
-                            
+                                }
+                                ?>
                             </div>
-                            
-
-
                             <div class="box-body">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
@@ -59,14 +57,14 @@
                                             <th>First Name</th>
                                             <th>Last Name</th>
                                             <th>Email</th>
-                                            <th>Password</th>
+                                            <th>City</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?PHP
-                                        $cnt=1;
+                                        $cnt = 1;
                                         foreach ($user_list as $user) {
                                             ?>
                                             <tr>
@@ -74,11 +72,11 @@
                                                 <td><?PHP echo $user->first_name ?></td>
                                                 <td><?PHP echo $user->last_name ?></td>
                                                 <td><?PHP echo $user->email ?></td>
-                                                <td><?PHP echo $user->password ?></td>
+                                                <td><?PHP echo $user->city_id ?></td>
                                                 <td><?php
                                                     if ($user->status == '0') {
                                                         ?>
-                                                    <i class="glyphicon glyphicon-remove" style="color:red"></i>
+                                                        <i class="glyphicon glyphicon-remove" style="color:red"></i>
                                                         <?php
                                                     } else {
                                                         ?>
@@ -88,38 +86,38 @@
                                                     }
                                                     ?></td>
                                                 <td> <div class="dropdown">
-                                                       
-                                                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Action
-                                                             <span class="caret"></span> <!-- caret -->
+
+                                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Action
+                                                            <span class="caret"></span> <!-- caret -->
                                                         </button>
 
                                                         <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
                                                             <li> <a onclick="openView(<?= $user->user_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
-                                                            <li>    <a href="<?php echo site_url("user/edit_data/$user->user_id") ?>"><i class="fa fa-edit"></i><label>Edit</label></a></li>
-                                                            <li>    <a href="<?php echo site_url("user/delete/$user->user_id") ?>"><i class="fa fa-trash"></i><label>Delete</label></a></li>
+                                                            <li>    <a href="<?php echo site_url("user/edit_data/$user->user_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
+                                                            <li>    <a href="<?php echo site_url("user/delete/$user->user_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                             <li><?php
-                                                if ($user->status == '0') {
-                                                        ?>
-                                                                <a href="<?php echo site_url("user/update_status_active/$user->user_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
+                                                                if ($user->status == '0') {
+                                                                    ?>
+                                                                    <a href="<?php echo site_url("user/update_status_active/$user->user_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                     <?php
                                                                 } else {
                                                                     ?>
-                                                                <a href="<?php echo site_url("user/update_status_deactive/$user->user_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
+                                                                    <a href="<?php echo site_url("user/update_status_deactive/$user->user_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
                                                                     <?php
                                                                 }
                                                                 ?></li>
                                                         </ul>
                                                     </div>
-                                                       <div id="myModal<?= $user->user_id ?>" class="modal fade" role="dialog">
-                                                            <div class="modal-dialog">
-                                                                <!-- Modal content-->
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                        <h4 class="modal-title"><label>User Data</label></h4>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <table  width="60%">
+                                                    <div id="myModal<?= $user->user_id ?>" class="modal fade" role="dialog">
+                                                        <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                    <h4 class="modal-title"><label>User Data</label></h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <table  width="60%">
                                                                         <tr>
                                                                             <td><label>First Name</label></td>
                                                                             <td>:&nbsp;&nbsp;<?php echo $user->first_name ?></td>
@@ -130,15 +128,15 @@
                                                                         </tr>
                                                                         <tr>
                                                                             <td><label>Country Name</label></td>
-                                                                            <td>:&nbsp;&nbsp;<?php echo $user->country_id ?></td>
+                                                                            <td>:&nbsp;&nbsp;<?php echo $user->country_name ?></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><label>State Name</label></td>
-                                                                            <td>:&nbsp;&nbsp;<?php echo $user->state_id ?></td>
+                                                                            <td>:&nbsp;&nbsp;<?php echo $user->state_name ?></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><label>City Name</label></td>
-                                                                            <td>:&nbsp;&nbsp;<?php echo $user->city_id ?></td>
+                                                                            <td>:&nbsp;&nbsp;<?php echo $user->city_name ?></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><label>Pincode</label></td>
@@ -157,13 +155,13 @@
                                                                             <td>:&nbsp;&nbsp;<?php echo $user->password ?></td>
                                                                         </tr>     
                                                                     </table>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                    </div>
 
                                                 </td>
                                                 <?PHP

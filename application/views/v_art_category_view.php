@@ -37,13 +37,16 @@
 
                                 <?php
                                 $message = $this->session->flashdata('message');
-                                if ($message != ' ') {
-                                    ?>
-                                    <div class="alert alert-success">
-                                        <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                        <?= $message ?>
-                                    </div>
-                                    <?php
+                                if (isset($message)) {
+
+                                    if ($message != ' ') {
+                                        ?>
+                                        <div class="alert alert-success">
+                                            <span class="semibold">Note:</span>&nbsp;&nbsp;
+                                            <?= $message ?>
+                                        </div>
+                                        <?php
+                                    }
                                 }
                                 ?>
 
@@ -55,7 +58,7 @@
                                     <thead>
                                         <tr>
                                             <th>Sr No.</th>
-                                            <th>category Name</th>
+                                            <th>Category Name</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -114,17 +117,17 @@
                                                                     <h4 class="modal-title"><label>Art Category Data</label></h4>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                <table  width="40%">
-                                                                    <tr>
-                                                                        <td><label>category ID</label></td>
-                                                                        <td>:&nbsp;&nbsp;<?php echo $category->art_category_id ?></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td><label>category Name</label></td>
-                                                                        <td>:&nbsp;&nbsp;<?php echo $category->art_category_name ?></td>
-                                                                    </tr>
-                                                                    
-                                                                </table>
+                                                                    <table  width="40%">
+                                                                        <tr>
+                                                                            <td><label>Category ID</label></td>
+                                                                            <td>:&nbsp;&nbsp;<?php echo $category->art_category_id ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><label>Category Name</label></td>
+                                                                            <td>:&nbsp;&nbsp;<?php echo $category->art_category_name ?></td>
+                                                                        </tr>
+
+                                                                    </table>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
