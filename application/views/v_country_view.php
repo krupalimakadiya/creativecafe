@@ -34,101 +34,87 @@
                                     <a href="<?php echo site_url("country/add_country") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
                                     <a href="<?php echo site_url("country/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
                                     <a href="<?php echo site_url("country/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
-
                                 <?php
                                 $message = $this->session->flashdata('message');
                                 if ($message != ' ') {
                                     ?>
-                                    <div class="alert alert-success">
+                                    <div class="alert alert-success">       <!--green model-->
                                         <span class="semibold">Note:</span>&nbsp;&nbsp;
-    <?= $message ?>
+                                        <?= $message ?>
                                     </div>
-                                        <?php
-                                    }
+                                <?php
+                                }
                                     ?>
 
-                            </div>
+                                </div>
 
 
-                            <div class="box-body">
-                                <table id="example1" class="table table-bordered table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Sr No.</th>
-                                            <th>Country Name</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-<?PHP
-$cnt = 1;
-foreach ($country_list as $country) {
-    ?>
+                                <div class="box-body">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
                                             <tr>
-                                                <td><?PHP echo $cnt++; ?> </td>
-                                                <td><?PHP echo $country->country_name ?></td>
-                                                <td><?php
-                                        if ($country->status == '0') {
-                                            ?>
-                                                        <i class="glyphicon glyphicon-remove" style="color:red"></i>
-                                                        <?php
-                                                    } else {
-                                                        ?>
-                                                        <i class="glyphicon glyphicon-ok" style="color:green" ></i>
+                                                <th>Sr No.</th>
+                                                <th>Country Name</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?PHP
+                                            $cnt = 1;
+                                            foreach ($country_list as $country) {
+                                                ?>
+                                                <tr>
+                                                    <td><?PHP echo $cnt++; ?> </td>
+                                                    <td><?PHP echo $country->country_name ?></td>
+                                                    <td><?php
+                                                        if ($country->status == '0') {
+                                                            ?>
+                                                            <i class="glyphicon glyphicon-remove" style="color:red"></i>
+                                                            <?php
+                                                        } else {
+                                                            ?>
+                                                            <i class="glyphicon glyphicon-ok" style="color:green" ></i>
 
-                                                        <?php
-                                                    }
-                                                    ?></td>
-                                                <td> 
-                                                    <div class="dropdown">
+                                                            <?php
+                                                        }
+                                                        ?></td>
+                                                    <td> 
+                                                        <div class="dropdown">
 
-                                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Action
-                                                            <span class="caret"></span> <!-- caret -->
-                                                        </button>
+                                                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Action
+                                                                <span class="caret"></span> <!-- caret -->
+                                                            </button>
 
-                                                        <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                            <li> <a onclick="openView(<?= $country->country_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
-                                                            <li>    <a href="<?php echo site_url("country/edit_data/$country->country_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
-                                                            <li>    <a href="<?php echo site_url("country/delete/$country->country_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
-                                                            <li><?php
-                                                    if ($country->status == '0') {
-                                                        ?>
-                                                                    <a href="<?php echo site_url("country/update_status_active/$country->country_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
-                                                                    <?php
-                                                                } else {
-                                                                    ?>
-                                                                    <a href="<?php echo site_url("country/update_status_deactive/$country->country_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
-                                                                    <?php
-                                                                }
-                                                                ?></li>
-                                                        </ul>
-                                                    </div>
-
-                                                    <div id="myModal<?= $country->country_id ?>" class="modal fade" role="dialog">
-                                                        <div class="modal-dialog">
-                                                            <!-- Modal content-->
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                    <h4 class="modal-title"><label>Country Data</label></h4>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                        <p>
-                                                                        <lable>Country ID:</lable>&nbsp;&nbsp;&nbsp;<?php echo $country->country_id ?></p></<br/></br>
-                                                                     <p><lable>Country name:</lable>&nbsp;&nbsp;&nbsp;<?php echo $country->country_name ?></p><br/>
-                                                                        <p> <?php if ($country->status == '0') {
-                                                                    ?>
-                                                                            <lable>Status:</lable>&nbsp;&nbsp;&nbsp;   <i class="glyphicon glyphicon-remove" style="color:red"><label>Deactive</label></i>
-                                                                                <?php
-                                                                            } else {
-                                                                                ?>
-                                                                            <lable>Status:</lable>&nbsp;&nbsp;&nbsp; <i class="glyphicon glyphicon-ok" style="color:green" ><label>Active</label></i>
-                                                                            <?php
-                                                                        }
+                                                            <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
+                                                                <li> <a onclick="openView(<?= $country->country_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                                <li>    <a href="<?php echo site_url("country/edit_data/$country->country_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
+                                                                <li>    <a href="<?php echo site_url("country/delete/$country->country_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
+                                                                <li><?php
+                                                                    if ($country->status == '0') {
                                                                         ?>
-                                                                        </p>
-                                                                    <!--<table  width="40%">
+                                                                        <a href="<?php echo site_url("country/update_status_active/$country->country_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
+                                                                        <?php
+                                                                    } else {
+                                                                        ?>
+                                                                        <a href="<?php echo site_url("country/update_status_deactive/$country->country_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
+                                                                        <?php
+                                                                    }
+                                                                    ?></li>
+                                                            </ul>
+                                                        </div>
+
+                                                        <div id="myModal<?= $country->country_id ?>" class="modal fade" role="dialog">
+                                                            <div class="modal-dialog">
+                                                                <!-- Modal content-->
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        <h4 class="modal-title"><label>Country Data</label></h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        
+                                                                    <table  width="40%">
                                                                         <tr>
                                                                             <td><label>Country ID</label></td>
                                                                             <td>:&nbsp;&nbsp;<?php echo $country->country_id ?></td>
@@ -138,76 +124,76 @@ foreach ($country_list as $country) {
                                                                             <td>:&nbsp;&nbsp;<?php echo $country->country_name ?></td>
                                                                         </tr>
                                                                         
-                                                                    </table>-->
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </table>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
 
 
-                                                </td>
-    <?PHP
-}
-?>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                                    </td>
+                                                    <?PHP
+                                                }
+                                                ?>
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
-                            </div>
-                            <!-- /.box-body -->
-                            <div class="box-footer">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-primary">Action</button>
-
-                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                        <span class="caret"></span> <!-- caret -->
-                                    </button>
-
-                                    <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                        <li>    <a href="<?php echo site_url("country/update_status_deactive/$country->country_id") ?>"><i class=" fa fa-search"></i><label>Multiple Delete</label></a></li>                     
-                                        <li>    <a href="<?php echo site_url("country/update_status_deactive/$country->country_id") ?>"><i class="fa fa-edit"></i><label>Select All</label></a></li>
-                                        <li>    <a href="<?php echo site_url("country/update_status_deactive/$country->country_id") ?>"><i class="fa fa-trash"></i><label>Deselect All</label></a></li>
-
-                                    </ul>
                                 </div>
-                                <p align="right"><i class="glyphicon glyphicon-ok" style="color:green" ></i>&nbsp;&nbsp;&nbsp;&nbsp;<label>Indicates Activated</label>
-                                    <br/>
-                                    <i class="glyphicon glyphicon-remove" style="color:red" ></i>&nbsp;<label>Indicates Deactivated</label>
-                                </p>
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary">Action</button>
+
+                                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                            <span class="caret"></span> <!-- caret -->
+                                        </button>
+
+                                        <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
+                                            <li>    <a href="<?php echo site_url("") ?>"><i class=" fa fa-search"></i><label>Multiple Delete</label></a></li>                     
+                                            <li>    <a href="<?php echo site_url("") ?>"><i class="fa fa-edit"></i><label>Select All</label></a></li>
+                                            <li>    <a href="<?php echo site_url("") ?>"><i class="fa fa-trash"></i><label>Deselect All</label></a></li>
+
+                                        </ul>
+                                    </div>
+                                    <p align="right"><i class="glyphicon glyphicon-ok" style="color:green" ></i>&nbsp;&nbsp;&nbsp;&nbsp;<label>Indicates Activated</label>
+                                        <br/>
+                                        <i class="glyphicon glyphicon-remove" style="color:red" ></i>&nbsp;<label>Indicates Deactivated</label>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <!-- /.box -->
-                        </div>
-                        <!-- /.col -->
-                        </div>
-                        <!-- /.row -->
+                            <!-- /.box -->
+                            </div>
+                            <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </section>
+
                     </section>
 
-                </section>
+                    <!-- Main content -->
+                    <!-- /.content -->
+                </div>
+                <!-- /.content-wrapper -->
 
-                <!-- Main content -->
-                <!-- /.content -->
+                <footer class="main-footer">
+                    <?php
+                    include('footer_body.php');
+                    ?>
+                </footer>
+
+
+                <!-- Add the sidebar's background. This div must be placed
+                     immediately after the control sidebar -->
+                <div class="control-sidebar-bg"></div>
             </div>
-            <!-- /.content-wrapper -->
-
-            <footer class="main-footer">
-<?php
-include('footer_body.php');
-?>
-            </footer>
-
-
-            <!-- Add the sidebar's background. This div must be placed
-                 immediately after the control sidebar -->
-            <div class="control-sidebar-bg"></div>
-        </div>
-        <!-- ./wrapper -->
-<?php
-include('footer_include.php');
-?>
+            <!-- ./wrapper -->
+            <?php
+            include('footer_include.php');
+            ?>
         <script type="text/javascript">
             function openView(id) {
                 $('#myModal' + id).modal('show');

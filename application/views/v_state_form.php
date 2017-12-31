@@ -35,34 +35,77 @@
                         </div>
                  
                         <div class="box-body">
-                            <form role="form">
-                                <!-- text input -->
-                                <div class="form-group">
-                                    <label>Country name</label>
-                                    <select class="form-control" name="country_id" id="country_id" >
-                                        <option>select plz</option>
-                                        <?PHP
-                                        foreach ($country_list as $country) {
+                                 <?php
+                            if (isset($update_data)) {
+                                ?>
+
+                                <form name="statefrm" method="POST" action="<?php echo site_url("state/editp") ?>" role="form" >
+                                    <input type="hidden" name="state_id" value="<?php echo $update_data['state_id'] ?>" />
+
+                                    <!-- text input -->
+                                    <div class="form-group">
+                                        <label>Country_name</label>                                     
+                                        <select name="country_id" id="country_id" class="form-control">
+                                            <?php
+                                            foreach ($country_list as $country) {
+                                                if ($country->country_id == $update_data['country_id']) {
+                                                    ?>
+                                                    <option selected value="<?php echo $update_data['country_id'] ?>"><?php echo $country->country_name ?></option>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <option value="<?php echo $update_data['country_id'] ?>"><?php echo $country->country_name ?></option>
+                                                    <?php
+                                                }
+                                            }
                                             ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>State Name</label>
+                                        <input type="text" class="form-control"name="state_name" value="<?php echo $update_data['state_name'] ?>" >
 
-                                            <option value="<?PHP echo $country->country_id ?>"><?PHP echo $country->country_name ?></option>
-                                            <?PHP
-                                        }
-                                        ?>
-                                    </select>
+                                    </div>
 
-                                </div>
-                                <div class="form-group">
-                                    <label>State Name</label>
-                                    <input type="text" class="form-control" placeholder="Enter your state name...">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <input type="submit" name="submit" class="btn btn-primary"/>
-                                </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+                                    </div>
+                                </form>
+                                <?php
+                            } else {
+                                ?>
 
-                            </form>
+                                <form name="statefrm" method="POST" action="<?php echo site_url("state/addp") ?>" role="form" >
+
+                                    <!-- text input -->
+                                    <div class="form-group">
+                                        <label>Select Country_name</label>
+                                        <select name="country_id" class="form-control">
+                                            <option >--select--</option>
+                                            <?php
+                                            foreach ($country_list as $country) {
+                                                ?>
+                                                <option value="<?php echo $country->country_id ?>" ><?php echo $country->country_name ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>State_name</label>
+                                        <input type="text" class="form-control"name="state_name"  placeholder="Enter State Name....">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary" value="submit">Submit</button>
+                                    </div>
+                                </form>
+                                <?php
+                            }
+                            ?>
                         </div>
+                       
                         <!-- /.box-body -->
                     </div>
                     <!-- /.box -->

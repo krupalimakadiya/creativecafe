@@ -29,7 +29,7 @@
                         <!-- Default box -->
                         <div class="box box-info">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><label>Category Master</label></h3>
+                                <h3 class="box-title"><label>Art Category Master</label></h3>
                                 <p align="right">
                                     <a href="<?php echo site_url("category/add_category") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
                                     <a href="<?php echo site_url("category/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
@@ -111,34 +111,20 @@
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                    <h4 class="modal-title"><label>category Data</label></h4>
+                                                                    <h4 class="modal-title"><label>Art Category Data</label></h4>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>
-                                                                    <lable>category ID:</lable>&nbsp;&nbsp;&nbsp;<?php echo $category->art_category_id ?></p></<br/></br>
-                                                                    <p><lable>category name:</lable>&nbsp;&nbsp;&nbsp;<?php echo $category->art_category_name ?></p><br/>
-                                                                    <p> <?php if ($category->status == '0') {
-                                                                    ?>
-                                                                        <lable>Status:</lable>&nbsp;&nbsp;&nbsp;   <i class="glyphicon glyphicon-remove" style="color:red"><label>Deactive</label></i>
-                                                                        <?php
-                                                                    } else {
-                                                                        ?>
-                                                                        <lable>Status:</lable>&nbsp;&nbsp;&nbsp; <i class="glyphicon glyphicon-ok" style="color:green" ><label>Active</label></i>
-                                                                        <?php
-                                                                    }
-                                                                    ?>
-                                                                    </p>
-                                                                <!--<table  width="40%">
+                                                                <table  width="40%">
                                                                     <tr>
                                                                         <td><label>category ID</label></td>
                                                                         <td>:&nbsp;&nbsp;<?php echo $category->art_category_id ?></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td><label>category Name</label></td>
-                                                                        <td>:&nbsp;&nbsp;<?php echo $category->category_name ?></td>
+                                                                        <td>:&nbsp;&nbsp;<?php echo $category->art_category_name ?></td>
                                                                     </tr>
                                                                     
-                                                                </table>-->
+                                                                </table>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Country extends CI_Controller {
+class Country extends CI_Controller{
 
      public function __construct() {
         parent::__construct();
@@ -31,6 +31,8 @@ public function view_country() {
     public function addp() {
         $country_data = $this->country_model->check_data($_POST['country_name']);
         if (isset($country_data)) {
+            $this->session->set_flashdata('message','record already exists...');
+            
             redirect('country/index');
         } else {
             $this->country_model->insert($_POST['country_name']);

@@ -33,7 +33,7 @@
 
                       <div class="box box-info">
                         <div class="box-header with-border">
-                            <h3 class="box-title"><label>Category Master</label></h3>
+                            <h3 class="box-title"><label> Art Category Master</label></h3>
                             <a href="<?php echo site_url("category/view_category") ?>" class="btn btn-primary pull-right">
                                 <label class="fa fa-icon label-btn-icon"></label>
                                 &nbsp;<label class="label-btn-fonts">View Records</label>

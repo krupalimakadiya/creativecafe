@@ -90,7 +90,7 @@
                                                         </button>
 
                                                         <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                            <li> <a href="<?php echo site_url("") ?>"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                            <li> <a onclick="openView(<?= $city->city_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
                                                             <li>    <a href="<?php echo site_url("city/edit_data/$city->city_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                             <li>    <a href="<?php echo site_url("city/delete/$city->city_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                             <li><?php
@@ -106,6 +106,44 @@
                                                                 ?></li>
                                                         </ul>
                                                     </div>
+                                                    
+                                                    <div id="myModal<?= $city->city_id ?>" class="modal fade" role="dialog">
+                                                            <div class="modal-dialog">
+                                                                <!-- Modal content-->
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                        <h4 class="modal-title"><label>City Data</label></h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                             <table  width="60%">
+                                                                        <tr>
+                                                                            <td><label>City ID</label></td>
+                                                                            <td>:&nbsp;&nbsp;<?php echo $city->city_id ?></td>
+                                                                        </tr>
+                                                                        
+                                                                                 <tr>
+                                                                            <td><label>Country Name</label></td>
+                                                                            <td>:&nbsp;&nbsp;<?php echo $city->country_name ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><label>State Name</label></td>
+                                                                            <td>:&nbsp;&nbsp;<?php echo $city->state_name ?></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><label>City Name</label></td>
+                                                                            <td>:&nbsp;&nbsp;<?php echo $city->city_name ?></td>
+                                                                        </tr>
+                                                                        </table>
+                                                                   
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                 </td>
                                                 <?PHP
                                             }
@@ -125,9 +163,9 @@
                                     </button>
 
                                     <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                        <li>    <a href="<?php echo site_url("city/update_status_deactive/$city->city_id") ?>"><i class=" fa fa-search"></i><label>Multiple Delete</label></a></li>                     
-                                        <li>    <a href="<?php echo site_url("city/update_status_deactive/$city->city_id") ?>"><i class="fa fa-edit"></i><label>Select All</label></a></li>
-                                        <li>    <a href="<?php echo site_url("city/update_status_deactive/$city->city_id") ?>"><i class="fa fa-trash"></i><label>Deselect All</label></a></li>
+                                        <li>    <a href="<?php echo site_url("") ?>"><i class=" fa fa-search"></i><label>Multiple Delete</label></a></li>                     
+                                        <li>    <a href="<?php echo site_url("") ?>"><i class="fa fa-edit"></i><label>Select All</label></a></li>
+                                        <li>    <a href="<?php echo site_url("") ?>"><i class="fa fa-trash"></i><label>Deselect All</label></a></li>
 
                                     </ul>
                                 </div>
@@ -166,5 +204,10 @@
         <?php
         include('footer_include.php');
         ?>
+           <script type="text/javascript">
+            function openView(id) {
+                $('#myModal' + id).modal('show');
+            }
+        </script>
     </body>
 </html>
