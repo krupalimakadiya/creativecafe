@@ -55,6 +55,7 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
+                                                <th>Check</th>
                                                 <th>Sr No.</th>
                                                 <th>Country Name</th>
                                                 <th>Status</th>
@@ -64,9 +65,11 @@
                                         <tbody>
                                             <?PHP
                                             $cnt = 1;
+                                            $r=0;
                                             foreach ($country_list as $country) {
                                                 ?>
                                                 <tr>
+                                                    <td><input type="checkbox" name="chk[]" value="<?php echo $r['country_id']; ?>" /></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $country->country_name ?></td>
                                                     <td><?php
@@ -155,7 +158,7 @@
                                         </button>
 
                                         <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                            <li>    <a href="<?php echo site_url("") ?>"><i class=" fa fa-search"></i><label>Multiple Delete</label></a></li>                     
+                                            <li>    <a href="<?php echo site_url("country/") ?>"><i class=" fa fa-search"></i><label>Multiple Delete</label></a></li>                     
                                             <li>    <a href="<?php echo site_url("") ?>"><i class="fa fa-edit"></i><label>Select All</label></a></li>
                                             <li>    <a href="<?php echo site_url("") ?>"><i class="fa fa-trash"></i><label>Deselect All</label></a></li>
 

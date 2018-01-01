@@ -40,11 +40,11 @@ class User extends MY_Controller {
         $user_data = $this->user_model->check_data($_POST['first_name'],$_POST['last_name'],$_POST['country_id'],$_POST['state_id'],$_POST['city_id'],$_POST['pincode'],$_POST['email'],$_POST['mobile']);
         if (isset($user_data)) {
             $this->session->set_flashdata('message','record already exists...');            
-            redirect('city/index');
+            redirect('user/index');
         } else {
             $this->user_model->insert($_POST['first_name'],$_POST['last_name'],$_POST['country_id'],$_POST['state_id'],$_POST['city_id'],$_POST['pincode'],$_POST['email'],$_POST['mobile']);
              $this->session->set_flashdata('message','insert successfully...');
-            redirect('city/index');
+            redirect('user/index');
         }
     }
     
