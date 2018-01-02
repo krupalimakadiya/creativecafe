@@ -21,7 +21,7 @@ class Category_model extends CI_Model {
 
     public function edit_data($art_category_id) {
         $query = $this->db->query("select * from art_category_master where art_category_id='$art_category_id'");
-    
+
         return $query->row_array();
     }
 
@@ -37,6 +37,7 @@ class Category_model extends CI_Model {
         $this->db->where('art_category_id', $art_category_id);
         $this->db->delete('art_category_master');
     }
+
     public function update_active($art_category_id, $status) {
         $data = array(
             'art_category_id' => $art_category_id,

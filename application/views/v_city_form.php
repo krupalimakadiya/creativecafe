@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-        include('header_include.php');
+        include('admin/header_include.php');
         ?>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <script>
@@ -33,13 +33,13 @@
 
             <header class="main-header">
                 <?php
-                include('header_body.php');
+                include('admin/header_body.php');
                 ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-                include('header_body_aside.php');
+                include('admin/header_body_aside.php');
                 ?>
             </aside>
 
@@ -165,7 +165,7 @@
 
             <footer class="main-footer">
 <?php
-include('footer_body.php');
+include('admin/footer_body.php');
 ?>
             </footer>
 
@@ -176,7 +176,7 @@ include('footer_body.php');
         </div>
         <!-- ./wrapper -->
 <?php
-include('footer_include.php');
+include('admin/footer_include.php');
 ?>
     </body>
 </html>

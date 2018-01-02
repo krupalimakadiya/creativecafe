@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-        include('header_include.php');
+        include('admin/header_include.php');
         ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -10,13 +10,13 @@
 
             <header class="main-header">
                 <?php
-                include('header_body.php');
+                include('admin/header_body.php');
                 ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-                include('header_body_aside.php');
+                include('admin/header_body_aside.php');
                 ?>
             </aside>
 
@@ -25,7 +25,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                      <div class="box box-info">
+                    <div class="box box-info">
                         <div class="box-header with-border">
                             <h3 class="box-title"><label>State Master</label></h3>
                             <a href="<?php echo site_url("state/view_state") ?>" class="btn btn-primary pull-right">
@@ -33,9 +33,9 @@
                                 &nbsp;<label class="label-btn-fonts">View Records</label>
                             </a>
                         </div>
-                 
+
                         <div class="box-body">
-                                 <?php
+                            <?php
                             if (isset($update_data)) {
                                 ?>
 
@@ -105,12 +105,12 @@
                             }
                             ?>
                         </div>
-                       
+
                         <!-- /.box-body -->
                     </div>
                     <!-- /.box -->
 
-              
+
                 </section>
 
                 <!-- Main content -->
@@ -119,7 +119,7 @@
 
             <footer class="main-footer">
                 <?php
-                include('footer_body.php');
+                include('admin/footer_body.php');
                 ?>
             </footer>
 
@@ -130,7 +130,7 @@
         </div>
         <!-- ./wrapper -->
         <?php
-        include('footer_include.php');
+        include('admin/footer_include.php');
         ?>
     </body>
 </html>

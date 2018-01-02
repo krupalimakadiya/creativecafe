@@ -1,5 +1,7 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Country_model extends CI_model {
 
     public function getcountrylist() {
@@ -7,16 +9,17 @@ class Country_model extends CI_model {
         return $query->result();
     }
 
-      public function insert($country_data) {
+    public function insert($country_data) {
         $data = array('country_name' => $country_data); //1= active //0-deactive
         $this->db->insert('country_master', $data);
     }
-        public function check_data($country_name) {
+
+    public function check_data($country_name) {
         $query = $this->db->query("select * from country_master where country_name='$country_name'");
         return $query->row_array();
     }
 
-        public function edit_data($country_id) {
+    public function edit_data($country_id) {
         $query = $this->db->query("select * from country_master where country_id='$country_id'");
         return $query->row_array();
     }
@@ -52,5 +55,4 @@ class Country_model extends CI_model {
         $this->db->update('country_master', $data);
     }
 
- 
 }

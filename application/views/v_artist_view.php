@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-        include('header_include.php');
+        include('admin/header_include.php');
         ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -10,13 +10,13 @@
 
             <header class="main-header">
                 <?php
-                include('header_body.php');
+                include('admin/header_body.php');
                 ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-                include('header_body_aside.php');
+                include('admin/header_body_aside.php');
                 ?>
             </aside>
 
@@ -53,15 +53,14 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
+                                            <th>Check</th>
                                             <th>Id</th>
                                             <th>First Name</th>
                                             <th>Last Name</th>
                                             <th>Art category</th>
                                             <th>Mobile</th>
-                                            
                                             <th>City</th>
-                                          <th>Password</th>
-                                            
+                                            <th>Password</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -72,15 +71,16 @@
                                         foreach ($artist_list as $artist) {
                                             ?>
                                             <tr>
+                                                <td></td>
                                                 <td><?PHP echo $cnt++; ?> </td>
                                                 <td><?PHP echo $artist->first_name ?></td>
                                                 <td><?PHP echo $artist->last_name ?></td>
                                                 <td><?PHP echo $artist->art_category_name ?></td>
-                                                  <td><?PHP echo $artist->mobile ?></td>
+                                                <td><?PHP echo $artist->mobile ?></td>
                                                 <td><?PHP echo $artist->city_name ?></td>
-                                               <td><?PHP echo $artist->password ?></td>
-                                              
-                                               <td><?php
+                                                <td><?PHP echo $artist->password ?></td>
+
+                                                <td><?php
                                                     if ($artist->status == '0') {
                                                         ?>
                                                         <i class="glyphicon glyphicon-remove" style="color:red"></i>
@@ -185,7 +185,7 @@
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                              <div class="btn-group">
+                                <div class="btn-group">
                                     <button type="button" class="btn btn-primary">Action</button>
 
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -193,10 +193,10 @@
                                     </button>
 
                                     <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                         <li>    <input type="submit" name="submit" value="Delete Selected" onclick="return confirm('Are You Sure You Want to Delete ?')"/></li>                     
-                                            <li>    <input type="submit" name="submit1" value="Active All" onclick="return confirm('Are You Sure You Want to active all records ?')"/></li>                                                                
-                                            <li>     <input type="submit" name="submit2" value="Deactive All" onclick="return confirm('Are You Sure You Want to Deactive all record ?')"/></li>                     
-                                      
+                                        <li>    <input type="submit" name="submit" value="Delete Selected" onclick="return confirm('Are You Sure You Want to Delete ?')"/></li>                     
+                                        <li>    <input type="submit" name="submit1" value="Active All" onclick="return confirm('Are You Sure You Want to active all records ?')"/></li>                                                                
+                                        <li>     <input type="submit" name="submit2" value="Deactive All" onclick="return confirm('Are You Sure You Want to Deactive all record ?')"/></li>                     
+
                                     </ul>
                                 </div>
                                 <p align="right"><i class="glyphicon glyphicon-ok" style="color:green" ></i>&nbsp;&nbsp;&nbsp;&nbsp;<label>Indicates Activated</label>
@@ -204,8 +204,8 @@
                                     <i class="glyphicon glyphicon-remove" style="color:red" ></i>&nbsp;<label>Indicates Deactivated</label>
                                 </p>
                             </div>
-                                                  </form>
-                           
+                            </form>
+
                         </div>
                         <!-- /.box -->
                         </div>
@@ -223,7 +223,7 @@
 
             <footer class="main-footer">
                 <?php
-                include('footer_body.php');
+                include('admin/footer_body.php');
                 ?>
             </footer>
 
@@ -234,7 +234,7 @@
         </div>
         <!-- ./wrapper -->
         <?php
-        include('footer_include.php');
+        include('admin/footer_include.php');
         ?>
         <script type="text/javascript">
             function openView(id) {

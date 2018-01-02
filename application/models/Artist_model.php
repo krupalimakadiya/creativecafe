@@ -55,11 +55,10 @@ class Artist_model extends CI_model {
     }
 
     public function update_data($user_id, $first_name, $last_name, $art_category_id, $mobile, $email, $password, $country_id, $state_id, $city_id, $pincode) {
-        
-         $data = array(
-              'artist_id' => $artist_id,
-           
-             'first_name' => $first_name,
+
+        $data = array(
+            'artist_id' => $artist_id,
+            'first_name' => $first_name,
             'last_name' => $last_name,
             'art_category_id' => $art_category_id,
             'mobile' => $mobile,

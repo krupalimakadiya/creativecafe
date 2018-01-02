@@ -3,14 +3,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class City_model extends CI_model {
-    
 
     public function getcitylist() {
         $query = $this->db->query("select * from country_master as c, state_master as s, city_master as city where city.country_id=c.country_id and city.state_id=s.state_id ");
         return $query->result();
     }
-    
-      public function insert($country_id, $state_id,$city_name) {
+
+    public function insert($country_id, $state_id, $city_name) {
         $data = array('country_id' => $country_id,
             'state_id' => $state_id,
             'city_name' => $city_name);
@@ -18,7 +17,7 @@ class City_model extends CI_model {
     }
 
     //chk if record exists or not
-    public function check_data($country_id,$state_id, $city_name) {
+    public function check_data($country_id, $state_id, $city_name) {
         $query = $this->db->query("select * from city_master where country_id='$country_id' AND state_id='$state_id' AND city_name='$city_name' ");
         return $query->row_array();
     }
@@ -66,4 +65,5 @@ class City_model extends CI_model {
         $this->db->where('city_id', $city_id);
         $this->db->update('city_master', $data);
     }
+
 }

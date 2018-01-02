@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-        include('header_include.php');
+        include('admin/header_include.php');
         ?>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <script>
@@ -54,13 +54,13 @@
 
             <header class="main-header">
                 <?php
-                include('header_body.php');
+                include('admin/header_body.php');
                 ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-                include('header_body_aside.php');
+                include('admin/header_body_aside.php');
                 ?>
             </aside>
 
@@ -86,34 +86,34 @@
 
                                 <form name="artistfrm" method="POST" action="<?php echo site_url("artist/editp") ?>" role="form" >
                                     <input type="hidden" name="artist_id" value="<?php echo $update_data['artist_id'] ?>" />
-<div class="form-group">
-                                    <label>First name</label>
-                                    <input type="text" class="form-control" name="first_name" value="<?php echo $update_data['first_name'] ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label>Last name</label>
-                                    <input type="text" class="form-control" name="last_name" value="<?php echo $update_data['last_name'] ?>">
-                                </div>
                                     <div class="form-group">
-                                    <label>Art category id</label>
-                                    <input type="text" class="form-control" name="art_category_id" value="<?php echo $update_data['art_category_id'] ?>">
-                                </div>
+                                        <label>First name</label>
+                                        <input type="text" class="form-control" name="first_name" value="<?php echo $update_data['first_name'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Last name</label>
+                                        <input type="text" class="form-control" name="last_name" value="<?php echo $update_data['last_name'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Art category id</label>
+                                        <input type="text" class="form-control" name="art_category_id" value="<?php echo $update_data['art_category_id'] ?>">
+                                    </div>
 
-                                <div class="form-group">
-                                    <label>Mobile</label>
-                                    <input type="text" class="form-control" name="mobile" value="<?php echo $update_data['mobile'] ?>">
-                                </div>
-                                     <div class="form-group">
-                                    <label>Email ID</label>
-                                    <input type="text" class="form-control" name="email" value="<?php echo $update_data['email'] ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" name="password" value="<?php echo $update_data['password'] ?>">
-                                </div>
+                                    <div class="form-group">
+                                        <label>Mobile</label>
+                                        <input type="text" class="form-control" name="mobile" value="<?php echo $update_data['mobile'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email ID</label>
+                                        <input type="text" class="form-control" name="email" value="<?php echo $update_data['email'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" name="password" value="<?php echo $update_data['password'] ?>">
+                                    </div>
 
                                     <!-- text input -->
-                                                 <div class="form-group">
+                                    <div class="form-group">
                                         <label>Country_name</label>                                     
                                         <select name="country_id" id="country_id" class="form-control">
                                             <?php
@@ -139,7 +139,7 @@
                                             foreach ($state_list as $state) {
                                                 if ($state->state_id == $update_data['state_id']) {
                                                     ?>
-                                                                                               <!-- <option selected value="<?//php echo $state->state_id ?>"> <?php //echo $state->state_name       ?></option>-->
+                                                                                                       <!-- <option selected value="<?//php echo $state->state_id ?>"> <?php //echo $state->state_name        ?></option>-->
                                                     <option value="<?php echo $state->state_id; ?>"selected="selected"><?php echo $state->state_name; ?></option>
                                                     <?php
                                                 }
@@ -167,13 +167,13 @@
                                         </select>
                                     </div>
 
-                                     <div class="form-group">
-                                    <label>Pincode</label>
-                                    <input type="text" class="form-control" name="pincode" value="<?php echo $update_data['pincode'] ?>">
-                                </div>
-                               
-                                
-                                
+                                    <div class="form-group">
+                                        <label>Pincode</label>
+                                        <input type="text" class="form-control" name="pincode" value="<?php echo $update_data['pincode'] ?>">
+                                    </div>
+
+
+
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary" value="submit">Submit</button>
                                     </div>
@@ -183,31 +183,31 @@
                                 ?>
 
                                 <form name="userfrm" method="POST" action="<?php echo site_url("artist/addp") ?>" role="form" >
-                        <div class="form-group">
-                                    <label>First name</label>
-                                    <input type="text" class="form-control" name="first_name" placeholder="Enter your first name...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Last name</label>
-                                    <input type="text" class="form-control" name="last_name" placeholder="Enter your last name...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Art_category_id</label>
-                                    <input type="text" class="form-control" name="art_category_id" placeholder="Enter your password...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Mobile</label>
-                                    <input type="text" class="form-control" name="mobile" placeholder="Enter your mobile number...">
-                                </div>
-                                                <div class="form-group">
-                                    <label>Email ID</label>
-                                    <input type="text" class="form-control" name="email" placeholder="Enter your email...">
-                                </div>
-                                 <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" name="password" placeholder="Enter your password...">
-                                </div>
-                                       <div class="form-group">
+                                    <div class="form-group">
+                                        <label>First name</label>
+                                        <input type="text" class="form-control" name="first_name" placeholder="Enter your first name...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Last name</label>
+                                        <input type="text" class="form-control" name="last_name" placeholder="Enter your last name...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Art Category Id</label>
+                                        <input type="text" class="form-control" name="art_category_id" placeholder="Enter your art category">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mobile</label>
+                                        <input type="text" class="form-control" name="mobile" placeholder="Enter your mobile number...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email ID</label>
+                                        <input type="text" class="form-control" name="email" placeholder="Enter your email...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" name="password" placeholder="Enter your password...">
+                                    </div>
+                                    <div class="form-group">
                                         <label>Select Country_name</label>
                                         <select name="country_id" class="form-control" id="country_id">
                                             <option >--select--</option>
@@ -234,11 +234,11 @@
                                         <select name="city_id" id="city_id" class="form-control"><option></option></select>
                                     </div>
 
-      <div class="form-group">
-                                    <label>Pincode</label>
-                                    <input type="text" class="form-control" name="pincode" placeholder="Enter your pincode...">
-                                </div>
-                               
+                                    <div class="form-group">
+                                        <label>Pincode</label>
+                                        <input type="text" class="form-control" name="pincode" placeholder="Enter your pincode...">
+                                    </div>
+
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary" value="submit">Submit</button>
@@ -248,28 +248,28 @@
                             }
                             ?>
                         </div>
-                        </div>
-                        <!-- /.box-body -->
                     </div>
-                    <!-- /.box -->
-                </section>
+                    <!-- /.box-body -->
             </div>
-            <!-- /.content-wrapper -->
+            <!-- /.box -->
+        </section>
+    </div>
+    <!-- /.content-wrapper -->
 
-            <footer class="main-footer">
-                <?php
-                include('footer_body.php');
-                ?>
-            </footer>
-
-
-            <!-- Add the sidebar's background. This div must be placed
-                 immediately after the control sidebar -->
-            <div class="control-sidebar-bg"></div>
-        </div>
-        <!-- ./wrapper -->
+    <footer class="main-footer">
         <?php
-        include('footer_include.php');
+        include('admin/footer_body.php');
         ?>
-    </body>
+    </footer>
+
+
+    <!-- Add the sidebar's background. This div must be placed
+         immediately after the control sidebar -->
+    <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+<?php
+include('admin/footer_include.php');
+?>
+</body>
 </html>

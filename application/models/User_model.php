@@ -4,25 +4,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_model extends CI_model {
 
-  /*  public function getuserlist() {
-        $query = $this->db->query("select * from user_master");
-        return $query->result();
-    }*/
-    public function getuserlist()
-    {
-        $query= $this->db->query("select * from user_master  as user, country_master as c, state_master as s, city_master as city where user.country_id=c.country_id and user.state_id=s.state_id and user.city_id=city.city_id ");
+    public function getuserlist() {
+        $query = $this->db->query("select * from user_master  as user, country_master as c, state_master as s, city_master as city where user.country_id=c.country_id and user.state_id=s.state_id and user.city_id=city.city_id ");
         return $query->result();
     }
-    
+
     public function insert($first_name, $last_name, $country_id, $state_id, $city_id, $pincode, $email, $mobile) {
-        $data = array('first_name'=>$first_name,
-            'last_name'=>$last_name,
+        $data = array('first_name' => $first_name,
+            'last_name' => $last_name,
             'country_id' => $country_id,
             'state_id' => $state_id,
             'city_id' => $city_id,
-           'pincode' =>$pincode,
-            'email' =>$email,
-            'mobile'=>$mobile);
+            'pincode' => $pincode,
+            'email' => $email,
+            'mobile' => $mobile);
         $this->db->insert('user_master', $data);
     }
 
