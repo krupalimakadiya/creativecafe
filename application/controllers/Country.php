@@ -105,5 +105,57 @@ public function view_country() {
         redirect("country/index");
     }
 
+   public function deletemultiple() 
+    { 
+      
+        $country_id = $_POST['country_id']; 
+        $i = 0; 
+        while($i<count($country_id)) 
+        { 
+            if(isset($_POST['submit'])) 
+            { 
+                
+                if($this->country_model->delete($country_id[$i])) 
+                { 
+                    $this->session->set_flashdata('success', 'Company Detail Is Delete Successfully..'); 
+                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                } 
+                else 
+                { 
+                    $this->session->set_flashdata('fail', 'Company Detail Is Not Delete. Please Try Again.'); 
+                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                } 
+            } 
+            if(isset($_POST['submit1'])) 
+            { 
+                if($this->country_model->update_active($country_id[$i])) 
+                {             
+                    $this->session->set_flashdata('success', 'Company Detail Is Deactivated Successfully..'); 
+                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                } 
+                else 
+                { 
+                    $this->session->set_flashdata('fail', 'Company Detail Is Not Deactivated.. Please Try Again.'); 
+                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                } 
+            } 
+            if(isset($_POST['submit2'])) 
+            { 
+                if($this->country_model->update_deactive($country_id[$i])) 
+                {             
+                    $this->session->set_flashdata('success', 'Product Detail Is Activated Successfully..'); 
+                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                } 
+                else 
+                { 
+                    $this->session->set_flashdata('fail', 'Product Detail Is Not Activated.. Please Try Again.'); 
+                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                } 
+            } 
+            $i++; 
+        } 
+        redirect("country/index"); 
+    }
+
     
 }

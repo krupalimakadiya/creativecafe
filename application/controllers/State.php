@@ -68,5 +68,51 @@ class State extends MY_Controller {
         $this->state_model->update_deactive($state_id, $status);
         redirect('state/index');
     }
-    
+     public function deletemultiple() 
+    { 
+      
+        $state_id = $_POST['state_id']; 
+        $i = 0; 
+        while($i<count($state_id)) 
+        { 
+            if(isset($_POST['submit'])) 
+            { 
+                
+                if($this->state_model->delete($country_id[$i])) 
+                { 
+                    $this->session->set_flashdata('success', 'Company Detail Is Delete Successfully..'); 
+                     } 
+                else 
+                { 
+                    $this->session->set_flashdata('fail', 'Company Detail Is Not Delete. Please Try Again.'); 
+                     } 
+            } 
+            if(isset($_POST['submit1'])) 
+            { 
+                if($this->state_model->update_active($country_id[$i])) 
+                {             
+                    $this->session->set_flashdata('success', 'Company Detail Is Deactivated Successfully..'); 
+                     } 
+                else 
+                { 
+                    $this->session->set_flashdata('fail', 'Company Detail Is Not Deactivated.. Please Try Again.'); 
+                     } 
+            } 
+            if(isset($_POST['submit2'])) 
+            { 
+                if($this->state_model->update_deactive($country_id[$i])) 
+                {             
+                    $this->session->set_flashdata('success', 'Product Detail Is Activated Successfully..'); 
+                     } 
+                else 
+                { 
+                    $this->session->set_flashdata('fail', 'Product Detail Is Not Activated.. Please Try Again.'); 
+                } 
+            } 
+            $i++; 
+        } 
+        redirect("state/index"); 
+    }
+
+  
 }

@@ -77,7 +77,7 @@
                                                 <td><?PHP echo $artist->last_name ?></td>
                                                 <td><?PHP echo $artist->art_category_id ?></td>
                                                   <td><?PHP echo $artist->mobile ?></td>
-                                                <td><?PHP echo $artist->city_id ?></td>
+                                                <td><?PHP echo $artist->city_name ?></td>
                                                <td><?PHP echo $artist->password ?></td>
                                               
                                                <td><?php
@@ -103,7 +103,7 @@
                                                             <li>    <a href="<?php echo site_url("artist/edit_data/$artist->artist_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                             <li>    <a href="<?php echo site_url("artist/delete/$artist->artist_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                             <li><?php
-                                                                if ($user->status == '0') {
+                                                                if ($artist->status == '0') {
                                                                     ?>
                                                                     <a href="<?php echo site_url("artist/update_status_active/$artist->artist_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                     <?php
@@ -185,7 +185,7 @@
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-                                <div class="btn-group">
+                              <div class="btn-group">
                                     <button type="button" class="btn btn-primary">Action</button>
 
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
@@ -193,10 +193,10 @@
                                     </button>
 
                                     <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                        <li>    <a href="<?php echo site_url("artist/update_status_deactive/$artist->artist_id") ?>"><i class=" fa fa-search"></i><label>Multiple Delete</label></a></li>                     
-                                        <li>    <a href="<?php echo site_url("artist/update_status_deactive/$artist->artist_id") ?>"><i class="fa fa-edit"></i><label>Select All</label></a></li>
-                                        <li>    <a href="<?php echo site_url("artist/update_status_deactive/$artist->artist_id") ?>"><i class="fa fa-trash"></i><label>Deselect All</label></a></li>
-
+                                         <li>    <input type="submit" name="submit" value="Delete Selected" onclick="return confirm('Are You Sure You Want to Delete ?')"/></li>                     
+                                            <li>    <input type="submit" name="submit1" value="Active All" onclick="return confirm('Are You Sure You Want to active all records ?')"/></li>                                                                
+                                            <li>     <input type="submit" name="submit2" value="Deactive All" onclick="return confirm('Are You Sure You Want to Deactive all record ?')"/></li>                     
+                                      
                                     </ul>
                                 </div>
                                 <p align="right"><i class="glyphicon glyphicon-ok" style="color:green" ></i>&nbsp;&nbsp;&nbsp;&nbsp;<label>Indicates Activated</label>
@@ -204,6 +204,8 @@
                                     <i class="glyphicon glyphicon-remove" style="color:red" ></i>&nbsp;<label>Indicates Deactivated</label>
                                 </p>
                             </div>
+                                                  </form>
+                           
                         </div>
                         <!-- /.box -->
                         </div>

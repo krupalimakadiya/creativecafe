@@ -10,9 +10,7 @@ class Artist extends MY_Controller {
         $this->load->model('state_model');
         $this->load->model('city_model');
         $this->load->model('user_model');
-    $this->load->model('artist_model');
-    
-        
+    $this->load->model('artist_model');  
     }
 
     public function index() {
@@ -21,7 +19,9 @@ class Artist extends MY_Controller {
         $data['city_list'] = $this->city_model->getcitylist();
      //   $data['user_list'] = $this->user_model->getuserlist();
         $data['artist_list'] = $this->artist_model->getartistlist();
-        
+//        echo "<pre>";
+    //    print_r($data['artist_list']);
+        //die();
         $this->load->view('v_artist_view', $data);
     }
 

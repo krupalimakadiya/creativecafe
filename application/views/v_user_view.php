@@ -50,9 +50,12 @@
                                 ?>
                             </div>
                             <div class="box-body">
+                                                  <form name="frm" method="post" action="<?php echo site_url('user/deletemultiple'); ?>">
+              
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
+                                            <th>Check</th>
                                             <th>Id</th>
                                             <th>First Name</th>
                                             <th>Last Name</th>
@@ -68,11 +71,12 @@
                                         foreach ($user_list as $user) {
                                             ?>
                                             <tr>
+                                                <td><input type="checkbox" name="user_id[]" value="<?php echo $user->user_id?>"/></td>
                                                 <td><?PHP echo $cnt++; ?> </td>
                                                 <td><?PHP echo $user->first_name ?></td>
                                                 <td><?PHP echo $user->last_name ?></td>
                                                 <td><?PHP echo $user->email ?></td>
-                                                <td><?PHP echo $user->city_id ?></td>
+                                                <td><?PHP echo $user->city_name ?></td>
                                                 <td><?php
                                                     if ($user->status == '0') {
                                                         ?>
@@ -170,9 +174,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-
-                            </div>
-                            <!-- /.box-body -->
+                     <!-- /.box-body -->
                             <div class="box-footer">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-primary">Action</button>
@@ -182,16 +184,18 @@
                                     </button>
 
                                     <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                        <li>    <a href="<?php echo site_url("user/update_status_deactive/$user->user_id") ?>"><i class=" fa fa-search"></i><label>Multiple Delete</label></a></li>                     
-                                        <li>    <a href="<?php echo site_url("user/update_status_deactive/$user->user_id") ?>"><i class="fa fa-edit"></i><label>Select All</label></a></li>
-                                        <li>    <a href="<?php echo site_url("user/update_status_deactive/$user->user_id") ?>"><i class="fa fa-trash"></i><label>Deselect All</label></a></li>
-
+                                         <li>    <input type="submit" name="submit" value="Delete Selected" onclick="return confirm('Are You Sure You Want to Delete ?')"/></li>                     
+                                            <li>    <input type="submit" name="submit1" value="Active All" onclick="return confirm('Are You Sure You Want to active all records ?')"/></li>                                                                
+                                            <li>     <input type="submit" name="submit2" value="Deactive All" onclick="return confirm('Are You Sure You Want to Deactive all record ?')"/></li>                     
+                                      
                                     </ul>
                                 </div>
                                 <p align="right"><i class="glyphicon glyphicon-ok" style="color:green" ></i>&nbsp;&nbsp;&nbsp;&nbsp;<label>Indicates Activated</label>
                                     <br/>
                                     <i class="glyphicon glyphicon-remove" style="color:red" ></i>&nbsp;<label>Indicates Deactivated</label>
                                 </p>
+                            </div>
+                                                  </form>
                             </div>
                         </div>
                         <!-- /.box -->

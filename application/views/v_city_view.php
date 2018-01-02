@@ -52,9 +52,12 @@
 
 
                             <div class="box-body">
+                                                  <form name="frm" method="post" action="<?php echo site_url('city/deletemultiple'); ?>">
+              
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
+                                            <th>Check</th>
                                             <th>Sr No.</th>
                                                <th>Country Name</th>
                                                <th>State Name</th>
@@ -69,6 +72,7 @@
                                                 foreach ($city_list as $city) {
                                                 ?>
                                                 <tr>
+                                                    <td><input type="checkbox" name="city_id[]" value="<?php echo $city->city_id ?>"/></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $city->country_name ?></td>
                                                     <td><?PHP echo $city->state_name ?></td>
@@ -166,10 +170,10 @@
                                     </button>
 
                                     <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                        <li>    <a href="<?php echo site_url("") ?>"><i class=" fa fa-search"></i><label>Multiple Delete</label></a></li>                     
-                                        <li>    <a href="<?php echo site_url("") ?>"><i class="fa fa-edit"></i><label>Select All</label></a></li>
-                                        <li>    <a href="<?php echo site_url("") ?>"><i class="fa fa-trash"></i><label>Deselect All</label></a></li>
-
+                         <li>    <input type="submit" name="submit" value="Delete Selected" onclick="return confirm('Are You Sure You Want to Delete ?')"/></li>                     
+                                            <li>    <input type="submit" name="submit1" value="Active All" onclick="return confirm('Are You Sure You Want to active all records ?')"/></li>                                                                
+                                            <li>     <input type="submit" name="submit2" value="Deactive All" onclick="return confirm('Are You Sure You Want to Deactive all record ?')"/></li>                     
+                                      
                                     </ul>
                                 </div>
                                 <p align="right"><i class="glyphicon glyphicon-ok" style="color:green" ></i>&nbsp;&nbsp;&nbsp;&nbsp;<label>Indicates Activated</label>
@@ -177,6 +181,7 @@
                                     <i class="glyphicon glyphicon-remove" style="color:red" ></i>&nbsp;<label>Indicates Deactivated</label>
                                 </p>
                             </div>
+                            </form>
                         </div>
                         <!-- /.box -->
                         </div>

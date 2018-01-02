@@ -36,22 +36,22 @@
                                     <a href="<?php echo site_url("country/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
                                 <?php
                                 $message = $this->session->flashdata('message');
-                                if(isset($message))
-                                {
-                                if ($message != ' ') {
-                                    ?>
-                                    <div class="alert alert-success">       <!--green model-->
-                                        <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                        <?= $message ?>
-                                    </div>
-                                <?php
+                                if (isset($message)) {
+                                    if ($message != ' ') {
+                                        ?>
+                                        <div class="alert alert-success">       <!--green model-->
+                                            <span class="semibold">Note:</span>&nbsp;&nbsp;
+                                            <?= $message ?>
+                                        </div>
+                                        <?php
+                                    }
                                 }
-                                }
-                                    ?>
-                                </div>
+                                ?>
+                            </div>
 
 
-                                <div class="box-body">
+                            <div class="box-body">
+                                <form name="frm" method="post" action="<?php echo site_url('country/deletemultiple'); ?>">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
@@ -65,11 +65,11 @@
                                         <tbody>
                                             <?PHP
                                             $cnt = 1;
-                                            $r=0;
+
                                             foreach ($country_list as $country) {
                                                 ?>
                                                 <tr>
-                                                    <td><input type="checkbox" name="chk[]" value="<?php echo $r['country_id']; ?>" /></td>
+                                                    <td><input type="checkbox" name="country_id[]"  value="<?php echo $country->country_id; ?>" /></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $country->country_name ?></td>
                                                     <td><?php
@@ -118,18 +118,18 @@
                                                                         <h4 class="modal-title"><label>Country Data</label></h4>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                        
-                                                                    <table  width="40%">
-                                                                        <tr>
-                                                                            <td><label>Country ID</label></td>
-                                                                            <td>:&nbsp;&nbsp;<?php echo $country->country_id ?></td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td><label>Country Name</label></td>
-                                                                            <td>:&nbsp;&nbsp;<?php echo $country->country_name ?></td>
-                                                                        </tr>
-                                                                        
-                                                                    </table>
+
+                                                                        <table  width="40%">
+                                                                            <tr>
+                                                                                <td><label>Country ID</label></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $country->country_id ?></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><label>Country Name</label></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $country->country_name ?></td>
+                                                                            </tr>
+
+                                                                        </table>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -146,10 +146,6 @@
                                             </tr>
                                         </tbody>
                                     </table>
-
-                                </div>
-                                <!-- /.box-body -->
-                                <div class="box-footer">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-primary">Action</button>
 
@@ -158,47 +154,53 @@
                                         </button>
 
                                         <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                            <li>    <a href="<?php echo site_url("country/") ?>"><i class=" fa fa-search"></i><label>Multiple Delete</label></a></li>                     
-                                            <li>    <a href="<?php echo site_url("") ?>"><i class="fa fa-edit"></i><label>Select All</label></a></li>
-                                            <li>    <a href="<?php echo site_url("") ?>"><i class="fa fa-trash"></i><label>Deselect All</label></a></li>
-
+                                            <li>    <input type="submit" name="submit" value="Delete Selected" onclick="return confirm('Are You Sure You Want to Delete ?')"/></li>                     
+                                            <li>    <input type="submit" name="submit1" value="Active All" onclick="return confirm('Are You Sure You Want to active all records ?')"/></li>                                                                
+                                            <li>     <input type="submit" name="submit2" value="Deactive All" onclick="return confirm('Are You Sure You Want to Deactive all record ?')"/></li>                     
+                                           
                                         </ul>
                                     </div>
-                                    <p align="right"><i class="glyphicon glyphicon-ok" style="color:green" ></i>&nbsp;&nbsp;&nbsp;&nbsp;<label>Indicates Activated</label>
-                                        <br/>
-                                        <i class="glyphicon glyphicon-remove" style="color:red" ></i>&nbsp;<label>Indicates Deactivated</label>
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- /.box -->
-                            </div>
-                            <!-- /.col -->
-                            </div>
-                            <!-- /.row -->
-                        </section>
 
+                                </form>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+
+                                <p align="right"><i class="glyphicon glyphicon-ok" style="color:green" ></i>&nbsp;&nbsp;&nbsp;&nbsp;<label>Indicates Activated</label>
+                                    <br/>
+                                    <i class="glyphicon glyphicon-remove" style="color:red" ></i>&nbsp;<label>Indicates Deactivated</label>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.box -->
+                        </div>
+                        <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
                     </section>
 
-                    <!-- Main content -->
-                    <!-- /.content -->
-                </div>
-                <!-- /.content-wrapper -->
+                </section>
 
-                <footer class="main-footer">
-                    <?php
-                    include('footer_body.php');
-                    ?>
-                </footer>
-
-
-                <!-- Add the sidebar's background. This div must be placed
-                     immediately after the control sidebar -->
-                <div class="control-sidebar-bg"></div>
+                <!-- Main content -->
+                <!-- /.content -->
             </div>
-            <!-- ./wrapper -->
-            <?php
-            include('footer_include.php');
-            ?>
+            <!-- /.content-wrapper -->
+
+            <footer class="main-footer">
+                <?php
+                include('footer_body.php');
+                ?>
+            </footer>
+
+
+            <!-- Add the sidebar's background. This div must be placed
+                 immediately after the control sidebar -->
+            <div class="control-sidebar-bg"></div>
+        </div>
+        <!-- ./wrapper -->
+        <?php
+        include('footer_include.php');
+        ?>
         <script type="text/javascript">
             function openView(id) {
                 $('#myModal' + id).modal('show');

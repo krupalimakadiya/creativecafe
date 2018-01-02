@@ -92,6 +92,52 @@ class city extends MY_Controller {
         redirect('city/index');
     }
 
-   
+ public function deletemultiple() 
+    { 
+      
+        $city_id = $_POST['city_id']; 
+        $i = 0; 
+        while($i<count($city_id)) 
+        { 
+            if(isset($_POST['submit'])) 
+            { 
+                
+                if($this->city_model->delete($city_id[$i])) 
+                { 
+                    $this->session->set_flashdata('success', 'Company Detail Is Delete Successfully..'); 
+                } 
+                else 
+                { 
+                    $this->session->set_flashdata('fail', 'Company Detail Is Not Delete. Please Try Again.'); 
+                } 
+            } 
+            if(isset($_POST['submit1'])) 
+            { 
+                if($this->city_model->update_active($city_id[$i])) 
+                {             
+                    $this->session->set_flashdata('success', 'Company Detail Is Deactivated Successfully..'); 
+                } 
+                else 
+                { 
+                    $this->session->set_flashdata('fail', 'Company Detail Is Not Deactivated.. Please Try Again.'); 
+                } 
+            } 
+            if(isset($_POST['submit2'])) 
+            { 
+                if($this->city_model->update_deactive($city_id[$i])) 
+                {             
+                    $this->session->set_flashdata('success', 'Product Detail Is Activated Successfully..'); 
+                } 
+                else 
+                { 
+                    $this->session->set_flashdata('fail', 'Product Detail Is Not Activated.. Please Try Again.'); 
+                } 
+            } 
+            $i++; 
+        } 
+        redirect("city/index"); 
+    }
+
+     
 
 }

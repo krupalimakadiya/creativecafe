@@ -52,13 +52,5 @@ class Country_model extends CI_model {
         $this->db->update('country_master', $data);
     }
 
-    public function multi_delete($ch)
- {
-  $c = count($ch);
-  for($i=0;$i<$c;$i++)
-  {
-  $del = "delete from user where uid = '$ch[$i]'";
-  $ex = mysql_query($del);
-  }
- }
+ 
 }

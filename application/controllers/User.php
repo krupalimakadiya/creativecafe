@@ -112,4 +112,55 @@ $data['user_list'] = $this->user_model->getuserlist();
         $this->user_model->update_deactive($user_id, $status);
         redirect('user/index');
     }
+     public function deletemultiple() 
+    { 
+      
+        $user_id = $_POST['user_id']; 
+        $i = 0; 
+        while($i<count($user_id)) 
+        { 
+            if(isset($_POST['submit'])) 
+            { 
+                
+                if($this->user_model->delete($user_id[$i])) 
+                { 
+                    $this->session->set_flashdata('success', 'Company Detail Is Delete Successfully..'); 
+                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                } 
+                else 
+                { 
+                    $this->session->set_flashdata('fail', 'Company Detail Is Not Delete. Please Try Again.'); 
+                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                } 
+            } 
+            if(isset($_POST['submit1'])) 
+            { 
+                if($this->user_model->update_active($user_id[$i])) 
+                {             
+                    $this->session->set_flashdata('success', 'Company Detail Is Deactivated Successfully..'); 
+                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                } 
+                else 
+                { 
+                    $this->session->set_flashdata('fail', 'Company Detail Is Not Deactivated.. Please Try Again.'); 
+                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                } 
+            } 
+            if(isset($_POST['submit2'])) 
+            { 
+                if($this->user_model->update_deactive($user_id[$i])) 
+                {             
+                    $this->session->set_flashdata('success', 'Product Detail Is Activated Successfully..'); 
+                     } 
+                else 
+                { 
+                    $this->session->set_flashdata('fail', 'Product Detail Is Not Activated.. Please Try Again.'); 
+                    } 
+            } 
+            $i++; 
+        } 
+        redirect("user/index"); 
+    }
+
+  
 }

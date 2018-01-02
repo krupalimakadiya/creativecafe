@@ -182,7 +182,7 @@
                             } else {
                                 ?>
 
-                                <form name="userfrm" method="POST" action="<?php echo site_url("user/addp") ?>" role="form" >
+                                <form name="userfrm" method="POST" action="<?php echo site_url("artist/addp") ?>" role="form" >
                         <div class="form-group">
                                     <label>First name</label>
                                     <input type="text" class="form-control" name="first_name" placeholder="Enter your first name...">

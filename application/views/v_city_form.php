@@ -141,7 +141,7 @@
 
                                     <div class="form-group">
                                         <label>City Name</label>
-                                        <input type="text" class="form-control"name="city_name"  placeholder="Enter City Name....">
+                                        <input type="text" class="form-control" name="city_name"  placeholder="Enter City Name....">
                                     </div>
 
                                     <div class="form-group">

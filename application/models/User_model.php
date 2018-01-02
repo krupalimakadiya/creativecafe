@@ -4,8 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User_model extends CI_model {
 
-    public function getuserlist() {
+  /*  public function getuserlist() {
         $query = $this->db->query("select * from user_master");
+        return $query->result();
+    }*/
+    public function getuserlist()
+    {
+        $query= $this->db->query("select * from user_master  as user, country_master as c, state_master as s, city_master as city where user.country_id=c.country_id and user.state_id=s.state_id and user.city_id=city.city_id ");
         return $query->result();
     }
     
