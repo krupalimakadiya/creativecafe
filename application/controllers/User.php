@@ -75,16 +75,6 @@ $data['user_list'] = $this->user_model->getuserlist();
         redirect("user/index");
     }
 
-    /*public function update_data($user_id) {
-        $data['country_list'] = $this->country_model->getcountrylist();
-        $data['update_data'] = $this->state_model->getstatelist();
-        $data['update_data'] = $this->city_model->getstatelist();
-        
-        $data['update_data'] = $this->user_model->edit_data($user_id);
-
-        $data['city_list'] = $this->city_model->getcitylist();
-        $this->load->view('v_city_view', $data);
-    }*/
     public function update_data($user_id) {
         $data['user_list'] = $this->user_model->getuserlist();
         $data['country_list'] = $this->country_model->getcountrylist();
@@ -98,6 +88,7 @@ $data['user_list'] = $this->user_model->getuserlist();
 
   public function delete($user_id) {
         $this->user_model->delete($user_id);
+          $this->session->set_flashdata('message','record deleted successfully...');            
         redirect("user/index");
     }
     
@@ -124,37 +115,33 @@ $data['user_list'] = $this->user_model->getuserlist();
                 
                 if($this->user_model->delete($user_id[$i])) 
                 { 
-                    $this->session->set_flashdata('success', 'Company Detail Is Delete Successfully..'); 
-                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                    $this->session->set_flashdata('success', 'User Detail Is Delete Successfully..'); 
                 } 
                 else 
                 { 
-                    $this->session->set_flashdata('fail', 'Company Detail Is Not Delete. Please Try Again.'); 
-                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                    $this->session->set_flashdata('fail', 'User Detail Is Not Delete. Please Try Again.'); 
                 } 
             } 
             if(isset($_POST['submit1'])) 
             { 
                 if($this->user_model->update_active($user_id[$i])) 
                 {             
-                    $this->session->set_flashdata('success', 'Company Detail Is Deactivated Successfully..'); 
-                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                    $this->session->set_flashdata('success', 'User Detail Is Deactivated Successfully..'); 
                 } 
                 else 
                 { 
-                    $this->session->set_flashdata('fail', 'Company Detail Is Not Deactivated.. Please Try Again.'); 
-                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                    $this->session->set_flashdata('fail', 'User Detail Is Not Deactivated.. Please Try Again.'); 
                 } 
             } 
             if(isset($_POST['submit2'])) 
             { 
                 if($this->user_model->update_deactive($user_id[$i])) 
                 {             
-                    $this->session->set_flashdata('success', 'Product Detail Is Activated Successfully..'); 
+                    $this->session->set_flashdata('success', 'User Detail Is Activated Successfully..'); 
                      } 
                 else 
                 { 
-                    $this->session->set_flashdata('fail', 'Product Detail Is Not Activated.. Please Try Again.'); 
+                    $this->session->set_flashdata('fail', 'User Detail Is Not Activated.. Please Try Again.'); 
                     } 
             } 
             $i++; 

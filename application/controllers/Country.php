@@ -31,8 +31,7 @@ public function view_country() {
     public function addp() {
         $country_data = $this->country_model->check_data($_POST['country_name']);
         if (isset($country_data)) {
-            $this->session->set_flashdata('message','record already exists...');
-            
+            $this->session->set_flashdata('message','record already exists...');            
             redirect('country/index');
         } else {
             $this->country_model->insert($_POST['country_name']);
@@ -56,6 +55,7 @@ public function view_country() {
 
     public function delete($country_id) {
         $this->country_model->delete($country_id);
+        $this->session->set_flashdata('message','record deleted successfully...');            
         redirect("country/index");
     }
     public function update_status_active($country_id) {
@@ -117,39 +117,33 @@ public function view_country() {
                 
                 if($this->country_model->delete($country_id[$i])) 
                 { 
-                    $this->session->set_flashdata('success', 'Company Detail Is Delete Successfully..'); 
-                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                    $this->session->set_flashdata('success', 'Country Detail Is Delete Successfully..'); 
                 } 
                 else 
                 { 
-                    $this->session->set_flashdata('fail', 'Company Detail Is Not Delete. Please Try Again.'); 
-                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                    $this->session->set_flashdata('fail', 'Country Detail Is Not Delete. Please Try Again.'); 
                 } 
             } 
             if(isset($_POST['submit1'])) 
             { 
                 if($this->country_model->update_active($country_id[$i])) 
                 {             
-                    $this->session->set_flashdata('success', 'Company Detail Is Deactivated Successfully..'); 
-                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                    $this->session->set_flashdata('success', 'Country Detail Is Deactivated Successfully..'); 
                 } 
                 else 
                 { 
-                    $this->session->set_flashdata('fail', 'Company Detail Is Not Deactivated.. Please Try Again.'); 
-                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                    $this->session->set_flashdata('fail', 'Country Detail Is Not Deactivated.. Please Try Again.'); 
                 } 
             } 
             if(isset($_POST['submit2'])) 
             { 
                 if($this->country_model->update_deactive($country_id[$i])) 
                 {             
-                    $this->session->set_flashdata('success', 'Product Detail Is Activated Successfully..'); 
-                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                    $this->session->set_flashdata('success', 'Country Detail Is Activated Successfully..'); 
                 } 
                 else 
                 { 
-                    $this->session->set_flashdata('fail', 'Product Detail Is Not Activated.. Please Try Again.'); 
-                    //redirect("admin/hoha_homes_realestate_admin_add_builder/adminaddbuilder"); 
+                    $this->session->set_flashdata('fail', 'Country Detail Is Not Activated.. Please Try Again.'); 
                 } 
             } 
             $i++; 

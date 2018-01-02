@@ -54,6 +54,7 @@ class State extends MY_Controller {
 
     public function delete($state_id) {
         $this->state_model->delete($state_id);
+          $this->session->set_flashdata('message','record deleted successfully...');            
         redirect("state/index");
     }
 
@@ -78,35 +79,35 @@ class State extends MY_Controller {
             if(isset($_POST['submit'])) 
             { 
                 
-                if($this->state_model->delete($country_id[$i])) 
+                if($this->state_model->delete($state_id[$i])) 
                 { 
-                    $this->session->set_flashdata('success', 'Company Detail Is Delete Successfully..'); 
+                    $this->session->set_flashdata('success', 'State Detail Is Delete Successfully..'); 
                      } 
                 else 
                 { 
-                    $this->session->set_flashdata('fail', 'Company Detail Is Not Delete. Please Try Again.'); 
+                    $this->session->set_flashdata('fail', 'State Detail Is Not Delete. Please Try Again.'); 
                      } 
             } 
             if(isset($_POST['submit1'])) 
             { 
-                if($this->state_model->update_active($country_id[$i])) 
+                if($this->state_model->update_active($state_id[$i])) 
                 {             
-                    $this->session->set_flashdata('success', 'Company Detail Is Deactivated Successfully..'); 
+                    $this->session->set_flashdata('success', 'State Detail Is Deactivated Successfully..'); 
                      } 
                 else 
                 { 
-                    $this->session->set_flashdata('fail', 'Company Detail Is Not Deactivated.. Please Try Again.'); 
+                    $this->session->set_flashdata('fail', 'State Detail Is Not Deactivated.. Please Try Again.'); 
                      } 
             } 
             if(isset($_POST['submit2'])) 
             { 
-                if($this->state_model->update_deactive($country_id[$i])) 
+                if($this->state_model->update_deactive($state_id[$i])) 
                 {             
-                    $this->session->set_flashdata('success', 'Product Detail Is Activated Successfully..'); 
+                    $this->session->set_flashdata('success', 'State Detail Is Activated Successfully..'); 
                      } 
                 else 
                 { 
-                    $this->session->set_flashdata('fail', 'Product Detail Is Not Activated.. Please Try Again.'); 
+                    $this->session->set_flashdata('fail', 'State Detail Is Not Activated.. Please Try Again.'); 
                 } 
             } 
             $i++; 

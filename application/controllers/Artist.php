@@ -85,16 +85,6 @@ $data['artist_list'] = $this->artist_model->getartistlist();
         redirect("artist/index");
     }
 
-    /*public function update_data($user_id) {
-        $data['country_list'] = $this->country_model->getcountrylist();
-        $data['update_data'] = $this->state_model->getstatelist();
-        $data['update_data'] = $this->city_model->getstatelist();
-        
-        $data['update_data'] = $this->user_model->edit_data($user_id);
-
-        $data['city_list'] = $this->city_model->getcitylist();
-        $this->load->view('v_city_view', $data);
-    }*/
     public function update_data($user_id) {
       $data['artist_list'] = $this->artist_model->getartistlist();
           $data['country_list'] = $this->country_model->getcountrylist();
@@ -108,6 +98,8 @@ $data['artist_list'] = $this->artist_model->getartistlist();
 
   public function delete($artist_id) {
         $this->artist_model->delete($artist_id);
+          $this->session->set_flashdata('message','record deleted successfully...');            
+      
         redirect("artist/index");
     }
     

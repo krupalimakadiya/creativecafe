@@ -56,7 +56,7 @@
                                             <th>Id</th>
                                             <th>First Name</th>
                                             <th>Last Name</th>
-                                            <th>Art category id</th>
+                                            <th>Art category</th>
                                             <th>Mobile</th>
                                             
                                             <th>City</th>
@@ -75,7 +75,7 @@
                                                 <td><?PHP echo $cnt++; ?> </td>
                                                 <td><?PHP echo $artist->first_name ?></td>
                                                 <td><?PHP echo $artist->last_name ?></td>
-                                                <td><?PHP echo $artist->art_category_id ?></td>
+                                                <td><?PHP echo $artist->art_category_name ?></td>
                                                   <td><?PHP echo $artist->mobile ?></td>
                                                 <td><?PHP echo $artist->city_name ?></td>
                                                <td><?PHP echo $artist->password ?></td>
@@ -162,8 +162,8 @@
                                                                             <td>:&nbsp;&nbsp;<?php echo $artist->password ?></td>
                                                                         </tr> 
                                                                         <tr>
-                                                                            <td><label>Art category id</label></td>
-                                                                            <td>:&nbsp;&nbsp;<?php echo $artist->art_category_id ?></td>
+                                                                            <td><label>Art Category Name</label></td>
+                                                                            <td>:&nbsp;&nbsp;<?php echo $artist->art_category_name ?></td>
                                                                         </tr>  
                                                                     </table>
                                                                 </div>

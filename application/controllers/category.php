@@ -85,8 +85,9 @@ class category extends MY_Controller {
         redirect("category/view_category");
     }
 
-    public function del($art_category_id) {
-        $this->category_model->del($art_category_id);
+    public function delete($art_category_id) {
+        $this->category_model->delete($art_category_id);
+          $this->session->set_flashdata('message','record deleted successfully...');            
         redirect("category/view_category");
     }
 public function update_status_active($art_category_id) {
@@ -112,35 +113,35 @@ public function update_status_active($art_category_id) {
             if(isset($_POST['submit'])) 
             { 
                 
-                if($this->category_model->del($art_category_id[$i])) 
+                if($this->category_model->delete($art_category_id[$i])) 
                 { 
-                    $this->session->set_flashdata('success', 'Company Detail Is Delete Successfully..'); 
+                    $this->session->set_flashdata('success', 'Category Detail Is Delete Successfully..'); 
                 } 
                 else 
                 { 
-                    $this->session->set_flashdata('fail', 'Company Detail Is Not Delete. Please Try Again.'); 
+                    $this->session->set_flashdata('fail', 'Category Detail Is Not Delete. Please Try Again.'); 
                 } 
             } 
             if(isset($_POST['submit1'])) 
             { 
                 if($this->category_model->update_active($art_category_id[$i])) 
                 {             
-                    $this->session->set_flashdata('success', 'Company Detail Is Deactivated Successfully..'); 
+                    $this->session->set_flashdata('success', 'Category Detail Is Deactivated Successfully..'); 
                 } 
                 else 
                 { 
-                    $this->session->set_flashdata('fail', 'Company Detail Is Not Deactivated.. Please Try Again.'); 
+                    $this->session->set_flashdata('fail', 'Category Detail Is Not Deactivated.. Please Try Again.'); 
                 } 
             } 
             if(isset($_POST['submit2'])) 
             { 
                 if($this->category_model->update_deactive($art_category_id[$i])) 
                 {             
-                    $this->session->set_flashdata('success', 'Product Detail Is Activated Successfully..'); 
+                    $this->session->set_flashdata('success', 'Category Detail Is Activated Successfully..'); 
                      } 
                 else 
                 { 
-                    $this->session->set_flashdata('fail', 'Product Detail Is Not Activated.. Please Try Again.'); 
+                    $this->session->set_flashdata('fail', 'Category Detail Is Not Activated.. Please Try Again.'); 
                      } 
             } 
             $i++; 

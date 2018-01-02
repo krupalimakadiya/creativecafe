@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2017 at 05:14 PM
+-- Generation Time: Jan 02, 2018 at 02:02 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -54,24 +54,20 @@ CREATE TABLE IF NOT EXISTS `artist_master` (
   `mobile` varchar(15) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `country` int(10) NOT NULL,
-  `state` int(10) NOT NULL,
-  `city` int(10) NOT NULL,
+  `country_id` int(10) NOT NULL,
+  `state_id` int(10) NOT NULL,
+  `city_id` int(10) NOT NULL,
   `pincode` int(10) NOT NULL,
   `status` int(10) NOT NULL,
   PRIMARY KEY (`artist_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `artist_master`
 --
 
-INSERT INTO `artist_master` (`artist_id`, `first_name`, `last_name`, `art_category_id`, `mobile`, `email`, `password`, `country`, `state`, `city`, `pincode`, `status`) VALUES
-(1, 'Tatooest', 'mk', 1, '7410546911', 'mansikachchhi171@gmail.com', '123', 1, 1, 1, 395006, 1),
-(2, 'Mansudi', 'kachchhi', 2, '9874563210', 'mk.mk@gmail.com', '123', 2, 1, 1, 2589741, 1),
-(3, 'Chakli', 'chiku', 3, '5789463210', 'chicu.chakli@gmail.com', '123', 3, 1, 1, 258741, 0),
-(4, 'kagdi', 'koyal', 5, '9854763210', 'kinu.makadiya@gmail.com', '123', 5, 1, 1, 258746, 1),
-(5, 'Manya', 'Sharma', 5, '8745693210', 'minu.minu123@gmail.com', '123', 5, 1, 1, 369874, 1);
+INSERT INTO `artist_master` (`artist_id`, `first_name`, `last_name`, `art_category_id`, `mobile`, `email`, `password`, `country_id`, `state_id`, `city_id`, `pincode`, `status`) VALUES
+(6, 'mk', 'mk', 3, '7878827777', 'email@gmail.com', '12345', 25, 12, 11, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -84,19 +80,18 @@ CREATE TABLE IF NOT EXISTS `art_category_master` (
   `art_category_name` varchar(50) NOT NULL,
   `status` int(10) NOT NULL,
   PRIMARY KEY (`art_category_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
 
 --
 -- Dumping data for table `art_category_master`
 --
 
 INSERT INTO `art_category_master` (`art_category_id`, `art_category_name`, `status`) VALUES
-(1, 'Painting', 1),
-(2, 'Tatoo', 1),
 (3, 'prints', 1),
-(4, 'jewelery', 0),
-(5, 'metal', 0),
-(6, 'wood print', 1);
+(6, 'wood print', 0),
+(8, 'qwertyui', 1),
+(18, 'Tatoo123', 0),
+(20, 'metallllll', 0);
 
 -- --------------------------------------------------------
 
@@ -111,19 +106,23 @@ CREATE TABLE IF NOT EXISTS `city_master` (
   `city_name` varchar(50) NOT NULL,
   `status` int(5) NOT NULL,
   PRIMARY KEY (`city_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `city_master`
 --
 
 INSERT INTO `city_master` (`city_id`, `country_id`, `state_id`, `city_name`, `status`) VALUES
-(1, 1, 1, 'gujarat', 1),
 (2, 1, 2, 'mumbai', 1),
 (3, 2, 1, 'aakkkiii', 1),
 (4, 3, 1, 'lockargil', 0),
 (5, 5, 1, 'akala', 0),
-(6, 1, 2, 'changa', 1);
+(6, 1, 2, 'changa', 1),
+(7, 1, 1, 'surat', 0),
+(8, 2, 2, 'niwkergjtmkl', 0),
+(9, 7, 10, 'wedrtg', 0),
+(10, 10, 8, '3erty', 0),
+(11, 25, 12, 'tempcity', 0);
 
 -- --------------------------------------------------------
 
@@ -150,19 +149,21 @@ CREATE TABLE IF NOT EXISTS `country_master` (
   `country_name` varchar(20) NOT NULL,
   `status` int(5) NOT NULL,
   PRIMARY KEY (`country_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `country_master`
 --
 
 INSERT INTO `country_master` (`country_id`, `country_name`, `status`) VALUES
-(1, 'india', 1),
-(2, 'pakistan', 0),
-(3, 'nepal', 1),
-(4, 'bhutan', 1),
-(5, 'sri lanka', 1),
-(6, 'usa', 0);
+(10, 'usa', 1),
+(18, 'Zafrabad...', 0),
+(19, '12345678', 0),
+(20, 'waerjkh', 0),
+(21, 'mk123', 0),
+(22, 'kerjnkm', 0),
+(23, 'mk', 0),
+(25, 'temp', 0);
 
 -- --------------------------------------------------------
 
@@ -191,19 +192,16 @@ CREATE TABLE IF NOT EXISTS `state_master` (
   `state_name` varchar(40) NOT NULL,
   `status` int(5) NOT NULL,
   PRIMARY KEY (`state_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `state_master`
 --
 
 INSERT INTO `state_master` (`state_id`, `country_id`, `state_name`, `status`) VALUES
-(1, 1, 'Gujarat', 1),
-(2, 2, 'islam', 0),
-(3, 3, 'nhutuuuu', 1),
-(4, 1, 'Maharashtra', 1),
-(5, 4, 'tiruvantpuram', 1),
-(6, 1, 'goa', 1);
+(8, 10, 'usa123', 0),
+(11, 10, 'qwerty', 0),
+(12, 25, 'tempstate', 0);
 
 -- --------------------------------------------------------
 
@@ -215,27 +213,26 @@ CREATE TABLE IF NOT EXISTS `user_master` (
   `user_id` int(10) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(30) NOT NULL,
   `last_name` varchar(30) NOT NULL,
-  `country` varchar(30) NOT NULL,
-  `state` varchar(30) NOT NULL,
-  `city` varchar(30) NOT NULL,
+  `country_id` varchar(10) NOT NULL,
+  `state_id` varchar(10) NOT NULL,
+  `city_id` varchar(10) NOT NULL,
   `pincode` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
   `mobile` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
   `status` int(10) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `user_master`
 --
 
-INSERT INTO `user_master` (`user_id`, `first_name`, `last_name`, `country`, `state`, `city`, `pincode`, `email`, `mobile`, `password`, `status`) VALUES
-(1, 'atharv', 'shivalinga', 'india', 'jammu & kashmir', 'kulu', '312587', 'atharv.ganesha@gmail.com', '8957412366', '123', 1),
-(3, 'mansi', 'kachchhi', 'india', 'gujarat', 'surat', '395006', 'mansikachchhi171@gmail.com', '7405469477', '123', 1),
-(5, 'anuradha', 'podwal', 'afganistan', 'kerela', 'manali', '789546', 'anu.podwal123@gmail.com', '9874563210', '123', 0),
-(6, 'Mishti', 'Khanna', 'india', 'goa', 'goa', '874562', 'minu.mk@gmail.com', '5874123690', '123', 0),
-(7, 'Anvesha', 'Khurana', 'nepal', 'neno', 'newnu', '412365', 'avi.avi@gmail.com', '9877563210', '123', 1);
+INSERT INTO `user_master` (`user_id`, `first_name`, `last_name`, `country_id`, `state_id`, `city_id`, `pincode`, `email`, `mobile`, `password`, `status`) VALUES
+(8, 'wergty', 'dfgtfy', '1', '1', '5', '45621', 'emaail@gmail.com', '8745213690', '', 1),
+(9, 'sdsfg', 'dergh', '2', '2', '2', '45621', 'email@gmail.com', '456321789', '', 1),
+(10, 'xfvgh', 'dfgh', '2', '2', '2', '785412', 'email123@gmail.com', '7878827777', '', 1),
+(11, 'ccfgvhbj', 'fdgthy', '10', '8', '10', '12345678', 'email@mail.com', '7854123690', '', 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

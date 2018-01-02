@@ -33,7 +33,7 @@ class Category_model extends CI_Model {
         $this->db->update('art_category_master', $data);
     }
 
-    public function del($art_category_id) {
+    public function delete($art_category_id) {
         $this->db->where('art_category_id', $art_category_id);
         $this->db->delete('art_category_master');
     }

@@ -70,6 +70,8 @@ class city extends MY_Controller {
 
     public function delete($city_id) {
         $this->city_model->delete($city_id);
+          $this->session->set_flashdata('message','record deleted successfully...');            
+      
         redirect("city/index");
     }
 
@@ -104,33 +106,33 @@ class city extends MY_Controller {
                 
                 if($this->city_model->delete($city_id[$i])) 
                 { 
-                    $this->session->set_flashdata('success', 'Company Detail Is Delete Successfully..'); 
+                    $this->session->set_flashdata('success', 'City Detail Is Delete Successfully..'); 
                 } 
                 else 
                 { 
-                    $this->session->set_flashdata('fail', 'Company Detail Is Not Delete. Please Try Again.'); 
+                    $this->session->set_flashdata('fail', 'City Detail Is Not Delete. Please Try Again.'); 
                 } 
             } 
             if(isset($_POST['submit1'])) 
             { 
                 if($this->city_model->update_active($city_id[$i])) 
                 {             
-                    $this->session->set_flashdata('success', 'Company Detail Is Deactivated Successfully..'); 
+                    $this->session->set_flashdata('success', 'City Detail Is Deactivated Successfully..'); 
                 } 
                 else 
                 { 
-                    $this->session->set_flashdata('fail', 'Company Detail Is Not Deactivated.. Please Try Again.'); 
+                    $this->session->set_flashdata('fail', 'City Detail Is Not Deactivated.. Please Try Again.'); 
                 } 
             } 
             if(isset($_POST['submit2'])) 
             { 
                 if($this->city_model->update_deactive($city_id[$i])) 
                 {             
-                    $this->session->set_flashdata('success', 'Product Detail Is Activated Successfully..'); 
+                    $this->session->set_flashdata('success', 'City Detail Is Activated Successfully..'); 
                 } 
                 else 
                 { 
-                    $this->session->set_flashdata('fail', 'Product Detail Is Not Activated.. Please Try Again.'); 
+                    $this->session->set_flashdata('fail', 'City Detail Is Not Activated.. Please Try Again.'); 
                 } 
             } 
             $i++; 
