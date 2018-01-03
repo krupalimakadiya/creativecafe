@@ -17,6 +17,7 @@ class User extends MY_Controller {
         $data['state_list'] = $this->state_model->getstatelist();
         $data['city_list'] = $this->city_model->getcitylist();
         $data['user_list'] = $this->user_model->getuserlist();
+        
         $this->load->view('v_user_view', $data);
     }
 
@@ -37,12 +38,12 @@ class User extends MY_Controller {
     }
 
         public function addp() {
-        $user_data = $this->user_model->check_data($_POST['first_name'],$_POST['last_name'],$_POST['country_id'],$_POST['state_id'],$_POST['city_id'],$_POST['pincode'],$_POST['email'],$_POST['mobile']);
+        $user_data = $this->user_model->check_data($_POST['first_name'],$_POST['last_name'],$_POST['country_id'],$_POST['state_id'],$_POST['city_id'],$_POST['pincode'],$_POST['email'],$_POST['mobile'],$_POST['password']);
         if (isset($user_data)) {
             $this->session->set_flashdata('message','record already exists...');            
             redirect('user/index');
         } else {
-            $this->user_model->insert($_POST['first_name'],$_POST['last_name'],$_POST['country_id'],$_POST['state_id'],$_POST['city_id'],$_POST['pincode'],$_POST['email'],$_POST['mobile']);
+            $this->user_model->insert($_POST['first_name'],$_POST['last_name'],$_POST['country_id'],$_POST['state_id'],$_POST['city_id'],$_POST['pincode'],$_POST['email'],$_POST['mobile'],$_POST['password']);
              $this->session->set_flashdata('message','insert successfully...');
             redirect('user/index');
         }
@@ -71,7 +72,7 @@ $data['user_list'] = $this->user_model->getuserlist();
     }
 
     public function editp() {
-        $this->user_model->update_data($_POST['user_id'], $_POST['first_name'],$_POST['last_name'],$_POST['country_id'],$_POST['state_id'],$_POST['city_id'],$_POST['pincode'],$_POST['email'],$_POST['mobile']);
+        $this->user_model->update_data($_POST['user_id'], $_POST['first_name'],$_POST['last_name'],$_POST['country_id'],$_POST['state_id'],$_POST['city_id'],$_POST['pincode'],$_POST['email'],$_POST['mobile'],$_POST['password']);
         redirect("user/index");
     }
 

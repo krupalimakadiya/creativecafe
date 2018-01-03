@@ -69,8 +69,13 @@
                                             <?PHP
                                             $cnt = 1;
                                             foreach ($user_list as $user) {
+                                                
                                                 ?>
+                                            
                                                 <tr>
+                                                    <?php  echo "<pre>";
+                                                     print_r($user); 
+                                                    ?>
                                                     <td><input type="checkbox" name="user_id[]" value="<?php echo $user->user_id ?>"/></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $user->first_name ?></td>
@@ -195,8 +200,9 @@
                                             <i class="glyphicon glyphicon-remove" style="color:red" ></i>&nbsp;<label>Indicates Deactivated</label>
                                         </p>
                                     </div>
-                                </form>
+                               
                             </div>
+                             </form>
                         </div>
                         <!-- /.box -->
                         </div>

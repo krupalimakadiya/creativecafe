@@ -152,8 +152,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </form>
-                            </div>
+                                </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
                                 <div class="btn-group">
@@ -176,6 +175,7 @@
                             </div>
 
                         </div>
+                    </form>
                         <!-- /.box -->
 
                         <!-- /.col -->

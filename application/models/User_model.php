@@ -9,7 +9,7 @@ class User_model extends CI_model {
         return $query->result();
     }
 
-    public function insert($first_name, $last_name, $country_id, $state_id, $city_id, $pincode, $email, $mobile) {
+    public function insert($first_name, $last_name, $country_id, $state_id, $city_id, $pincode, $email, $mobile,$password) {
         $data = array('first_name' => $first_name,
             'last_name' => $last_name,
             'country_id' => $country_id,
@@ -17,19 +17,20 @@ class User_model extends CI_model {
             'city_id' => $city_id,
             'pincode' => $pincode,
             'email' => $email,
-            'mobile' => $mobile);
+            'mobile' => $mobile,
+            'password' => $password);
         $this->db->insert('user_master', $data);
     }
 
     //chk if record exists in database  or not 
-    public function check_data($first_name, $last_name, $country_id, $state_id, $city_id, $pincode, $email, $mobile) {
+    public function check_data($first_name, $last_name, $country_id, $state_id, $city_id, $pincode, $email, $mobile, $password) {
         $query = $this->db->query("select * from user_master where first_name='$first_name' AND  last_name='$last_name' AND
                                                              country_id='$country_id' AND 
                                                                  state_id='$state_id' AND
                                                                       city_id='$city_id' AND
                                                                           pincode = '$pincode' AND
                                                                               email='$email'  AND
-                                                                                    mobile='$mobile' ");
+                                                                                    mobile='$mobile' AND password='$password' ");
         return $query->row_array();
     }
 
@@ -48,7 +49,7 @@ class User_model extends CI_model {
         return $query->row_array();
     }
 
-    public function update_data($user_id, $first_name, $last_name, $country_id, $state_id, $city_id, $pincode, $email, $mobile) {
+    public function update_data($user_id, $first_name, $last_name, $country_id, $state_id, $city_id, $pincode, $email, $mobile,$password) {
         $data = array(
             'user_id' => $user_id,
             'first_name' => $first_name,
@@ -58,7 +59,8 @@ class User_model extends CI_model {
             'city_id' => $city_id,
             'pincode' => $pincode,
             'email' => $email,
-            'mobile' => $mobile
+            'mobile' => $mobile,
+            'password'=>$password
         );
         $this->db->where('user_id', $user_id);
         $this->db->update('user_master', $data);

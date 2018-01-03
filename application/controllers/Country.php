@@ -106,15 +106,13 @@ public function view_country() {
     }
 
    public function deletemultiple() 
-    { 
-      
+    {
         $country_id = $_POST['country_id']; 
         $i = 0; 
         while($i<count($country_id)) 
         { 
             if(isset($_POST['submit'])) 
-            { 
-                
+            {           
                 if($this->country_model->delete($country_id[$i])) 
                 { 
                     $this->session->set_flashdata('success', 'Country Detail Is Delete Successfully..'); 

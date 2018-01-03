@@ -97,7 +97,7 @@
                                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
                                                                 <li> <a onclick="openView(<?= $category->art_category_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
                                                                 <li>    <a href="<?php echo site_url("category/edit_data/$category->art_category_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
-                                                                <li>    <a href="<?php echo site_url("category/del/$category->art_category_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
+                                                                <li>    <a href="<?php echo site_url("category/delete/$category->art_category_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
                                                                     if ($category->status == '0') {
                                                                         ?>
