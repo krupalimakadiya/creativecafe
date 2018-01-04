@@ -58,7 +58,13 @@
           
           </ul>
         </li>
-        
+        <li>
+            <a href="<?PHP echo site_url('comment/index') ?>">
+
+                <i class="fa fa-dashboard"></i> <span>Comment Master</span>
+
+            </a>
+        </li>
         
         <!--<li>
             <a href="#">
