@@ -140,6 +140,8 @@ class city extends MY_Controller {
         redirect("city/index"); 
     }
 
-     
+     public function import() {
+        $this->load->view('import_city');
+    }
 
 }
