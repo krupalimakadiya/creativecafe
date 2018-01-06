@@ -99,14 +99,14 @@ class Artist extends MY_Controller {
     }
 
     public function update_status_active($artist_id) {
-        $status = $this->input->get('status');
-        $this->artist_model->update_active($artist_id, $status);
+        $status = $this->input->get('artist_status');
+        $this->artist_model->update_active($artist_id, $artist_status);
         redirect('artist/index');
     }
 
     public function update_status_deactive($artist_id) {
-        $status = $this->input->get('status');
-        $this->artist_model->update_deactive($artist_id, $status);
+        $status = $this->input->get('artist_status');
+        $this->artist_model->update_deactive($artist_id, $artist_status);
         redirect('artist/index');
     }
 
@@ -124,19 +124,13 @@ class Artist extends MY_Controller {
                 }
             }
             if (isset($_POST['submit1'])) {
-                if ($this->artist_model->update_active($artist_id[$i])) {
-                    $this->session->set_flashdata('success', 'artist Detail Is Deactivated Successfully..');
-                } else {
-                    $this->session->set_flashdata('fail', 'artist Detail Is Not Deactivated.. Please Try Again.');
-                }
-            }
+                $this->artist_model->update_active($artist_id[$i]);
+                $this->session->set_flashdata('success', 'artist Detail Is Activated Successfully..');
+                     }
             if (isset($_POST['submit2'])) {
-                if ($this->artist_model->update_deactive($artist_id[$i])) {
-                    $this->session->set_flashdata('success', 'artist Detail Is Activated Successfully..');
-                } else {
-                    $this->session->set_flashdata('fail', 'artist Detail Is Not Activated.. Please Try Again.');
-                }
-            }
+                $this->artist_model->update_deactive($artist_id[$i]);
+                $this->session->set_flashdata('success', 'artist Detail Is Deactivated Successfully..');               
+                 }
             $i++;
         }
         redirect("artist/index");

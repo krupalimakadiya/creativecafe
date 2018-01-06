@@ -8,29 +8,28 @@ class Comment_model extends CI_model {
         $query = $this->db->query("select * from comment_master");
         return $query->result();
     }
-
     
     public function delete($comment_id) {
         $this->db->where('comment_id', $comment_id);
         $this->db->delete('comment_master');
     }
 
-    public function update_active($country_id, $status) {
+    public function update_active($comment_id, $status) {
         $data = array(
-            'country_id' => $country_id,
+            'comment_id' => $comment_id,
             'status' => 1
         );
-        $this->db->where('country_id', $country_id);
-        $this->db->update('country_master', $data);
+        $this->db->where('comment_id', $comment_id);
+        $this->db->update('comment_master', $data);
     }
 
-    public function update_deactive($country_id, $status) {
+    public function update_deactive($comment_id, $status) {
         $data = array(
-            'country_id' => $country_id,
+            'comment_id' => $comment_id,
             'status' => 0
         );
-        $this->db->where('country_id', $country_id);
-        $this->db->update('country_master', $data);
+        $this->db->where('comment_id', $comment_id);
+        $this->db->update('comment_master', $data);
     }
 
 }

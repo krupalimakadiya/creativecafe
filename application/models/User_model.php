@@ -71,19 +71,19 @@ class User_model extends CI_model {
         $this->db->delete('user_master');
     }
 
-    public function update_active($user_id, $status) {
+    public function update_active($user_id, $user_status) {
         $data = array(
             'user_id' => $user_id,
-            'status' => 1
+            'user_status' => 1
         );
         $this->db->where('user_id', $user_id);
         $this->db->update('user_master', $data);
     }
 
-    public function update_deactive($user_id, $status) {
+    public function update_deactive($user_id, $user_status) {
         $data = array(
             'user_id' => $user_id,
-            'status' => 0
+            'user_status' => 0
         );
         $this->db->where('user_id', $user_id);
         $this->db->update('user_master', $data);

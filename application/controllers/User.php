@@ -94,14 +94,14 @@ $data['user_list'] = $this->user_model->getuserlist();
     }
     
     public function update_status_active($user_id) {
-        $status = $this->input->get('status');
-        $this->user_model->update_active($user_id, $status);
+        $status = $this->input->get('user_status');
+        $this->user_model->update_active($user_id, $user_status);
         redirect('user/index');
     }
 
     public function update_status_deactive($user_id) {
-        $status = $this->input->get('status');
-        $this->user_model->update_deactive($user_id, $status);
+        $status = $this->input->get('user_status');
+        $this->user_model->update_deactive($user_id, $user_status);
         redirect('user/index');
     }
      public function deletemultiple() 

@@ -3,16 +3,16 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Artist_model extends CI_model {
-/*
+
     public function getartistlist() {
         $query = $this->db->query("select * from artist_master  as a, country_master as c, state_master as s, city_master as city , art_category_master as ac where a.country_id=c.country_id and a.state_id=s.state_id and a.city_id=city.city_id and a.art_category_id=ac.art_category_id");
         return $query->result();
-    }*/
+    }
     
-      public function getartistlist() {
+     /* public function getartistlist() {
         $query = $this->db->query("select * from artist_master");
         return $query->result();
-    }
+    }*/
 
     public function insert($first_name, $last_name, $art_category_id, $mobile, $email, $password, $country_id, $state_id, $city_id, $pincode) {
         $data = array('first_name' => $first_name,
@@ -83,19 +83,19 @@ class Artist_model extends CI_model {
         $this->db->delete('artist_master');
     }
 
-    public function update_active($artist_id, $status) {
+    public function update_active($artist_id, $artist_status) {
         $data = array(
             'artist_id' => $artist_id,
-            'status' => 1
+            'artist_status' => 1
         );
         $this->db->where('artist_id', $artist_id);
         $this->db->update('artist_master', $data);
     }
 
-    public function update_deactive($artist_id, $status) {
+    public function update_deactive($artist_id, $artist_status) {
         $data = array(
             'artist_id' => $artist_id,
-            'status' => 0
+            'artist_status' => 0
         );
         $this->db->where('artist_id', $artist_id);
         $this->db->update('artist_master', $data);

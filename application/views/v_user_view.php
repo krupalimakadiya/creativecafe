@@ -36,8 +36,10 @@
                                     <a href="<?php echo site_url("user/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
                                 <?php
                                 $message = $this->session->flashdata('message');
+                                $success = $this->session->flashdata('success');
+                                $fail = $this->session->flashdata('fail');
+                                
                                 if (isset($message)) {
-
                                     if ($message != ' ') {
                                         ?>
                                         <div class="alert alert-success">
@@ -47,6 +49,27 @@
                                         <?php
                                     }
                                 }
+                                     if (isset($success)) {
+                                    if ($success != ' ') {
+                                        ?>
+                                        <div class="alert alert-success">
+                                            <span class="semibold">Note:</span>&nbsp;&nbsp;
+                                            <?= $success ?>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                                     if (isset($fail)) {
+                                    if ($fail != ' ') {
+                                        ?>
+                                        <div class="alert alert-success">
+                                            <span class="semibold">Note:</span>&nbsp;&nbsp;
+                                            <?= $fail ?>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                          
                                 ?>
                             </div>
                             <div class="box-body">
@@ -73,9 +96,6 @@
                                                 ?>
                                             
                                                 <tr>
-                                                    <?php  echo "<pre>";
-                                                     print_r($user); 
-                                                    ?>
                                                     <td><input type="checkbox" name="user_id[]" value="<?php echo $user->user_id ?>"/></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $user->first_name ?></td>
@@ -83,7 +103,7 @@
                                                     <td><?PHP echo $user->email ?></td>
                                                     <td><?PHP echo $user->city_name ?></td>
                                                     <td><?php
-                                                        if ($user->status == '0') {
+                                                        if ($user->user_status == '0') {
                                                             ?>
                                                             <i class="glyphicon glyphicon-remove" style="color:red"></i>
                                                             <?php
@@ -105,7 +125,7 @@
                                                                 <li>    <a href="<?php echo site_url("user/edit_data/$user->user_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                                 <li>    <a href="<?php echo site_url("user/delete/$user->user_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
-                                                                    if ($user->status == '0') {
+                                                                    if ($user->user_status == '0') {
                                                                         ?>
                                                                         <a href="<?php echo site_url("user/update_status_active/$user->user_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                         <?php
@@ -190,9 +210,8 @@
 
                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
                                                 <li>    <input type="submit" name="submit" value="Delete Selected" onclick="return confirm('Are You Sure You Want to Delete ?')"/></li>                     
-                                                <li>    <input type="submit" name="submit1" value="Active All" onclick="return confirm('Are You Sure You Want to active all records ?')"/></li>                                                                
-                                                <li>     <input type="submit" name="submit2" value="Deactive All" onclick="return confirm('Are You Sure You Want to Deactive all record ?')"/></li>                     
-
+                                                <li>    <input type="submit" name="submit1" value="Active Selected" onclick="return confirm('Are You Sure You Want to active all records ?')"/></li>                                                                
+                                                <li>     <input type="submit" name="submit2" value="Deactive Selected" onclick="return confirm('Are You Sure You Want to Deactive all record ?')"/></li>                     
                                             </ul>
                                         </div>
                                         <p align="right"><i class="glyphicon glyphicon-ok" style="color:green" ></i>&nbsp;&nbsp;&nbsp;&nbsp;<label>Indicates Activated</label>

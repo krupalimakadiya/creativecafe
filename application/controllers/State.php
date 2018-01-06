@@ -135,26 +135,14 @@ class State extends MY_Controller {
             } 
             if(isset($_POST['submit1'])) 
             { 
-                if($this->state_model->update_active($state_id[$i])) 
-                {             
-                    $this->session->set_flashdata('success', 'State Detail Is Deactivated Successfully..'); 
-                     } 
-                else 
-                { 
-                    $this->session->set_flashdata('fail', 'State Detail Is Not Deactivated.. Please Try Again.'); 
-                     } 
-            } 
+                $this->state_model->update_active($state_id[$i]);      
+               $this->session->set_flashdata('success', 'State Detail Is Activated Successfully..');
+                  } 
             if(isset($_POST['submit2'])) 
             { 
-                if($this->state_model->update_deactive($state_id[$i])) 
-                {             
-                    $this->session->set_flashdata('success', 'State Detail Is Activated Successfully..'); 
-                     } 
-                else 
-                { 
-                    $this->session->set_flashdata('fail', 'State Detail Is Not Activated.. Please Try Again.'); 
-                } 
-            } 
+               $this->state_model->update_deactive($state_id[$i]);
+                  $this->session->set_flashdata('success', 'State Detail Is Deactivated Successfully..'); 
+           } 
             $i++; 
         } 
         redirect("state/index"); 

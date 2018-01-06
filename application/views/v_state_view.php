@@ -36,13 +36,35 @@
 
                                 <?php
                                 $message = $this->session->flashdata('message');
+                                $success = $this->session->flashdata('success');
+                                $fail = $this->session->flashdata('fail');
+                                
                                 if (isset($message)) {
-
                                     if ($message != ' ') {
                                         ?>
                                         <div class="alert alert-success">       <!--green model-->
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
                                             <?= $message ?>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                                if (isset($success)) {
+                                    if ($success != ' ') {
+                                        ?>
+                                        <div class="alert alert-success">       <!--green model-->
+                                            <span class="semibold">Note:</span>&nbsp;&nbsp;
+                                            <?= $success ?>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                                if (isset($fail)) {
+                                    if ($fail != ' ') {
+                                        ?>
+                                        <div class="alert alert-success">       <!--green model-->
+                                            <span class="semibold">Note:</span>&nbsp;&nbsp;
+                                            <?= $fail ?>
                                         </div>
                                         <?php
                                     }
@@ -164,8 +186,8 @@
 
                                     <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
                                         <li>    <input type="submit" name="submit" value="Delete Selected" onclick="return confirm('Are You Sure You Want to Delete ?')"/></li>                     
-                                        <li>    <input type="submit" name="submit1" value="Active All" onclick="return confirm('Are You Sure You Want to active all records ?')"/></li>                                                                
-                                        <li>     <input type="submit" name="submit2" value="Deactive All" onclick="return confirm('Are You Sure You Want to Deactive all record ?')"/></li>                     
+                                        <li>    <input type="submit" name="submit1" value="Active Selected" onclick="return confirm('Are You Sure You Want to active all records ?')"/></li>                                                                
+                                        <li>     <input type="submit" name="submit2" value="Deactive Selected" onclick="return confirm('Are You Sure You Want to Deactive all record ?')"/></li>                     
                                     </ul>
                                 </div>
                                 <p align="right"><i class="glyphicon glyphicon-ok" style="color:green" ></i>&nbsp;&nbsp;&nbsp;&nbsp;<label>Indicates Activated</label>

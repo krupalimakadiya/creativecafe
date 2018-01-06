@@ -21,31 +21,30 @@ public function view_country() {
 
     
 
-    public function import() {
+    /*public function import() {
         $this->load->view('import_country');
     }
-
+*/
     
 
     
-
     public function delete($comment_id) {
         $this->comment_model->delete($comment_id);
         $this->session->set_flashdata('message','record deleted successfully...');            
         redirect("comment/index");
     }
-    public function update_status_active($country_id) {
-        $this->load->model('country_model');
+    public function update_status_active($comment_id) {
+        $this->load->model('comment_model');
         $status = $this->input->get('status');
-        $this->country_model->update_active($country_id, $status);
-        redirect('country/index');
+        $this->comment_model->update_active($comment_id, $status);
+        redirect('comment/index');
     }
 
-    public function update_status_deactive($country_id) {
-        $this->load->model('country_model');
+    public function update_status_deactive($comment_id) {
+        $this->load->model('comment_model');
         $status = $this->input->get('status');
-        $this->country_model->update_deactive($country_id, $status);
-        redirect('country/index');
+        $this->comment_model->update_deactive($comment_id, $status);
+        redirect('comment/index');
     }
     
      public function importp() {
@@ -83,13 +82,13 @@ public function view_country() {
 
    public function deletemultiple() 
     {
-        $country_id = $_POST['country_id']; 
+        $comment_id = $_POST['comment_id']; 
         $i = 0; 
-        while($i<count($country_id)) 
+        while($i<count($comment_id)) 
         { 
             if(isset($_POST['submit'])) 
             {           
-                if($this->country_model->delete($country_id[$i])) 
+                if($this->comment_model->delete($comment_id[$i])) 
                 { 
                     $this->session->set_flashdata('success', 'Country Detail Is Delete Successfully..'); 
                 } 
@@ -100,7 +99,7 @@ public function view_country() {
             } 
             if(isset($_POST['submit1'])) 
             { 
-                if($this->country_model->update_active($country_id[$i])) 
+                if($this->comment_model->update_active($comment_id[$i])) 
                 {             
                     $this->session->set_flashdata('success', 'Country Detail Is Deactivated Successfully..'); 
                 } 
@@ -111,7 +110,7 @@ public function view_country() {
             } 
             if(isset($_POST['submit2'])) 
             { 
-                if($this->country_model->update_deactive($country_id[$i])) 
+                if($this->comment_model->update_deactive($comment_id[$i])) 
                 {             
                     $this->session->set_flashdata('success', 'Country Detail Is Activated Successfully..'); 
                 } 
@@ -122,7 +121,7 @@ public function view_country() {
             } 
             $i++; 
         } 
-        redirect("country/index"); 
+        redirect("comment/index"); 
     }
 
     

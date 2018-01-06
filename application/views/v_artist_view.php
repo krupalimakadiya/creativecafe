@@ -35,30 +35,43 @@
                                     <a href="<?php echo site_url("artist/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
                                     <a href="<?php echo site_url("artist/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
                                 <?php
-                                 $message = $this->session->flashdata('message');
-                            //$message=$this->session->mark_as_temp('message',100);
-                                 if (isset($message)) {
+                                $message = $this->session->flashdata('message');
+                                $success = $this->session->flashdata('success');
+                                $fail = $this->session->flashdata('fail');
 
-                                  if ($message != ' ') {
-                                  ?>
-                                  <div class="alert alert-success">
-                                  <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                  <?= $message ?>
-                                  </div>
-                                  <?php
-                                  }
-                                  } 
-                                ?>
+                                if (isset($message)) {
+                                    if ($message != ' ') {
+                                        ?>
+                                        <div class="alert alert-success">
+                                            <span class="semibold">Note:</span>&nbsp;&nbsp;
+                                            <?= $message ?>
+                                        </div>
+                                        <?php
+                                    }
+                                }
 
-                                <script>
-// assumes you're using jQuery
-                                   // $(document).ready(function () {
-                                       // $('.confirm-div').hide();
-<?php //if ($this->session->flashdata('message')) { ?>
-                 //                           $('.confirm-div').html('<?php //echo $this->session->flashdata('message'); ?>').show();
-              //                          });
-<?php// } ?>
-                                </script>
+                                if (isset($success)) {
+                                    if ($success != ' ') {
+                                        ?>
+                                        <div class="alert alert-success">
+                                            <span class="semibold">Note:</span>&nbsp;&nbsp;
+                                            <?= $success ?>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+
+                                if (isset($fail)) {
+                                    if ($fail != ' ') {
+                                        ?>
+                                        <div class="alert alert-success">
+                                            <span class="semibold">Note:</span>&nbsp;&nbsp;
+                                            <?= $fail ?>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                                ?>                                
                             </div>
                             <div class="box-body">
                                 <form method="post" action="<?php echo site_url('artist/deletemultiple') ?>">
@@ -78,32 +91,32 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?PHP
-                                            $cnt = 1;
-                                            foreach ($artist_list as $artist) {
-                                                ?>
+<?PHP
+$cnt = 1;
+foreach ($artist_list as $artist) {
+    ?>
                                                 <tr>
                                                     <td><input type="checkbox" name="artist_id[]" value="<?php echo $artist->artist_id ?>"</td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $artist->first_name ?></td>
                                                     <td><?PHP echo $artist->last_name ?></td>
-                                                    <td><?PHP echo $artist->art_category_id ?></td>
+                                                    <td><?PHP echo $artist->art_category_name ?></td>
                                                     <td><?PHP echo $artist->mobile ?></td>
-                                                    <td><?PHP echo $artist->city_id ?></td>
+                                                    <td><?PHP echo $artist->city_name ?></td>
                                                     <td><?PHP echo $artist->password ?></td>
 
                                                     <td><?php
-                                                        if ($artist->status == '0') {
-                                                            ?>
+                                            if ($artist->artist_status == '0') {
+                                                ?>
                                                             <i class="glyphicon glyphicon-remove" style="color:red"></i>
                                                             <?php
                                                         } else {
                                                             ?>
                                                             <i class="glyphicon glyphicon-ok" style="color:green" ></i>
 
-                                                            <?php
-                                                        }
-                                                        ?></td>
+        <?php
+    }
+    ?></td>
                                                     <td> <div class="dropdown">
 
                                                             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Action
@@ -115,8 +128,8 @@
                                                                 <li>    <a href="<?php echo site_url("artist/edit_data/$artist->artist_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                                 <li>    <a href="<?php echo site_url("artist/delete/$artist->artist_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
-                                                                    if ($artist->status == '0') {
-                                                                        ?>
+                                                    if ($artist->artist_status == '0') {
+                                                        ?>
                                                                         <a href="<?php echo site_url("artist/update_status_active/$artist->artist_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                         <?php
                                                                     } else {
@@ -147,15 +160,15 @@
                                                                             </tr>
                                                                             <tr>
                                                                                 <td><label>Country Name</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $artist->country_id ?></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $artist->country_name ?></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td><label>State Name</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $artist->state_id ?></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $artist->state_name ?></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td><label>City Name</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $artist->city_id ?></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $artist->city_name ?></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td><label>Pincode</label></td>
@@ -187,9 +200,9 @@
                                                         </div>
 
                                                     </td>
-                                                    <?PHP
-                                                }
-                                                ?>
+    <?PHP
+}
+?>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -205,8 +218,8 @@
 
                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
                                                 <li>    <input type="submit" name="submit" value="Delete Selected" onclick="return confirm('Are You Sure You Want to Delete ?')"/></li>                     
-                                                <li>    <input type="submit" name="submit1" value="Active All" onclick="return confirm('Are You Sure You Want to active all records ?')"/></li>                                                                
-                                                <li>     <input type="submit" name="submit2" value="Deactive All" onclick="return confirm('Are You Sure You Want to Deactive all record ?')"/></li>                     
+                                                <li>    <input type="submit" name="submit1" value="Active Selected" onclick="return confirm('Are You Sure You Want to active all records ?')"/></li>                                                                
+                                                <li>     <input type="submit" name="submit2" value="Deactive Selected" onclick="return confirm('Are You Sure You Want to Deactive all record ?')"/></li>                     
 
                                             </ul>
                                         </div>
@@ -235,9 +248,9 @@
             <!-- /.content-wrapper -->
 
             <footer class="main-footer">
-                <?php
-                include('admin/footer_body.php');
-                ?>
+<?php
+include('admin/footer_body.php');
+?>
             </footer>
 
 
@@ -246,9 +259,9 @@
             <div class="control-sidebar-bg"></div>
         </div>
         <!-- ./wrapper -->
-        <?php
-        include('admin/footer_include.php');
-        ?>
+<?php
+include('admin/footer_include.php');
+?>
         <script type="text/javascript">
             function openView(id) {
                 $('#myModal' + id).modal('show');

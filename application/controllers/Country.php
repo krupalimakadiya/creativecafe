@@ -2,19 +2,20 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Country extends My_Controller{
+class Country extends My_Controller {
 
-     public function __construct() {
+    public function __construct() {
         parent::__construct();
         $this->load->model('country_model');
     }
+
     public function index() {
-     
+
         $data['country_list'] = $this->country_model->getcountrylist();
         $this->load->view('v_country_view', $data);
     }
 
-public function view_country() {
+    public function view_country() {
         $data['country_list'] = $this->country_model->getcountrylist();
         $this->load->view('v_country_view', $data);
     }
@@ -31,11 +32,11 @@ public function view_country() {
     public function addp() {
         $country_data = $this->country_model->check_data($_POST['country_name']);
         if (isset($country_data)) {
-            $this->session->set_flashdata('message','record already exists...');            
+            $this->session->set_flashdata('message', 'record already exists...');
             redirect('country/index');
         } else {
             $this->country_model->insert($_POST['country_name']);
-             $this->session->set_flashdata('message','insert successfully...');
+            $this->session->set_flashdata('message', 'insert successfully...');
             redirect('country/index');
         }
     }
@@ -48,16 +49,17 @@ public function view_country() {
 
     public function editp() {
         $this->country_model->update_data($_POST['country_id'], $_POST['country_name']);
-          $this->session->set_flashdata('message','record updated successfully...');
-           
+        $this->session->set_flashdata('message', 'record updated successfully...');
+
         redirect("country/index");
     }
 
     public function delete($country_id) {
         $this->country_model->delete($country_id);
-        $this->session->set_flashdata('message','record deleted successfully...');            
+        $this->session->set_flashdata('message', 'record deleted successfully...');
         redirect("country/index");
     }
+
     public function update_status_active($country_id) {
         $this->load->model('country_model');
         $status = $this->input->get('status');
@@ -71,8 +73,8 @@ public function view_country() {
         $this->country_model->update_deactive($country_id, $status);
         redirect('country/index');
     }
-    
-     public function importp() {
+
+    public function importp() {
         $file = $_FILES['upload']['tmp_name'];
         $handle = fopen($file, "r");
         $c = 0;
@@ -105,49 +107,28 @@ public function view_country() {
         redirect("country/index");
     }
 
-   public function deletemultiple() 
-    {
-        $country_id = $_POST['country_id']; 
-        $i = 0; 
-        while($i<count($country_id)) 
-        { 
-            if(isset($_POST['submit'])) 
-            {           
-                if($this->country_model->delete($country_id[$i])) 
-                { 
-                    $this->session->set_flashdata('success', 'Country Detail Is Delete Successfully..'); 
-                } 
-                else 
-                { 
-                    $this->session->set_flashdata('fail', 'Country Detail Is Not Delete. Please Try Again.'); 
-                } 
-            } 
-            if(isset($_POST['submit1'])) 
-            { 
-                if($this->country_model->update_active($country_id[$i])) 
-                {             
-                    $this->session->set_flashdata('success', 'Country Detail Is Deactivated Successfully..'); 
-                } 
-                else 
-                { 
-                    $this->session->set_flashdata('fail', 'Country Detail Is Not Deactivated.. Please Try Again.'); 
-                } 
-            } 
-            if(isset($_POST['submit2'])) 
-            { 
-                if($this->country_model->update_deactive($country_id[$i])) 
-                {             
-                    $this->session->set_flashdata('success', 'Country Detail Is Activated Successfully..'); 
-                } 
-                else 
-                { 
-                    $this->session->set_flashdata('fail', 'Country Detail Is Not Activated.. Please Try Again.'); 
-                } 
-            } 
-            $i++; 
-        } 
-        redirect("country/index"); 
+    public function deletemultiple() {
+        $country_id = $_POST['country_id'];
+        $i = 0;
+        while ($i < count($country_id)) {
+            if (isset($_POST['submit'])) {
+                if ($this->country_model->delete($country_id[$i])) {
+                    $this->session->set_flashdata('success', 'Country Detail Is Delete Successfully..');
+                } else {
+                    $this->session->set_flashdata('fail', 'Country Detail Is Not Delete. Please Try Again.');
+                }
+            }
+            if (isset($_POST['submit1'])) {
+                $this->country_model->update_active($country_id[$i]);
+                    $this->session->set_flashdata('success', 'Country Detail Is Activated Successfully..');
+              }
+            if (isset($_POST['submit2'])) {
+                $this->country_model->update_deactive($country_id[$i]);
+                $this->session->set_flashdata('success', 'Country Detail Is Deactivated Successfully..');
+            }
+            $i++;
+        }
+        redirect("country/index");
     }
 
-    
 }
