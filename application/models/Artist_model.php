@@ -3,9 +3,14 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Artist_model extends CI_model {
-
+/*
     public function getartistlist() {
         $query = $this->db->query("select * from artist_master  as a, country_master as c, state_master as s, city_master as city , art_category_master as ac where a.country_id=c.country_id and a.state_id=s.state_id and a.city_id=city.city_id and a.art_category_id=ac.art_category_id");
+        return $query->result();
+    }*/
+    
+      public function getartistlist() {
+        $query = $this->db->query("select * from artist_master");
         return $query->result();
     }
 
@@ -54,7 +59,7 @@ class Artist_model extends CI_model {
         return $query->row_array();
     }
 
-    public function update_data($user_id, $first_name, $last_name, $art_category_id, $mobile, $email, $password, $country_id, $state_id, $city_id, $pincode) {
+    public function update_data($artist_id, $first_name, $last_name, $art_category_id, $mobile, $email, $password, $country_id, $state_id, $city_id, $pincode) {
 
         $data = array(
             'artist_id' => $artist_id,
@@ -63,7 +68,7 @@ class Artist_model extends CI_model {
             'art_category_id' => $art_category_id,
             'mobile' => $mobile,
             'email' => $email,
-            'passord' => $password,
+            'password' => $password,
             'country_id' => $country_id,
             'state_id' => $state_id,
             'city_id' => $city_id,
@@ -80,7 +85,7 @@ class Artist_model extends CI_model {
 
     public function update_active($artist_id, $status) {
         $data = array(
-            'user_id' => $artist_id,
+            'artist_id' => $artist_id,
             'status' => 1
         );
         $this->db->where('artist_id', $artist_id);

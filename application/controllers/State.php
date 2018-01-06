@@ -26,6 +26,10 @@ class State extends MY_Controller {
         $data['state_list'] = $this->state_model->getstatelist();
         $this->load->view('v_state_view', $data);
     }
+        public function import_state() {
+        $this->load->view('import_state');
+    }
+
     
       public function addp() {
         $state_data = $this->state_model->check_data($_POST['country_id'],$_POST['state_name']);
@@ -69,6 +73,47 @@ class State extends MY_Controller {
         $this->state_model->update_deactive($state_id, $status);
         redirect('state/index');
     }
+    
+      public function importp() {
+        $file = $_FILES['upload']['tmp_name'];
+        $handle = fopen($file, "r");
+        $row = 1;
+        $counter = 0;
+        $records = 0;
+        while (($filesop = fgetcsv($handle, 100000, ",")) !== false) {
+            $records++;
+            if ($row == 1) {
+                $row++;
+                continue;
+            }
+            $country_name = trim($filesop[0]);
+            if (strlen($country_name) < 2) {
+                continue;
+            }
+            $state_name = trim($filesop[1]);
+            if (strlen($state_name) < 2) {
+                continue;
+            }
+            $country_data = $this->state_model->getcountryid($country_name);
+            $country_id = $country_data['country_id'];
+            try {
+                $param = array(
+                    'country_id' => $country_id
+                    , 'state_name' => $state_name
+                    //, 'status' => 1
+                );
+           
+                $this->state_model->insert($country_id,$state_name);
+                $counter++;
+            } catch (Exception $ex) {
+                
+            }
+        }
+        $total = ($records - 1);
+        $this->session->set_flashdata('message', $counter . " record(s) out of " . ($total == -1 ? 0 : $total) . " successfully imported.");
+        redirect("state/index");
+    }
+
      public function deletemultiple() 
     { 
       

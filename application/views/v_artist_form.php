@@ -95,9 +95,22 @@
                                         <input type="text" class="form-control" name="last_name" value="<?php echo $update_data['last_name'] ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label>Art category id</label>
-                                        <input type="text" class="form-control" name="art_category_id" value="<?php echo $update_data['art_category_id'] ?>">
-                                    </div>
+                                    <label>Art Category Name</label>                                     
+                                        <select name="art_category_id" id="art_category_id" class="form-control">
+                                            <?php
+                                            foreach ($category_list as $category) {
+                                                if ($category->art_category_id == $update_data['art_category_id']) {
+                                                    ?>
+                                                    <option selected value="<?php echo $category->art_category_id ?>"><?php echo $category->art_category_name ?></option>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <option value="<?php echo $category->art_category_id ?>"><?php echo $category->art_category_name ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select></div>
 
                                     <div class="form-group">
                                         <label>Mobile</label>
@@ -111,8 +124,6 @@
                                         <label>Password</label>
                                         <input type="password" class="form-control" name="password" value="<?php echo $update_data['password'] ?>">
                                     </div>
-
-                                    <!-- text input -->
                                     <div class="form-group">
                                         <label>Country_name</label>                                     
                                         <select name="country_id" id="country_id" class="form-control">
@@ -131,7 +142,6 @@
                                             ?>
                                         </select>             
                                     </div>
-
                                     <div class="form-group">
                                         <label>State Name</label>
                                         <select name="state_id" id="state_id" class="form-control">
@@ -146,7 +156,6 @@
                                             }
                                             ?>
                                         </select></div>
-
                                     <div class="form-group">
                                         <label>City Name</label>
                                         <select name="city_id" id="city_id" class="form-control">
@@ -166,14 +175,10 @@
                                             ?>
                                         </select>
                                     </div>
-
                                     <div class="form-group">
                                         <label>Pincode</label>
                                         <input type="text" class="form-control" name="pincode" value="<?php echo $update_data['pincode'] ?>">
                                     </div>
-
-
-
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary" value="submit">Submit</button>
                                     </div>
@@ -181,8 +186,7 @@
                                 <?php
                             } else {
                                 ?>
-
-                                <form name="userfrm" method="POST" action="<?php echo site_url("artist/addp") ?>" role="form" >
+                                <form name="artistfrm" method="POST" action="<?php echo site_url("artist/addp") ?>" role="form" >
                                     <div class="form-group">
                                         <label>First name</label>
                                         <input type="text" class="form-control" name="first_name" placeholder="Enter your first name...">
@@ -192,8 +196,18 @@
                                         <input type="text" class="form-control" name="last_name" placeholder="Enter your last name...">
                                     </div>
                                     <div class="form-group">
-                                        <label>Art Category Id</label>
-                                        <input type="text" class="form-control" name="art_category_id" placeholder="Enter your art category">
+                                        <label>Art Category Name</label>
+                                        <!--<input type="text" class="form-control" name="art_category_id" placeholder="Enter your art category">-->
+                                        <select name="art_category_id" class="form-control" id="art_category_id">
+                                            <option>--Select--</option>
+                                            <?php
+                                                                            foreach ($category_list as $category) {
+                                                                                ?>
+                                            <option value="<?php echo $category->art_category_id?>"><?php echo $category->art_category_name ?></option>
+                                            <?php
+                                                                            }
+                                            ?>                                            
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Mobile</label>

@@ -20,7 +20,7 @@ class category extends MY_Controller {
     }
 
     public function import() {
-        $this->load->view('import_category');
+        $this->load->view('import_art_category');
     }
 
     public function index() {
@@ -39,44 +39,10 @@ class category extends MY_Controller {
             redirect('category/index');
         }
     }
-    
-    public function importp() {
-        $file = $_FILES['upload']['tmp_name'];
-        $handle = fopen($file, "r");
-        $c = 0;
-        $row = 1;
-        $counter = 0;
-        $records = 0;
-        while (($filesop = fgetcsv($handle, 100000, ",")) !== false) {
-            $records++;
-            if ($row == 1) {
-                $row++;
-                continue;
-            }
-            $art_category_name = trim($filesop[0]);
-            if (strlen($art_category_name) < 2) {
-                continue;
-            }
-            $country_data = $this->category_model->check_data($art_category_name);
-            if (isset($category_data['art_category_id'])) {
-                continue;
-            }
-            try {
-                $this->category_model->insert($art_category_name);
-                $counter++;
-            } catch (Exception $ex) {
-                
-            }
-        }
-        $total = ($records - 1);
-        $this->session->set_flashdata('message', $counter . " record(s) out of " . ($total == -1 ? 0 : $total) . " successfully imported.");
-        redirect("category/index");
-    }
-
+   
     public function edit_data($art_category_id) {
         $data['update_data'] = $this->category_model->edit_data($art_category_id);
         $data['category_list'] = $this->category_model->getcategorylist();
-   
         $this->load->view('v_art_category_form', $data);
     }
 
@@ -103,6 +69,40 @@ public function update_status_active($art_category_id) {
         $this->category_model->update_deactive($art_category_id, $status);
         redirect('category/index');
     }
+    
+    public function importp() {
+        $file = $_FILES['upload']['tmp_name'];
+        $handle = fopen($file, "r");
+        $c = 0;
+        $row = 1;
+        $counter = 0;
+        $records = 0;
+        while (($filesop = fgetcsv($handle, 100000, ",")) !== false) {
+            $records++;
+            if ($row == 1) {
+                $row++;
+                continue;
+            }
+            $art_category_name = trim($filesop[0]);
+            if (strlen($art_category_name) < 2) {
+                continue;
+            }
+            $category_data = $this->category_model->check_data($art_category_name);
+            if (isset($category_data['art_category_id'])) {
+                continue;
+            }
+            try {
+                $this->category_model->insert($art_category_name);
+                $counter++;
+            } catch (Exception $ex) {
+                
+            }
+        }
+        $total = ($records - 1);
+        $this->session->set_flashdata('message', $counter . " record(s) out of " . ($total == -1 ? 0 : $total) . " successfully imported.");
+        redirect("category/index");
+    }
+
      public function deletemultiple() 
     { 
       

@@ -6,10 +6,11 @@ class Artist extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('country_model');
+       $this->load->model('country_model');
         $this->load->model('state_model');
         $this->load->model('city_model');
         $this->load->model('user_model');
+        $this->load->model('category_model');        
         $this->load->model('artist_model');
     }
 
@@ -17,6 +18,7 @@ class Artist extends MY_Controller {
         $data['country_list'] = $this->country_model->getcountrylist();
         $data['state_list'] = $this->state_model->getstatelist();
         $data['city_list'] = $this->city_model->getcitylist();
+        $data['category_list'] = $this->category_model->getcategorylist();        
         $data['artist_list'] = $this->artist_model->getartistlist();
         $this->load->view('v_artist_view', $data);
     }
@@ -25,6 +27,7 @@ class Artist extends MY_Controller {
         $data['country_list'] = $this->country_model->getcountrylist();
         $data['state_list'] = $this->state_model->getstatelist();
         $data['city_list'] = $this->city_model->getcitylist();
+        $data['category_list'] = $this->category_model->getcategorylist();        
         $data['artist_list'] = $this->artist_model->getartistlist();
         $this->load->view('v_artist_view', $data);
     }
@@ -33,6 +36,7 @@ class Artist extends MY_Controller {
         $data['country_list'] = $this->country_model->getcountrylist();
         $data['state_list'] = $this->state_model->getstatelist();
         $data['city_list'] = $this->city_model->getcitylist();
+         $data['category_list'] = $this->category_model->getcategorylist();        
         $data['artist_list'] = $this->artist_model->getartistlist();
         $this->load->view('v_artist_form', $data);
     }
@@ -65,7 +69,8 @@ class Artist extends MY_Controller {
         $data['state_list'] = $this->state_model->getstatelist();
         $data['city_list'] = $this->city_model->getcitylist();
         $data['artist_list'] = $this->artist_model->getartistlist();
-
+      $data['category_list'] = $this->category_model->getcategorylist();        
+   
         $this->load->view('v_artist_form', $data);
     }
 
@@ -74,13 +79,15 @@ class Artist extends MY_Controller {
         redirect("artist/index");
     }
 
-    public function update_data($user_id) {
+    public function update_data($artist_id) {
         $data['artist_list'] = $this->artist_model->getartistlist();
         $data['country_list'] = $this->country_model->getcountrylist();
         $data['update_data'] = $this->state_model->getstatelist();
         $data['update_data'] = $this->city_model->getcitylist();
         $data['artist_data'] = $this->artist_model->edit_data($artist_id);
         $data['artist_list'] = $this->artist_model->getartistlist();
+         $data['category_list'] = $this->category_model->getcategorylist();        
+   
         $this->load->view('v_artist_view', $data);
     }
 
