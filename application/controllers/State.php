@@ -114,9 +114,27 @@ class State extends MY_Controller {
         redirect("state/index");
     }
 
+    public function export()
+    {
+        $this->load->dbutil(); 
+        $this->load->helper('file'); 
+        $this->load->helper('download'); 
+        $delimiter = ","; 
+        $newline = "\r\n"; 
+        $filename = "state_master.csv"; 
+     //   $query = "SELECT course_master_name as 'Course Name',book_name as 'Book Name',author_name as 'Author Name',publication_name as 'Publication Name',book_edition as 'Book Edition',book_quantity as 'Book Quantity' 
+     //   FROM college_master cm,college_course_master ccm,course_master com,book_master as b 
+     //   WHERE b.college_course_master_id = ccm.college_course_master_id and ccm.college_master_id = cm.college_master_id and ccm.course_master_id = com.course_master_id and ccm.college_master_id = $college_master_id"; 
+        $query = "select country_name as 'Country Name', state_name as 'State Name' 
+                from country_master as c, state_master as s
+                where c.country_id=s.country_id";
+        $result = $this->db->query($query); 
+        $data = $this->dbutil->csv_from_result($result, $delimiter, $newline); 
+        force_download($filename, $data);
+
+    }
      public function deletemultiple() 
     { 
-      
         $state_id = $_POST['state_id']; 
         $i = 0; 
         while($i<count($state_id)) 

@@ -31,11 +31,14 @@
                             <div class="box-header with-border">
                                 <h3 class="box-title"><label>Comment Master</label></h3>
                                 <p align="right">
-                                    <?php
-                                    $message = $this->session->flashdata('message');
-                                    if (isset($message)) {
-                                        if ($message != ' ') {
-                                            ?>
+                                <?php
+                                $message = $this->session->flashdata('message');
+                                $success= $this->session->flashdata('success');
+                                $fail= $this->session->flashdata('fail');
+                                
+                                if (isset($message)) {
+                                    if ($message != ' ') {
+                                        ?>
                                         <div class="alert alert-success">       <!--green model-->
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
                                             <?= $message ?>
@@ -43,21 +46,41 @@
                                         <?php
                                     }
                                 }
+                                 if (isset($success)) {
+                                    if ($success != ' ') {
+                                        ?>
+                                        <div class="alert alert-success">       <!--green model-->
+                                            <span class="semibold">Note:</span>&nbsp;&nbsp;
+                                            <?= $success ?>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                                if (isset($fail)) {
+                                    if ($fail != ' ') {
+                                        ?>
+                                        <div class="alert alert-success">       <!--green model-->
+                                            <span class="semibold">Note:</span>&nbsp;&nbsp;
+                                            <?= $fail ?>
+                                        </div>
+                                        <?php
+                                    }
+                                }
                                 ?>
                             </div>
+
 
                             <div class="box-body">
                                 <form name="frm" method="post" action="<?php echo site_url('comment/deletemultiple'); ?>">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Check</th>
+                                            <th>Check</th>
                                                 <th>Sr No.</th>
                                                 <th>User ID</th>
                                                 <th>Comment Name</th>
                                                 <th>Status</th>
-                                                <th>Action</th>
-                                            </tr>
+                                                <th>Action</th></tr>
                                         </thead>
                                         <tbody>
                                             <?PHP
@@ -91,6 +114,7 @@
 
                                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
                                                                 <li> <a onclick="openView(<?= $comment->comment_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                                <li>    <a href="<?php echo site_url("comment/edit_data/$comment->comment_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                                 <li>    <a href="<?php echo site_url("comment/delete/$comment->comment_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
                                                                     if ($comment->status == '0') {
@@ -106,7 +130,7 @@
                                                             </ul>
                                                         </div>
 
-                                                        <div id="myModal<? =$comment->comment_id ?>" class="modal fade" role="dialog">
+                                                        <div id="myModal<?= $comment->comment_id ?>" class="modal fade" role="dialog">
                                                             <div class="modal-dialog">
                                                                 <!-- Modal content-->
                                                                 <div class="modal-content">
@@ -116,8 +140,8 @@
                                                                     </div>
                                                                     <div class="modal-body">
 
-                                                                        <table  width="40%">
-                                                                            <tr>
+                                                                        <table  width="60%">
+                                                                                                                           <tr>
                                                                                 <td><label>Comment ID</label></td>
                                                                                 <td>:&nbsp;&nbsp;<?php echo $comment->comment_id ?></td>
                                                                             </tr>
@@ -129,8 +153,7 @@
                                                                                 <td><label>Comment</label></td>
                                                                                 <td>:&nbsp;&nbsp;<?php echo $comment->comment ?></td>
                                                                             </tr>
-
-                                                                        </table>
+                         </table>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -156,8 +179,8 @@
 
                                         <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
                                             <li>    <input type="submit" name="submit" value="Delete Selected" onclick="return confirm('Are You Sure You Want to Delete ?')"/></li>                     
-                                            <li>    <input type="submit" name="submit1" value="Active All" onclick="return confirm('Are You Sure You Want to active all records ?')"/></li>                                                                
-                                            <li>     <input type="submit" name="submit2" value="Deactive All" onclick="return confirm('Are You Sure You Want to Deactive all record ?')"/></li>                     
+                                            <li>    <input type="submit" name="submit1" value="Active Selected" onclick="return confirm('Are You Sure You Want to active all records ?')"/></li>                                                                
+                                            <li>     <input type="submit" name="submit2" value="Deactive Selected" onclick="return confirm('Are You Sure You Want to Deactive all record ?')"/></li>                     
 
                                         </ul>
                                     </div>
@@ -207,5 +230,19 @@
                 $('#myModal' + id).modal('show');
             }
         </script>
+       <script>
+            $(function ()
+            {
+                window.setTimeout(function ()
+                {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function ()  {
+                        $(this).remove();
+                    });
+                }, 4000);
+                
+                 $("#example1").datatable();
+            });
+        </script>
+
     </body>
 </html>

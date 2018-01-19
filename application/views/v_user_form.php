@@ -74,7 +74,7 @@
                         <div class="box-header with-border box-primary" >
                             <h3 class="box-title"><label>User Master</label></h3>
 
-                            <a href="<?php echo site_url("user/view_user") ?>" class="btn btn-primary pull-right">
+                            <a href="<?php echo site_url("user/index") ?>" class="btn btn-primary pull-right">
                                 <label class="fa fa-plus label-btn-icon"></label>
                                 &nbsp;<label class="label-btn-fonts">View Records</label>
                             </a>

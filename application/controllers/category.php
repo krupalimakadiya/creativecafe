@@ -103,6 +103,22 @@ public function update_status_active($art_category_id) {
         redirect("category/index");
     }
 
+        public function export()
+    {
+        $this->load->dbutil(); 
+        $this->load->helper('file'); 
+        $this->load->helper('download'); 
+        $delimiter = ","; 
+        $newline = "\r\n"; 
+        $filename = "art_category_master.csv"; 
+        $query = "select art_category_name as 'Art Category Name' 
+                from art_category_master";
+                 $result = $this->db->query($query); 
+        $data = $this->dbutil->csv_from_result($result, $delimiter, $newline); 
+        force_download($filename, $data);
+
+    }
+
      public function deletemultiple() 
     { 
       

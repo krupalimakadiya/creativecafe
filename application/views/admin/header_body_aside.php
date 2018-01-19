@@ -32,14 +32,14 @@
         <li>
             <a href="<?PHP echo site_url('user/index') ?>">
 
-                <i class="fa fa-dashboard"></i> <span>User Master</span>
+                <i class="fa fa-user"></i> <span>User Master</span>
 
             </a>
         </li>
         <li>
             <a href="<?PHP echo site_url('artist/index') ?>">
 
-                <i class="fa fa-dashboard"></i> <span>Artist Master</span>
+                <i class="fa fa-user"></i> <span>Artist Master</span>
 
             </a>
         </li>
@@ -60,9 +60,7 @@
         </li>
         <li>
             <a href="<?PHP echo site_url('comment/index') ?>">
-
-                <i class="fa fa-dashboard"></i> <span>Comment Master</span>
-
+                <i class="fa fa-comments"></i> <span>Comment Master</span>
             </a>
         </li>
         

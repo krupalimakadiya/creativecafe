@@ -9,11 +9,26 @@ class Artist_model extends CI_model {
         return $query->result();
     }
     
-     /* public function getartistlist() {
-        $query = $this->db->query("select * from artist_master");
-        return $query->result();
-    }*/
-
+          public function getcountryid($country_name) {
+      $query = $this->db->query("select * from country_master where country_name='$country_name'");
+      return $query->row_array();
+      }
+  
+          public function getstateid($state_name) {
+      $query = $this->db->query("select * from state_master where state_name='$state_name'");
+      return $query->row_array();
+      }
+  
+          public function getcityid($city_name) {
+      $query = $this->db->query("select * from city_master where city_name='$city_name'");
+      return $query->row_array();
+      }
+  
+      public function getcategoryid($art_category_name){
+          $query= $this->db->query("select * from art_category_master where art_category_name='$art_category_name'");
+          return $query->row_array();
+      }
+              
     public function insert($first_name, $last_name, $art_category_id, $mobile, $email, $password, $country_id, $state_id, $city_id, $pincode) {
         $data = array('first_name' => $first_name,
             'last_name' => $last_name,

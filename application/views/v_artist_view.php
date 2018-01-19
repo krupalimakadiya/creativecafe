@@ -19,8 +19,6 @@
                 include('admin/header_body_aside.php');
                 ?>
             </aside>
-
-
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -267,5 +265,20 @@ include('admin/footer_include.php');
                 $('#myModal' + id).modal('show');
             }
         </script>
+      <script>
+            $(function ()
+            {
+                window.setTimeout(function ()
+                {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function ()  {
+                        $(this).remove();
+                    });
+                }, 4000);
+                
+                 $("#example1").datatable();
+            });
+        </script>
+
+            
     </body>
 </html>

@@ -38,7 +38,7 @@
                                 $message = $this->session->flashdata('message');
                                 $success = $this->session->flashdata('success');
                                 $fail = $this->session->flashdata('fail');
-                                
+
                                 if (isset($message)) {
                                     if ($message != ' ') {
                                         ?>
@@ -49,7 +49,7 @@
                                         <?php
                                     }
                                 }
-                                     if (isset($success)) {
+                                if (isset($success)) {
                                     if ($success != ' ') {
                                         ?>
                                         <div class="alert alert-success">
@@ -59,7 +59,7 @@
                                         <?php
                                     }
                                 }
-                                     if (isset($fail)) {
+                                if (isset($fail)) {
                                     if ($fail != ' ') {
                                         ?>
                                         <div class="alert alert-success">
@@ -69,7 +69,6 @@
                                         <?php
                                     }
                                 }
-                          
                                 ?>
                             </div>
                             <div class="box-body">
@@ -92,9 +91,8 @@
                                             <?PHP
                                             $cnt = 1;
                                             foreach ($user_list as $user) {
-                                                
                                                 ?>
-                                            
+
                                                 <tr>
                                                     <td><input type="checkbox" name="user_id[]" value="<?php echo $user->user_id ?>"/></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
@@ -103,17 +101,17 @@
                                                     <td><?PHP echo $user->email ?></td>
                                                     <td><?PHP echo $user->city_name ?></td>
                                                     <td><?php
-                                                        if ($user->user_status == '0') {
-                                                            ?>
+                                            if ($user->user_status == '0') {
+                                                ?>
                                                             <i class="glyphicon glyphicon-remove" style="color:red"></i>
                                                             <?php
                                                         } else {
                                                             ?>
                                                             <i class="glyphicon glyphicon-ok" style="color:green" ></i>
 
-                                                            <?php
-                                                        }
-                                                        ?></td>
+        <?php
+    }
+    ?></td>
                                                     <td> <div class="dropdown">
 
                                                             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Action
@@ -125,8 +123,8 @@
                                                                 <li>    <a href="<?php echo site_url("user/edit_data/$user->user_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                                 <li>    <a href="<?php echo site_url("user/delete/$user->user_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
-                                                                    if ($user->user_status == '0') {
-                                                                        ?>
+                                                    if ($user->user_status == '0') {
+                                                        ?>
                                                                         <a href="<?php echo site_url("user/update_status_active/$user->user_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                         <?php
                                                                     } else {
@@ -193,9 +191,9 @@
                                                         </div>
 
                                                     </td>
-                                                    <?PHP
-                                                }
-                                                ?>
+    <?PHP
+}
+?>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -219,9 +217,9 @@
                                             <i class="glyphicon glyphicon-remove" style="color:red" ></i>&nbsp;<label>Indicates Deactivated</label>
                                         </p>
                                     </div>
-                               
+
                             </div>
-                             </form>
+                            </form>
                         </div>
                         <!-- /.box -->
                         </div>
@@ -238,9 +236,9 @@
             <!-- /.content-wrapper -->
 
             <footer class="main-footer">
-                <?php
-                include('admin/footer_body.php');
-                ?>
+<?php
+include('admin/footer_body.php');
+?>
             </footer>
 
 
@@ -249,13 +247,27 @@
             <div class="control-sidebar-bg"></div>
         </div>
         <!-- ./wrapper -->
-        <?php
-        include('admin/footer_include.php');
-        ?>
+<?php
+include('admin/footer_include.php');
+?>
         <script type="text/javascript">
             function openView(id) {
                 $('#myModal' + id).modal('show');
             }
         </script>
+       <script>
+            $(function ()
+            {
+                window.setTimeout(function ()
+                {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function ()  {
+                        $(this).remove();
+                    });
+                }, 4000);
+                
+                 $("#example1").datatable();
+            });
+        </script>
+
     </body>
 </html>

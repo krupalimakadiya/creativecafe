@@ -36,9 +36,9 @@
                                     <a href="<?php echo site_url("country/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
                                 <?php
                                 $message = $this->session->flashdata('message');
-                                $success= $this->session->flashdata('success');
-                                $fail= $this->session->flashdata('fail');
-                                
+                                $success = $this->session->flashdata('success');
+                                $fail = $this->session->flashdata('fail');
+
                                 if (isset($message)) {
                                     if ($message != ' ') {
                                         ?>
@@ -49,7 +49,7 @@
                                         <?php
                                     }
                                 }
-                                 if (isset($success)) {
+                                if (isset($success)) {
                                     if ($success != ' ') {
                                         ?>
                                         <div class="alert alert-success">       <!--green model-->
@@ -229,5 +229,19 @@
                 $('#myModal' + id).modal('show');
             }
         </script>
+        <script>
+            $(function ()
+            {
+                window.setTimeout(function ()
+                {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function ()  {
+                        $(this).remove();
+                    });
+                }, 4000);
+                
+                 $("#example1").datatable();
+            });
+        </script>
+
     </body>
 </html>

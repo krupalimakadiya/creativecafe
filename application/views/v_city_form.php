@@ -51,7 +51,7 @@
                     <div class="box box-info">
                         <div class="box-header with-border">
                             <h3 class="box-title"><label>City Master</label></h3>
-                            <a href="<?php echo site_url("city/view_city") ?>" class="btn btn-primary pull-right">
+                            <a href="<?php echo site_url("city/index") ?>" class="btn btn-primary pull-right">
                                 <label class="fa fa-plus label-btn-icon"></label>
                                 &nbsp;<label class="label-btn-fonts">View Records</label>
                             </a>

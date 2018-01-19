@@ -14,20 +14,6 @@ class Comment extends My_Controller{
         $this->load->view('v_comment_view', $data);
     }
 
-public function view_country() {
-        $data['comment_list'] = $this->comment_model->getcommentlist();
-        $this->load->view('v_comment_view', $data);
-    }
-
-    
-
-    /*public function import() {
-        $this->load->view('import_country');
-    }
-*/
-    
-
-    
     public function delete($comment_id) {
         $this->comment_model->delete($comment_id);
         $this->session->set_flashdata('message','record deleted successfully...');            
@@ -47,39 +33,6 @@ public function view_country() {
         redirect('comment/index');
     }
     
-     public function importp() {
-        $file = $_FILES['upload']['tmp_name'];
-        $handle = fopen($file, "r");
-        $c = 0;
-        $row = 1;
-        $counter = 0;
-        $records = 0;
-        while (($filesop = fgetcsv($handle, 100000, ",")) !== false) {
-            $records++;
-            if ($row == 1) {
-                $row++;
-                continue;
-            }
-            $country_name = trim($filesop[0]);
-            if (strlen($country_name) < 2) {
-                continue;
-            }
-            $country_data = $this->country_model->check_data($country_name);
-            if (isset($country_data['country_id'])) {
-                continue;
-            }
-            try {
-                $this->country_model->insert($country_name);
-                $counter++;
-            } catch (Exception $ex) {
-                
-            }
-        }
-        $total = ($records - 1);
-        $this->session->set_flashdata('message', $counter . " record(s) out of " . ($total == -1 ? 0 : $total) . " successfully imported.");
-        redirect("country/index");
-    }
-
    public function deletemultiple() 
     {
         $comment_id = $_POST['comment_id']; 
