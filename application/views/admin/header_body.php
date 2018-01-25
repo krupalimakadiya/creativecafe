@@ -1,7 +1,7 @@
 <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>Creative</b>Cafe</span>
+      <span class="logo-mini"><b>C</b>C</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Creative</b>Cafe</span>
     </a>
@@ -16,13 +16,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo base_url() ?>AdminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img src="<?= $this->config->item('static_url') ?>dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">MK group</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo base_url() ?>AdminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="<?= $this->config->item('static_url') ?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
                   MK group - Web Developer

@@ -131,7 +131,7 @@ class city extends MY_Controller {
         }
         $total = ($records - 1);
         $this->session->set_flashdata('message', $counter . " record(s) out of " . ($total == -1 ? 0 : $total) . " successfully imported.");
-        redirect("artist/index");
+        redirect("city/index");
     }
     
     public function export()

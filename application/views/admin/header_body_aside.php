@@ -3,7 +3,7 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
         <div class="pull-left image">
-            <img src="<?php echo base_url() ?>AdminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+            <img src="<?= $this->config->item('static_url') ?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
             <p>Alexander Pierce</p>
@@ -45,7 +45,7 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-edit"></i> <span>Master</span>
+            <i class="fa fa-circle-o"></i> <span>Master</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -55,7 +55,6 @@
             <li><a href="<?PHP echo site_url('state/index') ?>"><i class="fa fa-circle-o"></i> State Master</a></li>
             <li><a href="<?PHP echo site_url('city/index') ?>"><i class="fa fa-circle-o"></i> City Master</a></li>
             <li><a href="<?PHP echo site_url('category/index')?>"><i class="fa fa-circle-o"></i> Art Category Master</a></li>
-          
           </ul>
         </li>
         <li>
@@ -63,6 +62,31 @@
                 <i class="fa fa-comments"></i> <span>Comment Master</span>
             </a>
         </li>
+        
+        <li>
+            <a href="<?PHP echo site_url('news/index') ?>">
+                <i class="fa fa-circle-o"></i> <span>News Master</span>
+            </a>
+        </li>
+        
+        <li>
+            <a href="<?PHP echo site_url('event/index') ?>">
+                <i class="fa fa-circle-o"></i> <span>Event Master</span>
+            </a>
+        </li>
+        
+        <li>
+            <a href="<?PHP echo site_url('exibition/index') ?>">
+                <i class="fa fa-circle-o"></i> <span>Exibition Master</span>
+            </a>
+        </li>
+        
+                <li>
+            <a href="<?PHP echo site_url('site/index') ?>">
+                <i class="fa fa-circle-o"></i> <span>Site Review Master</span>
+            </a>
+        </li>
+
         
         <!--<li>
             <a href="#">

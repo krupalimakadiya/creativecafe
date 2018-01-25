@@ -214,7 +214,7 @@ class User extends MY_Controller {
         $this->session->set_flashdata('message', $counter . " record(s) out of " . ($total == -1 ? 0 : $total) . " successfully imported.");
         redirect("user/index");
     }
-        public function export()
+    public function export()
     {
         $this->load->dbutil(); 
         $this->load->helper('file'); 

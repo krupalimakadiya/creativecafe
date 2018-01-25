@@ -186,7 +186,7 @@ foreach ($artist_list as $artist) {
                                                                             </tr> 
                                                                             <tr>
                                                                                 <td><label>Art Category Name</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $artist->art_category_id ?></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $artist->art_category_name ?></td>
                                                                             </tr>  
                                                                         </table>
                                                                     </div>

@@ -88,11 +88,11 @@
                                     <input type="hidden" name="artist_id" value="<?php echo $update_data['artist_id'] ?>" />
                                     <div class="form-group">
                                         <label>First name</label>
-                                        <input type="text" class="form-control" name="first_name" maxlength="50" value="<?php echo $update_data['first_name'] ?>">
+                                        <input type="text" class="form-control" name="first_name"  value="<?php echo $update_data['first_name'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Last name</label>
-                                        <input type="text" class="form-control" name="last_name" maxlength="50" value="<?php echo $update_data['last_name'] ?>">
+                                        <input type="text" class="form-control" name="last_name"  value="<?php echo $update_data['last_name'] ?>">
                                     </div>
                                     <div class="form-group">
                                     <label>Art Category Name</label>                                     
@@ -114,15 +114,15 @@
 
                                     <div class="form-group">
                                         <label>Mobile</label>
-                                        <input type="text" class="form-control" name="mobile" maxlength="10"pattern="[789][0-9]{10}" title="pls enter valid mobile number" value="<?php echo $update_data['mobile'] ?>">
+                                        <input type="text" class="form-control" name="mobile"  value="<?php echo $update_data['mobile'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Email ID</label>
-                                        <input type="text" class="form-control" name="email" maxlength="50" value="<?php echo $update_data['email'] ?>">
+                                        <input type="text" class="form-control" name="email" value="<?php echo $update_data['email'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" class="form-control" name="password" maxlength="64" value="<?php echo $update_data['password'] ?>">
+                                        <input type="password" class="form-control" name="password"  value="<?php echo $update_data['password'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Country_name</label>                                     
@@ -177,7 +177,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Pincode</label>
-                                        <input type="text" class="form-control" name="pincode" maxlength="6" pattern="[0-9]{6}" title="pls enter 6 digit code " value="<?php echo $update_data['pincode'] ?>">
+                                        <input type="text" class="form-control" name="pincode"  value="<?php echo $update_data['pincode'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary" value="submit">Submit</button>
@@ -189,17 +189,17 @@
                                 <form name="artistfrm" method="POST" action="<?php echo site_url("artist/addp") ?>" role="form" >
                                     <div class="form-group">
                                         <label>First name</label>
-                                        <input type="text" class="form-control" name="first_name"  maxlength="50" pattern="[A-Za-z]" title="Your name (no special characters, diacritics are okay)" placeholder="Enter your first name...">
+                                        <input type="text" class="form-control" name="first_name"   placeholder="Enter Your First Name...">
                                     </div>
                                     <div class="form-group">
                                         <label>Last name</label>
-                                        <input type="text" class="form-control" name="last_name" maxlength="50" pattern="[A-Za-z]" placeholder="Enter your last name...">
+                                        <input type="text" class="form-control" name="last_name"  placeholder="Enter Your last Name">
                                     </div>
                                     <div class="form-group">
                                         <label>Art Category Name</label>
                                         <!--<input type="text" class="form-control" name="art_category_id" placeholder="Enter your art category">-->
                                         <select name="art_category_id" class="form-control" id="art_category_id">
-                                            <option>--Select--</option>
+                                            <option value="">--Select--</option>
                                             <?php
                                                                             foreach ($category_list as $category) {
                                                                                 ?>
@@ -211,15 +211,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Mobile</label>
-                                        <input type="text" class="form-control" name="mobile"maxlength="10" pattern="[789][0-9]{10}" title="pls enter valid mobile number"  placeholder="Enter your mobile number...">
+                                        <input type="text" class="form-control" name="mobile"   placeholder="Enter your mobile number...">
                                     </div>
                                     <div class="form-group">
                                         <label>Email ID</label>
-                                        <input type="text" class="form-control" name="email" maxlength="50" placeholder="Enter your email...">
+                                        <input type="email" class="form-control" name="email" placeholder="Enter your email">
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" class="form-control" name="password" maxlength="64" placeholder="Enter your password...">
+                                        <input type="password" class="form-control" name="password"   placeholder="Enter your password...">
                                     </div>
                                     <div class="form-group">
                                         <label>Select Country_name</label>
@@ -250,7 +250,7 @@
 
                                     <div class="form-group">
                                         <label>Pincode</label>
-                                        <input type="text" class="form-control" name="pincode"  maxlength="6" pattern="[0-9]{6}" title="pls enter 6 digit code " placeholder="Enter your pincode...">
+                                        <input type="text" class="form-control" name="pincode"  placeholder="Enter your pincode...">
                                     </div>
 
 

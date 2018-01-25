@@ -10,7 +10,6 @@ class Country extends My_Controller {
     }
 
     public function index() {
-
         $data['country_list'] = $this->country_model->getcountrylist();
         $this->load->view('v_country_view', $data);
     }
@@ -62,15 +61,15 @@ class Country extends My_Controller {
 
     public function update_status_active($country_id) {
         $this->load->model('country_model');
-        $status = $this->input->get('status');
-        $this->country_model->update_active($country_id, $status);
+        $news_status = $this->input->get('news_status');
+        $this->country_model->update_active($country_id, $news_status);
         redirect('country/index');
     }
 
     public function update_status_deactive($country_id) {
         $this->load->model('country_model');
-        $status = $this->input->get('status');
-        $this->country_model->update_deactive($country_id, $status);
+        $news_status = $this->input->get('news_status');
+        $this->country_model->update_deactive($country_id, $news_status);
         redirect('country/index');
     }
 
