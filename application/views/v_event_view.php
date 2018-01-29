@@ -29,9 +29,9 @@
                         <!-- Default box -->
                         <div class="box box-info">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><label>News Master</label></h3>
+                                <h3 class="box-title"><label>Event Master</label></h3>
                                                                <p align="right">
-                                    <a href="<?php echo site_url("news/add_news") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
+                                    <a href="<?php echo site_url("event/add_event") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
                        
                                
                                 <?php
@@ -74,16 +74,17 @@
 
 
                             <div class="box-body">
-                                <form name="frm" method="post" action="<?php echo site_url('news/deletemultiple'); ?>">
+                                <form name="frm" method="post" action="<?php echo site_url('event/deletemultiple'); ?>">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                             <th>Check</th>
                                                 <th>Sr No.</th>
                                                 <th>Title</th>
+                                                <th>file</th>
                                                 <th>date</th>
-                                                <th>Image</th>
-                                                <th>Description</th>
+                                                <th>image</th>
+                                                <th>description</th>
                                                 <th>Status</th>
                                                 <th>Action</th></tr>
                                         </thead>
@@ -91,21 +92,22 @@
                                             <?PHP
                                             $cnt = 1;
 
-                                            foreach ($news_list as $news) {
+                                            foreach ($event_list as $event) {
                                                 ?>
                                                 <tr>
-                                                    <td><input type="checkbox" name="news_id[]"  value="<?php echo $news->news_id; ?>" /></td>
+                                                    <td><input type="checkbox" name="event_id[]"  value="<?php echo $event->event_id; ?>" /></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
-                                                    <td><?PHP echo $news->title ?></td>
-                                                    <td><?PHP echo $news->date ?></td>
-                                                    <td><image height="100" width="100" src="<?PHP echo base_url()?>news_image/<?php echo $news->image?>">
-                                                       
+                                                    <td><?PHP echo $event->title ?></td>
+                                                    <td><?PHP echo $event->file ?></td>
+                                                     <td><?PHP echo $event->date ?></td>
+                                                   <td><image height="100" width="100" src="<?PHP echo base_url()?>event_image/<?php echo $event->image?>">
                                                     </td>
-                                                  
-                                                    <td><?PHP echo $news->description ?></td>
+                                                    <td><?PHP echo $event->description ?></td>
                                                     
+                                                  
+                                                   
                                                     <td><?php
-                                                        if ($news->news_status == '0') {
+                                                        if ($event->event_status == '0') {
                                                             ?>
                                                             <i class="glyphicon glyphicon-remove" style="color:red"></i>
                                                             <?php
@@ -124,24 +126,24 @@
                                                             </button>
 
                                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                                <li> <a onclick="openView(<?= $news->news_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
-                                                                <li>    <a href="<?php echo site_url("news/edit_data/$news->news_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
-                                                                <li>    <a href="<?php echo site_url("news/delete/$news->news_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
+                                                                <li> <a onclick="openView(<?= $event->event_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                                <li>    <a href="<?php echo site_url("event/edit_data/$event->event_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
+                                                                <li>    <a href="<?php echo site_url("event/delete/$event->event_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
                                                                     if ($news->news_status == '0') {
                                                                         ?>
-                                                                        <a href="<?php echo site_url("news/update_status_active/$news->news_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
+                                                                        <a href="<?php echo site_url("event/update_status_active/$event->event_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                         <?php
                                                                     } else {
                                                                         ?>
-                                                                        <a href="<?php echo site_url("news/update_status_deactive/$news->news_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
+                                                                        <a href="<?php echo site_url("event/update_status_deactive/$event->event_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
                                                                         <?php
                                                                     }
                                                                     ?></li>
                                                             </ul>
                                                         </div>
 
-                                                        <div id="myModal<?= $news->news_id ?>" class="modal fade" role="dialog">
+                                                        <div id="myModal<?php echo $event->event_id ?>" class="modal fade" role="dialog">
                                                             <div class="modal-dialog">
                                                                 <!-- Modal content-->
                                                                 <div class="modal-content">
@@ -153,24 +155,24 @@
 
                                                                         <table  width="60%">
                                                                                                                            <tr>
-                                                                                <td><label>News ID</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $news->news_id ?></td>
+                                                                                <td><label>Event ID</label></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $event->event_id ?></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td><label>Title</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $news->title ?></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $event->title ?></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td><label>Date</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $news->date ?></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $event->date ?></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td><label>Image</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $news->image ?></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $event->image ?></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td><label>Description</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $news->description ?></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $event->description ?></td>
                                                                             </tr>
                                                                             
                          </table>

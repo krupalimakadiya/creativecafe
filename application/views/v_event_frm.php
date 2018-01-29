@@ -33,8 +33,8 @@
 
                                 <div class="box box-info">
                                     <div class="box-header with-border">
-                                        <h3 class="box-title"><label>News Master</label></h3>
-                                        <a href="<?php echo site_url("news/index") ?>" class="btn btn-primary pull-right">
+                                        <h3 class="box-title"><label>Event Master</label></h3>
+                                        <a href="<?php echo site_url("event/index") ?>" class="btn btn-primary pull-right">
                                             <label class="fa fa-icon label-btn-icon"></label>
                                             &nbsp;<label class="label-btn-fonts">View Records</label>
                                         </a>
@@ -63,7 +63,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Description</label>
-                                                    <textarea id="editor1" name="description" rows="10" cols="80" value=""><?php echo $update_data['description'] ?>
+                                                    <textarea id="editor1" name="description" rows="10" cols="80" value="<?php echo $update_data['description'] ?>">
                                                                                             </textarea>             
 
                                                 </div>
@@ -79,11 +79,15 @@
                                             <?php
                                         } else {
                                             ?>
-                                            <form role="form" name="newsfrm" method="POST" action="<?php echo site_url("news/do_upload") ?>" enctype="multipart/form-data">
+                                            <form role="form" name="newsfrm" method="POST" action="<?php echo site_url("event/do_upload") ?>" enctype="multipart/form-data">
                                                 <!-- text input -->
                                                 <div class="form-group">
                                                     <label>Title</label>
                                                     <input type="text" class="form-control" name="title" placeholder="Enter your News Title">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>File</label>
+                                                    <input type="file" class="form-control" name="file">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Date</label>

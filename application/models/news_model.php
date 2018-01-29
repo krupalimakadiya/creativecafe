@@ -9,36 +9,53 @@ class News_model extends CI_model {
         return $query->result();
     }
     
-      public function insert($title,$description,$image) {
-        $data = array('title' => $title,
-            'description' => $description,
-            'image' => $image
-            ); //1= active //0-deactive
-        $this->db->insert('news_master', $data);
+      public function insert($data) {
+       // $data = array('title' => $title,'date' => $date,'image' => $image,
+           // 'description' => $description ); //1= active //0-deactive
+            $this->db->insert('news_master',$data);
+           // print_r($data);
+           // die();
+            return $this->db->insert_id();
+  
     }
-    
-     public function check_data($title,$description,$image) {
-        $query = $this->db->query("select * from news_master where title='$title' AND description='$description' AND image='$image' ");
+        function update_filename($news_id,$filename) {
+                 $this->db->set('image', $filename);
+                 $this->db->where('news_id', $news_id);
+                 $this->db->update('news_master');
+    }
+     public function check_data($title,$date,$image,$description) {
+        $query = $this->db->query("select * from news_master where title='$title' AND date='$date' AND image='$image'AND description='$description' ");
         return $query->row_array();
     }
     public function delete($news_id) {
         $this->db->where('news_id', $news_id);
         $this->db->delete('news_master');
     }
+    public function edit_data($news_id) {
+        $query = $this->db->query("select * from news_master where news_id='$news_id'");
+        return $query->row_array();
+    }
 
-    public function update_active($news_id, $status) {
+    public function update_data($news_id,$title,$date,$image,$description) {
+        $data = array(
+            'title' => $title, 'date' => $date, 'image' => $image, 'description' => $description  );
+        $this->db->where('news_id', $news_id);
+        $this->db->update('news_master', $data);
+    }
+
+    public function update_active($news_id, $news_status) {
         $data = array(
             'news_id' => $news_id,
-            'status' => 1
+            'news_status' => 1
         );
         $this->db->where('news_id', $news_id);
         $this->db->update('news_master', $data);
     }
 
-    public function update_deactive($news_id, $status) {
+    public function update_deactive($news_id, $news_status) {
         $data = array(
             'news_id' => $news_id,
-            'status' => 0
+            'news_status' => 0
         );
         $this->db->where('news_id', $news_id);
         $this->db->update('news_master', $data);
