@@ -10,7 +10,7 @@ class Artist extends MY_Controller {
         $this->load->model('state_model');
         $this->load->model('city_model');
         $this->load->model('user_model');
-        $this->load->model('category_model');        
+        //$this->load->model('category_model');        
         $this->load->model('artist_model');
     }
 
@@ -18,7 +18,7 @@ class Artist extends MY_Controller {
         $data['country_list'] = $this->country_model->getcountrylist();
         $data['state_list'] = $this->state_model->getstatelist();
         $data['city_list'] = $this->city_model->getcitylist();
-        $data['category_list'] = $this->category_model->getcategorylist();        
+        //$data['category_list'] = $this->category_model->getcategorylist();        
         $data['artist_list'] = $this->artist_model->getartistlist();
         $this->load->view('v_artist_view', $data);
     }
@@ -27,7 +27,7 @@ class Artist extends MY_Controller {
         $data['country_list'] = $this->country_model->getcountrylist();
         $data['state_list'] = $this->state_model->getstatelist();
         $data['city_list'] = $this->city_model->getcitylist();
-         $data['category_list'] = $this->category_model->getcategorylist();        
+        // $data['category_list'] = $this->category_model->getcategorylist();        
         $data['artist_list'] = $this->artist_model->getartistlist();
         $this->load->view('v_artist_form', $data);
     }
@@ -38,12 +38,12 @@ class Artist extends MY_Controller {
     }
 
     public function addp() {
-        $artist_data = $this->artist_model->check_data($_POST['first_name'], $_POST['last_name'], $_POST['art_category_id'], $_POST['mobile'], $_POST['email'], $_POST['password'], $_POST['country_id'], $_POST['state_id'], $_POST['city_id'], $_POST['pincode']);
+        $artist_data = $this->artist_model->check_data($_POST['first_name'], $_POST['last_name'],  $_POST['mobile'], $_POST['email'], $_POST['password'], $_POST['country_id'], $_POST['state_id'], $_POST['city_id'], $_POST['pincode']);
         if (isset($artist_data)) {
             $this->session->set_flashdata('message', 'record already exists...');
             redirect('artist/index');
         } else {
-            $this->artist_model->insert($_POST['first_name'], $_POST['last_name'], $_POST['art_category_id'], $_POST['mobile'], $_POST['email'], $_POST['password'], $_POST['country_id'], $_POST['state_id'], $_POST['city_id'], $_POST['pincode']);
+            $this->artist_model->insert($_POST['first_name'], $_POST['last_name'], $_POST['mobile'], $_POST['email'], $_POST['password'], $_POST['country_id'], $_POST['state_id'], $_POST['city_id'], $_POST['pincode']);
             $this->session->set_flashdata('message', 'insert successfully...');
             redirect('artist/index');
         }
@@ -65,13 +65,13 @@ class Artist extends MY_Controller {
         $data['state_list'] = $this->state_model->getstatelist();
         $data['city_list'] = $this->city_model->getcitylist();
         $data['artist_list'] = $this->artist_model->getartistlist();
-      $data['category_list'] = $this->category_model->getcategorylist();        
+  //    $data['category_list'] = $this->category_model->getcategorylist();        
    
         $this->load->view('v_artist_form', $data);
     }
 
     public function editp() {
-        $this->artist_model->update_data($_POST['artist_id'], $_POST['first_name'], $_POST['last_name'], $_POST['art_category_id'], $_POST['mobile'], $_POST['email'], $_POST['password'], $_POST['country_id'], $_POST['state_id'], $_POST['city_id'], $_POST['pincode']);
+        $this->artist_model->update_data($_POST['artist_id'], $_POST['first_name'], $_POST['last_name'], $_POST['mobile'], $_POST['email'], $_POST['password'], $_POST['country_id'], $_POST['state_id'], $_POST['city_id'], $_POST['pincode']);
         redirect("artist/index");
     }
 
@@ -82,7 +82,7 @@ class Artist extends MY_Controller {
         $data['update_data'] = $this->city_model->getcitylist();
         $data['artist_data'] = $this->artist_model->edit_data($artist_id);
         $data['artist_list'] = $this->artist_model->getartistlist();
-         $data['category_list'] = $this->category_model->getcategorylist();        
+      //   $data['category_list'] = $this->category_model->getcategorylist();        
    
         $this->load->view('v_artist_view', $data);
     }
@@ -125,11 +125,11 @@ class Artist extends MY_Controller {
             if (strlen($last_name) < 2) {
                 continue;
             }
-            $art_category_id=trim($filesop[2]);
+          /*  $art_category_id=trim($filesop[2]);
             if(strlen($art_category_id)<0)
             {
                 continue;
-            }
+            }*/
             $mobile = trim($filesop[3]);
             if (strlen($mobile) < 2) {
                 continue;
@@ -162,16 +162,16 @@ class Artist extends MY_Controller {
            $country_data = $this->artist_model->getcountryid($country_name);           
            $state_data = $this->artist_model->getstateid($state_name);
            $city_data = $this->artist_model->getcityid($city_name);            
-           $category_data=$this->artist_model->getcategoryid($art_category_id);
+         //  $category_data=$this->artist_model->getcategoryid($art_category_id);
            $country_id = $country_data['country_id'];
            $state_id = $state_data['state_id'];
            $city_id = $city_data['city_id'];            
-            $art_category_id=$category_data['art_category_id'];
+          //  $art_category_id=$category_data['art_category_id'];
             try {
                 $param = array(
                     'first_name'=>$first_name,
                     'last_name'=>$last_name,        
-                    'art_category_id'=>$art_category_id,
+              //      'art_category_id'=>$art_category_id,
                     'mobile'=>$mobile,
                     'email'=>$email,
                     'password'=>$password,                                       
@@ -182,7 +182,7 @@ class Artist extends MY_Controller {
                     //, 'status' => 1
                 );
                
-                $this->artist_model->insert($first_name, $last_name,$art_category_id,$mobile,$email,$password,$country_id, $state_id, $city_id, $pincode);
+                $this->artist_model->insert($first_name, $last_name,$mobile,$email,$password,$country_id, $state_id, $city_id, $pincode);
                 $counter++;
             } catch (Exception $ex) {
                 
@@ -204,14 +204,14 @@ class Artist extends MY_Controller {
         $query = "select
                             first_name as 'First Name', 
                             last_name as 'Last Name',
-                            art_category_name as 'Art Category Name',
+                         //   art_category_name as 'Art Category Name',
                             mobile as 'Mobile' ,
                             email as 'Email ID' ,
                             password as 'Password',
                             country_name as 'Country Name', state_name as 'State Name', city_name as 'City Name' , 
                             pincode as 'Pincode'
-                            FROM country_master as c, state_master as s, city_master as city, artist_master as artist, art_category_master as art
-                where  artist.art_category_id=art.art_category_id and  artist.country_id=c.country_id AND artist.state_id=s.state_id AND artist.city_id=city.city_id ";
+                            FROM country_master as c, state_master as s, city_master as city, artist_master as artist,
+                where and  artist.country_id=c.country_id AND artist.state_id=s.state_id AND artist.city_id=city.city_id ";
         $result = $this->db->query($query); 
         $data = $this->dbutil->csv_from_result($result, $delimiter, $newline); 
         force_download($filename, $data);
