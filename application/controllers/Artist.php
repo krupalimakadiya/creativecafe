@@ -10,7 +10,6 @@ class Artist extends MY_Controller {
         $this->load->model('state_model');
         $this->load->model('city_model');
         $this->load->model('user_model');
-        //$this->load->model('category_model');        
         $this->load->model('artist_model');
     }
 
@@ -18,7 +17,6 @@ class Artist extends MY_Controller {
         $data['country_list'] = $this->country_model->getcountrylist();
         $data['state_list'] = $this->state_model->getstatelist();
         $data['city_list'] = $this->city_model->getcitylist();
-        //$data['category_list'] = $this->category_model->getcategorylist();        
         $data['artist_list'] = $this->artist_model->getartistlist();
         $this->load->view('v_artist_view', $data);
     }
@@ -27,7 +25,6 @@ class Artist extends MY_Controller {
         $data['country_list'] = $this->country_model->getcountrylist();
         $data['state_list'] = $this->state_model->getstatelist();
         $data['city_list'] = $this->city_model->getcitylist();
-        // $data['category_list'] = $this->category_model->getcategorylist();        
         $data['artist_list'] = $this->artist_model->getartistlist();
         $this->load->view('v_artist_form', $data);
     }
@@ -37,7 +34,7 @@ class Artist extends MY_Controller {
         $this->load->view('import_artist');                
     }
 
-    public function addp() {
+   /* public function addp() {
         $artist_data = $this->artist_model->check_data($_POST['first_name'], $_POST['last_name'],  $_POST['mobile'], $_POST['email'], $_POST['password'], $_POST['country_id'], $_POST['state_id'], $_POST['city_id'], $_POST['pincode']);
         if (isset($artist_data)) {
             $this->session->set_flashdata('message', 'record already exists...');
@@ -47,7 +44,62 @@ class Artist extends MY_Controller {
             $this->session->set_flashdata('message', 'insert successfully...');
             redirect('artist/index');
         }
+    }*/
+    public function addp() {
+        $config['upload_path'] = $this->config->item('image_url');
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 800;
+        $config['max_width'] = 2024;
+        $config['max_height'] = 4000;
+        print_r($config);
+       
+        /*    $first_name = $this->input->post('first_name');
+            $last_name = $this->input->post('last_name');         
+            $mobile = $this->input->post('mobile');
+             $email = $this->input->post('email');
+            $password =$this->input->post('password');
+             $country_id =$this->input->post('country_id');
+             $state_id =$this->input->post('state_id');
+             $city_id=$this->input->post('city_id');
+            $pincode=$this->input->post('pincode');*/
+          $artist_data = array('first_name'=>$_POST['first_name'],
+                                                'last_name'=>$_POST['last_name'],
+                                                'mobile' => $_POST['mobile'],
+                                                'email'=> $_POST['email'],
+                                                'password'=>$_POST['password'],
+                                                'country_id'=>$_POST['country_id'],
+              'state_id'=>$_POST['state_id'],
+              'city_id'=>$_POST['city_id'],
+              'pincode'=>$_POST['pincode']);
+        
+        $artist_id = $this->artist_model->insert($artist_data);
+        print_r($artist_id);
+        die();
+        $filename = $_FILES["artist_profile"]["name"];
+        print_r($filename);
+        
+        $extension = pathinfo($filename, PATHINFO_EXTENSION);
+//        $extension = (explode(".", $filename));
+        $newfilename = $artist_id . "." . $extension;
+        $config['file_name'] = $newfilename;
+        print_r($newfilename);
+        
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('artist_profile')) {
+            $error = array('error' => $this->upload->display_errors());
+            print_r("helllo ");
+          //  die();
+            //$this->load->view('Reg_message', $error);
+        } else {            
+            $data = array('upload_data' => $this->upload->data());
+            print_r($artist_data);
+            die();
+            $this->artist_model->update_filename($artist_id, $newfilename);
+            redirect("artist/index");
+        }  
     }
+    
 
     public function drop_state() {
         $data['update_data'] = $this->artist_model->drop_state($_POST['country_id']);

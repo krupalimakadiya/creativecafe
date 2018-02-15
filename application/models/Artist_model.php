@@ -24,22 +24,16 @@ class Artist_model extends CI_model {
       return $query->row_array();
       }
   
-              
-    public function insert($first_name, $last_name, $mobile, $email, $password, $country_id, $state_id, $city_id, $pincode) {
-        $data = array('first_name' => $first_name,
-            'last_name' => $last_name,
-           // 'art_category_id' => $art_category_id,
-            'mobile' => $mobile,
-            'email' => $email,
-            'password' => $password,
-            'country_id' => $country_id,
-            'state_id' => $state_id,
-            'city_id' => $city_id,
-            'pincode' => $pincode,
-        );
-        $this->db->insert('artist_master', $data);
+       public function insert($artist_data) {
+        $this->db->insert('artist_master', $artist_data);
+        return $this->db->insert_id();
     }
-
+    
+      public function update_filename($artist_id, $file_name) {
+        $this->db->set('artist_profile', $file_name);
+        $this->db->where('artist_id', $artist_id);
+        $this->db->update('artist_master');
+    }          
     //chk if record exists in database  or not 
     public function check_data($first_name, $last_name, $mobile, $email, $password, $country_id, $state_id, $city_id, $pincode) {
         $query = $this->db->query("select * from artist_master where first_name='$first_name' AND  last_name='$last_name' AND

@@ -81,6 +81,7 @@
                                                 <th>First Name</th>
                                                 <th>Last Name</th>                                              
                                                 <th>Mobile</th>
+                                                <th>image</th>
                                                 <th>City</th>
                                                 <th>Password</th>
                                                 <th>Status</th>
@@ -88,31 +89,33 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-<?PHP
-$cnt = 1;
-foreach ($artist_list as $artist) {
-    ?>
+                                            <?PHP
+                                            $cnt = 1;
+                                            foreach ($artist_list as $artist) {
+                                                ?>
                                                 <tr>
                                                     <td><input type="checkbox" name="artist_id[]" value="<?php echo $artist->artist_id ?>"</td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $artist->first_name ?></td>
                                                     <td><?PHP echo $artist->last_name ?></td>                                                   
                                                     <td><?PHP echo $artist->mobile ?></td>
+                                                    <td><?php echo $artist->artist_profile?></td>
+                                                    
                                                     <td><?PHP echo $artist->city_name ?></td>
                                                     <td><?PHP echo $artist->password ?></td>
 
                                                     <td><?php
-                                            if ($artist->artist_status == '0') {
-                                                ?>
+                                                        if ($artist->artist_status == '0') {
+                                                            ?>
                                                             <i class="glyphicon glyphicon-remove" style="color:red"></i>
                                                             <?php
                                                         } else {
                                                             ?>
                                                             <i class="glyphicon glyphicon-ok" style="color:green" ></i>
 
-        <?php
-    }
-    ?></td>
+                                                            <?php
+                                                        }
+                                                        ?></td>
                                                     <td> <div class="dropdown">
 
                                                             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Action
@@ -124,8 +127,8 @@ foreach ($artist_list as $artist) {
                                                                 <li>    <a href="<?php echo site_url("artist/edit_data/$artist->artist_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                                 <li>    <a href="<?php echo site_url("artist/delete/$artist->artist_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
-                                                    if ($artist->artist_status == '0') {
-                                                        ?>
+                                                                    if ($artist->artist_status == '0') {
+                                                                        ?>
                                                                         <a href="<?php echo site_url("artist/update_status_active/$artist->artist_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                         <?php
                                                                     } else {
@@ -182,7 +185,7 @@ foreach ($artist_list as $artist) {
                                                                                 <td><label>Password</label></td>
                                                                                 <td>:&nbsp;&nbsp;<?php echo $artist->password ?></td>
                                                                             </tr> 
-                                                                          
+
                                                                         </table>
                                                                     </div>
                                                                     <div class="modal-footer">
@@ -193,9 +196,9 @@ foreach ($artist_list as $artist) {
                                                         </div>
 
                                                     </td>
-    <?PHP
-}
-?>
+                                                    <?PHP
+                                                }
+                                                ?>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -227,53 +230,52 @@ foreach ($artist_list as $artist) {
 
                         </div>
                         <!-- /.box -->
-                        </div>
-                        <!-- /.col -->
-                        </div>
-                        <!-- /.row -->
                     </section>
 
                 </section>
-
-                <!-- Main content -->
-                <!-- /.content -->
             </div>
-            <!-- /.content-wrapper -->
-
-            <footer class="main-footer">
-<?php
-include('admin/footer_body.php');
-?>
-            </footer>
-
-
-            <!-- Add the sidebar's background. This div must be placed
-                 immediately after the control sidebar -->
-            <div class="control-sidebar-bg"></div>
+            <!-- /.col -->
         </div>
+        <!-- /.row -->
+        <!-- Main content -->
+        <!-- /.content -->
+
+        <!-- /.content-wrapper -->
+
+        <footer class="main-footer">
+            <?php
+            include('admin/footer_body.php');
+            ?>
+        </footer>
+
+
+        <!-- Add the sidebar's background. This div must be placed
+             immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+
         <!-- ./wrapper -->
-<?php
-include('admin/footer_include.php');
-?>
+        <?php
+        include('admin/footer_include.php');
+        ?>
         <script type="text/javascript">
             function openView(id) {
                 $('#myModal' + id).modal('show');
             }
         </script>
-      <script>
+        <script>
             $(function ()
             {
                 window.setTimeout(function ()
                 {
-                    $(".alert").fadeTo(500, 0).slideUp(500, function ()  {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function () {
                         $(this).remove();
                     });
                 }, 4000);
-                
-                 $("#example1").datatable();
+
+                $("#example1").datatable();
             });
         </script>
 
-            
+
     </body>
 </html>
