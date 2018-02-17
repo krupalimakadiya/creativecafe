@@ -6,7 +6,7 @@
             <img src="<?php echo $this->config->item('static_url') ?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p>Krupali Makadiya</p>
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
     </div>
@@ -54,7 +54,11 @@
             <li class="active"><a href="<?PHP echo site_url('country/index') ?>"><i class="fa fa-circle-o"></i> Country Master</a></li>
             <li><a href="<?PHP echo site_url('state/index') ?>"><i class="fa fa-circle-o"></i> State Master</a></li>
             <li><a href="<?PHP echo site_url('city/index') ?>"><i class="fa fa-circle-o"></i> City Master</a></li>
-            <li><a href="<?PHP echo site_url('category/index')?>"><i class="fa fa-circle-o"></i> Art Category Master</a></li>
+            <li><a href="<?PHP echo site_url('art_category/index')?>"><i class="fa fa-circle-o"></i> Art Category Master</a></li>
+           <li><a href="<?PHP echo site_url('art_subcategory/index')?>"><i class="fa fa-circle-o"></i> Art Subcategory Master</a></li>
+           <li><a href="<?PHP echo site_url('art_subcategory2/index')?>"><i class="fa fa-circle-o"></i> Art Subcategory2 Master</a></li>
+          
+          
           </ul>
         </li>
         <li>

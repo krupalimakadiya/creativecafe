@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2018 at 07:35 AM
+-- Generation Time: Feb 15, 2018 at 05:10 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -50,46 +50,38 @@ CREATE TABLE IF NOT EXISTS `artist_master` (
   `artist_id` int(10) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
-  `art_category_id` int(50) NOT NULL,
   `mobile` varchar(15) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
+  `artist_profile` varchar(80) NOT NULL,
   `country_id` int(10) NOT NULL,
   `state_id` int(10) NOT NULL,
   `city_id` int(10) NOT NULL,
   `pincode` int(10) NOT NULL,
   `artist_status` int(10) NOT NULL,
   PRIMARY KEY (`artist_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=80 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=94 ;
 
 --
 -- Dumping data for table `artist_master`
 --
 
-INSERT INTO `artist_master` (`artist_id`, `first_name`, `last_name`, `art_category_id`, `mobile`, `email`, `password`, `country_id`, `state_id`, `city_id`, `pincode`, `artist_status`) VALUES
-(6, 'mk', 'mk', 6, '7878827777', 'email@gmail.com', '12345', 25, 12, 11, 0, 1),
-(8, 'krupi', 'makadiya', 25, '8000167777', 'krupi123@gmail.com', '124567', 25, 12, 11, 78965412, 1),
-(10, 'sumita', 'patel', 21, '9876789087', 'sumita132@gmail.com', 'sumitak', 10, 8, 10, 12345, 0),
-(11, 'aarya', 'maheta', 8, '98767890789', 'aarta123@gmail.com', '123456', 25, 12, 11, 1234567, 1),
-(42, 'mkgroup', 'makadiya', 21, '8000167777', 'email@gmail.com', '123456sdfg', 10, 8, 10, 3498088, 0),
-(62, 'MISHA', 'pandit', 26, '7405469477', 'khushal1283@gmail.com', '123', 28, 21, 7, 395006, 0),
-(63, 'MISHA', 'pandit', 26, '7405469477', 'khushal1283@gmail.com', '123', 28, 21, 7, 395006, 0),
-(64, 'Mishti', 'bhalla', 27, '9874521360', 'anu.mk@gmail.com', '123', 25, 12, 11, 395006, 0),
-(65, 'Ayaan', 'kachchhi', 26, '7405469477', 'khushal1283@gmail.com', '123', 28, 21, 7, 395006, 0),
-(66, 'Anjal', 'khueana', 23, '9874521360', 'anu.mk@gmail.com', '123', 25, 12, 11, 395006, 0),
-(67, 'Atharv', 'podwal', 24, '7405469477', 'khushal1283@gmail.com', '123', 28, 21, 7, 395006, 0),
-(68, 'Asad', 'chhalar', 26, '9874521360', 'anu.mk@gmail.com', '123', 25, 12, 11, 395006, 0),
-(69, 'aasdfj', 'ertykl', 8, 'qwerktyto', 'admin@gmail.com', 'qwerty', 10, 8, 10, 123454, 0),
-(70, 'MISHA', 'pandit', 28, '7405469477', 'khushal1283@gmail.com', '123', 28, 21, 7, 395006, 0),
-(71, 'MISHA', 'pandit', 28, '7405469477', 'khushal1283@gmail.com', '123', 28, 21, 7, 395006, 0),
-(72, 'Mishti', 'bhalla', 27, '9874521360', 'anu.mk@gmail.com', '123', 25, 12, 11, 395006, 0),
-(73, 'Ayaan', 'kachchhi', 23, '7405469477', 'khushal1283@gmail.com', '123', 28, 21, 7, 395006, 0),
-(74, 'Anjal', 'khueana', 25, '9874521360', 'anu.mk@gmail.com', '123', 25, 12, 11, 395006, 0),
-(75, 'Atharv', 'podwal', 26, '7405469477', 'khushal1283@gmail.com', '123', 28, 21, 7, 395006, 0),
-(76, 'Asad', 'chhalar', 24, '9874521360', 'anu.mk@gmail.com', '123', 25, 12, 11, 395006, 0),
-(77, 'mk', 'mk', 6, '9874563210', 'email@gmail.com', '456321', 10, 8, 10, 785412, 0),
-(78, 'asdfrk', 'jkdnfkjh', 6, '9879959790', 'admin@gmail.com', '1`234', 10, 8, 10, 541236, 0),
-(79, 'dummy', 'dummy', 6, '9898989898', 'admin@gmail.com', '45621', 25, 12, 11, 785412, 0);
+INSERT INTO `artist_master` (`artist_id`, `first_name`, `last_name`, `mobile`, `email`, `password`, `artist_profile`, `country_id`, `state_id`, `city_id`, `pincode`, `artist_status`) VALUES
+(6, '', '', '', '', '12345', '', 28, 21, 19, 0, 1),
+(10, 'sumita', 'patel', '9876789087', 'sumita132@gmail.com', 'sumitak', '', 10, 8, 10, 12345, 0),
+(78, 'asdfrk', 'jkdnfkjh', '9879959790', 'admin@gmail.com', '1`234', '', 10, 8, 10, 541236, 0),
+(79, 'dummy', 'dummy', '9898989898', 'admin@gmail.com', '45621', '', 25, 12, 11, 785412, 0),
+(80, 'temp', 'temp', '7845213652', 'temp@gmail.com', 'temp', '', 45, 12, 15, 785412, 0),
+(82, 'krupali makadiya', 'makadiya', ' 7878827777', 'krupalimakadiya123@gmail.com', '12345', '', 38, 19, 18, 394101, 0),
+(85, 'dummy', 'dummy', '7854123690', 'dummy@gmail.com', 'dummy', '', 28, 21, 13, 394101, 0),
+(86, 'dummy', 'dummy', '7854123690', 'dummy@gmail.com', 'dummy', '', 28, 21, 13, 394101, 0),
+(87, 'dummy', 'dummy', '7854123690', 'dummy@gmail.com', 'dummy', '', 28, 21, 13, 394101, 0),
+(88, 'dummy', 'dummy', '7854123690', 'dummy@gmail.com', 'dummy', '', 28, 21, 13, 394101, 0),
+(89, 'dummy', 'dummy', '7854123690', 'dummy@gmail.com', 'dummy', '', 28, 21, 13, 394101, 0),
+(90, 'dummy', 'dummy', '7854123690', 'dummy@gmail.com', 'dummy', '', 28, 21, 13, 394101, 0),
+(91, 'dummy', 'dummy', '7854123690', 'dummy@gmail.com', 'dummy', '', 28, 21, 13, 394101, 0),
+(92, 'dummy', 'dummy', '7854123690', 'dummy@gmail.com', 'dummy', '', 28, 21, 13, 394101, 0),
+(93, 'dummy', 'dummy', '7854123690', 'dummy@gmail.com', 'dummy', '', 28, 21, 13, 394101, 0);
 
 -- --------------------------------------------------------
 
@@ -102,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `art_category_master` (
   `art_category_name` varchar(50) NOT NULL,
   `status` int(10) NOT NULL,
   PRIMARY KEY (`art_category_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
 
 --
 -- Dumping data for table `art_category_master`
@@ -110,29 +102,12 @@ CREATE TABLE IF NOT EXISTS `art_category_master` (
 
 INSERT INTO `art_category_master` (`art_category_id`, `art_category_name`, `status`) VALUES
 (6, 'wood print', 0),
-(8, 'qwertyui', 1),
-(18, 'Tatoo123', 1),
-(20, 'metallllll', 0),
 (21, 'jewellary', 0),
 (22, 'design', 0),
 (23, 'video', 0),
-(24, 'metal', 0),
-(25, 'digital art', 0),
 (26, 'photos', 0),
-(27, 'temp category', 0),
-(28, 'eating', 0),
-(29, 'jewellary', 0),
-(30, 'design', 0),
-(31, 'video', 0),
 (32, 'metal', 0),
-(33, 'digital art', 0),
-(34, 'photos', 0),
-(35, 'jewellary', 0),
-(36, 'design', 0),
-(37, 'video', 0),
-(38, 'metal', 0),
-(39, 'digital art', 0),
-(40, 'photos', 0);
+(41, 'fabric paint', 0);
 
 -- --------------------------------------------------------
 
@@ -212,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `country_master` (
   `country_name` varchar(20) NOT NULL,
   `status` int(5) NOT NULL,
   PRIMARY KEY (`country_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=52 ;
 
 --
 -- Dumping data for table `country_master`
@@ -249,7 +224,9 @@ INSERT INTO `country_master` (`country_id`, `country_name`, `status`) VALUES
 (46, 'sdfrgtkyj', 0),
 (47, 'c23', 0),
 (48, 'c2', 0),
-(49, 'c4', 0);
+(49, 'c4', 0),
+(50, 'raksh', 0),
+(51, 'raksh', 1);
 
 -- --------------------------------------------------------
 
@@ -274,19 +251,50 @@ CREATE TABLE IF NOT EXISTS `event_master` (
 CREATE TABLE IF NOT EXISTS `news_master` (
   `news_id` int(10) NOT NULL AUTO_INCREMENT,
   `title` varchar(15) NOT NULL,
+  `date` date NOT NULL,
+  `image` varchar(200) NOT NULL,
   `description` varchar(2000) NOT NULL,
-  `image` varchar(500) NOT NULL,
   `news_status` varchar(10) NOT NULL,
   PRIMARY KEY (`news_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `news_master`
 --
 
-INSERT INTO `news_master` (`news_id`, `title`, `description`, `image`, `news_status`) VALUES
-(2, '', 'krupi', '', ''),
-(3, '', 'sandaesjkdn', '', '');
+INSERT INTO `news_master` (`news_id`, `title`, `date`, `image`, `description`, `news_status`) VALUES
+(10, '12222222222k', '2022-10-06', 'Hydrangeas.jpg', '<p>kjhjghyfrytgvgfg</p>\r\n', '1'),
+(11, 'abcdgtrfedsxz', '2016-11-24', '', '', ''),
+(12, '3', '2027-11-12', '12.jpg', '<p>123 hi</p>\r\n', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post_master`
+--
+
+CREATE TABLE IF NOT EXISTS `post_master` (
+  `post_id` int(100) NOT NULL AUTO_INCREMENT,
+  `art_category_id` int(100) NOT NULL,
+  `file_type` varchar(100) NOT NULL,
+  `image` varchar(1000) DEFAULT NULL,
+  `project_audio` varchar(1000) DEFAULT NULL,
+  `project_video` varchar(1000) DEFAULT NULL,
+  `Description` varchar(5000) NOT NULL,
+  `artist_id` int(20) NOT NULL,
+  `post_status` int(20) NOT NULL,
+  PRIMARY KEY (`post_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
+
+--
+-- Dumping data for table `post_master`
+--
+
+INSERT INTO `post_master` (`post_id`, `art_category_id`, `file_type`, `image`, `project_audio`, `project_video`, `Description`, `artist_id`, `post_status`) VALUES
+(27, 22, 'image', '27.JPG', NULL, NULL, 'krupi makadiya                                        ', 82, 0),
+(29, 26, 'image', '29.jpg', NULL, NULL, '     this is image                  ', 82, 0),
+(31, 21, 'audio', NULL, 'https://soundcloud.com/siddhantbhosleofficial/dil-diyan-gallan-cover-by-siddhant-bhosle', '', 'wekrtjgyuklm                                        ', 82, 0),
+(35, 22, 'video', NULL, '', 'https://www.youtube.com/embed/5gIpqS-Qpzw', ' ds,flghmkmds,.fm,                                       ', 82, 0);
 
 -- --------------------------------------------------------
 
@@ -345,12 +353,20 @@ INSERT INTO `state_master` (`state_id`, `country_id`, `state_name`, `status`) VA
 CREATE TABLE IF NOT EXISTS `suggestion_master` (
   `suggestion_id` int(10) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(20) NOT NULL,
-  `last_name` varchar(20) NOT NULL,
-  `message` varchar(300) NOT NULL,
+  `subject` varchar(300) NOT NULL,
   `email` varchar(50) NOT NULL,
+  `mobile` int(11) NOT NULL,
+  `message` varchar(2000) NOT NULL,
   `suggestion_status` varchar(10) NOT NULL,
   PRIMARY KEY (`suggestion_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `suggestion_master`
+--
+
+INSERT INTO `suggestion_master` (`suggestion_id`, `first_name`, `subject`, `email`, `mobile`, `message`, `suggestion_status`) VALUES
+(1, 'keval', 'dummy', 'dummy@gmail.com', 2147483647, 'dummy mesg', '');
 
 -- --------------------------------------------------------
 
