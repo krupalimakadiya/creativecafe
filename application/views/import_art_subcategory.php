@@ -33,13 +33,13 @@
 
                       <div class="box box-info">
                         <div class="box-header with-border">
-                            <h3 class="box-title"><label>State Master</label></h3>
+                            <h3 class="box-title"><label>Art Subcategory Master</label></h3>
                             </div>
                                   <!-- /.box-header -->
                                   
                                     <div class="box-body">
                         
-                                                   <form role="form" method="post" action="<?php echo site_url("state/importp") ?>"  enctype="multipart/form-data">
+                                                   <form role="form" method="post" action="<?php echo site_url("art_subcategory/importp") ?>"  enctype="multipart/form-data">
         <!-- text input-->
                                 <div class="form-group">
                                     <label>Upload File</label>

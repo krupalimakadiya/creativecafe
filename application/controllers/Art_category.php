@@ -32,11 +32,11 @@ class Art_category extends My_Controller {
         $category_data = $this->art_category_model->check_data($_POST['art_category_name']);
         if (isset($country_data)) {
             $this->session->set_flashdata('message', 'record already exists...');
-            redirect('art_category/index');
+            redirect('art_category');
         } else {
             $this->art_category_model->insert($_POST['art_category_name']);
             $this->session->set_flashdata('message', 'insert successfully...');
-            redirect('art_category/index');
+            redirect('art_category');
         }
     }
 
@@ -50,27 +50,27 @@ class Art_category extends My_Controller {
         $this->art_category_model->update_data($_POST['art_category_id'], $_POST['art_category_name']);
         $this->session->set_flashdata('message', 'record updated successfully...');
 
-        redirect("art_category/index");
+        redirect("art_category");
     }
 
     public function delete($art_category_id) {
         $this->art_category_model->delete($art_category_id);
         $this->session->set_flashdata('message', 'record deleted successfully...');
-        redirect("art_category/index");
+        redirect("art_category");
     }
 
-    public function update_status_active($art_category_id) {
+    public function update_art_category_status_active($art_category_id) {
         $this->load->model('art_category_model');
-        $art_category_status = $this->input->get('art_category_status');
-        $this->art_category_model->update_active($art_category_id, $art_category_status);
-        redirect('art_category/index');
+        $art_category_art_category_status = $this->input->get('art_category_art_category_status');
+        $this->art_category_model->update_active($art_category_id, $art_category_art_category_status);
+        redirect('art_category');
     }
 
-    public function update_status_deactive($art_category_id) {
+    public function update_art_category_status_deactive($art_category_id) {
         $this->load->model('art_category_model');
-        $art_category_status = $this->input->get('art_category_status');
-        $this->art_category_model->update_deactive($art_category_id, $art_category_status);
-        redirect('art_category/index');
+        $art_category_art_category_status = $this->input->get('art_category_art_category_status');
+        $this->art_category_model->update_deactive($art_category_id, $art_category_art_category_status);
+        redirect('art_category');
     }
 
     public function importp() {
@@ -103,7 +103,7 @@ class Art_category extends My_Controller {
         }
         $total = ($records - 1);
         $this->session->set_flashdata('message', $counter . " record(s) out of " . ($total == -1 ? 0 : $total) . " successfully imported.");
-        redirect("art_category/index");
+        redirect("art_category");
     }
 
     public function export()
@@ -142,7 +142,7 @@ class Art_category extends My_Controller {
             }
             $i++;
         }
-        redirect("art_category/index");
+        redirect("art_category");
     }
 
 }

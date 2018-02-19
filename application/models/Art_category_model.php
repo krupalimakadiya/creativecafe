@@ -37,19 +37,19 @@ class Art_category_model extends CI_model {
         $this->db->delete('art_category_master');
     }
 
-    public function update_active($art_category_id, $status) {
+    public function update_active($art_category_id, $art_category_status) {
         $data = array(
             'art_category_id' => $art_category_id,
-            'status' => 1
+            'art_category_status' => 1
         );
         $this->db->where('art_category_id', $art_category_id);
         $this->db->update('art_category_master', $data);
     }
 
-    public function update_deactive($art_category_id, $status) {
+    public function update_deactive($art_category_id, $art_category_status) {
         $data = array(
             'art_category_id' => $art_category_id,
-            'status' => 0
+            'art_category_status' => 0
         );
         $this->db->where('art_category_id', $art_category_id);
         $this->db->update('art_category_master', $data);

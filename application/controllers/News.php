@@ -44,25 +44,25 @@ class News extends My_Controller{
                       
                         $data = array('upload_data' => $this->upload->data());
                         $this->news_model->update_filename($userid,$newname);
-                        redirect("news/index");
+                        redirect("news");
                         }
         }
 
     public function delete($news_id) {
         $this->news_model->delete($news_id);
         $this->session->set_flashdata('message','record deleted successfully...');            
-        redirect("news/index");
+        redirect("news");
     }
     public function update_status_active($news_id) {
         $news_status = $this->input->get('news_status');
         $this->news_model->update_active($news_id, $news_status);
-        redirect('news/index');
+        redirect('news');
     }
 
     public function update_status_deactive($news_id) {
         $news_status = $this->input->get('news_status');
         $this->news_model->update_deactive($news_id, $news_status);
-        redirect('news/index');
+        redirect('news');
     }
     
    public function deletemultiple() 
@@ -106,7 +106,7 @@ class News extends My_Controller{
             } 
             $i++; 
         } 
-        redirect("news/index"); 
+        redirect("news"); 
     }
 
         public function edit_data($news_id) {
@@ -119,7 +119,7 @@ class News extends My_Controller{
         $this->news_model->update_data($_POST['news_id'],$_POST['title'],$_POST['date'],$_POST['image'],$_POST['description']);
         $this->session->set_flashdata('message', 'record updated successfully...');
 
-        redirect("news/index");
+        redirect("news");
     }
 
 }

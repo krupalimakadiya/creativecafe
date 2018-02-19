@@ -32,11 +32,11 @@ class Country extends My_Controller {
         $country_data = $this->country_model->check_data($_POST['country_name']);
         if (isset($country_data)) {
             $this->session->set_flashdata('message', 'record already exists...');
-            redirect('country/index');
+            redirect('country');
         } else {
             $this->country_model->insert($_POST['country_name']);
             $this->session->set_flashdata('message', 'insert successfully...');
-            redirect('country/index');
+            redirect('country');
         }
     }
 
@@ -50,27 +50,27 @@ class Country extends My_Controller {
         $this->country_model->update_data($_POST['country_id'], $_POST['country_name']);
         $this->session->set_flashdata('message', 'record updated successfully...');
 
-        redirect("country/index");
+        redirect("country");
     }
 
     public function delete($country_id) {
         $this->country_model->delete($country_id);
         $this->session->set_flashdata('message', 'record deleted successfully...');
-        redirect("country/index");
+        redirect("country");
     }
 
     public function update_status_active($country_id) {
         $this->load->model('country_model');
-        $news_status = $this->input->get('news_status');
-        $this->country_model->update_active($country_id, $news_status);
-        redirect('country/index');
+        $country_status = $this->input->get('country_status');
+        $this->country_model->update_active($country_id, $country_status);
+        redirect('country');
     }
 
     public function update_status_deactive($country_id) {
         $this->load->model('country_model');
-        $news_status = $this->input->get('news_status');
-        $this->country_model->update_deactive($country_id, $news_status);
-        redirect('country/index');
+        $country_status = $this->input->get('country_status');
+        $this->country_model->update_deactive($country_id, $country_status);
+        redirect('country');
     }
 
     public function importp() {
@@ -103,7 +103,7 @@ class Country extends My_Controller {
         }
         $total = ($records - 1);
         $this->session->set_flashdata('message', $counter . " record(s) out of " . ($total == -1 ? 0 : $total) . " successfully imported.");
-        redirect("country/index");
+        redirect("country");
     }
 
     public function export()
@@ -142,7 +142,7 @@ class Country extends My_Controller {
             }
             $i++;
         }
-        redirect("country/index");
+        redirect("country");
     }
 
 }

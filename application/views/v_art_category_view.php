@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-        include('admin/header_include.php');
+       $this->load->view('admin/header_include');
         ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -11,14 +11,14 @@
 
             <header class="main-header">
                 <?php
-                include('admin/header_body.php');
+$this->load->view('admin/header_body');
                 ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-                include('admin/header_body_aside.php');
-                ?>
+                $this->load->view('admin/header_body_aside');
+?>
             </aside>
 
             <!-- Content Wrapper. Contains page content -->
@@ -98,7 +98,7 @@
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $art_category->art_category_name ?></td>
                                                     <td><?php
-                                                        if ($art_category->status == '0') {
+                                                        if ($art_category->art_category_status == '0') {
                                                             ?>
                                                             <i class="glyphicon glyphicon-remove" style="color:red"></i>
                                                             <?php
@@ -121,13 +121,13 @@
                                                                 <li>    <a href="<?php echo site_url("art_category/edit_data/$art_category->art_category_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                                 <li>    <a href="<?php echo site_url("art_category/delete/$art_category->art_category_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
-                                                                    if ($art_category->status == '0') {
+                                                                    if ($art_category->art_category_status == '0') {
                                                                         ?>
-                                                                        <a href="<?php echo site_url("art_category/update_status_active/$art_category->art_category_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
+                                                                        <a href="<?php echo site_url("art_category/update_art_category_status_active/$art_category->art_category_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                         <?php
                                                                     } else {
                                                                         ?>
-                                                                        <a href="<?php echo site_url("art_category/update_status_deactive/$art_category->art_category_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
+                                                                        <a href="<?php echo site_url("art_category/update_art_category_status_deactive/$art_category->art_category_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
                                                                         <?php
                                                                     }
                                                                     ?></li>
@@ -214,8 +214,8 @@
 
             <footer class="main-footer">
                 <?php
-                include('admin/footer_body.php');
-                ?>
+          $this->load->view('admin/footer_body');
+      ?>
             </footer>
 
 
@@ -225,7 +225,7 @@
         </div>
         <!-- ./wrapper -->
         <?php
-        include('admin/footer_include.php');
+$this->load->view('admin/footer_include');
         ?>
         <script type="text/javascript">
             function openView(id) {

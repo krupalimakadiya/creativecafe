@@ -37,19 +37,19 @@ class Country_model extends CI_model {
         $this->db->delete('country_master');
     }
 
-    public function update_active($country_id, $status) {
+    public function update_active($country_id, $country_status) {
         $data = array(
             'country_id' => $country_id,
-            'status' => 1
+            'country_status' => 1
         );
         $this->db->where('country_id', $country_id);
         $this->db->update('country_master', $data);
     }
 
-    public function update_deactive($country_id, $status) {
+    public function update_deactive($country_id, $country_status) {
         $data = array(
             'country_id' => $country_id,
-            'status' => 0
+            'country_status' => 0
         );
         $this->db->where('country_id', $country_id);
         $this->db->update('country_master', $data);

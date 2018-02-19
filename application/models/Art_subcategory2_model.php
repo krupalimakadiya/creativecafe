@@ -58,19 +58,19 @@ class Art_subcategory2_model extends CI_model {
         return $query->result();
     }
 
-    public function update_active($art_subcategory2_id, $status) {
+    public function update_active($art_subcategory2_id, $art_subcategory2_art_subcategory2_status) {
         $data = array(
             'art_subcategory2_id' => $art_subcategory2_id,
-            'status' => 1
+            'art_subcategory2_status' => 1
         );
         $this->db->where('art_subcategory2_id', $art_subcategory2_id);
         $this->db->update('art_subcategory2_master', $data);
     }
 
-    public function update_deactive($art_subcategory2_id, $status) {
+    public function update_deactive($art_subcategory2_id, $art_subcategory2_status) {
         $data = array(
             'art_subcategory2_id' => $art_subcategory2_id,
-            'status' => 0
+            'art_subcategory2_status' => 0
         );
         $this->db->where('art_subcategory2_id', $art_subcategory2_id);
         $this->db->update('art_subcategory2_master', $data);

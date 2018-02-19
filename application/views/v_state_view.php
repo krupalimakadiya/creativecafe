@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-        include('admin/header_include.php');
+        $this->load->view('admin/header_include');
         ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -10,13 +10,13 @@
 
             <header class="main-header">
                 <?php
-                include('admin/header_body.php');
+                $this->load->view('admin/header_body');
                 ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-                include('admin/header_body_aside.php');
+                $this->load->view('admin/header_body_aside');
                 ?>
             </aside>
 
@@ -38,7 +38,7 @@
                                 $message = $this->session->flashdata('message');
                                 $success = $this->session->flashdata('success');
                                 $fail = $this->session->flashdata('fail');
-                                
+
                                 if (isset($message)) {
                                     if ($message != ' ') {
                                         ?>
@@ -101,7 +101,7 @@
                                                     <td><?PHP echo $state->state_name ?></td>
 
                                                     <td><?php
-                                                        if ($state->status == '0') {
+                                                        if ($state->state_status == '0') {
                                                             ?>
                                                             <i class="glyphicon glyphicon-remove" style="color:red"></i>
                                                             <?php
@@ -123,7 +123,7 @@
                                                                 <li>    <a href="<?php echo site_url("state/edit_data/$state->state_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                                 <li>    <a href="<?php echo site_url("state/delete/$state->state_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
-                                                                    if ($state->status == '0') {
+                                                                    if ($state->state_status == '0') {
                                                                         ?>
                                                                         <a href="<?php echo site_url("state/update_status_active/$state->state_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                         <?php
@@ -174,7 +174,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
+                            </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
                                 <div class="btn-group">
@@ -197,7 +197,7 @@
                             </div>
 
                         </div>
-                    </form>
+                        </form>
                         <!-- /.box -->
 
                         <!-- /.col -->
@@ -211,7 +211,7 @@
 
                         <footer class="main-footer">
                             <?php
-                            include('admin/footer_body.php');
+                            $this->load->view('admin/footer_body');
                             ?>
                         </footer>
 
@@ -222,25 +222,25 @@
                         </div>
                         <!-- ./wrapper -->
                         <?php
-                        include('admin/footer_include.php');
+                        $this->load->view('admin/footer_include');
                         ?>
                         <script type="text/javascript">
                             function openView(id) {
                                 $('#myModal' + id).modal('show');
                             }
                         </script>
-        <script>
-            $(function ()
-            {
-                window.setTimeout(function ()
-                {
-                    $(".alert").fadeTo(500, 0).slideUp(500, function ()  {
-                        $(this).remove();
-                    });
-                }, 4000);
-                
-                 $("#example1").datatable();
-            });
-        </script>
-                </body>
+                        <script>
+                            $(function ()
+                            {
+                                window.setTimeout(function ()
+                                {
+                                    $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                                        $(this).remove();
+                                    });
+                                }, 4000);
+
+                                $("#example1").datatable();
+                            });
+                        </script>
+                        </body>
                         </html>

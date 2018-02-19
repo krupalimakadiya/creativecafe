@@ -17,20 +17,20 @@ class Comment extends My_Controller{
     public function delete($comment_id) {
         $this->comment_model->delete($comment_id);
         $this->session->set_flashdata('message','record deleted successfully...');            
-        redirect("comment/index");
+        redirect("comment");
     }
     public function update_status_active($comment_id) {
         $this->load->model('comment_model');
         $status = $this->input->get('status');
         $this->comment_model->update_active($comment_id, $status);
-        redirect('comment/index');
+        redirect('comment');
     }
 
     public function update_status_deactive($comment_id) {
         $this->load->model('comment_model');
         $status = $this->input->get('status');
         $this->comment_model->update_deactive($comment_id, $status);
-        redirect('comment/index');
+        redirect('comment');
     }
     
    public function deletemultiple() 
@@ -74,7 +74,7 @@ class Comment extends My_Controller{
             } 
             $i++; 
         } 
-        redirect("comment/index"); 
+        redirect("comment"); 
     }
 
     

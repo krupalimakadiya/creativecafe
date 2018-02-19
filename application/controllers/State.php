@@ -35,11 +35,11 @@ class State extends MY_Controller {
         $state_data = $this->state_model->check_data($_POST['country_id'],$_POST['state_name']);
         if (isset($state_data)) {
             $this->session->set_flashdata('message','record already exists...');            
-            redirect('state/index');
+            redirect('state');
         } else {
             $this->state_model->insert($_POST['country_id'],$_POST['state_name']);
              $this->session->set_flashdata('message','insert successfully...');
-            redirect('state/index');
+            redirect('state');
         }
     }
     
@@ -53,25 +53,25 @@ class State extends MY_Controller {
     public function editp() {
         $this->state_model->update_data($_POST['state_id'], $_POST['country_id'], $_POST['state_name']);
         $this->session->set_flashdata('message','update succesfully');
-        redirect("state/index");
+        redirect("state");
     }
 
     public function delete($state_id) {
         $this->state_model->delete($state_id);
           $this->session->set_flashdata('message','record deleted successfully...');            
-        redirect("state/index");
+        redirect("state");
     }
 
    public function update_status_active($state_id) {
-        $status = $this->input->get('status');
-        $this->state_model->update_active($state_id, $status);
-        redirect('state/index');
+        $state_status = $this->input->get('state_status');
+        $this->state_model->update_active($state_id, $state_status);
+        redirect('state');
     }
 
     public function update_status_deactive($state_id) {
-        $status = $this->input->get('status');
-        $this->state_model->update_deactive($state_id, $status);
-        redirect('state/index');
+        $state_status = $this->input->get('state_status');
+        $this->state_model->update_deactive($state_id, $state_status);
+        redirect('state');
     }
     
       public function importp() {
@@ -111,7 +111,7 @@ class State extends MY_Controller {
         }
         $total = ($records - 1);
         $this->session->set_flashdata('message', $counter . " record(s) out of " . ($total == -1 ? 0 : $total) . " successfully imported.");
-        redirect("state/index");
+        redirect("state");
     }
 
     public function export()
@@ -163,7 +163,7 @@ class State extends MY_Controller {
            } 
             $i++; 
         } 
-        redirect("state/index"); 
+        redirect("state"); 
     }
 
   

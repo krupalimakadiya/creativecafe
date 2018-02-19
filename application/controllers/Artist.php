@@ -37,11 +37,11 @@ class Artist extends MY_Controller {
       $artist_data = $this->artist_model->check_data($_POST['first_name'], $_POST['last_name'],  $_POST['mobile'], $_POST['email'], $_POST['password'], $_POST['country_id'], $_POST['state_id'], $_POST['city_id'], $_POST['pincode']);
       if (isset($artist_data)) {
       $this->session->set_flashdata('message', 'record already exists...');
-      redirect('artist/index');
+      redirect('artist');
       } else {
       $this->artist_model->insert($_POST['first_name'], $_POST['last_name'], $_POST['mobile'], $_POST['email'], $_POST['password'], $_POST['country_id'], $_POST['state_id'], $_POST['city_id'], $_POST['pincode']);
       $this->session->set_flashdata('message', 'insert successfully...');
-      redirect('artist/index');
+      redirect('artist');
       }
       } */
 
@@ -80,7 +80,7 @@ class Artist extends MY_Controller {
             $this->artist_model->insert($artist_data);
         }
 
-        redirect('artist/index');
+        redirect('artist');
     }
 
     public function drop_state() {
@@ -121,7 +121,7 @@ class Artist extends MY_Controller {
         } else {
            
             $this->artist_model->update_data($_POST['artist_id'], $_POST['first_name'], $_POST['last_name'], $_POST['mobile'], $_POST['email'], $_POST['password'], $newfilename, $_POST['country_id'], $_POST['state_id'], $_POST['city_id'], $_POST['pincode']);
-            redirect("artist/index");
+            redirect("artist");
         }
         }
 
@@ -141,19 +141,19 @@ class Artist extends MY_Controller {
           public function delete($artist_id) {
           $this->artist_model->delete($artist_id);
           $this->session->set_flashdata('message', 'record deleted successfully...');
-          redirect("artist/index");
+          redirect("artist");
           }
 
           public function update_status_active($artist_id) {
           $status = $this->input->get('artist_status');
           $this->artist_model->update_active($artist_id, $artist_status);
-          redirect('artist/index');
+          redirect('artist');
           }
 
           public function update_status_deactive($artist_id) {
           $status = $this->input->get('artist_status');
           $this->artist_model->update_deactive($artist_id, $artist_status);
-          redirect('artist/index');
+          redirect('artist');
           }
 
           public function importp() {
@@ -241,7 +241,7 @@ class Artist extends MY_Controller {
         }
         $total = ($records - 1);
         $this->session->set_flashdata('message', $counter . " record(s) out of " . ($total == -1 ? 0 : $total) . " successfully imported.");
-        redirect("artist/index");
+        redirect("artist");
     }
 
     public function export() {
@@ -289,7 +289,7 @@ class Artist extends MY_Controller {
             }
             $i++;
         }
-        redirect("artist/index");
+        redirect("artist");
     }
 
 }

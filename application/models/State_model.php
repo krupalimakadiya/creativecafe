@@ -45,19 +45,19 @@ class State_model extends CI_model {
         $this->db->delete('state_master');
     }
 
-    public function update_active($state_id, $status) {
+    public function update_active($state_id, $state_status) {
         $data = array(
             'state_id' => $state_id,
-            'status' => 1
+            'state_status' => 1
         );
         $this->db->where('state_id', $state_id);
         $this->db->update('state_master', $data);
     }
 
-    public function update_deactive($state_id, $status) {
+    public function update_deactive($state_id, $state_status) {
         $data = array(
             'state_id' => $state_id,
-            'status' => 0
+            'state_status' => 0
         );
         $this->db->where('state_id', $state_id);
         $this->db->update('state_master', $data);

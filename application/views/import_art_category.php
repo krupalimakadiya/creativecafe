@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-        include('admin/header_include.php');
+       $this->load->view('admin/header_include');
         ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -39,7 +39,7 @@
                                   
                                     <div class="box-body">
                         
-                                                   <form role="form" method="post" action="<?php echo site_url("category/importp") ?>"  enctype="multipart/form-data">
+                                                   <form role="form" method="post" action="<?php echo site_url("art_category/importp") ?>"  enctype="multipart/form-data">
         <!-- text input-->
                                 <div class="form-group">
                                     <label>Upload File</label>

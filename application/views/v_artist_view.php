@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-        include('admin/header_include.php');
+$this->load->view('admin/header_include');
         ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -10,13 +10,13 @@
 
             <header class="main-header">
                 <?php
-                include('admin/header_body.php');
-                ?>
+                $this->load->view('admin/header_body');
+?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-                include('admin/header_body_aside.php');
+$this->load->view('admin/header_body_aside');
                 ?>
             </aside>
             <!-- Content Wrapper. Contains page content -->
@@ -81,7 +81,6 @@
                                                 <th>First Name</th>
                                                 <th>Last Name</th>                                              
                                                 <th>Mobile</th>
-                                                <th>image</th>
                                                 <th>City</th>
                                                 <th>Password</th>
                                                 <th>Status</th>
@@ -98,9 +97,7 @@
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $artist->first_name ?></td>
                                                     <td><?PHP echo $artist->last_name ?></td>                                                   
-                                                    <td><?PHP echo $artist->mobile ?></td>
-                                                    <td><?php echo $artist->artist_profile?></td>
-                                                    
+                                                    <td><?PHP echo $artist->mobile ?></td>                                                    
                                                     <td><?PHP echo $artist->city_name ?></td>
                                                     <td><?PHP echo $artist->password ?></td>
 
@@ -185,7 +182,10 @@
                                                                                 <td><label>Password</label></td>
                                                                                 <td>:&nbsp;&nbsp;<?php echo $artist->password ?></td>
                                                                             </tr> 
-
+                                                                            <tr>
+                                                                                <td><label>Image</label></td>
+                                                                                <td>:&nbsp;&nbsp;<img src="<?php echo $this->config->item('image_url')?>\<?php echo $artist->artist_profile?>" height="100" width="100" alt="image"></td>
+                                                                            </tr>
                                                                         </table>
                                                                     </div>
                                                                     <div class="modal-footer">
@@ -244,8 +244,8 @@
 
         <footer class="main-footer">
             <?php
-            include('admin/footer_body.php');
-            ?>
+         $this->load->view('admin/footer_body');
+   ?>
         </footer>
 
 
@@ -255,7 +255,7 @@
 
         <!-- ./wrapper -->
         <?php
-        include('admin/footer_include.php');
+$this->load->view('admin/footer_include');
         ?>
         <script type="text/javascript">
             function openView(id) {

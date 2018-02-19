@@ -34,11 +34,11 @@ class Art_subcategory2 extends MY_Controller {
         $art_subcategory2_data = $this->art_subcategory2_model->check_data($_POST['art_category_id'], $_POST['art_subcategory_id'], $_POST['art_subcategory2_name']);
         if (isset($art_subcategory2_data)) {
             $this->session->set_flashdata('message', 'record already exists...');
-            redirect('art_subcategory2/index');
+            redirect('art_subcategory2');
         } else {
             $this->art_subcategory2_model->insert($_POST['art_category_id'], $_POST['art_subcategory_id'], $_POST['art_subcategory2_name']);
             $this->session->set_flashdata('message', 'insert successfully...');
-            redirect('art_subcategory2/index');
+            redirect('art_subcategory2');
         }
     }
 
@@ -52,7 +52,7 @@ class Art_subcategory2 extends MY_Controller {
 
     public function editp() {
         $this->art_subcategory2_model->update_data($_POST['art_subcategory2_id'], $_POST['art_category_id'], $_POST['art_subcategory_id'], $_POST['art_subcategory2_name']);
-        redirect("art_subcategory2/index");
+        redirect("art_subcategory2");
     }
 
     public function update_data($art_subcategory2id) {
@@ -66,7 +66,7 @@ class Art_subcategory2 extends MY_Controller {
     public function delete($art_subcategory2_id) {
         $this->art_subcategory2_model->delete($art_subcategory2_id);
         $this->session->set_flashdata('message', 'record deleted successfully...');
-        redirect("art_subcategory2/index");
+        redirect("art_subcategory2");
     }
 
     public function drop_art_subcategory() {
@@ -75,15 +75,15 @@ class Art_subcategory2 extends MY_Controller {
     }
 
     public function update_status_active($art_subcategory2_id) {
-        $status = $this->input->get('status');
-        $this->art_subcategory2_model->update_active($art_subcategory2_id, $status);
-        redirect('art_subcategory2/index');
+        $art_subcategory2_status = $this->input->get('art_subcategory2_status');
+        $this->art_subcategory2_model->update_active($art_subcategory2_id, $art_subcategory2_status);
+        redirect('art_subcategory2');
     }
 
     public function update_status_deactive($art_subcategory2_id) {
-        $status = $this->input->get('status');
-        $this->art_subcategory2_model->update_deactive($art_subcategory2_id, $status);
-        redirect('art_subcategory2/index');
+        $art_subcategory2_status = $this->input->get('art_subcategory2_status');
+        $this->art_subcategory2_model->update_deactive($art_subcategory2_id, $art_subcategory2_status);
+        redirect('art_subcategory2');
     }
     
     public function importp() {
@@ -130,7 +130,7 @@ class Art_subcategory2 extends MY_Controller {
         }
         $total = ($records - 1);
         $this->session->set_flashdata('message', $counter . " record(s) out of " . ($total == -1 ? 0 : $total) . " successfully imported.");
-        redirect("art_subcategory2/index");
+        redirect("art_subcategory2");
     }
     
     public function export()
@@ -173,7 +173,7 @@ class Art_subcategory2 extends MY_Controller {
             }
             $i++;
         }
-        redirect("art_subcategory2/index");
+        redirect("art_subcategory2");
     }
 
 

@@ -45,19 +45,19 @@ class Art_subcategory_model extends CI_model {
         $this->db->delete('art_subcategory_master');
     }
 
-    public function update_active($art_subcategory_id, $status) {
+    public function update_active($art_subcategory_id, $art_subcategory_status) {
         $data = array(
             'art_subcategory_id' => $art_subcategory_id,
-            'status' => 1
+            'art_subcategory_status' => 1
         );
         $this->db->where('art_subcategory_id', $art_subcategory_id);
         $this->db->update('art_subcategory_master', $data);
     }
 
-    public function update_deactive($art_subcategory_id, $status) {
+    public function update_deactive($art_subcategory_id, $art_subcategory_status) {
         $data = array(
             'art_subcategory_id' => $art_subcategory_id,
-            'status' => 0
+            'art_subcategory_status' => 0
         );
         $this->db->where('art_subcategory_id', $art_subcategory_id);
         $this->db->update('art_subcategory_master', $data);

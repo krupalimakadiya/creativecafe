@@ -46,25 +46,25 @@ class Event extends My_Controller{
                       
                         $data = array('upload_data' => $this->upload->data());
                         $this->event_model->update_filename($userid,$newname);
-                        redirect("event/index");
+                        redirect("event");
                         }
         }
 
     public function delete($event_id) {
         $this->event_model->delete($event_id);
         $this->session->set_flashdata('message','record deleted successfully...');            
-        redirect("event/index");
+        redirect("event");
     }
     public function update_status_active($event_id) {
         $event_status = $this->input->get('event_status');
         $this->event_model->update_active($event_id, $event_status);
-        redirect('event/index');
+        redirect('event');
     }
 
     public function update_status_deactive($event_id) {
         $event_status = $this->input->get('event_status');
         $this->event_model->update_deactive($event_id, $event_status);
-        redirect('event/index');
+        redirect('event');
     }
     
    public function deletemultiple() 
@@ -108,7 +108,7 @@ class Event extends My_Controller{
             } 
             $i++; 
         } 
-        redirect("event/index"); 
+        redirect("event"); 
     }
 
         public function edit_data($event_id) {
@@ -121,7 +121,7 @@ class Event extends My_Controller{
         $this->event_model->update_data($_POST['event_id'],$_POST['title'],$_POST['file'],$_POST['date'],$_POST['image'],$_POST['description']);
         $this->session->set_flashdata('message', 'record updated successfully...');
 
-        redirect("event/index");
+        redirect("event");
     }
 
 }

@@ -23,14 +23,14 @@ class Changepwd extends CI_Controller {
             if (isset($data['admin_id'])) {
                 $this->changepwd_model->change_data($admin_id, $newpwd);
                 $this->session->set_flashdata('message', 'pwd is change');
-                redirect("Login/index");
+                redirect("Login");
             } else {
                 $this->session->set_flashdata('message', 'pwd is not change');
-                redirect("Changepwd/index");
+                redirect("Changepwd");
             }
         } else {
             $this->session->set_flashdata('message', 'newpwd and confirmpwd is not same');
-            redirect("changepwd/index");
+            redirect("changepwd");
         }
     }
 

@@ -19,10 +19,10 @@ class Login extends CI_Controller {
             $this->session->set_userdata('admin_id', $userdata['admin_id']);
             $this->session->set_userdata('email',$userdata['email']);
             $this->session->set_userdata('password', $userdata['password']);
-            redirect('welcome/index');
+            redirect('welcome');
         } else {
             $this->session->set_flashdata('message', 'Please Enter Correct User_Name And Password');
-            redirect('login/index');
+            redirect('login');
         }
     }
 
@@ -37,18 +37,18 @@ class Login extends CI_Controller {
 
             $this->session->set_userdata('admin_id', $data['admin_id']);
             $this->session->set_userdata('email', $data['email']);
-            redirect("welcome/index");
+            redirect("welcome");
         }
 
         $this->session->set_flashdata('message', $data['message']);
-        redirect("login/index");
+        redirect("login");
     }
 */
     public function logout() {
 
         $this->session->unset_userdata($data);
         $this->session->sess_destroy();
-        redirect("login/index");
+        redirect("login");
     }
 
 }
