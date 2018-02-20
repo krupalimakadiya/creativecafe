@@ -31,16 +31,17 @@
         </li>
         <li>
             <a href="<?PHP echo site_url('user/index') ?>">
-
                 <i class="fa fa-user"></i> <span>User Master</span>
-
             </a>
         </li>
         <li>
             <a href="<?PHP echo site_url('artist/index') ?>">
-
                 <i class="fa fa-user"></i> <span>Artist Master</span>
-
+            </a>
+        </li>
+        <li>
+            <a href="<?PHP echo site_url('post/index') ?>">
+                <i class="fa fa-circle-o"></i> <span>Post Master</span>
             </a>
         </li>
         <li class="treeview">
@@ -56,9 +57,7 @@
             <li><a href="<?PHP echo site_url('city/index') ?>"><i class="fa fa-circle-o"></i> City Master</a></li>
             <li><a href="<?PHP echo site_url('art_category/index')?>"><i class="fa fa-circle-o"></i> Art Category Master</a></li>
            <li><a href="<?PHP echo site_url('art_subcategory/index')?>"><i class="fa fa-circle-o"></i> Art Subcategory Master</a></li>
-           <li><a href="<?PHP echo site_url('art_subcategory2/index')?>"><i class="fa fa-circle-o"></i> Art Subcategory2 Master</a></li>
-          
-          
+           <li><a href="<?PHP echo site_url('art_subcategory2/index')?>"><i class="fa fa-circle-o"></i> Art Subcategory2 Master</a></li>                   
           </ul>
         </li>
         <li>
@@ -78,12 +77,12 @@
                 <i class="fa fa-circle-o"></i> <span>Event Master</span>
             </a>
         </li>
-        
-        <li>
+                                
+        <!--<li>
             <a href="<?PHP echo site_url('exibition/index') ?>">
                 <i class="fa fa-circle-o"></i> <span>Exibition Master</span>
             </a>
-        </li>
+        </li>-->
         
                 <li>
             <a href="<?PHP echo site_url('site/index') ?>">
