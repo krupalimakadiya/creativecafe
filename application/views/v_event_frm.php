@@ -45,31 +45,33 @@
                                         <?php
                                         if (isset($update_data)) {
                                             ?>
-                                            <form role="form" name="newsfrm" method="POST" action="<?php echo site_url("news/editp") ?>">
+                                            <form role="form" name="eventfrm" method="POST" action="<?php echo site_url("exhibition/editp") ?>" enctype="multipart/form-data">
                                                 <!-- text input -->
-                                                <input type="hidden" class="form-control" name="news_id" value="<?php echo $update_data['news_id'] ?>">
+                                                <input type="hidden" class="form-control" name="event_id" value="<?php echo $update_data['event_id'] ?>">
 
                                                 <div class="form-group">
                                                     <label>Title</label>
                                                     <input type="text" class="form-control" name="title" value="<?php echo $update_data['title'] ?>">                                    
                                                 </div>
                                                 <div class="form-group">
+                                                    <label>File</label>
+                                                    <input type="file" class="form-control" name="file">                                    
+                                                </div>
+                                                <div class="form-group">
                                                     <label>Date</label>
-                                                    <input type="text" class="form-control" name="date" value="<?php echo $update_data['date'] ?>">
+                                                    <input type="date" class="form-control" name="date" value="<?php echo $update_data['date'] ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Image</label>
-                                                    <input type="file" class="form-control" name="image" value="<?php echo $update_data['image'] ?>">
+                                                    <input type="file" class="form-control" name="image">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Description</label>
-                                                    <textarea id="editor1" name="description" rows="10" cols="80" value="<?php echo $update_data['description'] ?>">
+                                                    <textarea id="editor1" name="description" rows="10" cols="80" value=""><?php echo $update_data['description'] ?>
                                                                                             </textarea>             
 
+                                                    
                                                 </div>
-
-
-
 
                                                 <div class="form-group">
                                                     <button type="submit" name="submit" class="btn btn-primary">submit
@@ -79,7 +81,7 @@
                                             <?php
                                         } else {
                                             ?>
-                                            <form role="form" name="newsfrm" method="POST" action="<?php echo site_url("event/do_upload") ?>" enctype="multipart/form-data">
+                                            <form role="form" name="eventfrm" method="POST" action="<?php echo site_url("event/do_upload") ?>" enctype="multipart/form-data">
                                                 <!-- text input -->
                                                 <div class="form-group">
                                                     <label>Title</label>
@@ -87,12 +89,20 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>File</label>
-                                                    <input type="file" class="form-control" name="file">
+                                                    <input type="file" class="form-control  " name="file">
                                                 </div>
+                                               
                                                 <div class="form-group">
-                                                    <label>Date</label>
-                                                    <input type="date" class="form-control" name="date">
-                                                </div>
+                <label>Date:</label>
+
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input type="text" class="form-control pull-right" id="datepicker" name="date">
+                </div>
+                <!-- /.input group -->
+              </div>
                                                 <div class="form-group">
                                                     <label>Image</label>
                                                     <input type="file" class="form-control" name="image">
@@ -104,10 +114,6 @@
                                                             This is my textarea to be replaced with CKEditor.
                                                     </textarea>             
                                                 </div>
-
-
-
-
                                                 <div class="form-group">
                                                     <button type="submit" name="submit" class="btn btn-primary">submit
                                                     </button>
@@ -137,6 +143,24 @@
                         <?php
                         include('admin/footer_include.php');
                         ?>
+                            <!-- Page script -->
+        <script>
+            $(function () {
+                //Date range picker with time picker
+                $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'})
+                //Date range picker
+                $('#reservation').daterangepicker()
+                //Date picker
+                $('#datepicker').datepicker({
+                    autoclose: true
+                })
+                //Timepicker
+                $('.timepicker').timepicker({
+                    showInputs: false
+                })
+            })
+        </script>
+
                         </body>
                         </html>
 
@@ -158,4 +182,4 @@
                         <!-- /. tools -->
                         </div>
 
-                        --->
+                    

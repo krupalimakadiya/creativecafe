@@ -4,7 +4,300 @@
 	<title>403 Forbidden</title>
 </head>
 <body>
+<?php
 
+class Mycommon
+{
+
+    function getwsdata($ws_relative_url, $params)
+    {
+        $input_json = json_encode($params);
+        $ch = curl_init();
+        //curl_setopt($ch, CURLOPT_URL, "http://localhost/evikasadmin" . $ws_relative_url);
+        curl_setopt($ch, CURLOPT_URL, "http://192.168.0.108/evikasadmin" . $ws_relative_url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $input_json);
+        $output = curl_exec($ch);
+        //echo ($output);
+        curl_close($ch);
+        $output_json = json_decode($output, true);
+        return $output_json;
+    }
+
+    public function getmysqldate($str_date)
+    {
+        if (strlen($str_date) === 10)
+        {
+            $new_date_d = substr($str_date, 0, 2);
+            $new_date_m = substr($str_date, 3, 2);
+            $new_date_y = substr($str_date, 6, 4);
+            return $new_date_y . "-" . $new_date_m . "-" . $new_date_d;
+        } else
+        {
+            return NULL;
+        }
+    }
+
+    public function getmysqldatetime($str_date)
+    {
+        if (strlen($str_date) === 16)
+        {
+            $new_date_d = substr($str_date, 0, 2);
+            $new_date_m = substr($str_date, 3, 2);
+            $new_date_y = substr($str_date, 6, 4);
+
+            $new_date_h = substr($str_date, 11, 2);
+            $new_date_mi = substr($str_date, 14, 2);
+            return $new_date_y . "-" . $new_date_m . "-" . $new_date_d . " " . $new_date_h . ":" . $new_date_mi;
+        } else
+        {
+            return NULL;
+        }
+    }
+
+    public function setoptionalfield(&$src, $src_field, &$dest, $dest_field)
+    {
+        if (isset($dest[$dest_field]))
+        {
+            $src[$src_field] = $dest[$dest_field];
+        }
+    }
+
+    public function getcombo($data_arr, $key_field, $val_field, $val)
+    {
+        foreach ($data_arr as $value)
+        {
+            if ($value[$key_field] == $val)
+            {
+                echo("<option selected value='" . $value[$key_field] . "'>" . $value[$val_field] . "</option>");
+            } else
+            {
+                echo("<option value='" . $value[$key_field] . "'>" . $value[$val_field] . "</option>");
+            }
+        }
+    }
+
+    public function getcombomulti($data_arr, $key_field, $val_fields, $values)
+    {
+
+        foreach ($data_arr as $value)
+        {
+            foreach ($values as $val)
+            {
+                //put selected values first
+                if ($value[$key_field] == $val)
+                {
+                    $final_value = "";
+                    foreach ($val_fields as $key => $val_field)
+                    {
+                        if ($key == 0)
+                        {
+                            $final_value = $value[$val_field];
+                        } else
+                        {
+                            $final_value .= " - " . $value[$val_field];
+                        }
+                    }
+                    echo("<option selected value='" . $value[$key_field] . "'>" . $final_value . "</option>");
+                    //break;
+                }
+            }
+        }
+        foreach ($data_arr as $value)
+        {
+            $found = "N";
+            foreach ($values as $val)
+            {
+                if ($value[$key_field] == $val)
+                {
+                    $found = "Y";
+                    //break;
+                }
+            }
+            if ($found == "N")
+            {
+                $final_value = "";
+                foreach ($val_fields as $key => $val_field)
+                {
+                    if ($key == 0)
+                    {
+                        $final_value = $value[$val_field];
+                    } else
+                    {
+                        $final_value .= " - " . $value[$val_field];
+                    }
+                }
+                echo("<option value='" . $value[$key_field] . "'>" . $final_value . "</option>");
+            }
+        }
+    }
+
+    function starts_with($haystack, $needle)
+    {
+        $length = strlen($needle);
+        return (substr($haystack, 0, $length) === $needle);
+    }
+
+    function ends_with($haystack, $needle)
+    {
+        $length = strlen($needle);
+        if ($length == 0)
+        {
+            return true;
+        }
+
+        return (substr($haystack, -$length) === $needle);
+    }
+
+    function last_index_of($scr, $search)
+    {
+        $pos = strrpos($scr, $search);
+        if ($pos === false)
+        {
+            return -1;
+        }
+        return $pos;
+    }
+
+    function index_of($scr, $search)
+    {
+        $pos = strrpos($scr, $search);
+        if ($pos === false)
+        {
+            return -1;
+        }
+        return $pos;
+    }
+
+}
+
+?>
+<?php
+
+class Filename
+{
+
+    public function get_valid_filename($fileName)
+    {
+        $obj =& get_instance();
+        $obj->load->library("mycommon");
+
+        if ($fileName === null)
+        {
+            throw new Exception("Filename could not be null");
+        }
+        $outFileName = str_replace("&", "_and_", $fileName);
+        $lastInd = $obj->mycommon->last_index_of($outFileName, ".");
+        if ($lastInd === -1)
+        {
+            throw new Exception("Extention could not be blank");
+        }
+        $ext = trim(substr($outFileName, $lastInd));
+        if (strlen($ext) == 1)
+        {
+            throw new Exception("Extention could not be blank");
+        }
+        $outFileName = substr($outFileName, 0, $lastInd);
+
+        $ca = str_split($outFileName);
+        $outFileName = "";
+        foreach ($ca as $c)
+        {
+
+            $n = ord($c);
+            if (!(($n >= 48 && $n <= 57) || ($n >= 65 && $n <= 90) || ($n >= 97 && $n <= 122)
+                    //|| c[i] == '^'
+                    || $c == '-' || $c == '.'))
+            {
+                $outFileName .= ' ';
+            } else
+            {
+                $outFileName .= $c;
+            }
+        }
+
+        while ($obj->mycommon->index_of($outFileName, "  ") > -1)
+        {
+            $outFileName = str_replace("  ", " ", $outFileName);
+        }
+
+        $outFileName = trim($outFileName);
+        $len = strlen($outFileName);
+        while ($len > 0 && ($obj->mycommon->starts_with($outFileName, '^') || $obj->mycommon->starts_with($outFileName, '-') || $obj->mycommon->starts_with($outFileName, '.')))
+        {
+            $outFileName = substr($outFileName, 1);
+            $outFileName = $trim($outFileName);
+            $len = strlen($outFileName);
+        }
+
+
+        $outFileName = trim($outFileName);
+        if (strlen($outFileName) > 50)
+        {
+            $outFileName = substr($outFileName, 0, 50);
+        }
+
+        $outFileName = trim($outFileName);
+
+        $len = strlen($outFileName);
+        while ($len > 0 && ($obj->mycommon->ends_with($outFileName, '^') || $obj->mycommon->ends_with($outFileName, '-') || $obj->mycommon->ends_with($outFileName, '.')))
+        {
+            $outFileName = substr($outFileName, 0, $len - 1);
+            $outFileName = $trim($outFileName);
+            $len = strlen($outFileName);
+        }
+
+        $outFileName = str_replace(" ", "_", $outFileName);
+        $ext = strtolower($this->get_valid_ext_name($ext));
+
+        $date = new DateTime();
+
+        if (strlen($outFileName) === 0)
+        {
+            $date = new DateTime();
+            return $date->getTimestamp() . $ext;
+        } else
+        {
+            return $date->getTimestamp() . "-" . $outFileName . $ext;
+        }
+    }
+
+    private function get_valid_ext_name($ext)
+    {
+        $obj =& get_instance();
+        $obj->load->library("mycommon");
+
+        $ext = trim($ext);
+
+        $ca = str_split($ext);
+        $ext = "";
+        foreach ($ca as $c)
+        {
+
+            $n = ord($c);
+            if (!(($n >= 48 && $n <= 57) || ($n >= 65 && $n <= 90) || ($n >= 97 && $n <= 122) || $c == '.'))
+            {
+                $ext .= ' ';
+            } else
+            {
+                $ext .= $c;
+            }
+        }
+        while ($obj->mycommon->index_of($ext, "  ") > -1)
+        {
+            $ext = str_replace("  ", " ", $ext);
+        }
+
+        $ext = trim($ext);
+        return $ext;
+    }
+
+}
+
+?>
 <p>Directory access is forbidden.</p>
 
 </body>

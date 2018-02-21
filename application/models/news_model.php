@@ -16,8 +16,7 @@ class News_model extends CI_model {
            // print_r($data);
            // die();
             return $this->db->insert_id();
-  
-    }
+  }
         function update_filename($news_id,$filename) {
                  $this->db->set('image', $filename);
                  $this->db->where('news_id', $news_id);
@@ -36,13 +35,18 @@ class News_model extends CI_model {
         return $query->row_array();
     }
 
-    public function update_data($news_id,$title,$date,$image,$description) {
+    public function update_data($news_id,$title,$date,$newfilename,$description) 
+            {
         $data = array(
-            'title' => $title, 'date' => $date, 'image' => $image, 'description' => $description  );
-        $this->db->where('news_id', $news_id);
-        $this->db->update('news_master', $data);
+            'news_id' => $news_id,
+            'title' => $title,
+            'date' => $date,
+             'image'=>$newfilename,  
+            'description' => $description
+        );
+        $this->db->where('news_id',$news_id );
+        $this->db->update('news_master',$data);
     }
-
     public function update_active($news_id, $news_status) {
         $data = array(
             'news_id' => $news_id,

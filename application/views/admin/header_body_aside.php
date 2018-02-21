@@ -76,10 +76,10 @@
         </li>
         
         <li>
-            <a href="<?PHP echo site_url('exibition/index') ?>">
-                <i class="fa fa-circle-o"></i> <span>Exibition Master</span>
+            <a href="<?PHP echo site_url('exhibition/index') ?>">
+                <i class="fa fa-circle-o"></i> <span>Exhibition Master</span>
             </a>
-        </li>
+        </li>   
         
                 <li>
             <a href="<?PHP echo site_url('site/index') ?>">

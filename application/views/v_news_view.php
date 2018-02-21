@@ -99,8 +99,7 @@
                                                     <td><?PHP echo $news->title ?></td>
                                                     <td><?PHP echo $news->date ?></td>
                                                     <td><image height="100" width="100" src="<?PHP echo base_url()?>news_image/<?php echo $news->image?>">
-                                                       
-                                                    </td>
+                                                   </td>
                                                   
                                                     <td><?PHP echo $news->description ?></td>
                                                     

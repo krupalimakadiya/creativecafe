@@ -11,6 +11,14 @@
 <script src="<?php echo $this->config->item('static_url') ?>dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script _src="<?php echo $this->config->item('static_url') ?>dist/js/pages/dashboard.js"></script>
+<!-- date-range-picker -->
+<script src="<?php echo $this->config->item('static_url') ?>bower_components/moment/min/moment.min.js"></script>
+<script src="<?php echo $this->config->item('static_url') ?>bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="<?php echo $this->config->item('static_url') ?>bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- bootstrap time picker -->
+<script src="<?php echo $this->config->item('static_url') ?>plugins/timepicker/bootstrap-timepicker.min.js"></script>
+
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo $this->config->item('static_url') ?>dist/js/demo.js"></script>
 <!-- DataTables -->

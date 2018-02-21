@@ -45,7 +45,7 @@
                                         <?php
                                         if (isset($update_data)) {
                                             ?>
-                                            <form role="form" name="newsfrm" method="POST" action="<?php echo site_url("news/editp") ?>">
+                                            <form role="form" name="newsfrm" method="POST" action="<?php echo site_url("news/editp") ?>" enctype="multipart/form-data">
                                                 <!-- text input -->
                                                 <input type="hidden" class="form-control" name="news_id" value="<?php echo $update_data['news_id'] ?>">
 
@@ -59,12 +59,12 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Image</label>
-                                                    <input type="file" class="form-control" name="image" value="<?php echo $update_data['image'] ?>">
+                                                    <input type="file" class="form-control" name="image" >
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Description</label>
-                                                    <textarea id="editor1" name="description" rows="10" cols="80" value=""><?php echo $update_data['description'] ?>
-                                                                                            </textarea>             
+                                                    <textarea id="editor1" name="description" rows="10" cols="80" ><?php echo $update_data['description'] ?>
+                                                    </textarea>             
 
                                                 </div>
 
@@ -86,8 +86,15 @@
                                                     <input type="text" class="form-control" name="title" placeholder="Enter your News Title">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Date</label>
-                                                    <input type="date" class="form-control" name="date">
+                                                    <label>Date:</label>
+
+                                                    <div class="input-group date">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date">
+                                                    </div>
+                                                    <!-- /.input group -->
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Image</label>
@@ -97,7 +104,7 @@
                                                 <div class="form-group">
                                                     <label>Description</label>
                                                     <textarea id="editor1" name="description" rows="10" cols="80">
-                                                            This is my textarea to be replaced with CKEditor.
+                                                                    This is my textarea to be replaced with CKEditor.
                                                     </textarea>             
                                                 </div>
 
@@ -133,6 +140,23 @@
                         <?php
                         include('admin/footer_include.php');
                         ?>
+                        <script>
+                            $(function () {
+                                //Date range picker with time picker
+                                $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'})
+                                //Date range picker
+                                $('#reservation').daterangepicker()
+                                //Date picker
+                                $('#datepicker').datepicker({
+                                    autoclose: true
+                                })
+                                //Timepicker
+                                $('.timepicker').timepicker({
+                                    showInputs: false
+                                })
+                            })
+                        </script>
+
                         </body>
                         </html>
 

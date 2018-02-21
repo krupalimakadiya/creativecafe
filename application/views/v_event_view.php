@@ -30,18 +30,18 @@
                         <div class="box box-info">
                             <div class="box-header with-border">
                                 <h3 class="box-title"><label>Event Master</label></h3>
-                                                               <p align="right">
+                                <p align="right">
                                     <a href="<?php echo site_url("event/add_event") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
-                       
-                               
-                                <?php
-                                $message = $this->session->flashdata('message');
-                                $success= $this->session->flashdata('success');
-                                $fail= $this->session->flashdata('fail');
-                                
-                                if (isset($message)) {
-                                    if ($message != ' ') {
-                                        ?>
+
+
+                                    <?php
+                                    $message = $this->session->flashdata('message');
+                                    $success = $this->session->flashdata('success');
+                                    $fail = $this->session->flashdata('fail');
+
+                                    if (isset($message)) {
+                                        if ($message != ' ') {
+                                            ?>
                                         <div class="alert alert-success">       <!--green model-->
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
                                             <?= $message ?>
@@ -49,7 +49,7 @@
                                         <?php
                                     }
                                 }
-                                 if (isset($success)) {
+                                if (isset($success)) {
                                     if ($success != ' ') {
                                         ?>
                                         <div class="alert alert-success">       <!--green model-->
@@ -78,7 +78,7 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                            <th>Check</th>
+                                                <th>Check</th>
                                                 <th>Sr No.</th>
                                                 <th>Title</th>
                                                 <th>file</th>
@@ -91,21 +91,21 @@
                                         <tbody>
                                             <?PHP
                                             $cnt = 1;
-
                                             foreach ($event_list as $event) {
                                                 ?>
                                                 <tr>
                                                     <td><input type="checkbox" name="event_id[]"  value="<?php echo $event->event_id; ?>" /></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $event->title ?></td>
-                                                    <td><?PHP echo $event->file ?></td>
-                                                     <td><?PHP echo $event->date ?></td>
-                                                   <td><image height="100" width="100" src="<?PHP echo base_url()?>event_image/<?php echo $event->image?>">
-                                                    </td>
-                                                    <td><?PHP echo $event->description ?></td>
-                                                    
+                                                 <td><?PHP echo $event->file ?></td>
+                                               <td><?PHP echo $event->date ?></td>
+                                                <td><image height="100" width="100" src=" <?php echo $this->config->item('static_url2') ?>event_image/<?php echo $event->image ?>">
                                                   
-                                                   
+                                                               </td>
+                                                    <td><?PHP echo $event->description ?></td>
+
+
+
                                                     <td><?php
                                                         if ($event->event_status == '0') {
                                                             ?>
@@ -130,7 +130,7 @@
                                                                 <li>    <a href="<?php echo site_url("event/edit_data/$event->event_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                                 <li>    <a href="<?php echo site_url("event/delete/$event->event_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
-                                                                    if ($news->news_status == '0') {
+                                                                    if ($event->event_status == '0') {
                                                                         ?>
                                                                         <a href="<?php echo site_url("event/update_status_active/$event->event_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                         <?php
@@ -149,12 +149,12 @@
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                        <h4 class="modal-title"><label>News Data</label></h4>
+                                                                        <h4 class="modal-title"><label>Event Data</label></h4>
                                                                     </div>
                                                                     <div class="modal-body">
 
                                                                         <table  width="60%">
-                                                                                                                           <tr>
+                                                                            <tr>
                                                                                 <td><label>Event ID</label></td>
                                                                                 <td>:&nbsp;&nbsp;<?php echo $event->event_id ?></td>
                                                                             </tr>
@@ -174,8 +174,8 @@
                                                                                 <td><label>Description</label></td>
                                                                                 <td>:&nbsp;&nbsp;<?php echo $event->description ?></td>
                                                                             </tr>
-                                                                            
-                         </table>
+
+                                                                        </table>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -252,17 +252,17 @@
                 $('#myModal' + id).modal('show');
             }
         </script>
-       <script>
+        <script>
             $(function ()
             {
                 window.setTimeout(function ()
                 {
-                    $(".alert").fadeTo(500, 0).slideUp(500, function ()  {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function () {
                         $(this).remove();
                     });
                 }, 4000);
-                
-                 $("#example1").datatable();
+
+                $("#example1").datatable();
             });
         </script>
 

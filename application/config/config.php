@@ -25,7 +25,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['base_url'] = 'http://localhost/creativecafe/';
 $config['static_url'] = 'http://localhost/AdminLTE/';
-
+$config['static_url1'] ='C:/wamp/www/event/';
+$config['static_url2'] ='http://localhost/event/';
 
 /*
 |--------------------------------------------------------------------------
