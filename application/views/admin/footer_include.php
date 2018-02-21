@@ -7,6 +7,7 @@
 <script src="<?php echo $this->config->item('static_url') ?>bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="<?php echo $this->config->item('static_url') ?>bower_components/fastclick/lib/fastclick.js"></script>
+
 <!-- AdminLTE App -->
 <script src="<?php echo $this->config->item('static_url') ?>dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
