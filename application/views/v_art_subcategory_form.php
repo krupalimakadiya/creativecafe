@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-$this->load->view('admin/header_include');
+       $this->load->view('admin/header_include');
         ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -10,14 +10,14 @@ $this->load->view('admin/header_include');
 
             <header class="main-header">
                 <?php
-$this->load->view('admin/header_body');
+              $this->load->view('admin/header_body');
                 ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
 $this->load->view('admin/header_body_aside');
-                ?>
+?>
             </aside>
 
 
@@ -27,8 +27,8 @@ $this->load->view('admin/header_body_aside');
                 <section class="content-header">
                     <div class="box box-info">
                         <div class="box-header with-border">
-                            <h3 class="box-title"><label>State Master</label></h3>
-                            <a href="<?php echo site_url("state/view_state") ?>" class="btn btn-primary pull-right">
+                            <h3 class="box-title"><label>Art Subcategory Master</label></h3>
+                            <a href="<?php echo site_url("art_subcategory/view_art_subcategory") ?>" class="btn btn-primary pull-right">
                                 <label class="fa fa-plus label-btn-icon"></label>
                                 &nbsp;<label class="label-btn-fonts">View Records</label>
                             </a>
@@ -39,22 +39,22 @@ $this->load->view('admin/header_body_aside');
                             if (isset($update_data)) {
                                 ?>
 
-                                <form name="statefrm" method="POST" action="<?php echo site_url("state/editp") ?>" role="form" >
-                                    <input type="hidden" name="state_id" value="<?php echo $update_data['state_id'] ?>" />
+                                <form name="art_subcategoryfrm" method="POST" action="<?php echo site_url("art_subcategory/editp") ?>" role="form" >
+                                    <input type="hidden" name="art_subcategory_id" value="<?php echo $update_data['art_subcategory_id'] ?>" />
 
                                     <!-- text input -->
                                     <div class="form-group">
-                                        <label>Country_name</label>                                     
-                                        <select name="country_id" id="country_id" class="form-control">
+                                        <label>Art Category Name</label>                                     
+                                        <select name="art_category_id" id="art_category_id" class="form-control">
                                             <?php
-                                            foreach ($country_list as $country) {
-                                                if ($country->country_id == $update_data['country_id']) {
+                                            foreach ($art_category_list as $art_category) {
+                                                if ($art_category->art_category_id == $update_data['art_category_id']) {
                                                     ?>
-                                                    <option selected value="<?php echo $update_data['country_id'] ?>"><?php echo $country->country_name ?></option>
+                                                    <option selected value="<?php echo $update_data['art_category_id'] ?>"><?php echo $art_category->art_category_name ?></option>
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <option value="<?php echo $update_data['country_id'] ?>"><?php echo $country->country_name ?></option>
+                                                    <option value="<?php echo $update_data['art_category_id'] ?>"><?php echo $art_category->art_category_name ?></option>
                                                     <?php
                                                 }
                                             }
@@ -62,8 +62,8 @@ $this->load->view('admin/header_body_aside');
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>State Name</label>
-                                        <input type="text" class="form-control"name="state_name" value="<?php echo $update_data['state_name'] ?>" >
+                                        <label>Art Subcategory Name</label>
+                                        <input type="text" class="form-control"name="art_subcategory_name" value="<?php echo $update_data['art_subcategory_name'] ?>" >
 
                                     </div>
 
@@ -75,17 +75,17 @@ $this->load->view('admin/header_body_aside');
                             } else {
                                 ?>
 
-                                <form name="statefrm" method="POST" action="<?php echo site_url("state/addp") ?>" role="form" >
+                                <form name="art_subcategoryfrm" method="POST" action="<?php echo site_url("art_subcategory/addp") ?>" role="form" >
 
                                     <!-- text input -->
                                     <div class="form-group">
-                                        <label>Select Country_name</label>
-                                        <select name="country_id" class="form-control">
+                                        <label>Select Art_category Name</label>
+                                        <select name="art_category_id" class="form-control">
                                             <option >--select--</option>
                                             <?php
-                                            foreach ($country_list as $country) {
+                                            foreach ($art_category_list as $art_category) {
                                                 ?>
-                                                <option value="<?php echo $country->country_id ?>" ><?php echo $country->country_name ?></option>
+                                                <option value="<?php echo $art_category->art_category_id ?>" ><?php echo $art_category->art_category_name ?></option>
                                                 <?php
                                             }
                                             ?>
@@ -93,8 +93,8 @@ $this->load->view('admin/header_body_aside');
                                     </div>
 
                                     <div class="form-group">
-                                        <label>State_name</label>
-                                        <input type="text" class="form-control"name="state_name"  placeholder="Enter State Name....">
+                                        <label>Art Subcategory Name</label>
+                                        <input type="text" class="form-control"name="art_subcategory_name"  placeholder="Enter State Name....">
                                     </div>
 
                                     <div class="form-group">
@@ -119,7 +119,7 @@ $this->load->view('admin/header_body_aside');
 
             <footer class="main-footer">
                 <?php
-$this->load->view('admin/footer_body');
+               $this->load->view('admin/footer_body');
                 ?>
             </footer>
 
@@ -130,7 +130,7 @@ $this->load->view('admin/footer_body');
         </div>
         <!-- ./wrapper -->
         <?php
-$this->load->view('admin/footer_include');
-        ?>
+        $this->load->view('admin/footer_include');                
+?>
     </body>
 </html>

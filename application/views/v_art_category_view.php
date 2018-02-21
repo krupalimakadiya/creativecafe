@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-        include('admin/header_include.php');
+       $this->load->view('admin/header_include');
         ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -11,14 +11,14 @@
 
             <header class="main-header">
                 <?php
-                include('admin/header_body.php');
+$this->load->view('admin/header_body');
                 ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-                include('admin/header_body_aside.php');
-                ?>
+                $this->load->view('admin/header_body_aside');
+?>
             </aside>
 
             <!-- Content Wrapper. Contains page content -->
@@ -31,9 +31,9 @@
                             <div class="box-header with-border">
                                 <h3 class="box-title"><label>Art Category Master</label></h3>
                                 <p align="right">
-                                    <a href="<?php echo site_url("category/add_category") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
-                                    <a href="<?php echo site_url("category/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
-                                    <a href="<?php echo site_url("category/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
+                                    <a href="<?php echo site_url("art_category/add_art_category") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
+                                    <a href="<?php echo site_url("art_category/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
+                                    <a href="<?php echo site_url("art_category/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
 
                                 <?php
                                 $message = $this->session->flashdata('message');
@@ -76,7 +76,7 @@
 
 
                             <div class="box-body">
-                                <form name="frm" method="post" action="<?php echo site_url('category/deletemultiple'); ?>">
+                                <form name="frm" method="post" action="<?php echo site_url('art_category/deletemultiple'); ?>">
 
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
@@ -91,14 +91,14 @@
                                         <tbody>
                                             <?PHP
                                             $cnt = 1;
-                                            foreach ($category_list as $category) {
+                                            foreach ($art_category_list as $art_category) {
                                                 ?>
                                                 <tr>
-                                                    <td><input type="checkbox" name="art_category_id[]" value="<?php echo $category->art_category_id ?>"/></td>
+                                                    <td><input type="checkbox" name="art_category_id[]" value="<?php echo $art_category->art_category_id ?>"/></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
-                                                    <td><?PHP echo $category->art_category_name ?></td>
+                                                    <td><?PHP echo $art_category->art_category_name ?></td>
                                                     <td><?php
-                                                        if ($category->status == '0') {
+                                                        if ($art_category->art_category_status == '0') {
                                                             ?>
                                                             <i class="glyphicon glyphicon-remove" style="color:red"></i>
                                                             <?php
@@ -117,24 +117,24 @@
                                                             </button>
 
                                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                                <li> <a onclick="openView(<?= $category->art_category_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
-                                                                <li>    <a href="<?php echo site_url("category/edit_data/$category->art_category_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
-                                                                <li>    <a href="<?php echo site_url("category/delete/$category->art_category_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
+                                                                <li> <a onclick="openView(<?= $art_category->art_category_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                                <li>    <a href="<?php echo site_url("art_category/edit_data/$art_category->art_category_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
+                                                                <li>    <a href="<?php echo site_url("art_category/delete/$art_category->art_category_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
-                                                                    if ($category->status == '0') {
+                                                                    if ($art_category->art_category_status == '0') {
                                                                         ?>
-                                                                        <a href="<?php echo site_url("category/update_status_active/$category->art_category_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
+                                                                        <a href="<?php echo site_url("art_category/update_art_category_status_active/$art_category->art_category_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                         <?php
                                                                     } else {
                                                                         ?>
-                                                                        <a href="<?php echo site_url("category/update_status_deactive/$category->art_category_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
+                                                                        <a href="<?php echo site_url("art_category/update_art_category_status_deactive/$art_category->art_category_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
                                                                         <?php
                                                                     }
                                                                     ?></li>
                                                             </ul>
                                                         </div>
 
-                                                        <div id="myModal<?= $category->art_category_id ?>" class="modal fade" role="dialog">
+                                                        <div id="myModal<?= $art_category->art_category_id ?>" class="modal fade" role="dialog">
                                                             <div class="modal-dialog">
                                                                 <!-- Modal content-->
                                                                 <div class="modal-content">
@@ -146,11 +146,11 @@
                                                                         <table  width="40%">
                                                                             <tr>
                                                                                 <td><label>Category ID</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $category->art_category_id ?></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $art_category->art_category_id ?></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td><label>Category Name</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $category->art_category_name ?></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $art_category->art_category_name ?></td>
                                                                             </tr>
 
                                                                         </table>
@@ -214,8 +214,8 @@
 
             <footer class="main-footer">
                 <?php
-                include('admin/footer_body.php');
-                ?>
+          $this->load->view('admin/footer_body');
+      ?>
             </footer>
 
 
@@ -225,7 +225,7 @@
         </div>
         <!-- ./wrapper -->
         <?php
-        include('admin/footer_include.php');
+$this->load->view('admin/footer_include');
         ?>
         <script type="text/javascript">
             function openView(id) {

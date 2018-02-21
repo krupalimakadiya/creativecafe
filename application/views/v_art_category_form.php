@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-        include('admin/header_include.php');
+       $this->load->view('admin/header_include');
         ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -10,14 +10,14 @@
 
             <header class="main-header">
                 <?php
-                include('admin/header_body.php');
-                ?>
+              $this->load->view('admin/header_body');
+  ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-                include('admin/header_body_aside.php');
-                ?>
+                $this->load->view('admin/header_body_aside');
+?>
             </aside>
 
 
@@ -34,7 +34,7 @@
                                 <div class="box box-info">
                                     <div class="box-header with-border">
                                         <h3 class="box-title"><label> Art Category Master</label></h3>
-                                        <a href="<?php echo site_url("category/view_category") ?>" class="btn btn-primary pull-right">
+                                        <a href="<?php echo site_url("art_category/view_art_category") ?>" class="btn btn-primary pull-right">
                                             <label class="fa fa-icon label-btn-icon"></label>
                                             &nbsp;<label class="label-btn-fonts">View Records</label>
                                         </a>
@@ -48,7 +48,7 @@
                                         <?php
                                         if (isset($update_data)) {
                                             ?>
-                                            <form role="form" name="categoryfrm" method="POST" action="<?php echo site_url("category/editp") ?>">
+                                            <form role="form" name="categoryfrm" method="POST" action="<?php echo site_url("art_category/editp") ?>">
                                                 <!-- text input -->
                                                 <input type="hidden" class="form-control" name="art_category_id" value="<?php echo $update_data['art_category_id'] ?>">
 
@@ -65,7 +65,7 @@
                                             <?php
                                         } else {
                                             ?>
-                                            <form role="form" name="categoryfrm" method="POST" action="<?php echo site_url("category/addp") ?>">
+                                            <form role="form" name="categoryfrm" method="POST" action="<?php echo site_url("art_category/addp") ?>">
                                                 <!-- text input -->
                                                 <div class="form-group">
                                                     <label> Art category name</label>
@@ -93,8 +93,8 @@
 
                             <footer class="main-footer">
                                 <?php
-                                include('admin/footer_body.php');
-                                ?>
+                       $this->load->view('admin/footer_body');
+         ?>
                             </footer>
 
 
@@ -104,7 +104,7 @@
                         </div>
                         <!-- ./wrapper -->
                         <?php
-                        include('admin/footer_include.php');
+$this->load->view('admin/footer_include');
                         ?>
                         </body>
                         </html>

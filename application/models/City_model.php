@@ -58,19 +58,19 @@ class City_model extends CI_model {
         return $query->result();
     }
 
-    public function update_active($city_id, $status) {
+    public function update_active($city_id, $city_status) {
         $data = array(
             'city_id' => $city_id,
-            'status' => 1
+            'city_status' => 1
         );
         $this->db->where('city_id', $city_id);
         $this->db->update('city_master', $data);
     }
 
-    public function update_deactive($city_id, $status) {
+    public function update_deactive($city_id, $city_status) {
         $data = array(
             'city_id' => $city_id,
-            'status' => 0
+            'city_status' => 0
         );
         $this->db->where('city_id', $city_id);
         $this->db->update('city_master', $data);

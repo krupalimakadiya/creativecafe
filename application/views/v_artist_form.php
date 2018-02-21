@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-        include('admin/header_include.php');
+       $this->load->view('admin/header_include');
         ?>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <script>
@@ -54,13 +54,14 @@
 
             <header class="main-header">
                 <?php
-                include('admin/header_body.php');
+$this->load->view('admin/header_body');
                 ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-                include('admin/header_body_aside.php');
+                $this->load->view('admin/header_body_aside');
+
                 ?>
             </aside>
 
@@ -84,7 +85,7 @@
                             if (isset($update_data)) {
                                 ?>
 
-                                <form name="artistfrm" method="POST" action="<?php echo site_url("artist/editp") ?>" role="form" >
+                                <form name="artistfrm" method="POST" action="<?php echo site_url("artist/editp") ?>" role="form" enctype="multipart/form-data">
                                     <input type="hidden" name="artist_id" value="<?php echo $update_data['artist_id'] ?>" />
                                     <div class="form-group">
                                         <label>First name</label>
@@ -94,24 +95,7 @@
                                         <label>Last name</label>
                                         <input type="text" class="form-control" name="last_name"  value="<?php echo $update_data['last_name'] ?>">
                                     </div>
-                                    <div class="form-group">
-                                    <label>Art Category Name</label>                                     
-                                        <select name="art_category_id" id="art_category_id" class="form-control">
-                                            <?php
-                                            foreach ($category_list as $category) {
-                                                if ($category->art_category_id == $update_data['art_category_id']) {
-                                                    ?>
-                                                    <option selected value="<?php echo $category->art_category_id ?>"><?php echo $category->art_category_name ?></option>
-                                                    <?php
-                                                } else {
-                                                    ?>
-                                                    <option value="<?php echo $category->art_category_id ?>"><?php echo $category->art_category_name ?></option>
-                                                    <?php
-                                                }
-                                            }
-                                            ?>
-                                        </select></div>
-
+                 
                                     <div class="form-group">
                                         <label>Mobile</label>
                                         <input type="text" class="form-control" name="mobile"  value="<?php echo $update_data['mobile'] ?>">
@@ -123,6 +107,9 @@
                                     <div class="form-group">
                                         <label>Password</label>
                                         <input type="password" class="form-control" name="password"  value="<?php echo $update_data['password'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="file" class="form-control" name="artist_profile" value="<?php echo $update_data['artist_profile']?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Country_name</label>                                     
@@ -186,7 +173,7 @@
                                 <?php
                             } else {
                                 ?>
-                                <form name="artistfrm" method="POST" action="<?php echo site_url("artist/addp") ?>" role="form" >
+                            <form name="artistfrm" method="POST" action="<?php echo site_url("artist/addp") ?>" role="form" enctype="multipart/form-data" >
                                     <div class="form-group">
                                         <label>First name</label>
                                         <input type="text" class="form-control" name="first_name"   placeholder="Enter Your First Name...">
@@ -194,20 +181,6 @@
                                     <div class="form-group">
                                         <label>Last name</label>
                                         <input type="text" class="form-control" name="last_name"  placeholder="Enter Your last Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Art Category Name</label>
-                                        <!--<input type="text" class="form-control" name="art_category_id" placeholder="Enter your art category">-->
-                                        <select name="art_category_id" class="form-control" id="art_category_id">
-                                            <option value="">--Select--</option>
-                                            <?php
-                                                                            foreach ($category_list as $category) {
-                                                                                ?>
-                                            <option value="<?php echo $category->art_category_id?>"><?php echo $category->art_category_name ?></option>
-                                            <?php
-                                                                            }
-                                            ?>                                            
-                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Mobile</label>
@@ -221,6 +194,11 @@
                                         <label>Password</label>
                                         <input type="password" class="form-control" name="password"   placeholder="Enter your password...">
                                     </div>
+                                    <div class="form-group">
+                                        <label>Profile Picture</label>
+                                        <input type="file" class="form-control" name="artist_profile">
+                                    </div>
+                                
                                     <div class="form-group">
                                         <label>Select Country_name</label>
                                         <select name="country_id" class="form-control" id="country_id" required="">
@@ -272,8 +250,9 @@
 
     <footer class="main-footer">
         <?php
-        include('admin/footer_body.php');
-        ?>
+$this->load->view('admin/footer_body');
+
+?>
     </footer>
 
 
@@ -283,7 +262,8 @@
 </div>
 <!-- ./wrapper -->
 <?php
-include('admin/footer_include.php');
+$this->load->view('admin/footer_include');
+
 ?>
 </body>
 </html>

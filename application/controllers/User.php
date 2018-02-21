@@ -37,11 +37,11 @@ class User extends MY_Controller {
         $user_data = $this->user_model->check_data($_POST['first_name'],$_POST['last_name'],$_POST['country_id'],$_POST['state_id'],$_POST['city_id'],$_POST['pincode'],$_POST['email'],$_POST['mobile'],$_POST['password']);
         if (isset($user_data)) {
             $this->session->set_flashdata('message','record already exists...');            
-            redirect('user/index');
+            redirect('user');
         } else {
             $this->user_model->insert($_POST['first_name'],$_POST['last_name'],$_POST['country_id'],$_POST['state_id'],$_POST['city_id'],$_POST['pincode'],$_POST['email'],$_POST['mobile'],$_POST['password']);
              $this->session->set_flashdata('message','insert successfully...');
-            redirect('user/index');
+            redirect('user');
         }
     }
     
@@ -67,7 +67,7 @@ class User extends MY_Controller {
 
     public function editp() {
         $this->user_model->update_data($_POST['user_id'], $_POST['first_name'],$_POST['last_name'],$_POST['country_id'],$_POST['state_id'],$_POST['city_id'],$_POST['pincode'],$_POST['email'],$_POST['mobile'],$_POST['password']);
-        redirect("user/index");
+        redirect("user");
     }
 
     public function update_data($user_id) {
@@ -84,19 +84,19 @@ class User extends MY_Controller {
   public function delete($user_id) {
         $this->user_model->delete($user_id);
           $this->session->set_flashdata('message','record deleted successfully...');            
-        redirect("user/index");
+        redirect("user");
     }
     
     public function update_status_active($user_id) {
         $status = $this->input->get('user_status');
         $this->user_model->update_active($user_id, $user_status);
-        redirect('user/index');
+        redirect('user');
     }
 
     public function update_status_deactive($user_id) {
         $status = $this->input->get('user_status');
         $this->user_model->update_deactive($user_id, $user_status);
-        redirect('user/index');
+        redirect('user');
     }
      public function deletemultiple() 
     { 
@@ -131,7 +131,7 @@ class User extends MY_Controller {
                     } 
             $i++; 
         } 
-        redirect("user/index"); 
+        redirect("user"); 
     }
 
         public function importp() {
@@ -212,7 +212,7 @@ class User extends MY_Controller {
         }
         $total = ($records - 1);
         $this->session->set_flashdata('message', $counter . " record(s) out of " . ($total == -1 ? 0 : $total) . " successfully imported.");
-        redirect("user/index");
+        redirect("user");
     }
     public function export()
     {

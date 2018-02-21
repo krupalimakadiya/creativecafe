@@ -36,6 +36,7 @@ public function do_upload() {
             $error = array('error' => $this->upload->display_errors());
         } else {
 
+<<<<<<< HEAD
             $data = array('upload_data' => $this->upload->data());
               $data = array('title' => $_POST['title'],
                   'date' => $_POST['date'],
@@ -43,6 +44,36 @@ public function do_upload() {
                   'description' => $_POST['description']);
           
             $this->news_model->insert($data);
+=======
+         public function do_upload()
+        {
+                $config['upload_path']          = './news_image/';
+                $config['allowed_types']        = 'gif|jpg|png';
+                $config['max_size']             = 5000;
+                $config['max_width']            = 5024;
+                $config['max_height']           = 6468;
+                $this->load->Model('news_model');
+                $data = array('title' => $_POST['title'],'date' => $_POST['date']
+                        ,'description' => $_POST['description']);
+                 $userid = $this->news_model->insert($data);
+                
+                $filename = $_FILES["image"]["name"];
+                 $extension = pathinfo($filename, PATHINFO_EXTENSION);
+                  $newname= $userid.".".$extension;
+                //   die();
+                 $config['file_name'] = $newname;
+                 $this->load->library('upload', $config);
+                   if (!$this->upload->do_upload('image')) {
+                       $error = array('error' => $this->upload->display_errors());
+                         $this->load->view('v_news_view', $error);
+                        }
+                   else {
+                      
+                        $data = array('upload_data' => $this->upload->data());
+                        $this->news_model->update_filename($userid,$newname);
+                        redirect("news");
+                        }
+>>>>>>> 1071d8185190d31b30d65dd0504f4599c893e5c4
         }
 
         redirect('news/index');
@@ -51,18 +82,18 @@ public function do_upload() {
   public function delete($news_id) {
         $this->news_model->delete($news_id);
         $this->session->set_flashdata('message','record deleted successfully...');            
-        redirect("news/index");
+        redirect("news");
     }
     public function update_status_active($news_id) {
         $news_status = $this->input->get('news_status');
         $this->news_model->update_active($news_id, $news_status);
-        redirect('news/index');
+        redirect('news');
     }
 
     public function update_status_deactive($news_id) {
         $news_status = $this->input->get('news_status');
         $this->news_model->update_deactive($news_id, $news_status);
-        redirect('news/index');
+        redirect('news');
     }
     
    public function deletemultiple() 
@@ -106,7 +137,7 @@ public function do_upload() {
             } 
             $i++; 
         } 
-        redirect("news/index"); 
+        redirect("news"); 
     }
 
         public function edit_data($news_id) {
@@ -153,7 +184,11 @@ public function do_upload() {
       /*  $this->news_model->update_data($_POST['news_id'],$_POST['title'],$_POST['date'],$_POST['image'],$_POST['description']);
         $this->session->set_flashdata('message', 'record updated successfully...');
 
+<<<<<<< HEAD
         redirect("news/index");*/
+=======
+        redirect("news");
+>>>>>>> 1071d8185190d31b30d65dd0504f4599c893e5c4
     }
 
 }

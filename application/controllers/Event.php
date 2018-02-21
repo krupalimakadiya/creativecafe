@@ -20,6 +20,7 @@ class Event extends My_Controller {
         $this->load->view('v_event_frm', $data);
     }
 
+<<<<<<< HEAD
     public function do_upload() {
 
 
@@ -44,6 +45,38 @@ class Event extends My_Controller {
             if (!$this->upload->do_upload('image')) {
                 $this->session->set_flashdata('message', $this->upload->display_errors());
             }
+=======
+         public function do_upload()
+        {
+                $config['upload_path']          = './event_image/';
+                $config['upload_path']          = './event_file/';
+                $config['allowed_types']        = 'pdf|doc';
+                $config['allowed_types']        = 'gif|jpg|png';
+                $config['max_size']             = 5000;
+                $config['max_width']            = 5024;
+                $config['max_height']           = 6468;
+                $this->load->Model('event_model');
+                $data = array('title' => $_POST['title'],'file' => $_POST['file'],'date' => $_POST['date']
+                        ,'description' => $_POST['description']);
+                 $userid = $this->event_model->insert($data);
+                
+                $filename = $_FILES["image"]["name"];
+                 $extension = pathinfo($filename, PATHINFO_EXTENSION);
+                  $newname= $userid.".".$extension;
+                //   die();
+                 $config['file_name'] = $newname;
+                 $this->load->library('upload', $config);
+                   if (!$this->upload->do_upload('image')) {
+                       $error = array('error' => $this->upload->display_errors());
+                         $this->load->view('v_event_view', $error);
+                        }
+                   else {
+                      
+                        $data = array('upload_data' => $this->upload->data());
+                        $this->event_model->update_filename($userid,$newname);
+                        redirect("event");
+                        }
+>>>>>>> 1071d8185190d31b30d65dd0504f4599c893e5c4
         }
 
         if (!empty($_FILES['file']['name'])) {
@@ -90,21 +123,27 @@ class Event extends My_Controller {
 
     public function delete($event_id) {
         $this->event_model->delete($event_id);
+<<<<<<< HEAD
         $this->session->set_flashdata('message', 'record deleted successfully...');
         redirect("event/index");
+=======
+        $this->session->set_flashdata('message','record deleted successfully...');            
+        redirect("event");
+>>>>>>> 1071d8185190d31b30d65dd0504f4599c893e5c4
     }
 
     public function update_status_active($event_id) {
         $event_status = $this->input->get('event_status');
         $this->event_model->update_active($event_id, $event_status);
-        redirect('event/index');
+        redirect('event');
     }
 
     public function update_status_deactive($event_id) {
         $event_status = $this->input->get('event_status');
         $this->event_model->update_deactive($event_id, $event_status);
-        redirect('event/index');
+        redirect('event');
     }
+<<<<<<< HEAD
 
     public function deletemultiple() {
         $event_id = $_POST['event_id'];
@@ -134,6 +173,51 @@ class Event extends My_Controller {
             $i++;
         }
         redirect("event/index");
+=======
+    
+   public function deletemultiple() 
+    {
+        $event_id = $_POST['event_id']; 
+        $i = 0; 
+        while($i<count($event_id)) 
+        { 
+            if(isset($_POST['submit'])) 
+            {           
+                if($this->event_model->delete($event_id[$i])) 
+                { 
+                    $this->session->set_flashdata('success', 'Event Detail Is Delete Successfully..'); 
+                } 
+                else 
+                { 
+                    $this->session->set_flashdata('fail', 'Event Detail Is Not Delete. Please Try Again.'); 
+                } 
+            } 
+            if(isset($_POST['submit1'])) 
+            { 
+                if($this->event_model->update_active($event_id[$i])) 
+                {             
+                    $this->session->set_flashdata('success', 'Event Detail Is Deactivated Successfully..'); 
+                } 
+                else 
+                { 
+                    $this->session->set_flashdata('fail', 'Event Detail Is Not Deactivated.. Please Try Again.'); 
+                } 
+            } 
+            if(isset($_POST['submit2'])) 
+            { 
+                if($this->event_model->update_deactive($event_id[$i])) 
+                {             
+                    $this->session->set_flashdata('success', 'Event Detail Is Activated Successfully..'); 
+                } 
+                else 
+                { 
+                    $this->session->set_flashdata('fail', 'Event Detail Is Not Activated.. Please Try Again.'); 
+                } 
+            } 
+            $i++; 
+        } 
+        redirect("event"); 
+>>>>>>> 1071d8185190d31b30d65dd0504f4599c893e5c4
     }
 
     public function edit_data($event_id) {
@@ -147,6 +231,7 @@ class Event extends My_Controller {
         $this->event_model->update_data($_POST['event_id'], $_POST['title'], $_POST['file'], $_POST['date'], $_POST['image'], $_POST['description']);
         $this->session->set_flashdata('message', 'record updated successfully...');
 
+<<<<<<< HEAD
         redirect("event/index");
     }*/
     public function editp() 
@@ -222,6 +307,9 @@ class Event extends My_Controller {
         $this->event_model->update_data($_POST['event_id'], $_POST['title'], $_POST['file'], $_POST['date'], $_POST['image'], $_POST['description']);
       
         redirect("event/index");*/
+=======
+        redirect("event");
+>>>>>>> 1071d8185190d31b30d65dd0504f4599c893e5c4
     }
 
 

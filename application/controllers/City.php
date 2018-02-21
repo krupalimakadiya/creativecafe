@@ -34,11 +34,11 @@ class city extends MY_Controller {
         $city_data = $this->city_model->check_data($_POST['country_id'], $_POST['state_id'], $_POST['city_name']);
         if (isset($city_data)) {
             $this->session->set_flashdata('message', 'record already exists...');
-            redirect('city/index');
+            redirect('city');
         } else {
             $this->city_model->insert($_POST['country_id'], $_POST['state_id'], $_POST['city_name']);
             $this->session->set_flashdata('message', 'insert successfully...');
-            redirect('city/index');
+            redirect('city');
         }
     }
 
@@ -52,7 +52,7 @@ class city extends MY_Controller {
 
     public function editp() {
         $this->city_model->update_data($_POST['city_id'], $_POST['country_id'], $_POST['state_id'], $_POST['city_name']);
-        redirect("city/index");
+        redirect("city");
     }
 
     public function update_data($cityid) {
@@ -66,7 +66,7 @@ class city extends MY_Controller {
     public function delete($city_id) {
         $this->city_model->delete($city_id);
         $this->session->set_flashdata('message', 'record deleted successfully...');
-        redirect("city/index");
+        redirect("city");
     }
 
     public function drop_state() {
@@ -76,15 +76,15 @@ class city extends MY_Controller {
     }
 
     public function update_status_active($city_id) {
-        $status = $this->input->get('status');
-        $this->city_model->update_active($city_id, $status);
-        redirect('city/index');
+        $city_status = $this->input->get('city_status');
+        $this->city_model->update_active($city_id, $city_status);
+        redirect('city');
     }
 
     public function update_status_deactive($city_id) {
-        $status = $this->input->get('status');
-        $this->city_model->update_deactive($city_id, $status);
-        redirect('city/index');
+        $city_status = $this->input->get('city_status');
+        $this->city_model->update_deactive($city_id, $city_status);
+        redirect('city');
     }
     
     public function importp() {
@@ -131,7 +131,7 @@ class city extends MY_Controller {
         }
         $total = ($records - 1);
         $this->session->set_flashdata('message', $counter . " record(s) out of " . ($total == -1 ? 0 : $total) . " successfully imported.");
-        redirect("city/index");
+        redirect("city");
     }
     
     public function export()
@@ -174,7 +174,7 @@ class city extends MY_Controller {
             }
             $i++;
         }
-        redirect("city/index");
+        redirect("city");
     }
 
 
