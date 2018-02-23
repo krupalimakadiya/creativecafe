@@ -6,7 +6,17 @@ class Post_model extends CI_model {
 
     public function getpostlist()
     {
-        $query = $this->db->query("select * from post_master as p, artist_master as artist, art_category_master as art where p.artist_id=artist.artist_id AND p.art_category_id=art.art_category_id");
+        $query = $this->db->query("select * from 
+                post_master as p,
+                artist_master as artist,
+                art_category_master as art_category, 
+                art_subcategory_master as art_subcategory, 
+                art_subcategory2_master as art_subcategory2 
+                where 
+                p.artist_id=artist.artist_id AND 
+                p.art_category_id=art_category.art_category_id AND 
+                p.art_subcategory_id=art_subcategory.art_subcategory_id AND
+                p.art_subcategory2_id=art_subcategory2.art_subcategory2_id");
         return $query->result();
     }
     public function getartistlist() {
@@ -14,18 +24,18 @@ class Post_model extends CI_model {
         return $query->result();
     }
     
-          public function getcountryid($country_name) {
-      $query = $this->db->query("select * from country_master where country_name='$country_name'");
+          public function getartcategoryid($art_category_name) {
+      $query = $this->db->query("select * from art_category_master where country_name='$art_category_name'");
       return $query->row_array();
       }
   
-          public function getstateid($state_name) {
-      $query = $this->db->query("select * from state_master where state_name='$state_name'");
+          public function getartsubcategoryid($art_subcategory_name) {
+      $query = $this->db->query("select * from art_subcategory_master where state_name='$art_subcategory_name'");
       return $query->row_array();
       }
   
-          public function getcityid($city_name) {
-      $query = $this->db->query("select * from city_master where city_name='$city_name'");
+          public function getartsubcategory2id($art_subcategory2_name) {
+      $query = $this->db->query("select * from art_subcategory2_master where city_name='$art_subcategory2_name'");
       return $query->row_array();
       }
   

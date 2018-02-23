@@ -36,15 +36,13 @@ public function do_upload() {
             $error = array('error' => $this->upload->display_errors());
         } else {
 
-<<<<<<< HEAD
             $data = array('upload_data' => $this->upload->data());
               $data = array('title' => $_POST['title'],
                   'date' => $_POST['date'],
                    'image'=>$newfilename,  
-                  'description' => $_POST['description']);
-          
+                  'description' => $_POST['description']);              
             $this->news_model->insert($data);
-=======
+}}
          public function do_upload()
         {
                 $config['upload_path']          = './news_image/';
@@ -73,8 +71,7 @@ public function do_upload() {
                         $this->news_model->update_filename($userid,$newname);
                         redirect("news");
                         }
->>>>>>> 1071d8185190d31b30d65dd0504f4599c893e5c4
-        }
+//      }
 
         redirect('news/index');
     }

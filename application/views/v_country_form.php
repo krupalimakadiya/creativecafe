@@ -68,18 +68,6 @@
                                                     <label>country name</label>
                                                     <input type="text" class="form-control" name="country_name" placeholder="Enter your country name...">
                                                 </div>
-                                                <!-- Date range -->
-                                                <div class="form-group">
-                                                    <label>Date range:</label>
-
-                                                    <div class="input-group">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                        <input type="text" class="form-control pull-right" id="reservation">
-                                                    </div>
-                                                    <!-- /.input group -->
-                                                </div>
                                                 <div class="form-group">
                                                     <button type="submit" name="submit" class="btn btn-primary">submit
                                                     </button>

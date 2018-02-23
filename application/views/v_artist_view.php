@@ -184,7 +184,7 @@ $this->load->view('admin/header_body_aside');
                                                                             </tr> 
                                                                             <tr>
                                                                                 <td><label>Image</label></td>
-                                                                                <td>:&nbsp;&nbsp;<img src="<?php echo $this->config->item('image_url')?>\<?php echo $artist->artist_profile?>" height="100" width="100" alt="image"></td>
+                                                                                <td>:&nbsp;&nbsp;<img src="<?php echo $this->config->item('image_path')?><?php echo $artist->artist_profile?>"  height="100" width="100" alt="image"></td>
                                                                             </tr>
                                                                         </table>
                                                                     </div>

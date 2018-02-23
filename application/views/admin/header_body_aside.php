@@ -77,21 +77,13 @@
                 <i class="fa fa-circle-o"></i> <span>Event Master</span>
             </a>
         </li>
-<<<<<<< HEAD
         
         <li>
             <a href="<?PHP echo site_url('exhibition/index') ?>">
                 <i class="fa fa-circle-o"></i> <span>Exhibition Master</span>
             </a>
         </li>   
-=======
                                 
-        <!--<li>
-            <a href="<?PHP echo site_url('exibition/index') ?>">
-                <i class="fa fa-circle-o"></i> <span>Exibition Master</span>
-            </a>
-        </li>-->
->>>>>>> 1071d8185190d31b30d65dd0504f4599c893e5c4
         
                 <li>
             <a href="<?PHP echo site_url('site/index') ?>">
