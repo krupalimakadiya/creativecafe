@@ -12,12 +12,13 @@ class Login extends CI_Controller {
     public function index() {
         $this->load->view('login_frm');
     }
- public function checkdata() {
+
+    public function checkdata() {
         $checkdata = $this->login_model->validate($_POST['email'], $_POST['password']);
         if (isset($checkdata['admin_id'])) {
             $userdata = $checkdata;
             $this->session->set_userdata('admin_id', $userdata['admin_id']);
-            $this->session->set_userdata('email',$userdata['email']);
+            $this->session->set_userdata('email', $userdata['email']);
             $this->session->set_userdata('password', $userdata['password']);
             redirect('welcome');
         } else {
@@ -26,24 +27,25 @@ class Login extends CI_Controller {
         }
     }
 
-/*    public function checkdata() {
-        $this->load->model('login_model');
+    /*    public function checkdata() {
+      $this->load->model('login_model');
 
-        $email = $this->input->post('email');
-        $password = $this->input->post('password');
-        $data = $this->login_model->validate($email, $password);
+      $email = $this->input->post('email');
+      $password = $this->input->post('password');
+      $data = $this->login_model->validate($email, $password);
 
-        if (isset($data["admin_id"])) {
+      if (isset($data["admin_id"])) {
 
-            $this->session->set_userdata('admin_id', $data['admin_id']);
-            $this->session->set_userdata('email', $data['email']);
-            redirect("welcome");
-        }
+      $this->session->set_userdata('admin_id', $data['admin_id']);
+      $this->session->set_userdata('email', $data['email']);
+      redirect("welcome");
+      }
 
-        $this->session->set_flashdata('message', $data['message']);
-        redirect("login");
-    }
-*/
+      $this->session->set_flashdata('message', $data['message']);
+      redirect("login");
+      }
+     */
+
     public function logout() {
 
         $this->session->unset_userdata($data);
