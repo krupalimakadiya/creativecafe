@@ -35,14 +35,14 @@
                                     <a href="<?php echo site_url("category/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
                                     <a href="<?php echo site_url("category/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
 
-                                    <?php
-                                    $message = $this->session->flashdata('message');
-                                    $success = $this->session->flashdata('success');
-                                    $fail = $this->session->flashdata('fail');
+                                <?php
+                                $message = $this->session->flashdata('message');
+                                $success = $this->session->flashdata('success');
+                                $fail = $this->session->flashdata('fail');
 
-                                    if (isset($message)) {
-                                        if ($message != ' ') {
-                                            ?>
+                                if (isset($message)) {
+                                    if ($message != ' ') {
+                                        ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
                                             <?= $message ?>
@@ -99,7 +99,7 @@
                                                     <td><?PHP echo $category->art_category_name ?></td>
                                                     <td><?php
                                                         if ($category->status == '0') {
-                                                    ?>
+                                                            ?>
                                                             <i class="glyphicon glyphicon-remove" style="color:red"></i>
                                                             <?php
                                                         } else {
@@ -122,7 +122,7 @@
                                                                 <li>    <a href="<?php echo site_url("exhibition/delete/$exhibition->exhibition_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
                                                                     if ($category->status == '0') {
-                                                            ?>
+                                                                        ?>
                                                                         <a href="<?php echo site_url("category/update_status_active/$category->art_category_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                         <?php
                                                                     } else {
@@ -237,7 +237,7 @@
             {
                 window.setTimeout(function ()
                 {
-                    $(".alert").fadeTo(500, 0).slideUp(500, function ()  {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function () {
                         $(this).remove();
                     });
                 }, 4000);
