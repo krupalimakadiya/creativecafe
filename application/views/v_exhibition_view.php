@@ -2,8 +2,9 @@
 <html>
     <head>
         <?php
-        $this->load->view('admin/header_include');
-        ?>
+        include('admin/header_include.php');  
+          ?>
+  
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
 
@@ -11,13 +12,13 @@
 
             <header class="main-header">
                 <?php
-                $this->load->view('admin/header_body');
+$this->load->view('admin/header_body');
                 ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-                $this->load->view('admin/header_body_aside');
+$this->load->view('admin/header_body_aside');
                 ?>
             </aside>
 
@@ -29,12 +30,10 @@
                         <!-- Default box -->
                         <div class="box box-info">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><label>Exibition Master</label></h3>
+                                <h3 class="box-title"><label>Exhibition Master</label></h3>
                                 <p align="right">
-                                    <a href="<?php echo site_url("category/add_category") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
-                                    <a href="<?php echo site_url("category/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
-                                    <a href="<?php echo site_url("category/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
-
+                                    <a href="<?php echo site_url("exhibition/add_exhibition") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
+                                  
                                 <?php
                                 $message = $this->session->flashdata('message');
                                 $success = $this->session->flashdata('success');
@@ -76,14 +75,18 @@
 
 
                             <div class="box-body">
-                                <form name="frm" method="post" action="<?php echo site_url('category/deletemultiple'); ?>">
+                                <form name="frm" method="post" action="<?php echo site_url('exhibition/deletemultiple'); ?>">
 
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th>Check</th>
                                                 <th>Sr No.</th>
-                                                <th>Category Name</th>
+                                                <th>Title</th>
+                                                <th>description</th>
+                                                <th>starting_time</th>
+                                               <th>date</th>
+                                                <th>fees</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -91,14 +94,18 @@
                                         <tbody>
                                             <?PHP
                                             $cnt = 1;
-                                            foreach ($category_list as $category) {
+                                            foreach ($exhibition_list as $exhibition) {
                                                 ?>
                                                 <tr>
-                                                    <td><input type="checkbox" name="art_category_id[]" value="<?php echo $category->art_category_id ?>"/></td>
+                                                    <td><input type="checkbox" name="exhibition_id[]" value="<?php echo $exhibition->exhibition_id ?>"/></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
-                                                    <td><?PHP echo $category->art_category_name ?></td>
+                                                    <td><?PHP echo $exhibition->title ?></td>
+                                                    <td><?PHP echo $exhibition->description ?></td>
+                                                    <td><?PHP echo $exhibition->starting_time ?></td>
+                                                    <td><?PHP echo $exhibition->date ?></td>
+                                                    <td><?PHP echo $exhibition->fees ?></td>
                                                     <td><?php
-                                                        if ($category->status == '0') {
+                                                        if ($exhibition->exhibition_status == '0') {
                                                             ?>
                                                             <i class="glyphicon glyphicon-remove" style="color:red"></i>
                                                             <?php
@@ -120,37 +127,37 @@
                                                                 <li> <a onclick="openView(<?= $exhibition->exhibition_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
                                                                 <li>    <a href="<?php echo site_url("exhibition/edit_data/$exhibition->exhibition_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                                 <li>    <a href="<?php echo site_url("exhibition/delete/$exhibition->exhibition_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
-                                                                <li><?php
-                                                                    if ($category->status == '0') {
+                                                                <li><?php   
+                                                                    if ($exhibition->exhibition_status == '0') {
                                                                         ?>
-                                                                        <a href="<?php echo site_url("category/update_status_active/$category->art_category_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
+                                                                        <a href="<?php echo site_url("exhibition/update_status_active/$exhibition->exhibition_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                         <?php
                                                                     } else {
                                                                         ?>
-                                                                        <a href="<?php echo site_url("category/update_status_deactive/$category->art_category_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
+                                                                        <a href="<?php echo site_url("exhibition/update_status_deactive/$exhibition->exhibition_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
                                                                         <?php
                                                                     }
                                                                     ?></li>
                                                             </ul>
                                                         </div>
 
-                                                        <div id="myModal<?= $category->art_category_id ?>" class="modal fade" role="dialog">
+                                                        <div id="myModal<?= $exhibition->exhibition_id ?>" class="modal fade" role="dialog">
                                                             <div class="modal-dialog">
                                                                 <!-- Modal content-->
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                        <h4 class="modal-title"><label>Art Category Data</label></h4>
+                                                                        <h4 class="modal-title"><label>Exhibition Data</label></h4>
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <table  width="40%">
                                                                             <tr>
-                                                                                <td><label>Category ID</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $category->art_category_id ?></td>
+                                                                                <td><label>Exhibition ID</label></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $exhibition->exhibition_id ?></td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td><label>Category Name</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $category->art_category_name ?></td>
+                                                                                <td><label>title</label></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $exhibition->title?></td>
                                                                             </tr>
 
                                                                         </table>
@@ -214,7 +221,7 @@
 
             <footer class="main-footer">
                 <?php
-                $this->load->view('admin/footer_body');
+$this->load->view('admin/footer_body');
                 ?>
             </footer>
 
@@ -225,7 +232,7 @@
         </div>
         <!-- ./wrapper -->
         <?php
-        $this->load->view('admin/footer_include');
+$this->load->view('admin/footer_include');
         ?>
         <script type="text/javascript">
             function openView(id) {
