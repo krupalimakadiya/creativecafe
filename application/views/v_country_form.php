@@ -34,7 +34,7 @@
                                 <div class="box box-info">
                                     <div class="box-header with-border">
                                         <h3 class="box-title"><label>Country Master</label></h3>
-                                        <a href="<?php echo site_url("country/view_country") ?>" class="btn btn-primary pull-right">
+                                        <a href="<?php echo site_url("country") ?>" class="btn btn-primary pull-right">
                                             <label class="fa fa-icon label-btn-icon"></label>
                                             &nbsp;<label class="label-btn-fonts">View Records</label>
                                         </a>
@@ -74,9 +74,9 @@
                                                 </div>
                                             </form>
 
-    <?php
-}
-?>
+                                            <?php
+                                        }
+                                        ?>
                                     </div>
                                     <!-- /.box-body -->
                                 </div>
@@ -89,9 +89,9 @@
                             <!-- /.content-wrapper -->
 
                             <footer class="main-footer">
-<?php
-$this->load->view('admin/footer_body');
-?>
+                                <?php
+                                $this->load->view('admin/footer_body');
+                                ?>
                             </footer>
 
 
@@ -100,10 +100,10 @@ $this->load->view('admin/footer_body');
                             <div class="control-sidebar-bg"></div>
                         </div>
                         <!-- ./wrapper -->
-<?php
-$this->load->view('admin/footer_include');
-?>
-                      
+                        <?php
+                        $this->load->view('admin/footer_include');
+                        ?>
+
 
                         </body>
                         </html>

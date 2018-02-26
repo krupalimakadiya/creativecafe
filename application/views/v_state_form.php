@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-$this->load->view('admin/header_include');
+        $this->load->view('admin/header_include');
         ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -10,13 +10,13 @@ $this->load->view('admin/header_include');
 
             <header class="main-header">
                 <?php
-$this->load->view('admin/header_body');
+                $this->load->view('admin/header_body');
                 ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-$this->load->view('admin/header_body_aside');
+                $this->load->view('admin/header_body_aside');
                 ?>
             </aside>
 
@@ -28,7 +28,7 @@ $this->load->view('admin/header_body_aside');
                     <div class="box box-info">
                         <div class="box-header with-border">
                             <h3 class="box-title"><label>State Master</label></h3>
-                            <a href="<?php echo site_url("state/view_state") ?>" class="btn btn-primary pull-right">
+                            <a href="<?php echo site_url("state") ?>" class="btn btn-primary pull-right">
                                 <label class="fa fa-plus label-btn-icon"></label>
                                 &nbsp;<label class="label-btn-fonts">View Records</label>
                             </a>
@@ -119,7 +119,7 @@ $this->load->view('admin/header_body_aside');
 
             <footer class="main-footer">
                 <?php
-$this->load->view('admin/footer_body');
+                $this->load->view('admin/footer_body');
                 ?>
             </footer>
 
@@ -130,7 +130,7 @@ $this->load->view('admin/footer_body');
         </div>
         <!-- ./wrapper -->
         <?php
-$this->load->view('admin/footer_include');
+        $this->load->view('admin/footer_include');
         ?>
     </body>
 </html>

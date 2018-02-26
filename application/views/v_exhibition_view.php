@@ -2,15 +2,9 @@
 <html>
     <head>
         <?php
-<<<<<<< HEAD:application/views/v_exhibition_view.php
-        include('admin/header_include.php');
-    
+        include('admin/header_include.php');  
           ?>
-   
-=======
-$this->load->view('admin/header_include');
-        ?>
->>>>>>> 1071d8185190d31b30d65dd0504f4599c893e5c4:application/views/v_exibition_view.php
+  
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
 
@@ -50,7 +44,7 @@ $this->load->view('admin/header_body_aside');
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $message ?>
+                                            <?php echo  $message  ?>
                                         </div>
                                         <?php
                                     }
@@ -60,7 +54,7 @@ $this->load->view('admin/header_body_aside');
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $success ?>
+                                            <?php echo  $success ?>
                                         </div>
                                         <?php
                                     }
@@ -70,7 +64,7 @@ $this->load->view('admin/header_body_aside');
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $fail ?>
+                                            <?php echo $fail ?>
                                         </div>
                                         <?php
                                     }
@@ -212,13 +206,13 @@ $this->load->view('admin/header_body_aside');
 
                         </div>
                         <!-- /.box -->
-                        </div>
                         <!-- /.col -->
-                        </div>
+                    
                         <!-- /.row -->
-                    </section>
-
-                </section>
+                    </section> </section>
+</div>    </div>
+                        
+               
 
                 <!-- Main content -->
                 <!-- /.content -->

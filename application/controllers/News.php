@@ -42,8 +42,8 @@ public function do_upload() {
                    'image'=>$newfilename,  
                   'description' => $_POST['description']);              
             $this->news_model->insert($data);
-}}
-         public function do_upload()
+
+   /*      public function do_upload()
         {
                 $config['upload_path']          = './news_image/';
                 $config['allowed_types']        = 'gif|jpg|png';
@@ -71,7 +71,7 @@ public function do_upload() {
                         $this->news_model->update_filename($userid,$newname);
                         redirect("news");
                         }
-//      }
+//*/      }
 
         redirect('news/index');
     }
@@ -183,9 +183,7 @@ public function do_upload() {
 
 <<<<<<< HEAD
         redirect("news/index");*/
-=======
         redirect("news");
->>>>>>> 1071d8185190d31b30d65dd0504f4599c893e5c4
     }
 
 }
