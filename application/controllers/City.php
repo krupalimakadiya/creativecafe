@@ -51,8 +51,17 @@ class city extends MY_Controller {
     }
 
     public function editp() {
+                $city_data = $this->city_model->check_data($_POST['country_id'], $_POST['state_id'], $_POST['city_name']);
+        if (isset($city_data)) {
+            $this->session->set_flashdata('message', 'record already exists...');
+            redirect('city');
+        } else {
+
         $this->city_model->update_data($_POST['city_id'], $_POST['country_id'], $_POST['state_id'], $_POST['city_name']);
+        $this->session->set_flashdata('message','update succesfully');
+        
         redirect("city");
+    }
     }
 
     public function update_data($cityid) {

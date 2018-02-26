@@ -46,8 +46,7 @@ class Artist extends MY_Controller {
       } */
 
     public function addp() {
-        //$config['upload_path'] = 'upload/';
-        $config['upload_path'] = $this->config->item('image_url');
+        $config['upload_path'] = $this->config->item('image_path');
         $config['allowed_types'] = 'gif|jpg|png';
         $config['max_size'] = 800;
         $config['max_width'] = 2024;
@@ -95,8 +94,6 @@ class Artist extends MY_Controller {
 
     public function edit_data($artist_id) {
         $data['update_data'] = $this->artist_model->edit_data($artist_id);
-        //print_r($data['update_data']);
-        //die();
         $data['country_list'] = $this->country_model->getcountrylist();
         $data['state_list'] = $this->state_model->getstatelist();
         $data['city_list'] = $this->city_model->getcitylist();
@@ -110,14 +107,14 @@ class Artist extends MY_Controller {
         $config['max_size'] = 800;
         $config['max_width'] = 2024;
         $config['max_height'] = 4000;
-       $filename = $_FILES["artist_profile"]["name"];
-       
+       $filename = $_FILES["artist_profile"]["name"];       
           $extension = pathinfo($filename, PATHINFO_EXTENSION);
           $newfilename= time().$filename;
           $config['file_name']=$newfilename;
            $this->load->library('upload', $config);
         if (!$this->upload->do_upload('artist_profile')) {
             $error = array('error' => $this->upload->display_errors());
+            print_r($error);
         } else {
            
             $this->artist_model->update_data($_POST['artist_id'], $_POST['first_name'], $_POST['last_name'], $_POST['mobile'], $_POST['email'], $_POST['password'], $newfilename, $_POST['country_id'], $_POST['state_id'], $_POST['city_id'], $_POST['pincode']);

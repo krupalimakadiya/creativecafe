@@ -39,14 +39,10 @@ class User_model extends CI_model {
     }
 
     //chk if record exists in database  or not 
-    public function check_data($first_name, $last_name, $country_id, $state_id, $city_id, $pincode, $email, $mobile, $password) {
-        $query = $this->db->query("select * from user_master where first_name='$first_name' AND  last_name='$last_name' AND
-                                                             country_id='$country_id' AND 
-                                                                 state_id='$state_id' AND
-                                                                      city_id='$city_id' AND
-                                                                          pincode = '$pincode' AND
+    public function check_data($email, $mobile) {
+        $query = $this->db->query("select * from user_master where 
                                                                               email='$email'  AND
-                                                                                    mobile='$mobile' AND password='$password' ");
+                                                                                    mobile='$mobile' ");
         return $query->row_array();
     }
 

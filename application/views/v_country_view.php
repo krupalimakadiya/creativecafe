@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-       $this->load->view('admin/header_include');
+        $this->load->view('admin/header_include');
         ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -11,14 +11,13 @@
 
             <header class="main-header">
                 <?php
-          $this->load->view('admin/header_body');
-
-      ?>
+                $this->load->view('admin/header_body');
+                ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-$this->load->view('admin/header_body_aside');
+                $this->load->view('admin/header_body_aside');
                 ?>
             </aside>
 
@@ -97,8 +96,8 @@ $this->load->view('admin/header_body_aside');
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $country->country_name ?></td>
                                                     <td><?php
-                                                        if ($country->country_status == '0') {
-                                                            ?>
+                                            if ($country->country_status == '0') {
+                                                    ?>
                                                             <i class="glyphicon glyphicon-remove" style="color:red"></i>
                                                             <?php
                                                         } else {
@@ -120,8 +119,8 @@ $this->load->view('admin/header_body_aside');
                                                                 <li>    <a href="<?php echo site_url("country/edit_data/$country->country_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                                 <li>    <a href="<?php echo site_url("country/delete/$country->country_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
-                                                                    if ($country->country_status == '0') {
-                                                                        ?>
+                                                    if ($country->country_status == '0') {
+                                                            ?>
                                                                         <a href="<?php echo site_url("country/update_status_active/$country->country_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                         <?php
                                                                     } else {
@@ -212,7 +211,7 @@ $this->load->view('admin/header_body_aside');
 
             <footer class="main-footer">
                 <?php
-$this->load->view('admin/footer_body');
+                $this->load->view('admin/footer_body');
                 ?>
             </footer>
 
@@ -223,7 +222,7 @@ $this->load->view('admin/footer_body');
         </div>
         <!-- ./wrapper -->
         <?php
-$this->load->view('admin/footer_include');
+        $this->load->view('admin/footer_include');
         ?>
         <script type="text/javascript">
             function openView(id) {
@@ -235,12 +234,12 @@ $this->load->view('admin/footer_include');
             {
                 window.setTimeout(function ()
                 {
-                    $(".alert").fadeTo(500, 0).slideUp(500, function ()  {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function () {
                         $(this).remove();
                     });
                 }, 4000);
-                
-                 $("#example1").datatable();
+
+                $("#example1").datatable();
             });
         </script>
 

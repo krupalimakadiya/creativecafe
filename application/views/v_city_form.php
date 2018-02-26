@@ -126,7 +126,7 @@
                                             <?php
                                             foreach ($country_list as $country) {
                                                 ?>
-                                                <option value="<?php echo $country->country_id ?>" ><?php echo $country->country_name ?></option>
+                                                <option value="<?php echo $country->country_id ?>"><?php echo $country->country_name ?></option>
                                                 <?php
                                             }
                                             ?>

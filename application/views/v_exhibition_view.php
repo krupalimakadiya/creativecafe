@@ -45,7 +45,7 @@
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $message ?>
+                                            <?php echo  $message  ?>
                                         </div>
                                         <?php
                                     }
@@ -55,7 +55,7 @@
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $success ?>
+                                            <?php echo  $success ?>
                                         </div>
                                         <?php
                                     }
@@ -65,7 +65,7 @@
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $fail ?>
+                                            <?php echo $fail ?>
                                         </div>
                                         <?php
                                     }
@@ -199,13 +199,13 @@
 
                         </div>
                         <!-- /.box -->
-                        </div>
                         <!-- /.col -->
-                        </div>
+                    
                         <!-- /.row -->
-                    </section>
-
-                </section>
+                    </section> </section>
+</div>    </div>
+                        
+               
 
                 <!-- Main content -->
                 <!-- /.content -->

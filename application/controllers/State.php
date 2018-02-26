@@ -10,11 +10,11 @@ class State extends MY_Controller {
         $this->load->model('state_model');
     }
 
-    public function view_state() {
+    /*public function view_state() {
         $data['country_list'] = $this->country_model->getcountrylist();
         $data['state_list'] = $this->state_model->getstatelist();
         $this->load->view('v_state_view', $data);
-    }
+    }*/
 
     public function add_state() {
         $data['country_list'] = $this->country_model->getcountrylist();
@@ -51,11 +51,17 @@ class State extends MY_Controller {
     }
 
     public function editp() {
+        $state_data = $this->state_model->check_data($_POST['country_id'],$_POST['state_name']);
+        if (isset($state_data)) {
+            $this->session->set_flashdata('message','record already exists...');            
+            redirect('state');
+        } else {
+        
         $this->state_model->update_data($_POST['state_id'], $_POST['country_id'], $_POST['state_name']);
         $this->session->set_flashdata('message','update succesfully');
         redirect("state");
     }
-
+    }
     public function delete($state_id) {
         $this->state_model->delete($state_id);
           $this->session->set_flashdata('message','record deleted successfully...');            

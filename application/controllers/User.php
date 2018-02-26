@@ -34,7 +34,7 @@ class User extends MY_Controller {
     }
 
         public function addp() {
-        $user_data = $this->user_model->check_data($_POST['first_name'],$_POST['last_name'],$_POST['country_id'],$_POST['state_id'],$_POST['city_id'],$_POST['pincode'],$_POST['email'],$_POST['mobile'],$_POST['password']);
+        $user_data = $this->user_model->check_data($_POST['email'],$_POST['mobile']);
         if (isset($user_data)) {
             $this->session->set_flashdata('message','record already exists...');            
             redirect('user');
@@ -66,9 +66,16 @@ class User extends MY_Controller {
     }
 
     public function editp() {
+        $user_data = $this->user_model->check_data($_POST['email'],$_POST['mobile']);
+        if (isset($user_data)) {
+            $this->session->set_flashdata('message','record already exists...');            
+            redirect('user');
+        } else {
+        
         $this->user_model->update_data($_POST['user_id'], $_POST['first_name'],$_POST['last_name'],$_POST['country_id'],$_POST['state_id'],$_POST['city_id'],$_POST['pincode'],$_POST['email'],$_POST['mobile'],$_POST['password']);
+             $this->session->set_flashdata('message','Record Updated Successfully...');       
         redirect("user");
-    }
+    }}
 
     public function update_data($user_id) {
         $data['user_list'] = $this->user_model->getuserlist();

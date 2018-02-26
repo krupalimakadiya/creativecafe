@@ -46,7 +46,7 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-circle-o"></i> <span>Master</span>
+            <i class="fa fa-circle-o"></i> <span>Country Master</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -55,7 +55,18 @@
             <li class="active"><a href="<?PHP echo site_url('country/index') ?>"><i class="fa fa-circle-o"></i> Country Master</a></li>
             <li><a href="<?PHP echo site_url('state/index') ?>"><i class="fa fa-circle-o"></i> State Master</a></li>
             <li><a href="<?PHP echo site_url('city/index') ?>"><i class="fa fa-circle-o"></i> City Master</a></li>
-            <li><a href="<?PHP echo site_url('art_category/index')?>"><i class="fa fa-circle-o"></i> Art Category Master</a></li>
+          </ul>
+        </li>
+        
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-circle-o"></i> <span>Art Category Master</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>        
+        <ul class="treeview-menu">            
+            <li class="active"><a href="<?PHP echo site_url('art_category/index')?>"><i class="fa fa-circle-o"></i> Art Category Master</a></li>
            <li><a href="<?PHP echo site_url('art_subcategory/index')?>"><i class="fa fa-circle-o"></i> Art Subcategory Master</a></li>
            <li><a href="<?PHP echo site_url('art_subcategory2/index')?>"><i class="fa fa-circle-o"></i> Art Subcategory2 Master</a></li>                   
           </ul>
@@ -72,26 +83,18 @@
             </a>
         </li>
         
-        <li>
+        <!--<li>
             <a href="<?PHP echo site_url('event/index') ?>">
                 <i class="fa fa-circle-o"></i> <span>Event Master</span>
             </a>
-        </li>
-<<<<<<< HEAD
+        </li>-->
         
         <li>
             <a href="<?PHP echo site_url('exhibition/index') ?>">
                 <i class="fa fa-circle-o"></i> <span>Exhibition Master</span>
             </a>
         </li>   
-=======
                                 
-        <!--<li>
-            <a href="<?PHP echo site_url('exibition/index') ?>">
-                <i class="fa fa-circle-o"></i> <span>Exibition Master</span>
-            </a>
-        </li>-->
->>>>>>> 1071d8185190d31b30d65dd0504f4599c893e5c4
         
                 <li>
             <a href="<?PHP echo site_url('site/index') ?>">

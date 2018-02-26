@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-$this->load->view('admin/header_include');
+        $this->load->view('admin/header_include');
         ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -11,12 +11,12 @@ $this->load->view('admin/header_include');
             <header class="main-header">
                 <?php
                 $this->load->view('admin/header_body');
-?>
+                ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-$this->load->view('admin/header_body_aside');
+                $this->load->view('admin/header_body_aside');
                 ?>
             </aside>
             <!-- Content Wrapper. Contains page content -->
@@ -78,6 +78,8 @@ $this->load->view('admin/header_body_aside');
                                                 <th>Check</th>
                                                 <th>Id</th>
                                                 <th>Art Category Name</th>
+                                                <th>Art Subcategory Name</th>
+                                                <th>Art Subcategory2 Name</th>
                                                 <th>File Type</th>                                              
                                                 <th>Description</th>
                                                 <th>Artist ID</th>
@@ -94,6 +96,9 @@ $this->load->view('admin/header_body_aside');
                                                     <td><input type="checkbox" name="post_id[]" value="<?php echo $post->post_id ?>"</td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $post->art_category_name ?></td>
+                                                    <td><?PHP echo $post->art_subcategory_name ?></td>
+                                                    <td><?PHP echo $post->art_subcategory2_name ?></td>
+
                                                     <td><?PHP echo $post->file_type ?></td>                                                   
                                                     <td><?PHP echo $post->Description ?></td>                                                    
                                                     <td><?PHP echo $post->artist_id ?></td>                                                   
@@ -143,11 +148,19 @@ $this->load->view('admin/header_body_aside');
                                                                         <table  width="60%">
                                                                             <tr>
                                                                                 <td><label>Art Category Name</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $post->art_category_name ?></td>
+                                                                                <td>:&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $post->art_category_name ?></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><label>Art Subcategory Name</label></td>
+                                                                                <td>:&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $post->art_subcategory_name ?></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><label>Art Subcategory2 Name</label></td>
+                                                                                <td>:&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $post->art_subcategory2_name ?></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td><label>File Type</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $post->file_type ?></td>
+                                                                                <td>:&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $post->file_type ?></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td><label>Description</label></td>
@@ -158,27 +171,26 @@ $this->load->view('admin/header_body_aside');
                                                                                 <td>:&nbsp;&nbsp;<?php echo $post->artist_id ?></td>
                                                                             </tr>
                                                                             <?php
-                                                                            if($post->image)
-                                                                            {
+                                                                            if ($post->image) {
                                                                                 ?>                                                                            
-                                                                            <tr>
-                                                                                <td><label>Image</label></td>
-                                                                                <td>:&nbsp;&nbsp;<img src="<?php echo $this->config->item('post_url')?><?php echo $post->image?>" height="100" width="100" alt="image"></td>
-                                                                            </tr>
-                                                                            <?php
-                                                                            }elseif($post->project_audio){
-                                                                            ?>
-                                                                            <tr>
-                                                                                <td><label>Project Audio </label></td>
-                                                                                <td> <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="<?php echo $post->project_audio?>"></iframe>                                  </td> </tr>
-                                                                            <?php
-                                                                            }else {
-                                                                            ?>
-                                                                            <tr>
-                                                                                <td><label>Project Video</label></td>
-                                                                                <td>  <iframe width="300" height="215" src="<?php echo $post->project_video?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></td>
-  </tr>
-                                                                            <?php
+                                                                                <tr>
+                                                                                    <td><label>Image</label></td>
+                                                                                    <td>:&nbsp;&nbsp;<img src="<?php echo $this->config->item('post_url') ?><?php echo $post->image ?>" height="100" width="100" alt="image"></td>
+                                                                                </tr>
+                                                                                <?php
+                                                                            } elseif ($post->project_audio) {
+                                                                                ?>
+                                                                                <tr>
+                                                                                    <td><label>Project Audio </label></td>
+                                                                                    <td> <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="<?php echo $post->project_audio ?>"></iframe>                                  </td> </tr>
+                                                                                <?php
+                                                                            } else {
+                                                                                ?>
+                                                                                <tr>
+                                                                                    <td><label>Project Video</label></td>
+                                                                                    <td>  <iframe width="300" height="215" src="<?php echo $post->project_video ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></td>
+                                                                                </tr>
+                                                                                <?php
                                                                             }
                                                                             ?>
                                                                         </table>
@@ -239,8 +251,8 @@ $this->load->view('admin/header_body_aside');
 
         <footer class="main-footer">
             <?php
-         $this->load->view('admin/footer_body');
-   ?>
+            $this->load->view('admin/footer_body');
+            ?>
         </footer>
 
 
@@ -250,7 +262,7 @@ $this->load->view('admin/header_body_aside');
 
         <!-- ./wrapper -->
         <?php
-$this->load->view('admin/footer_include');
+        $this->load->view('admin/footer_include');
         ?>
         <script type="text/javascript">
             function openView(id) {

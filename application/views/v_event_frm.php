@@ -3,20 +3,20 @@
     <head>
         <?php
         $this->load->view('admin/header_include');
-?>
+        ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
 
             <header class="main-header">
                 <?php
-$this->load->view('admin/header_body');
+                $this->load->view('admin/header_body');
                 ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-$this->load->view('admin/header_body_aside');
+                $this->load->view('admin/header_body_aside');
                 ?>
             </aside>
 
@@ -45,7 +45,7 @@ $this->load->view('admin/header_body_aside');
                                         <?php
                                         if (isset($update_data)) {
                                             ?>
-                                            <form role="form" name="eventfrm" method="POST" action="<?php echo site_url("exhibition/editp") ?>" enctype="multipart/form-data">
+                                            <form role="form" name="eventfrm" method="POST" action="<?php echo site_url("event/editp") ?>" enctype="multipart/form-data">
                                                 <!-- text input -->
                                                 <input type="hidden" class="form-control" name="event_id" value="<?php echo $update_data['event_id'] ?>">
 
@@ -68,9 +68,9 @@ $this->load->view('admin/header_body_aside');
                                                 <div class="form-group">
                                                     <label>Description</label>
                                                     <textarea id="editor1" name="description" rows="10" cols="80" value=""><?php echo $update_data['description'] ?>
-                                                                                            </textarea>             
+                                                    </textarea>             
 
-                                                    
+
                                                 </div>
 
                                                 <div class="form-group">
@@ -91,18 +91,18 @@ $this->load->view('admin/header_body_aside');
                                                     <label>File</label>
                                                     <input type="file" class="form-control  " name="file">
                                                 </div>
-                                               
-                                                <div class="form-group">
-                <label>Date:</label>
 
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" id="datepicker" name="date">
-                </div>
-                <!-- /.input group -->
-              </div>
+                                                <div class="form-group">
+                                                    <label>Date:</label>
+
+                                                    <div class="input-group date">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date">
+                                                    </div>
+                                                    <!-- /.input group -->
+                                                </div>
                                                 <div class="form-group">
                                                     <label>Image</label>
                                                     <input type="file" class="form-control" name="image">
@@ -111,7 +111,7 @@ $this->load->view('admin/header_body_aside');
                                                 <div class="form-group">
                                                     <label>Description</label>
                                                     <textarea id="editor1" name="description" rows="10" cols="80">
-                                                            This is my textarea to be replaced with CKEditor.
+                                                                This is my textarea to be replaced with CKEditor.
                                                     </textarea>             
                                                 </div>
                                                 <div class="form-group">
@@ -132,7 +132,7 @@ $this->load->view('admin/header_body_aside');
                             <!-- /.content-wrapper -->
                             <footer class="main-footer">
                                 <?php
-$this->load->view('admin/footer_body');
+                                $this->load->view('admin/footer_body');
                                 ?>
                             </footer>
                             <!-- Add the sidebar's background. This div must be placed
@@ -141,25 +141,25 @@ $this->load->view('admin/footer_body');
                         </div>
                         <!-- ./wrapper -->
                         <?php
-$this->load->view('admin/footer_include');
+                        $this->load->view('admin/footer_include');
                         ?>
-                            <!-- Page script -->
-        <script>
-            $(function () {
-                //Date range picker with time picker
-                $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'})
-                //Date range picker
-                $('#reservation').daterangepicker()
-                //Date picker
-                $('#datepicker').datepicker({
-                    autoclose: true
-                })
-                //Timepicker
-                $('.timepicker').timepicker({
-                    showInputs: false
-                })
-            })
-        </script>
+                        <!-- Page script -->
+                        <script>
+                            $(function () {
+                                //Date range picker with time picker
+                                $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'})
+                                //Date range picker
+                                $('#reservation').daterangepicker()
+                                //Date picker
+                                $('#datepicker').datepicker({
+                                    autoclose: true
+                                })
+                                //Timepicker
+                                $('.timepicker').timepicker({
+                                    showInputs: false
+                                })
+                            })
+                        </script>
 
                         </body>
                         </html>
@@ -182,4 +182,3 @@ $this->load->view('admin/footer_include');
                         <!-- /. tools -->
                         </div>
 
-                    

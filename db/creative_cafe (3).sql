@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2018 at 05:24 PM
+-- Generation Time: Feb 25, 2018 at 05:16 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `artist_master` (
 --
 
 INSERT INTO `artist_master` (`artist_id`, `first_name`, `last_name`, `mobile`, `email`, `password`, `artist_profile`, `country_id`, `state_id`, `city_id`, `pincode`, `artist_status`) VALUES
-(118, 'krupi', 'makadiya', '  8000167777', 'krupalimakadiya123@gmail.com', '123456', '1518876574OT-0465.JPG', 38, 19, 18, 789654123, 1),
+(118, 'krupi', 'makadiya', '8000167777', 'krupalimakadiya123@gmail.com', '123456', '1518876574OT-0465.JPG', 38, 19, 18, 789654123, 1),
 (120, 'ruchi', 'patel', '9875214630', 'ruchi@gmail.com', '456321', '1518853017OT-0459.JPG', 10, 8, 10, 7896541, 0),
 (121, 'tarun', 'vaishnani', '785412036', 'tarun@gmail.com', 'tarun', '311248695.jpg', 35, 14, 16, 987456, 0),
 (122, 'poonam', 'patel', '7854120', 'email123@gmail.com', '123456', '1518851962images (1).jpg', 35, 14, 16, 123456, 0),
@@ -276,11 +276,52 @@ INSERT INTO `country_master` (`country_id`, `country_name`, `country_status`) VA
 
 CREATE TABLE IF NOT EXISTS `event_master` (
   `event_id` int(10) NOT NULL AUTO_INCREMENT,
-  `description` varchar(800) NOT NULL,
-  `file` varchar(100) NOT NULL,
-  `date` date NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `file` varchar(2000) NOT NULL,
+  `date` varchar(150) NOT NULL,
+  `image` varchar(500) NOT NULL,
+  `description` varchar(2000) NOT NULL,
+  `event_status` varchar(10) NOT NULL,
   PRIMARY KEY (`event_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=140 ;
+
+--
+-- Dumping data for table `event_master`
+--
+
+INSERT INTO `event_master` (`event_id`, `title`, `file`, `date`, `image`, `description`, `event_status`) VALUES
+(132, 'krupi', 'eventfile-1518852096.pdf', '2018-02-19', 'eventimage-1518852096.jpg', '<p>This</p>\r\n\r\n<p>&nbsp;</p>\r\n', ''),
+(134, 'jadioiuytfhgr', 'eventfile-1519116249.pdf', '2018-02-02', 'eventimage-1519116249.jpg', '<p>This ishuijhjhb</p>\r\n\r\n<p>&nbsp;</p>\r\n', ''),
+(137, 'vfdev', 'eventfile-1519209767.pdf', '0000-00-00', 'eventimage-1519209767.jpg', '<p>This is m</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n', ''),
+(139, 'event title', '', '', '', '<p>This is my textarea to be replaced with CKEditor.wshergtjn</p>\r\n', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exhibition_master`
+--
+
+CREATE TABLE IF NOT EXISTS `exhibition_master` (
+  `exhibition_id` int(50) NOT NULL AUTO_INCREMENT,
+  `title` varchar(300) NOT NULL,
+  `description` varchar(2000) NOT NULL,
+  `starting_time` varchar(250) NOT NULL,
+  `end_time` varchar(250) NOT NULL,
+  `date` varchar(100) NOT NULL,
+  `fees` int(250) NOT NULL,
+  `address` varchar(1000) NOT NULL,
+  `exhibition_status` varchar(10) NOT NULL,
+  PRIMARY KEY (`exhibition_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `exhibition_master`
+--
+
+INSERT INTO `exhibition_master` (`exhibition_id`, `title`, `description`, `starting_time`, `end_time`, `date`, `fees`, `address`, `exhibition_status`) VALUES
+(1, 'art_formplatform', '<p>art is differnrt platform</p>\r\n', '12:00 AM', '10:00 AM', '02/06/2018 - 03/07/2018', 500785, 'mohbhjbnjn', '1'),
+(4, 'nkjhgf', '<p>This is my textarea to be replaced with CKEditor.</p>\r\n', '03:45 PM', '06:15 PM', '02/06/2018 - 02/27/2018', 452, 'kjhgf', '1'),
+(5, 'dummy exhibition', '<p>This is my textarea to be replaced with CKEditor.</p>\r\n', '01:00 PM', '11:00 AM', '02/25/2018 - 02/25/2018', 50, 'mota varachha,surat', '0');
 
 -- --------------------------------------------------------
 
@@ -291,21 +332,23 @@ CREATE TABLE IF NOT EXISTS `event_master` (
 CREATE TABLE IF NOT EXISTS `news_master` (
   `news_id` int(10) NOT NULL AUTO_INCREMENT,
   `title` varchar(15) NOT NULL,
-  `date` date NOT NULL,
+  `date` varchar(150) NOT NULL,
   `image` varchar(200) NOT NULL,
   `description` varchar(2000) NOT NULL,
   `news_status` varchar(10) NOT NULL,
   PRIMARY KEY (`news_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `news_master`
 --
 
 INSERT INTO `news_master` (`news_id`, `title`, `date`, `image`, `description`, `news_status`) VALUES
-(10, '12222222222k', '2022-10-06', 'Hydrangeas.jpg', '<p>kjhjghyfrytgvgfg</p>\r\n', '1'),
-(11, 'abcdgtrfedsxz', '2016-11-24', '', '', ''),
-(12, '3', '2027-11-12', '12.jpg', '<p>123 hi</p>\r\n', '');
+(18, 'krupiiiiiiiiiii', '2018-02-09', '1519106053images.jpg', '<p>This&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n', ''),
+(19, 'ytry', '2018-02-17', '1519106848images(4).jpg', '<p>This is my textarea to&nbsp;</p>\r\n', ''),
+(20, 'fddg', '02/07/2018', '1519209973Penguins.jpg', '<p>This is my textarea to be replaced with CKEditor.</p>\r\n', '0'),
+(21, 'dummmy', '02/25/2018', '21.JPG', '<p>sdncfgjnfmndf</p>\r\n', ''),
+(22, 'raksh', '02/20/2018', '1519539349OT-0459.JPG', '<p>This is my textarea to be replaced with CKEditor.</p>\r\n', '');
 
 -- --------------------------------------------------------
 
@@ -326,20 +369,21 @@ CREATE TABLE IF NOT EXISTS `post_master` (
   `artist_id` int(20) NOT NULL,
   `post_status` int(20) NOT NULL,
   PRIMARY KEY (`post_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=57 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=60 ;
 
 --
 -- Dumping data for table `post_master`
 --
 
 INSERT INTO `post_master` (`post_id`, `art_category_id`, `art_subcategory_id`, `art_subcategory2_id`, `file_type`, `image`, `project_audio`, `project_video`, `Description`, `artist_id`, `post_status`) VALUES
-(27, 22, 0, 0, 'image', '27.JPG', NULL, NULL, 'krupi makadiya                                        ', 118, 1),
-(29, 26, 0, 0, 'image', '29.jpg', NULL, NULL, '     this is image                  ', 118, 1),
 (31, 21, 1, 2, 'audio', NULL, 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/269943960&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true', '', 'wekrtjgyuklm                                        ', 118, 0),
 (35, 22, 1, 2, 'video', NULL, '', 'https://www.youtube.com/embed/5gIpqS-Qpzw', ' ds,flghmkmds,.fm,                                       ', 118, 0),
 (49, 22, 0, 0, '', NULL, NULL, 'https://www.youtube.com/embed/8NCdO7uTX_8', '', 118, 0),
 (55, 44, 1, 0, 'image', '1519029636B612_20170429_104405.jpg', '', '', 'this is one of the my favrite pic                                        ', 118, 0),
-(56, 42, 1, 2, 'image', '1519181039OT-0462.JPG', '', '', '                                        this is flover image', 118, 0);
+(56, 42, 1, 2, 'image', '1519181039OT-0462.JPG', '', '', '                                        this is flover image', 118, 0),
+(57, 6, 2, 3, 'image', '1519528879OT-0456.JPG', '', '', '     this is flower                                                   ', 118, 0),
+(58, 6, 2, 3, 'image', '1519529090OT-0459.JPG', '', '', '                                 sdfjkgrt                        ', 118, 0),
+(59, 42, 1, 2, 'image', '1519529132OT-0463.JPG', '', '', '     sdsfrgthyuji                                                   ', 118, 0);
 
 -- --------------------------------------------------------
 

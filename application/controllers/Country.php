@@ -14,10 +14,10 @@ class Country extends My_Controller {
         $this->load->view('v_country_view', $data);
     }
 
-    public function view_country() {
-        $data['country_list'] = $this->country_model->getcountrylist();
-        $this->load->view('v_country_view', $data);
-    }
+    /*    public function view_country() {
+      $data['country_list'] = $this->country_model->getcountrylist();
+      $this->load->view('v_country_view', $data);
+      } */
 
     public function add_country() {
         $data['country_list'] = $this->country_model->getcountrylist();
@@ -47,10 +47,15 @@ class Country extends My_Controller {
     }
 
     public function editp() {
-        $this->country_model->update_data($_POST['country_id'], $_POST['country_name']);
-        $this->session->set_flashdata('message', 'record updated successfully...');
-
-        redirect("country");
+        $country_data = $this->country_model->check_data($_POST['country_name']);
+        if (isset($country_data)) {
+            $this->session->set_flashdata('message', 'record already exists...');
+            redirect('country');
+        } else {
+            $this->country_model->update_data($_POST['country_id'], $_POST['country_name']);
+            $this->session->set_flashdata('message', 'record updated successfully...');
+            redirect("country");
+        }
     }
 
     public function delete($country_id) {
@@ -106,21 +111,20 @@ class Country extends My_Controller {
         redirect("country");
     }
 
-    public function export()
-    {
-        $this->load->dbutil(); 
-        $this->load->helper('file'); 
-        $this->load->helper('download'); 
-        $delimiter = ","; 
-        $newline = "\r\n"; 
-        $filename = "country_master.csv"; 
-     //   $query = "SELECT course_master_name as 'Course Name',book_name as 'Book Name',author_name as 'Author Name',publication_name as 'Publication Name',book_edition as 'Book Edition',book_quantity as 'Book Quantity' FROM college_master cm,college_course_master ccm,course_master com,book_master as b WHERE b.college_course_master_id = ccm.college_course_master_id and ccm.college_master_id = cm.college_master_id and ccm.course_master_id = com.course_master_id and ccm.college_master_id = $college_master_id"; 
+    public function export() {
+        $this->load->dbutil();
+        $this->load->helper('file');
+        $this->load->helper('download');
+        $delimiter = ",";
+        $newline = "\r\n";
+        $filename = "country_master.csv";
+        //   $query = "SELECT course_master_name as 'Course Name',book_name as 'Book Name',author_name as 'Author Name',publication_name as 'Publication Name',book_edition as 'Book Edition',book_quantity as 'Book Quantity' FROM college_master cm,college_course_master ccm,course_master com,book_master as b WHERE b.college_course_master_id = ccm.college_course_master_id and ccm.college_master_id = cm.college_master_id and ccm.course_master_id = com.course_master_id and ccm.college_master_id = $college_master_id"; 
         $query = "select country_name as 'Country Name' from country_master ";
-        $result = $this->db->query($query); 
-        $data = $this->dbutil->csv_from_result($result, $delimiter, $newline); 
+        $result = $this->db->query($query);
+        $data = $this->dbutil->csv_from_result($result, $delimiter, $newline);
         force_download($filename, $data);
-
     }
+
     public function deletemultiple() {
         $country_id = $_POST['country_id'];
         $i = 0;
@@ -134,8 +138,8 @@ class Country extends My_Controller {
             }
             if (isset($_POST['submit1'])) {
                 $this->country_model->update_active($country_id[$i]);
-                    $this->session->set_flashdata('success', 'Country Detail Is Activated Successfully..');
-              }
+                $this->session->set_flashdata('success', 'Country Detail Is Activated Successfully..');
+            }
             if (isset($_POST['submit2'])) {
                 $this->country_model->update_deactive($country_id[$i]);
                 $this->session->set_flashdata('success', 'Country Detail Is Deactivated Successfully..');
