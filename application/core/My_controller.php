@@ -10,7 +10,7 @@ class MY_Controller extends CI_Controller
         $admin_id = intval($this->session->userdata('admin_id'));
         if ($admin_id === 0) {
             $this->session->set_flashdata('message', 'session destroy !!!!');
-            redirect('login/index');
+            redirect('login');
         }
     }
 
