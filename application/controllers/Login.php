@@ -22,7 +22,7 @@ class Login extends CI_Controller {
             $this->session->set_userdata('password', $userdata['password']);
             redirect('welcome');
         } else {
-            $this->session->set_flashdata('message', 'Please Enter Correct User_Name And Password');
+            $this->session->set_flashdata('message', 'Please Enter Correct UserName And Password');
             redirect('login');
         }
     }
