@@ -30,86 +30,77 @@
             </a>
         </li>
         <li>
-            <a href="<?PHP echo site_url('user/index') ?>">
+            <a href="<?PHP echo site_url('user') ?>">
                 <i class="fa fa-user"></i> <span>User Master</span>
             </a>
         </li>
         <li>
-            <a href="<?PHP echo site_url('artist/index') ?>">
+            <a href="<?PHP echo site_url('artist') ?>">
                 <i class="fa fa-user"></i> <span>Artist Master</span>
             </a>
         </li>
         <li>
-            <a href="<?PHP echo site_url('post/index') ?>">
+            <a href="<?PHP echo site_url('post') ?>">
                 <i class="fa fa-circle-o"></i> <span>Post Master</span>
             </a>
         </li>
         <li class="treeview">
-          <a href="#">
-            <i class="fa fa-circle-o"></i> <span>Country Master</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="<?PHP echo site_url('country/index') ?>"><i class="fa fa-circle-o"></i> Country Master</a></li>
-            <li><a href="<?PHP echo site_url('state/index') ?>"><i class="fa fa-circle-o"></i> State Master</a></li>
-            <li><a href="<?PHP echo site_url('city/index') ?>"><i class="fa fa-circle-o"></i> City Master</a></li>
-          </ul>
-        </li>
-        
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-circle-o"></i> <span>Art Category Master</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>        
-        <ul class="treeview-menu">            
-            <li class="active"><a href="<?PHP echo site_url('art_category/index')?>"><i class="fa fa-circle-o"></i> Art Category Master</a></li>
-           <li><a href="<?PHP echo site_url('art_subcategory/index')?>"><i class="fa fa-circle-o"></i> Art Subcategory Master</a></li>
-           <li><a href="<?PHP echo site_url('art_subcategory2/index')?>"><i class="fa fa-circle-o"></i> Art Subcategory2 Master</a></li>                   
-          </ul>
+            <a href="#">
+                <i class="fa fa-circle-o"></i> <span>Country Master</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="active"><a href="<?PHP echo site_url('country') ?>"><i class="fa fa-circle-o"></i> Country Master</a></li>
+                <li><a href="<?PHP echo site_url('state') ?>"><i class="fa fa-circle-o"></i> State Master</a></li>
+                <li><a href="<?PHP echo site_url('city') ?>"><i class="fa fa-circle-o"></i> City Master</a></li>
+            </ul>
         </li>
         <li>
-            <a href="<?PHP echo site_url('comment/index') ?>">
+            <a href="<?PHP echo site_url('art_category') ?>">
+                <i class="fa fa-circle-o"></i> <span>Art Category Master</span>
+            </a>
+        </li>
+        <li>
+            <a href="<?PHP echo site_url('comment') ?>">
                 <i class="fa fa-comments"></i> <span>Comment Master</span>
             </a>
         </li>
-        
+
         <li>
-            <a href="<?PHP echo site_url('news/index') ?>">
+            <a href="<?PHP echo site_url('news') ?>">
                 <i class="fa fa-circle-o"></i> <span>News Master</span>
             </a>
         </li>
-        
+
         <!--<li>
-            <a href="<?PHP echo site_url('event/index') ?>">
+            <a href="<?PHP echo site_url('event') ?>">
                 <i class="fa fa-circle-o"></i> <span>Event Master</span>
             </a>
         </li>-->
-        
+
         <li>
-            <a href="<?PHP echo site_url('exhibition/index') ?>">
+            <a href="<?PHP echo site_url('exhibition') ?>">
                 <i class="fa fa-circle-o"></i> <span>Exhibition Master</span>
             </a>
         </li>   
-                                
-        
-                <li>
-            <a href="<?PHP echo site_url('site/index') ?>">
+
+
+        <li>
+            <a href="<?PHP echo site_url('site') ?>">
                 <i class="fa fa-circle-o"></i> <span>Site Review Master</span>
             </a>
         </li>
 
-        
+
         <!--<li>
             <a href="#">
                 <i class="fa fa-circle"></i> <span>next</span>
 
             </a>
         </li>
--->
+        -->
     </ul>
 </section>
 <!-- /.sidebar -->

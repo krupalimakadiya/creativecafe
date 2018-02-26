@@ -9,9 +9,13 @@ class Art_category_model extends CI_model {
         return $query->result();
     }
 
+    public function getart_categorylist_sub() {
+        $query = $this->db->query("select * from art_category_master where art_sub_cat_id=0 and art_category_leval=1");
+        return $query->result();
+    }
+
     public function insert($art_category_data) {
-        $data = array('art_category_name' => $art_category_data); //1= active //0-deactive
-        $this->db->insert('art_category_master', $data);
+        $this->db->insert('art_category_master', $art_category_data);
     }
 
     public function check_data($art_category_name) {

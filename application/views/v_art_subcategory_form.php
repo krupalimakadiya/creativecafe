@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-       $this->load->view('admin/header_include');
+        $this->load->view('admin/header_include');
         ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -10,14 +10,14 @@
 
             <header class="main-header">
                 <?php
-              $this->load->view('admin/header_body');
+                $this->load->view('admin/header_body');
                 ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-$this->load->view('admin/header_body_aside');
-?>
+                $this->load->view('admin/header_body_aside');
+                ?>
             </aside>
 
 
@@ -119,7 +119,7 @@ $this->load->view('admin/header_body_aside');
 
             <footer class="main-footer">
                 <?php
-               $this->load->view('admin/footer_body');
+                $this->load->view('admin/footer_body');
                 ?>
             </footer>
 
@@ -130,7 +130,7 @@ $this->load->view('admin/header_body_aside');
         </div>
         <!-- ./wrapper -->
         <?php
-        $this->load->view('admin/footer_include');                
-?>
+        $this->load->view('admin/footer_include');
+        ?>
     </body>
 </html>

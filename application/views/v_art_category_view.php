@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-       $this->load->view('admin/header_include');
+        $this->load->view('admin/header_include');
         ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -11,14 +11,14 @@
 
             <header class="main-header">
                 <?php
-$this->load->view('admin/header_body');
+                $this->load->view('admin/header_body');
                 ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
                 $this->load->view('admin/header_body_aside');
-?>
+                ?>
             </aside>
 
             <!-- Content Wrapper. Contains page content -->
@@ -39,7 +39,7 @@ $this->load->view('admin/header_body');
                                 $message = $this->session->flashdata('message');
                                 $success = $this->session->flashdata('success');
                                 $fail = $this->session->flashdata('fail');
-                                
+
                                 if (isset($message)) {
                                     if ($message != ' ') {
                                         ?>
@@ -84,6 +84,7 @@ $this->load->view('admin/header_body');
                                                 <th>Check</th>
                                                 <th>Sr No.</th>
                                                 <th>Category Name</th>
+                                                <th>Is Root</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -97,6 +98,7 @@ $this->load->view('admin/header_body');
                                                     <td><input type="checkbox" name="art_category_id[]" value="<?php echo $art_category->art_category_id ?>"/></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $art_category->art_category_name ?></td>
+                                                    <td><?PHP echo $art_category->art_sub_cat_id == 0 ? 'Root' : 'Sub-Category'; ?></td>
                                                     <td><?php
                                                         if ($art_category->art_category_status == '0') {
                                                             ?>
@@ -214,8 +216,8 @@ $this->load->view('admin/header_body');
 
             <footer class="main-footer">
                 <?php
-          $this->load->view('admin/footer_body');
-      ?>
+                $this->load->view('admin/footer_body');
+                ?>
             </footer>
 
 
@@ -225,7 +227,7 @@ $this->load->view('admin/header_body');
         </div>
         <!-- ./wrapper -->
         <?php
-$this->load->view('admin/footer_include');
+        $this->load->view('admin/footer_include');
         ?>
         <script type="text/javascript">
             function openView(id) {
@@ -237,12 +239,12 @@ $this->load->view('admin/footer_include');
             {
                 window.setTimeout(function ()
                 {
-                    $(".alert").fadeTo(500, 0).slideUp(500, function ()  {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function () {
                         $(this).remove();
                     });
                 }, 4000);
-                
-                 $("#example1").datatable();
+
+                $("#example1").datatable();
             });
         </script>
 

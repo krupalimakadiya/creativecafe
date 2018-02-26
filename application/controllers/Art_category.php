@@ -20,7 +20,7 @@ class Art_category extends My_Controller {
     }
 
     public function add_art_category() {
-        $data['art_category_list'] = $this->art_category_model->getart_categorylist();
+        $data['art_category_list'] = $this->art_category_model->getart_categorylist_sub();
         $this->load->view('v_art_category_form', $data);
     }
 
@@ -34,7 +34,13 @@ class Art_category extends My_Controller {
             $this->session->set_flashdata('message', 'record already exists...');
             redirect('art_category');
         } else {
-            $this->art_category_model->insert($_POST['art_category_name']);
+            $art_category_leval = $_POST['art_sub_category_id'] == 0 ? 1 : 2;
+            $categoryarray = array(
+                "art_category_name" => $_POST['art_category_name'],
+                "art_sub_cat_id" => $_POST['art_sub_category_id'],
+                "art_category_leval" => $art_category_leval
+            ); //1= active //0-deactive
+            $this->art_category_model->insert($categoryarray);
             $this->session->set_flashdata('message', 'insert successfully...');
             redirect('art_category');
         }
@@ -106,21 +112,20 @@ class Art_category extends My_Controller {
         redirect("art_category");
     }
 
-    public function export()
-    {
-        $this->load->dbutil(); 
-        $this->load->helper('file'); 
-        $this->load->helper('download'); 
-        $delimiter = ","; 
-        $newline = "\r\n"; 
-        $filename = "art_category_master.csv"; 
-     //   $query = "SELECT course_master_name as 'Course Name',book_name as 'Book Name',author_name as 'Author Name',publication_name as 'Publication Name',book_edition as 'Book Edition',book_quantity as 'Book Quantity' FROM college_master cm,college_course_master ccm,course_master com,book_master as b WHERE b.college_course_master_id = ccm.college_course_master_id and ccm.college_master_id = cm.college_master_id and ccm.course_master_id = com.course_master_id and ccm.college_master_id = $college_master_id"; 
+    public function export() {
+        $this->load->dbutil();
+        $this->load->helper('file');
+        $this->load->helper('download');
+        $delimiter = ",";
+        $newline = "\r\n";
+        $filename = "art_category_master.csv";
+        //   $query = "SELECT course_master_name as 'Course Name',book_name as 'Book Name',author_name as 'Author Name',publication_name as 'Publication Name',book_edition as 'Book Edition',book_quantity as 'Book Quantity' FROM college_master cm,college_course_master ccm,course_master com,book_master as b WHERE b.college_course_master_id = ccm.college_course_master_id and ccm.college_master_id = cm.college_master_id and ccm.course_master_id = com.course_master_id and ccm.college_master_id = $college_master_id"; 
         $query = "select art_category_name as 'Art Category Name' from art_category_master ";
-        $result = $this->db->query($query); 
-        $data = $this->dbutil->csv_from_result($result, $delimiter, $newline); 
+        $result = $this->db->query($query);
+        $data = $this->dbutil->csv_from_result($result, $delimiter, $newline);
         force_download($filename, $data);
-
     }
+
     public function deletemultiple() {
         $art_category_id = $_POST['art_category_id'];
         $i = 0;
@@ -134,8 +139,8 @@ class Art_category extends My_Controller {
             }
             if (isset($_POST['submit1'])) {
                 $this->art_category_model->update_active($art_category_id[$i]);
-                    $this->session->set_flashdata('success', 'Art category Detail Is Activated Successfully..');
-              }
+                $this->session->set_flashdata('success', 'Art category Detail Is Activated Successfully..');
+            }
             if (isset($_POST['submit2'])) {
                 $this->art_category_model->update_deactive($art_category_id[$i]);
                 $this->session->set_flashdata('success', 'Art category Detail Is Deactivated Successfully..');
