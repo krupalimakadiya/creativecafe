@@ -33,7 +33,7 @@
                                 <div class="box box-info">
                                     <div class="box-header with-border">
                                         <h3 class="box-title"><label> Art Category Master</label></h3>
-                                        <a href="<?php echo site_url("art_category/view_art_category") ?>" class="btn btn-primary pull-right">
+                                        <a href="<?php echo site_url("art_category") ?>" class="btn btn-primary pull-right">
                                             <label class="fa fa-icon label-btn-icon"></label>
                                             &nbsp;<label class="label-btn-fonts">View Records</label>
                                         </a>
@@ -53,15 +53,15 @@
                                                 <div class="form-group">
                                                     <label>Art Category Name</label>                                     
                                                     <select name="art_category_id" id="art_category_id" class="form-control">
+
                                                         <?php
                                                         foreach ($art_category_list as $art_category) {
-                                                            if ($art_category->art_category_id == $update_data['art_category_id']) {
+                                                            if ($update_data['art_sub_cat_id'] == 0) {
                                                                 ?>
-                                                                <option selected value="<?php echo $update_data['art_category_id'] ?>"><?php echo $art_category->art_category_name ?></option>
-                                                                <?php
-                                                            } else {
+                                                                <option value="0" selected>root leval</option>
+                                                            <?php } else {
                                                                 ?>
-                                                                <option value="<?php echo $update_data['art_category_id'] ?>"><?php echo $art_category->art_category_name ?></option>
+                                                                <option value="<?php echo $art_category->art_category_id ?>"><?php echo $art_category->art_category_name ?></option> 
                                                                 <?php
                                                             }
                                                         }
@@ -69,7 +69,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>country name</label>
+                                                    <label>Art Category Name</label>
                                                     <input type="text" class="form-control" name="art_category_name" value="<?php echo $update_data['art_category_name'] ?>">
                                                 </div>
                                                 <div class="form-group">
@@ -83,7 +83,7 @@
                                             <form role="form" name="categoryfrm" method="POST" action="<?php echo site_url("art_category/addp") ?>">
                                                 <!-- text input -->
                                                 <div class="form-group">
-                                                    <label>Art Category Name</label>                                     
+                                                    <label>Art sub-category name</label>                                     
                                                     <select name="art_sub_category_id" id="art_sub_category_id" class="form-control">
                                                         <option value="0">root leval</option>
                                                         <?php

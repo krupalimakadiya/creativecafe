@@ -14,11 +14,6 @@ class Art_category extends My_Controller {
         $this->load->view('v_art_category_view', $data);
     }
 
-    public function view_art_category() {
-        $data['art_category_list'] = $this->art_category_model->getart_categorylist();
-        $this->load->view('v_art_category_view', $data);
-    }
-
     public function add_art_category() {
         $data['art_category_list'] = $this->art_category_model->getart_categorylist_sub();
         $this->load->view('v_art_category_form', $data);
@@ -48,7 +43,7 @@ class Art_category extends My_Controller {
 
     public function edit_data($art_category_id) {
         $data['update_data'] = $this->art_category_model->edit_data($art_category_id);
-        $data['art_category_list'] = $this->art_category_model->getart_categorylist();
+        $data['art_category_list'] = $this->art_category_model->getart_categorylist_sub();
         $this->load->view('v_art_category_form', $data);
     }
 
