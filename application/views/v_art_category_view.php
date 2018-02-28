@@ -6,9 +6,7 @@
         ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
-
         <div class="wrapper">
-
             <header class="main-header">
                 <?php
                 $this->load->view('admin/header_body');
@@ -20,9 +18,8 @@
                 $this->load->view('admin/header_body_aside');
                 ?>
             </aside>
-
             <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
+                        <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <section class="content">
@@ -32,9 +29,7 @@
                                 <h3 class="box-title"><label>Art Category Master</label></h3>
                                 <p align="right">
                                     <a href="<?php echo site_url("art_category/add_art_category") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
-                            <!--        <a href="<?php echo site_url("art_category/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
-                                    <a href="<?php echo site_url("art_category/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a>--></p>
-
+                                </p>
                                 <?php
                                 $message = $this->session->flashdata('message');
                                 $success = $this->session->flashdata('success');
@@ -73,11 +68,8 @@
                                 ?>
 
                             </div>
-
-
                             <div class="box-body">
                                 <form name="frm" method="post" action="<?php echo site_url('art_category/deletemultiple'); ?>">
-
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
@@ -107,17 +99,14 @@
                                                         } else {
                                                             ?>
                                                             <i class="glyphicon glyphicon-ok" style="color:green" ></i>
-
                                                             <?php
                                                         }
                                                         ?></td>
                                                     <td> 
                                                         <div class="dropdown">
-
                                                             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Action
                                                                 <span class="caret"></span> <!-- caret -->
                                                             </button>
-
                                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
                                                                 <li> <a onclick="openView(<?= $art_category->art_category_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
                                                                 <li>    <a href="<?php echo site_url("art_category/edit_data/$art_category->art_category_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
@@ -135,7 +124,6 @@
                                                                     ?></li>
                                                             </ul>
                                                         </div>
-
                                                         <div id="myModal<?= $art_category->art_category_id ?>" class="modal fade" role="dialog">
                                                             <div class="modal-dialog">
                                                                 <!-- Modal content-->
@@ -154,7 +142,6 @@
                                                                                 <td><label>Category Name</label></td>
                                                                                 <td>:&nbsp;&nbsp;<?php echo $art_category->art_category_name ?></td>
                                                                             </tr>
-
                                                                         </table>
                                                                     </div>
                                                                     <div class="modal-footer">
@@ -163,20 +150,15 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
-
                                                     </td>
                                                     <?PHP
                                                 }
                                                 ?>
                                             </tr>
                                         </tbody>
-
-
                                     </table>
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-primary">Action</button>
-
                                         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                                             <span class="caret"></span> <!-- caret -->
                                         </button>
@@ -185,10 +167,8 @@
                                             <li>    <input type="submit" name="submit" value="Delete Selected" onclick="return confirm('Are You Sure You Want to Delete ?')"/></li>                     
                                             <li>    <input type="submit" name="submit1" value="Active Selected" onclick="return confirm('Are You Sure You Want to active all records ?')"/></li>                                                                
                                             <li>     <input type="submit" name="submit2" value="Deactive Selected" onclick="return confirm('Are You Sure You Want to Deactive all record ?')"/></li>                     
-
                                         </ul>
                                     </div>
-
                                 </form>
                             </div>
                             <!-- /.box-body -->
@@ -198,16 +178,16 @@
                                     <i class="glyphicon glyphicon-remove" style="color:red" ></i>&nbsp;<label>Indicates Deactivated</label>
                                 </p>
                             </div>
-
                         </div>
+                              </section>
+                </section>
                         <!-- /.box -->
                         </div>
+            
                         <!-- /.col -->
                         </div>
                         <!-- /.row -->
-                    </section>
-
-                </section>
+              
 
                 <!-- Main content -->
                 <!-- /.content -->

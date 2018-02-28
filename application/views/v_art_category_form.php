@@ -18,18 +18,13 @@
                 $this->load->view('admin/header_body_aside');
                 ?>
             </aside>
-
-
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-
                     <section class="content">
                         <div class="row">
-                            <div class="col-xs-12">
-                                <!-- /.box -->
-
+                            <div class="col-xs-12">                               
                                 <div class="box box-info">
                                     <div class="box-header with-border">
                                         <h3 class="box-title"><label> Art Category Master</label></h3>
@@ -39,7 +34,6 @@
                                         </a>
                                     </div>
                                     <!-- /.box-header -->
-
                                     <?php
                                     echo $this->session->flashdata('message');
                                     ?>
@@ -53,7 +47,6 @@
                                                 <div class="form-group">
                                                     <label>Art Category Name</label>                                     
                                                     <select name="art_category_id" id="art_category_id" class="form-control">
-
                                                         <?php
                                                         foreach ($art_category_list as $art_category) {
                                                             if ($update_data['art_sub_cat_id'] == 0) {
@@ -68,10 +61,12 @@
                                                         ?>
                                                     </select>
                                                 </div>
+                                                
                                                 <div class="form-group">
                                                     <label>Art Category Name</label>
                                                     <input type="text" class="form-control" name="art_category_name" value="<?php echo $update_data['art_category_name'] ?>">
                                                 </div>
+                                                 
                                                 <div class="form-group">
                                                     <button type="submit" name="submit" class="btn btn-primary">submit
                                                     </button>
@@ -109,12 +104,14 @@
                                     </div>
                                     <!-- /.box-body -->
                                 </div>
-                                <!-- /.box -->
-
+                            </div>
+                        </div>
+                    </section>
                                 </section>
 
                                 <!-- Main content -->
                             </div>
+        <!--</div>-->
                             <!-- /.content-wrapper -->
 
                             <footer class="main-footer">
