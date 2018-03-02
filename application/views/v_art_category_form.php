@@ -41,9 +41,9 @@
                                         <?php
                                         if (isset($update_data)) {
                                             ?>
-                                            <form role="form" name="categoryfrm" method="POST" action="<?php echo site_url("art_category/editp") ?>">
+                                            <form role="form" name="updet_categoryfrm" method="POST" action="<?php echo site_url("art_category/editp") ?>">
                                                 <!-- text input -->
-                                                <input type="hidden" class="form-control" name="art_category_id" value="<?php echo $update_data['art_category_id'] ?>">
+                                                <input type="hidden" class="form-control" name="art_category_id_1" value="<?php echo $update_data['art_category_id'] ?>">
                                                 <div class="form-group">
                                                     <label>Art Category Name</label>                                     
                                                     <select name="art_category_id" id="art_category_id" class="form-control">
@@ -53,15 +53,12 @@
                                                         <?php } ?>
                                                     </select>
                                                 </div>
-
                                                 <div class="form-group">
                                                     <label>Art Category Name</label>
                                                     <input type="text" class="form-control" name="art_category_name" value="<?php echo $update_data['art_category_name'] ?>">
                                                 </div>
-
                                                 <div class="form-group">
-                                                    <button type="submit" name="submit" class="btn btn-primary">submit
-                                                    </button>
+                                                    <button type="submit" name="submit" class="btn btn-primary">Update</button>
                                                 </div>
                                             </form>
                                             <?php

@@ -18,9 +18,15 @@ class Art_category_model extends CI_model {
         $this->db->insert('art_category_master', $art_category_data);
     }
 
-    public function check_data($art_category_name) {
-        $query = $this->db->query("select * from art_category_master where art_category_name='$art_category_name'");
-        return $query->row_array();
+    public function check_data($art_category_name, $id = "", $art_category_leval = '') {
+        $this->db->select('*');
+        $this->db->from('art_category_master');
+        if ($id != '') {
+            $this->db->where_not_in('art_category_id', $id);
+        }
+        $this->db->where('art_category_name', $art_category_name);
+        $this->db->where('art_category_leval', $art_category_leval);
+        return $this->db->get()->row_array();
     }
 
     public function edit_data($art_category_id) {
@@ -28,10 +34,7 @@ class Art_category_model extends CI_model {
         return $query->row_array();
     }
 
-    public function update_data($art_category_id, $art_category_name) {
-        $data = array(
-            'art_category_name' => $art_category_name,
-        );
+    public function update_data($art_category_id, $data) {
         $this->db->where('art_category_id', $art_category_id);
         $this->db->update('art_category_master', $data);
     }
