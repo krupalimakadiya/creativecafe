@@ -47,26 +47,18 @@
                                                 <div class="form-group">
                                                     <label>Art Category Name</label>                                     
                                                     <select name="art_category_id" id="art_category_id" class="form-control">
-                                                        <?php
-                                                        foreach ($art_category_list as $art_category) {
-                                                            if ($update_data['art_sub_cat_id'] == 0) {
-                                                                ?>
-                                                                <option value="0" selected>root leval</option>
-                                                            <?php } else {
-                                                                ?>
-                                                                <option value="<?php echo $art_category->art_category_id ?>"><?php echo $art_category->art_category_name ?></option> 
-                                                                <?php
-                                                            }
-                                                        }
-                                                        ?>
+                                                        <option value="0" <?php echo $update_data['art_sub_cat_id'] == 0 ? "selected" : ""; ?>>root leval</option>
+                                                        <?php foreach ($art_category_list as $art_category) { ?>
+                                                            <option value="<?php echo $art_category->art_category_id ?>" <?php echo $update_data['art_sub_cat_id'] == $art_category->art_category_id ? "selected" : ""; ?>><?php echo $art_category->art_category_name ?></option> 
+                                                        <?php } ?>
                                                     </select>
                                                 </div>
-                                                
+
                                                 <div class="form-group">
                                                     <label>Art Category Name</label>
                                                     <input type="text" class="form-control" name="art_category_name" value="<?php echo $update_data['art_category_name'] ?>">
                                                 </div>
-                                                 
+
                                                 <div class="form-group">
                                                     <button type="submit" name="submit" class="btn btn-primary">submit
                                                     </button>
@@ -107,27 +99,27 @@
                             </div>
                         </div>
                     </section>
-                                </section>
+                </section>
 
-                                <!-- Main content -->
-                            </div>
-        <!--</div>-->
-                            <!-- /.content-wrapper -->
+                <!-- Main content -->
+            </div>
+            <!--</div>-->
+            <!-- /.content-wrapper -->
 
-                            <footer class="main-footer">
-                                <?php
-                                $this->load->view('admin/footer_body');
-                                ?>
-                            </footer>
+            <footer class="main-footer">
+                <?php
+                $this->load->view('admin/footer_body');
+                ?>
+            </footer>
 
 
-                            <!-- Add the sidebar's background. This div must be placed
-                                 immediately after the control sidebar -->
-                            <div class="control-sidebar-bg"></div>
-                        </div>
-                        <!-- ./wrapper -->
-                        <?php
-                        $this->load->view('admin/footer_include');
-                        ?>
-                        </body>
-                        </html>
+            <!-- Add the sidebar's background. This div must be placed
+                 immediately after the control sidebar -->
+            <div class="control-sidebar-bg"></div>
+        </div>
+        <!-- ./wrapper -->
+        <?php
+        $this->load->view('admin/footer_include');
+        ?>
+    </body>
+</html>

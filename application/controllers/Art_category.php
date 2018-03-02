@@ -65,10 +65,11 @@ class Art_category extends My_Controller {
             $categoryarray = array(
                 "art_category_name" => $_POST['art_category_name'],
                 "art_sub_cat_id" => $_POST['art_sub_category_id'],
-                "art_category_leval" => $art_category_leval
+                "art_category_leval" => $art_category_leval,
+                "url_code" => random_string('alnum', 16),
             ); //1= active //0-deactive
             $this->art_category_model->update_data($categoryarray);
-            $this->session->set_flashdata('message', 'insert successfully...');
+            $this->session->set_flashdata('message', 'update successfully...');
             redirect('art_category');
         }
     }
