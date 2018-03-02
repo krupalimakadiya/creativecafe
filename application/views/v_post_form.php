@@ -5,49 +5,6 @@
         $this->load->view('admin/header_include');
         ?>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-        <script>
-            $("document").ready(function () {
-                // $("#state").hide();
-                $("#art_category_id").change(function () {
-                    $("#art_subcategory_id").show();
-                    var id = $(this).val();
-
-                    $.ajax({
-                        url: "<?php echo site_url("post/drop_art_subcategory") ?>",
-                        type: "POST",
-                        data: {art_category_id: id},
-                        success: function (result) {
-                            //alert(result);
-                            $("#art_subcategory_id").html(result);
-                        }
-
-                    });
-                });
-
-            });
-        </script>
-        <script>
-            $("document").ready(function () {
-                // $("#state").hide();
-                $("#art_subcategory_id").change(function () {
-                    $("#art_subcategory2_id").show();
-                    var id = $(this).val();
-
-                    $.ajax({
-                        url: "<?php echo site_url("post/drop_art_subcategory2") ?>",
-                        type: "POST",
-                        data: {art_subcategory_id: id},
-                        success: function (result) {
-                            alert(result);
-                            $("#art_subcategory2_id").html(result);
-                        }
-
-                    });
-                });
-
-            });
-        </script>
-
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -85,27 +42,27 @@
                                 ?>
                                 <form name="artistfrm" method="POST" action="<?php echo site_url("post/editp") ?>" role="form" enctype="multipart/form-data">
                                     <input type="hidden" name="post_id" value="<?php echo $update_data['post_id'] ?>" />
-<!--                                    <div class="form-group">
-                                        <label>First name</label>
-                                        <input type="text" class="form-control" name="first_name"  value="<?php echo $update_data['first_name'] ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Last name</label>
-                                        <input type="text" class="form-control" name="last_name"  value="<?php echo $update_data['last_name'] ?>">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Mobile</label>
-                                        <input type="text" class="form-control" name="mobile"  value="<?php echo $update_data['mobile'] ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email ID</label>
-                                        <input type="text" class="form-control" name="email" value="<?php echo $update_data['email'] ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" class="form-control" name="password"  value="<?php echo $update_data['password'] ?>">
-                                    </div>-->                                  
+                                    <!--                                    <div class="form-group">
+                                                                            <label>First name</label>
+                                                                            <input type="text" class="form-control" name="first_name"  value="<?php echo $update_data['first_name'] ?>">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label>Last name</label>
+                                                                            <input type="text" class="form-control" name="last_name"  value="<?php echo $update_data['last_name'] ?>">
+                                                                        </div>
+                                    
+                                                                        <div class="form-group">
+                                                                            <label>Mobile</label>
+                                                                            <input type="text" class="form-control" name="mobile"  value="<?php echo $update_data['mobile'] ?>">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label>Email ID</label>
+                                                                            <input type="text" class="form-control" name="email" value="<?php echo $update_data['email'] ?>">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label>Password</label>
+                                                                            <input type="password" class="form-control" name="password"  value="<?php echo $update_data['password'] ?>">
+                                                                        </div>-->                                  
                                     <div class="form-group">
                                         <label>Art Category Name</label>                                     
                                         <select name="art_category_id" id="art_category_id" class="form-control">
@@ -131,7 +88,7 @@
                                             foreach ($art_subcategory_list as $art_subcategory) {
                                                 if ($state->art_subcategory_id == $update_data['art_subcategory_id']) {
                                                     ?>
-                                                                                                               <!-- <option selected value="<?//php echo $state->state_id ?>"> <?php //echo $state->state_name        ?></option>-->
+                                                                                                                                               <!-- <option selected value="<?//php echo $state->state_id ?>"> <?php //echo $state->state_name            ?></option>-->
                                                     <option value="<?php echo $art_subcategory->art_subcategory_id; ?>"selected="selected"><?php echo $art_subcategory->art_subcategory_name; ?></option>
                                                     <?php
                                                 }

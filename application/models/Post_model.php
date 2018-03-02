@@ -4,8 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Post_model extends CI_model {
 
-    public function getpostlist()
-    {
+    public function getpostlist() {
         $query = $this->db->query("select * from 
                 post_master as p,
                 artist_master as artist,
@@ -19,46 +18,28 @@ class Post_model extends CI_model {
                 p.art_subcategory2_id=art_subcategory2.art_subcategory2_id");
         return $query->result();
     }
+
     public function getartistlist() {
         $query = $this->db->query("select * from artist_master  as a, country_master as c, state_master as s, city_master as city  where a.country_id=c.country_id and a.state_id=s.state_id and a.city_id=city.city_id");
         return $query->result();
     }
-    
-          public function getartcategoryid($art_category_name) {
-      $query = $this->db->query("select * from art_category_master where country_name='$art_category_name'");
-      return $query->row_array();
-      }
-  
-          public function getartsubcategoryid($art_subcategory_name) {
-      $query = $this->db->query("select * from art_subcategory_master where state_name='$art_subcategory_name'");
-      return $query->row_array();
-      }
-  
-          public function getartsubcategory2id($art_subcategory2_name) {
-      $query = $this->db->query("select * from art_subcategory2_master where city_name='$art_subcategory2_name'");
-      return $query->row_array();
-      }
-  
-       public function insert($post_data) {
+
+    public function getartcategoryid($art_category_name) {
+        $query = $this->db->query("select * from art_category_master where country_name='$art_category_name'");
+        return $query->row_array();
+    }
+
+    public function insert($post_data) {
         $this->db->insert('post_master', $post_data);
         return $this->db->insert_id();
     }
-    
+
     //chk if record exists in database  or not 
-   /* public function check_data($email, $password) {
-        $query = $this->db->query("select * from artist_master where  email='$email'  AND password='$password'  ");
-        return $query->row_array();
-    }*/
+    /* public function check_data($email, $password) {
+      $query = $this->db->query("select * from artist_master where  email='$email'  AND password='$password'  ");
+      return $query->row_array();
+      } */
 
-    public function drop_art_subcategory($art_category_id) {
-        $query = $this->db->query("select * from  art_subcategory_master where art_category_id='$art_category_id' ");
-        return $query->result();
-    }
-
-    public function drop_art_subcategory2($art_subcategory_id) {
-        $query = $this->db->query("select * from  art_subcategory2_master where art_subcategory_id='$art_subcategory_id' ");
-        return $query->result();
-    }
 
 
     public function delete($post_id) {

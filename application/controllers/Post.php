@@ -7,14 +7,12 @@ class Post extends MY_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('art_category_model');
-        $this->load->model('art_subcategory_model');
         $this->load->model('post_model');
         $this->load->model('artist_model');
     }
 
     public function index() {
         $data['art_category_list'] = $this->art_category_model->getart_categorylist();
-        $data['art_subcategory_list'] = $this->art_subcategory_model->getart_subcategorylist();
         $data['post_list'] = $this->post_model->getpostlist();
         $data['artist_list'] = $this->artist_model->getartistlist();
         $this->load->view('v_post_view', $data);
