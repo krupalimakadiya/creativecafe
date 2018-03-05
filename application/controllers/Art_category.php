@@ -49,12 +49,6 @@ class Art_category extends My_Controller {
         $this->load->view('v_art_category_form', $data);
     }
 
-    /* public function editp() {
-      $this->art_category_model->update_data($_POST['art_category_id'], $_POST['art_category_name']);
-      $this->session->set_flashdata('message', 'record updated successfully...');
-      redirect("art_category");
-      } */
-
     public function editp() {
         $art_category_leval = $_POST['art_category_id_1'] == 0 ? 1 : 2;
         $category_data = $this->art_category_model->check_data($_POST['art_category_name'], $_POST['art_category_id_1'], $art_category_leval);
@@ -139,6 +133,7 @@ class Art_category extends My_Controller {
         $query = "select art_category_name as 'Art Category Name' from art_category_master ";
         $result = $this->db->query($query);
         $data = $this->dbutil->csv_from_result($result, $delimiter, $newline);
+
         force_download($filename, $data);
     }
 

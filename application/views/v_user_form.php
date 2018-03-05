@@ -84,15 +84,15 @@ $this->load->view('admin/header_body_aside');
                             if (isset($update_data)) {
                                 ?>
 
-                                <form name="userfrm" method="POST" action="<?php echo site_url("user/editp") ?>" role="form" >
+                                <form name="userfrm" method="POST" action="<?php echo site_url("user/editp") ?>" role="form" autocomplete="off" >
                                     <input type="hidden" name="user_id" value="<?php echo $update_data['user_id'] ?>" />
                                     <div class="form-group">
                                         <label>First name</label>
-                                        <input type="text" class="form-control" name="first_name" value="<?php echo $update_data['first_name'] ?>">
+                                        <input type="text" class="form-control" name="first_name" required="" value="<?php echo $update_data['first_name'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Last name</label>
-                                        <input type="text" class="form-control" name="last_name" value="<?php echo $update_data['last_name'] ?>">
+                                        <input type="text" class="form-control" name="last_name" required="" value="<?php echo $update_data['last_name'] ?>">
                                     </div>
 
                                     <!-- text input -->
@@ -152,19 +152,19 @@ $this->load->view('admin/header_body_aside');
 
                                     <div class="form-group">
                                         <label>Pincode</label>
-                                        <input type="text" class="form-control" name="pincode" value="<?php echo $update_data['pincode'] ?>">
+                                        <input type="text" class="form-control" name="pincode" required="" value="<?php echo $update_data['pincode'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Email ID</label>
-                                        <input type="text" class="form-control" name="email" value="<?php echo $update_data['email'] ?>">
+                                        <input type="text" class="form-control" name="email" required="" value="<?php echo $update_data['email'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Mobile</label>
-                                        <input type="text" class="form-control" name="mobile" value="<?php echo $update_data['mobile'] ?>">
+                                        <input type="text" class="form-control" name="mobile" required="" value="<?php echo $update_data['mobile'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" class="form-control" name="password" value="<?php echo $update_data['password'] ?>">
+                                        <input type="password" class="form-control" name="password" required="" value="<?php echo $update_data['password'] ?>">
                                     </div>
 
                                     <div class="form-group">
@@ -175,14 +175,14 @@ $this->load->view('admin/header_body_aside');
                             } else {
                                 ?>
 
-                                <form name="userfrm" method="POST" action="<?php echo site_url("user/addp") ?>" role="form" >
+                                <form name="userfrm" method="POST" action="<?php echo site_url("user/addp") ?>" role="form" autocomplete="off" >
                                     <div class="form-group">
                                         <label>First name</label>
-                                        <input type="text" class="form-control" name="first_name" placeholder="Enter your first name...">
+                                        <input type="text" class="form-control" name="first_name" required="" placeholder="Enter your first name...">
                                     </div>
                                     <div class="form-group">
                                         <label>Last name</label>
-                                        <input type="text" class="form-control" name="last_name" placeholder="Enter your last name...">
+                                        <input type="text" class="form-control" name="last_name" required="" placeholder="Enter your last name...">
                                     </div>
 
                                     <div class="form-group">
@@ -214,19 +214,19 @@ $this->load->view('admin/header_body_aside');
 
                                     <div class="form-group">
                                         <label>Pincode</label>
-                                        <input type="text" class="form-control" name="pincode" placeholder="Enter your pincode...">
+                                        <input type="text" class="form-control" name="pincode" required="" placeholder="Enter your pincode...">
                                     </div>
                                     <div class="form-group">
                                         <label>Email ID</label>
-                                        <input type="text" class="form-control" name="email" placeholder="Enter your email...">
+                                        <input type="text" class="form-control" name="email" required="" placeholder="Enter your email...">
                                     </div>
                                     <div class="form-group">
                                         <label>Mobile</label>
-                                        <input type="text" class="form-control" name="mobile" placeholder="Enter your mobile number...">
+                                        <input type="text" class="form-control" name="mobile" required="" placeholder="Enter your mobile number...">
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" class="form-control" name="password" placeholder="Enter your password...">
+                                        <input type="password" class="form-control" name="password" required="" placeholder="Enter your password...">
                                     </div>
 
                                     <div class="form-group">

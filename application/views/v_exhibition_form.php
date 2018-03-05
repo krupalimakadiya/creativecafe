@@ -49,17 +49,17 @@
                                         <?php
                                         if (isset($update_data)) {
                                             ?>
-                                            <form role="form" name="exhibitionfrm" method="POST" action="<?php echo site_url("exhibition/editp") ?>">
+                                        <form role="form" name="exhibitionfrm" method="POST" action="<?php echo site_url("exhibition/editp") ?>" autocomplete="off">
                                                 <!-- text input -->
                                                 <input type="hidden" class="form-control" name="exhibition_id" value="<?php echo $update_data['exhibition_id'] ?>">
 
                                                 <div class="form-group">
                                                     <label> Exhibition Title: </label>
-                                                    <input type="text" class="form-control" name="title" value="<?php echo $update_data['title'] ?>">
+                                                    <input type="text" class="form-control" name="title" required="" value="<?php echo $update_data['title'] ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Description:</label>
-                                                    <textarea id="editor1" name="description" rows="10" cols="80" >
+                                                    <textarea id="editor1" name="description" rows="10" cols="80"required="" >
                                                         <?php echo $update_data['description'] ?>
                                                     </textarea>             
                                                 </div>
@@ -70,7 +70,7 @@
                                                             <div class="input-group-addon">
                                                                 <i class="fa fa-clock-o"></i>
                                                             </div>  
-                                                            <input type="text" class="form-control timepicker" name="starting_time" value="<?php echo $update_data['starting_time'] ?>">
+                                                            <input type="text" class="form-control timepicker" name="starting_time" required=""   value="<?php echo $update_data['starting_time'] ?>">
                                                         </div>
                                                         <!-- /.input group -->
                                                     </div>
@@ -83,7 +83,7 @@
                                                             <div class="input-group-addon">
                                                                 <i class="fa fa-clock-o"></i>
                                                             </div>
-                                                            <input type="text" class="form-control timepicker" name="end_time" value="<?php echo $update_data['end_time'] ?>">
+                                                            <input type="text" class="form-control timepicker" name="end_time" required="" value="<?php echo $update_data['end_time'] ?>">
                                                         </div>
                                                         <!-- /.input group -->
                                                     </div>
@@ -96,18 +96,18 @@
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right" id="reservation" name="date"   value="<?php echo $update_data['date'] ?>">
+                                                        <input type="text" class="form-control pull-right" id="reservation" name="date" required=""  value="<?php echo $update_data['date'] ?>">
                                                     </div>
                                                     <!-- /.input group -->
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label> Fees:</label>
-                                                    <input type="text" class="form-control" name="fees" placeholder="Enter fees..." value="<?php echo $update_data['fees'] ?>">
+                                                    <input type="text" class="form-control" name="fees" placeholder="Enter fees..." required="" value="<?php echo $update_data['fees'] ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <label> Address:</label>
-                                                    <textarea class="form-control" name="address" placeholder="Enter your address..." rows="5" cols="40"><?php echo $update_data['address'] ?></textarea>
+                                                    <textarea class="form-control" name="address" placeholder="Enter your address..." required="" rows="5" cols="40"><?php echo $update_data['address'] ?></textarea>
                                                 </div>
                                                 
 
@@ -120,15 +120,15 @@
                                             <?php
                                         } else {
                                             ?>
-                                            <form role="form" name="exhibitionfrm" method="POST" action="<?php echo site_url("exhibition/addp") ?>">
+                                        <form role="form" name="exhibitionfrm" method="POST" action="<?php echo site_url("exhibition/addp") ?>"autocomplete="off">
                                                 <!-- text input -->
                                                 <div class="form-group">
                                                     <label>  Exhibition Title:</label>
-                                                    <input type="text" class="form-control" name="title" placeholder="Enter your exhibition title...">
+                                                    <input type="text" class="form-control" name="title" placeholder="Enter your exhibition title..." required="">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Description:</label>
-                                                    <textarea id="editor1" name="description" rows="10" cols="80">
+                                                    <textarea id="editor1" name="description" rows="10" cols="80" required="">
                                                                                     This is my textarea to be replaced with CKEditor.
                                                     </textarea>             
                                                 </div>
@@ -141,7 +141,7 @@
                                                             <div class="input-group-addon">
                                                                 <i class="fa fa-clock-o"></i>
                                                             </div>
-                                                            <input type="text" class="form-control timepicker" name="starting_time">
+                                                            <input type="text" class="form-control timepicker" name="starting_time" required="">
                                                         </div>
                                                         <!-- /.input group -->
                                                     </div>
@@ -156,7 +156,7 @@
                                                             <div class="input-group-addon">
                                                                 <i class="fa fa-clock-o"></i>
                                                             </div>
-                                                            <input type="text" class="form-control timepicker" name="end_time">
+                                                            <input type="text" class="form-control timepicker" name="end_time" required="">
                                                         </div>
                                                         <!-- /.input group -->
                                                     </div>
@@ -170,7 +170,7 @@
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right" id="reservation" name="date">
+                                                        <input type="text" class="form-control pull-right" id="reservation" name="date" required="">
                                                     </div>
                                                     <!-- /.input group -->
                                                 </div>
@@ -182,11 +182,11 @@
                                                 <!-- /.form group -->
                                                 <div class="form-group">
                                                     <label> Fees:</label>
-                                                    <input type="text" class="form-control" name="fees" placeholder="Enter fees...">
+                                                    <input type="text" class="form-control" name="fees" placeholder="Enter fees..." required="">
                                                 </div>
                                                 <div class="form-group">
                                                     <label> Address:</label>
-                                                    <textarea class="form-control" name="address" placeholder="Enter your address..." rows="5" cols="40"></textarea>
+                                                    <textarea class="form-control" name="address" placeholder="Enter your address..." rows="5" cols="40" required=""></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" name="submit" class="btn btn-primary">submit

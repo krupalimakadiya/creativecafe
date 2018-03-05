@@ -34,7 +34,11 @@ class Country_model extends CI_model {
 
     public function delete($country_id) {
         $this->db->where('country_id', $country_id);
-        $this->db->delete('country_master');
+        if ($this->db->delete('country_master')) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function update_active($country_id, $country_status) {
@@ -43,7 +47,12 @@ class Country_model extends CI_model {
             'country_status' => 1
         );
         $this->db->where('country_id', $country_id);
-        $this->db->update('country_master', $data);
+       if($this->db->update('country_master', $data))
+       {
+           return true;
+       }else {
+     return false;
+       }
     }
 
     public function update_deactive($country_id, $country_status) {
@@ -52,7 +61,13 @@ class Country_model extends CI_model {
             'country_status' => 0
         );
         $this->db->where('country_id', $country_id);
-        $this->db->update('country_master', $data);
+        if($this->db->update('country_master', $data))
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }

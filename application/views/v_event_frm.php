@@ -45,32 +45,30 @@
                                         <?php
                                         if (isset($update_data)) {
                                             ?>
-                                            <form role="form" name="eventfrm" method="POST" action="<?php echo site_url("event/editp") ?>" enctype="multipart/form-data">
+                                        <form role="form" name="eventfrm" method="POST" autocomplete="off" action="<?php echo site_url("event/editp") ?>" enctype="multipart/form-data">
                                                 <!-- text input -->
                                                 <input type="hidden" class="form-control" name="event_id" value="<?php echo $update_data['event_id'] ?>">
 
                                                 <div class="form-group">
                                                     <label>Title</label>
-                                                    <input type="text" class="form-control" name="title" value="<?php echo $update_data['title'] ?>">                                    
+                                                    <input type="text" class="form-control" name="title" required="" value="<?php echo $update_data['title'] ?>">                                    
                                                 </div>
                                                 <div class="form-group">
                                                     <label>File</label>
-                                                    <input type="file" class="form-control" name="file">                                    
+                                                    <input type="file" class="form-control" name="file" required="">                                    
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Date</label>
-                                                    <input type="date" class="form-control" name="date" value="<?php echo $update_data['date'] ?>">
+                                                    <input type="date" class="form-control" name="date" value="<?php echo $update_data['date'] ?>" required="">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Image</label>
-                                                    <input type="file" class="form-control" name="image">
+                                                    <input type="file" class="form-control" name="image" required="">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Description</label>
-                                                    <textarea id="editor1" name="description" rows="10" cols="80" value=""><?php echo $update_data['description'] ?>
+                                                    <textarea id="editor1" name="description" rows="10" cols="80" required="" value=""><?php echo $update_data['description'] ?>
                                                     </textarea>             
-
-
                                                 </div>
 
                                                 <div class="form-group">
@@ -81,36 +79,35 @@
                                             <?php
                                         } else {
                                             ?>
-                                            <form role="form" name="eventfrm" method="POST" action="<?php echo site_url("event/do_upload") ?>" enctype="multipart/form-data">
+                                        <form role="form" name="eventfrm" method="POST" autocomplete="off" action="<?php echo site_url("event/do_upload") ?>" enctype="multipart/form-data">
                                                 <!-- text input -->
                                                 <div class="form-group">
                                                     <label>Title</label>
-                                                    <input type="text" class="form-control" name="title" placeholder="Enter your News Title">
+                                                    <input type="text" class="form-control" name="title" placeholder="Enter your News Title" required="">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>File</label>
-                                                    <input type="file" class="form-control  " name="file">
+                                                    <input type="file" class="form-control" name="file" required="">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label>Date:</label>
-
                                                     <div class="input-group date">
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date">
+                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date" required="">
                                                     </div>
                                                     <!-- /.input group -->
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Image</label>
-                                                    <input type="file" class="form-control" name="image">
+                                                    <input type="file" class="form-control" name="image" required="">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label>Description</label>
-                                                    <textarea id="editor1" name="description" rows="10" cols="80">
+                                                    <textarea id="editor1" name="description" rows="10" cols="80" required="">
                                                                 This is my textarea to be replaced with CKEditor.
                                                     </textarea>             
                                                 </div>
@@ -126,7 +123,7 @@
                                     <!-- /.box-body -->
                                 </div>
                                 <!-- /.box -->
-                                </section>
+                            </div></div></section></section>
                                 <!-- Main content -->
                             </div>
                             <!-- /.content-wrapper -->
@@ -163,22 +160,3 @@
 
                         </body>
                         </html>
-
-
-                        <!---
-                        <div class="box-header">
-                                 
-                                 <h3 class="box-title"><label>Description</label>
-                               </h3>
-                        <!-- tools box 
-                        <div class="pull-right box-tools">
-                          <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip"
-                                  title="Collapse">
-                            <i class="fa fa-minus"></i></button>
-                          <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip"
-                                  title="Remove">
-                            <i class="fa fa-times"></i></button>
-                        </div>
-                        <!-- /. tools -->
-                        </div>
-

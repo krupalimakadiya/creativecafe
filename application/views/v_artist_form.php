@@ -47,7 +47,6 @@
 
             });
         </script>
-
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -61,11 +60,8 @@ $this->load->view('admin/header_body');
             <aside class="main-sidebar">
                 <?php
                 $this->load->view('admin/header_body_aside');
-
                 ?>
             </aside>
-
-
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -74,7 +70,6 @@ $this->load->view('admin/header_body');
                     <div class="box box-info">
                         <div class="box-header with-border box-primary" >
                             <h3 class="box-title"><label>Artist Master</label></h3>
-
                             <a href="<?php echo site_url("artist/index") ?>" class="btn btn-primary pull-right">
                                 <label class="fa fa-plus label-btn-icon"></label>
                                 &nbsp;<label class="label-btn-fonts">View Records</label>
@@ -84,32 +79,31 @@ $this->load->view('admin/header_body');
                             <?php
                             if (isset($update_data)) {
                                 ?>
-
-                                <form name="artistfrm" method="POST" action="<?php echo site_url("artist/editp") ?>" role="form" enctype="multipart/form-data">
+                            <form name="artistfrm" method="POST" action="<?php echo site_url("artist/editp") ?>" autocomplete="off" role="form" enctype="multipart/form-data">
                                     <input type="hidden" name="artist_id" value="<?php echo $update_data['artist_id'] ?>" />
                                     <div class="form-group">
                                         <label>First name</label>
-                                        <input type="text" class="form-control" name="first_name"  value="<?php echo $update_data['first_name'] ?>">
+                                        <input type="text" class="form-control" name="first_name" required=""  value="<?php echo $update_data['first_name'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Last name</label>
-                                        <input type="text" class="form-control" name="last_name"  value="<?php echo $update_data['last_name'] ?>">
+                                        <input type="text" class="form-control" name="last_name" required="" value="<?php echo $update_data['last_name'] ?>">
                                     </div>
                  
                                     <div class="form-group">
                                         <label>Mobile</label>
-                                        <input type="text" class="form-control" name="mobile"  value="<?php echo $update_data['mobile'] ?>">
+                                        <input type="text" class="form-control" name="mobile" required="" value="<?php echo $update_data['mobile'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Email ID</label>
-                                        <input type="text" class="form-control" name="email" value="<?php echo $update_data['email'] ?>">
+                                        <input type="email" class="form-control" name="email" required="" value="<?php echo $update_data['email'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" class="form-control" name="password"  value="<?php echo $update_data['password'] ?>">
+                                        <input type="password" class="form-control" name="password" required=""  value="<?php echo $update_data['password'] ?>">
                                     </div>
                                     <div class="form-group">
-                                        <input type="file" class="form-control" name="artist_profile" value="<?php echo $update_data['artist_profile']?>">
+                                        <input type="file" class="form-control" name="artist_profile" required="" value="<?php echo $update_data['artist_profile']?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Country_name</label>                                     
@@ -164,7 +158,7 @@ $this->load->view('admin/header_body');
                                     </div>
                                     <div class="form-group">
                                         <label>Pincode</label>
-                                        <input type="text" class="form-control" name="pincode"  value="<?php echo $update_data['pincode'] ?>">
+                                        <input type="text" class="form-control" name="pincode" required=""  value="<?php echo $update_data['pincode'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary" value="submit">Submit</button>
@@ -173,30 +167,30 @@ $this->load->view('admin/header_body');
                                 <?php
                             } else {
                                 ?>
-                            <form name="artistfrm" method="POST" action="<?php echo site_url("artist/addp") ?>" role="form" enctype="multipart/form-data" >
+                            <form name="artistfrm" method="POST" action="<?php echo site_url("artist/addp") ?>" autocomplete="off" role="form" enctype="multipart/form-data" >
                                     <div class="form-group">
                                         <label>First name</label>
-                                        <input type="text" class="form-control" name="first_name"   placeholder="Enter Your First Name...">
+                                        <input type="text" class="form-control" name="first_name"   placeholder="Enter Your First Name..." required="">
                                     </div>
                                     <div class="form-group">
                                         <label>Last name</label>
-                                        <input type="text" class="form-control" name="last_name"  placeholder="Enter Your last Name">
+                                        <input type="text" class="form-control" name="last_name"  placeholder="Enter Your last Name" required="">
                                     </div>
                                     <div class="form-group">
                                         <label>Mobile</label>
-                                        <input type="text" class="form-control" name="mobile"   placeholder="Enter your mobile number...">
+                                        <input type="text" class="form-control" name="mobile"   placeholder="Enter your mobile number..." required="">
                                     </div>
                                     <div class="form-group">
                                         <label>Email ID</label>
-                                        <input type="email" class="form-control" name="email" placeholder="Enter your email">
+                                        <input type="email" class="form-control" name="email" placeholder="Enter your email" required="">
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" class="form-control" name="password"   placeholder="Enter your password...">
+                                        <input type="password" class="form-control" name="password"   placeholder="Enter your password..." required="">
                                     </div>
                                     <div class="form-group">
                                         <label>Profile Picture</label>
-                                        <input type="file" class="form-control" name="artist_profile">
+                                        <input type="file" class="form-control" name="artist_profile" >
                                     </div>
                                 
                                     <div class="form-group">
@@ -228,7 +222,7 @@ $this->load->view('admin/header_body');
 
                                     <div class="form-group">
                                         <label>Pincode</label>
-                                        <input type="text" class="form-control" name="pincode"  placeholder="Enter your pincode...">
+                                        <input type="text" class="form-control" name="pincode" required="" placeholder="Enter your pincode...">
                                     </div>
 
 
@@ -242,9 +236,10 @@ $this->load->view('admin/header_body');
                         </div>
                     </div>
                     <!-- /.box-body -->
+                </section>
             </div>
             <!-- /.box -->
-        </section>
+        
     </div>
     <!-- /.content-wrapper -->
 

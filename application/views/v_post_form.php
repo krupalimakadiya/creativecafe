@@ -40,7 +40,7 @@
                             <?php
                             if (isset($update_data)) {
                                 ?>
-                                <form name="artistfrm" method="POST" action="<?php echo site_url("post/editp") ?>" role="form" enctype="multipart/form-data">
+                            <form name="artistfrm" method="POST" action="<?php echo site_url("post/editp") ?>" role="form" enctype="multipart/form-data" autocomplete="off">
                                     <input type="hidden" name="post_id" value="<?php echo $update_data['post_id'] ?>" />
                                     <!--                                    <div class="form-group">
                                                                             <label>First name</label>
@@ -121,7 +121,7 @@
                                 <?php
                             } else {
                                 ?>
-                                <form name="postfrm" method="POST" action="<?php echo site_url("post/addp") ?>" role="form" enctype="multipart/form-data" >
+                                <form name="postfrm" method="POST" action="<?php echo site_url("post/addp") ?>" role="form" enctype="multipart/form-data"  >
 
                                     <div class="form-group">
                                         <label>Art Category Name</label>

@@ -19,8 +19,6 @@ $this->load->view('admin/header_body');
 $this->load->view('admin/header_body_aside');
                 ?>
             </aside>
-
-
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -45,32 +43,25 @@ $this->load->view('admin/header_body_aside');
                                         <?php
                                         if (isset($update_data)) {
                                             ?>
-                                            <form role="form" name="newsfrm" method="POST" action="<?php echo site_url("news/editp") ?>" enctype="multipart/form-data">
+                                        <form role="form" name="newsfrm" method="POST" action="<?php echo site_url("news/editp") ?>" enctype="multipart/form-data" autocomplete="off">
                                                 <!-- text input -->
-                                                <input type="hidden" class="form-control" name="news_id" value="<?php echo $update_data['news_id'] ?>">
-
+                                                <input type="hidden" class="form-control" name="news_id"  value="<?php echo $update_data['news_id'] ?>">
                                                 <div class="form-group">
                                                     <label>Title</label>
-                                                    <input type="text" class="form-control" name="title" value="<?php echo $update_data['title'] ?>">                                    
+                                                    <input type="text" class="form-control" name="title" required="" value="<?php echo $update_data['title'] ?>">                                    
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Date</label>
-                                                    <input type="text" class="form-control" name="date" value="<?php echo $update_data['date'] ?>">
+                                                    <input type="text" class="form-control" name="date" required="" value="<?php echo $update_data['date'] ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Image</label>
-                                                    <input type="file" class="form-control" name="image" >
+                                                    <input type="file" class="form-control" name="image" required="" >
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Description</label>
-                                                    <textarea id="editor1" name="description" rows="10" cols="80" ><?php echo $update_data['description'] ?>
-                                                    </textarea>             
-
+                                                    <textarea id="editor1" name="description" rows="10" cols="80" required=""> <?php echo $update_data['description'] ?></textarea>                                                                                                                             
                                                 </div>
-
-
-
-
                                                 <div class="form-group">
                                                     <button type="submit" name="submit" class="btn btn-primary">submit
                                                     </button>
@@ -79,11 +70,11 @@ $this->load->view('admin/header_body_aside');
                                             <?php
                                         } else {
                                             ?>
-                                            <form role="form" name="newsfrm" method="POST" action="<?php echo site_url("news/do_upload") ?>" enctype="multipart/form-data">
+                                        <form role="form" name="newsfrm" method="POST" action="<?php echo site_url("news/do_upload") ?>" enctype="multipart/form-data" autocomplete="off">
                                                 <!-- text input -->
                                                 <div class="form-group">
                                                     <label>Title</label>
-                                                    <input type="text" class="form-control" name="title" placeholder="Enter your News Title">
+                                                    <input type="text" class="form-control" name="title" placeholder="Enter your News Title" required="">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Date:</label>
@@ -92,25 +83,20 @@ $this->load->view('admin/header_body_aside');
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date">
+                                                        <input type="text" class="form-control pull-right" id="datepicker" name="date" required="">
                                                     </div>
                                                     <!-- /.input group -->
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Image</label>
-                                                    <input type="file" class="form-control" name="image">
+                                                    <input type="file" class="form-control" name="image" required="">
                                                 </div>
-
                                                 <div class="form-group">
                                                     <label>Description</label>
-                                                    <textarea id="editor1" name="description" rows="10" cols="80">
+                                                    <textarea id="editor1" name="description" rows="10" cols="80" required="">
                                                                     This is my textarea to be replaced with CKEditor.
                                                     </textarea>             
                                                 </div>
-
-
-
-
                                                 <div class="form-group">
                                                     <button type="submit" name="submit" class="btn btn-primary">submit
                                                     </button>
@@ -123,9 +109,11 @@ $this->load->view('admin/header_body_aside');
                                     <!-- /.box-body -->
                                 </div>
                                 <!-- /.box -->
-                                </section>
-                                <!-- Main content -->
                             </div>
+                        </div>
+                    </section></section>
+                                <!-- Main content -->
+                        
                             <!-- /.content-wrapper -->
                             <footer class="main-footer">
                                 <?php
@@ -161,21 +149,6 @@ $this->load->view('admin/footer_include');
                         </html>
 
 
-                        <!---
-                        <div class="box-header">
-                                 
-                                 <h3 class="box-title"><label>Description</label>
-                               </h3>
-                        <!-- tools box 
-                        <div class="pull-right box-tools">
-                          <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip"
-                                  title="Collapse">
-                            <i class="fa fa-minus"></i></button>
-                          <button type="button" class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip"
-                                  title="Remove">
-                            <i class="fa fa-times"></i></button>
-                        </div>
-                        <!-- /. tools -->
                         </div>
 
-                        --->
+                        

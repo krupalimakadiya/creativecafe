@@ -1,5 +1,4 @@
 <?php
-
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Post extends MY_Controller {
@@ -25,7 +24,7 @@ class Post extends MY_Controller {
     public function delete($post_id) {
         $this->post_model->delete($post_id);
         $this->session->set_flashdata('message', 'record deleted successfully...');
-        redirect("artist");
+        redirect("post");
     }
 
     public function update_status_active($post_id) {
@@ -40,7 +39,7 @@ class Post extends MY_Controller {
         redirect('post');
     }
 
-    public function importp() {
+    /*public function importp() {
         $file = $_FILES['upload']['tmp_name'];
         $handle = fopen($file, "r");
         $row = 1;
@@ -60,13 +59,12 @@ class Post extends MY_Controller {
             if (strlen($last_name) < 2) {
                 continue;
             }
-
-            /*  $art_category_id=trim($filesop[2]);
+              $art_category_id=trim($filesop[2]);
               if(strlen($art_category_id)<0)
               {
               continue;
-              } */
-            /* $mobile = trim($filesop[3]);
+              } 
+             $mobile = trim($filesop[3]);
               if (strlen($mobile) < 2) {
               continue;
               }
@@ -127,9 +125,9 @@ class Post extends MY_Controller {
               $total = ($records - 1);
               $this->session->set_flashdata('message', $counter . " record(s) out of " . ($total == -1 ? 0 : $total) . " successfully imported.");
               redirect("artist");
-              } */
+              } 
         }
-    }
+    }*/
 
     /* public function export() {
       $this->load->dbutil();
@@ -180,3 +178,4 @@ class Post extends MY_Controller {
     }
 
 }
+?>

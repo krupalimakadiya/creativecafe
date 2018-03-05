@@ -39,7 +39,7 @@
                             if (isset($update_data)) {
                                 ?>
 
-                                <form name="statefrm" method="POST" action="<?php echo site_url("state/editp") ?>" role="form" >
+                            <form name="statefrm" method="POST" action="<?php echo site_url("state/editp") ?>" role="form" autocomplete="off" >
                                     <input type="hidden" name="state_id" value="<?php echo $update_data['state_id'] ?>" />
 
                                     <!-- text input -->
@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>State Name</label>
-                                        <input type="text" class="form-control"name="state_name" value="<?php echo $update_data['state_name'] ?>" >
+                                        <input type="text" class="form-control"name="state_name" required="" value="<?php echo $update_data['state_name'] ?>" >
 
                                     </div>
 
@@ -75,7 +75,7 @@
                             } else {
                                 ?>
 
-                                <form name="statefrm" method="POST" action="<?php echo site_url("state/addp") ?>" role="form" >
+                            <form name="statefrm" method="POST" action="<?php echo site_url("state/addp") ?>" role="form" autocomplete="off" >
 
                                     <!-- text input -->
                                     <div class="form-group">
@@ -94,7 +94,7 @@
 
                                     <div class="form-group">
                                         <label>State_name</label>
-                                        <input type="text" class="form-control"name="state_name"  placeholder="Enter State Name....">
+                                        <input type="text" class="form-control"name="state_name" required=""  placeholder="Enter State Name....">
                                     </div>
 
                                     <div class="form-group">

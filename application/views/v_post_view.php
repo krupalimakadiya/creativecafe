@@ -78,8 +78,6 @@
                                                 <th>Check</th>
                                                 <th>Id</th>
                                                 <th>Art Category Name</th>
-                                                <th>Art Subcategory Name</th>
-                                                <th>Art Subcategory2 Name</th>
                                                 <th>File Type</th>                                              
                                                 <th>Description</th>
                                                 <th>Artist ID</th>
@@ -96,9 +94,6 @@
                                                     <td><input type="checkbox" name="post_id[]" value="<?php echo $post->post_id ?>"</td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $post->art_category_name ?></td>
-                                                    <td><?PHP echo $post->art_subcategory_name ?></td>
-                                                    <td><?PHP echo $post->art_subcategory2_name ?></td>
-
                                                     <td><?PHP echo $post->file_type ?></td>                                                   
                                                     <td><?PHP echo $post->Description ?></td>                                                    
                                                     <td><?PHP echo $post->artist_id ?></td>                                                   
@@ -149,14 +144,6 @@
                                                                             <tr>
                                                                                 <td><label>Art Category Name</label></td>
                                                                                 <td>:&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $post->art_category_name ?></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><label>Art Subcategory Name</label></td>
-                                                                                <td>:&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $post->art_subcategory_name ?></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><label>Art Subcategory2 Name</label></td>
-                                                                                <td>:&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $post->art_subcategory2_name ?></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td><label>File Type</label></td>

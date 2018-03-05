@@ -8,24 +8,21 @@ class Post_model extends CI_model {
         $query = $this->db->query("select * from 
                 post_master as p,
                 artist_master as artist,
-                art_category_master as art_category, 
-                art_subcategory_master as art_subcategory, 
-                art_subcategory2_master as art_subcategory2 
+                art_category_master as ac 
                 where 
                 p.artist_id=artist.artist_id AND 
-                p.art_category_id=art_category.art_category_id AND 
-                p.art_subcategory_id=art_subcategory.art_subcategory_id AND
-                p.art_subcategory2_id=art_subcategory2.art_subcategory2_id");
-        return $query->result();
+                p.art_category_id=ac.art_category_id ");
+      return $query->result();
     }
 
     public function getartistlist() {
-        $query = $this->db->query("select * from artist_master  as a, country_master as c, state_master as s, city_master as city  where a.country_id=c.country_id and a.state_id=s.state_id and a.city_id=city.city_id");
-        return $query->result();
+        $query = $this->db->query("select * from artist_master");
+                
+                        return $query->result();
     }
 
     public function getartcategoryid($art_category_name) {
-        $query = $this->db->query("select * from art_category_master where country_name='$art_category_name'");
+        $query = $this->db->query("select * from art_category_master where art_category_name='$art_category_name'");
         return $query->row_array();
     }
 

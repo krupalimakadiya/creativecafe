@@ -30,7 +30,6 @@
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
-
             <header class="main-header">
                 <?php
                 include('admin/header_body.php');
@@ -42,8 +41,6 @@
                 include('admin/header_body_aside.php');
                 ?>
             </aside>
-
-
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -62,7 +59,7 @@
                             if (isset($update_data)) {
                                 ?>
 
-                                <form name="cityfrm" method="POST" action="<?php echo site_url("city/editp") ?>" role="form" >
+                            <form name="cityfrm" method="POST" action="<?php echo site_url("city/editp") ?>" role="form" autocomplete="off">
                                     <input type="hidden" name="city_id" value="<?php echo $update_data['city_id'] ?>" />
 
                                     <!-- text input -->
@@ -101,11 +98,9 @@
                                         </select>
                                     </div>
 
-
                                     <div class="form-group">
                                         <label>City Name</label>
-                                        <input type="text" class="form-control"name="city_name" value="<?php echo $update_data['city_name'] ?>" >
-
+                                        <input type="text" class="form-control"name="city_name" value="<?php echo $update_data['city_name'] ?>" required="" >
                                     </div>
 
                                     <div class="form-group">
@@ -115,8 +110,7 @@
                                 <?php
                             } else {
                                 ?>
-
-                                <form name="cityfrm" method="POST" action="<?php echo site_url("city/addp") ?>" role="form" >
+                            <form name="cityfrm" method="POST" autocomplete="off" action="<?php echo site_url("city/addp") ?>" role="form" >
 
                                     <!-- text input -->
                                     <div class="form-group">
@@ -141,7 +135,7 @@
 
                                     <div class="form-group">
                                         <label>City Name</label>
-                                        <input type="text" class="form-control" name="city_name"  placeholder="Enter City Name....">
+                                        <input type="text" class="form-control" required="" name="city_name"  placeholder="Enter City Name....">
                                     </div>
 
                                     <div class="form-group">
@@ -155,26 +149,19 @@
                         <!-- /.box-body -->
                     </div>
                     <!-- /.box -->
-
-
-                </section>
-
+                </section></div>           
                 <!-- Main content -->
             </div>
             <!-- /.content-wrapper -->
-
             <footer class="main-footer">
 <?php
 include('admin/footer_body.php');
 ?>
             </footer>
-
-
             <!-- Add the sidebar's background. This div must be placed
                  immediately after the control sidebar -->
             <div class="control-sidebar-bg"></div>
-        </div>
-        <!-- ./wrapper -->
+                <!-- ./wrapper -->
 <?php
 include('admin/footer_include.php');
 ?>

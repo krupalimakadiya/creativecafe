@@ -19,8 +19,6 @@
                 $this->load->view('admin/header_body_aside');
                 ?>
             </aside>
-
-
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
@@ -45,13 +43,13 @@
                                         <?php
                                         if (isset($update_data)) {
                                             ?>
-                                            <form role="form" name="countryfrm" method="POST" action="<?php echo site_url("country/editp") ?>">
+                                        <form role="form" name="countryfrm" method="POST" autocomplete="off" action="<?php echo site_url("country/editp") ?>">
                                                 <!-- text input -->
-                                                <input type="hidden" class="form-control" name="country_id" value="<?php echo $update_data['country_id'] ?>">
+                                                <input type="hidden" class="form-control" name="country_id" required="" value="<?php echo $update_data['country_id'] ?>">
 
                                                 <div class="form-group">
                                                     <label>country name</label>
-                                                    <input type="text" class="form-control" name="country_name" value="<?php echo $update_data['country_name'] ?>">
+                                                    <input type="text" class="form-control" name="country_name" required="" value="<?php echo $update_data['country_name'] ?>">
 
                                                 </div>
                                                 <div class="form-group">
@@ -62,11 +60,11 @@
                                             <?php
                                         } else {
                                             ?>
-                                            <form role="form" name="countryfrm" method="POST" action="<?php echo site_url("country/addp") ?>">
+                                        <form role="form" name="countryfrm" method="POST" action="<?php echo site_url("country/addp") ?>" autocomplete="off">
                                                 <!-- text input -->
                                                 <div class="form-group">
                                                     <label>country name</label>
-                                                    <input type="text" class="form-control" name="country_name" placeholder="Enter your country name...">
+                                                    <input type="text" class="form-control" name="country_name" required="" placeholder="Enter your country name...">
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" name="submit" class="btn btn-primary">submit
@@ -81,13 +79,12 @@
                                     <!-- /.box-body -->
                                 </div>
                                 <!-- /.box -->
-
+                            </div></div>
                                 </section>
-
+                </section>
                                 <!-- Main content -->
                             </div>
                             <!-- /.content-wrapper -->
-
                             <footer class="main-footer">
                                 <?php
                                 $this->load->view('admin/footer_body');
