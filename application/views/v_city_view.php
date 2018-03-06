@@ -73,7 +73,7 @@
                             </div>
 
 
-                            <div class="box-body">
+                                <div class="box-body">
                                 <form name="frm" method="post" action="<?php echo site_url('city/deletemultiple'); ?>">
 
                                     <table id="example1" class="table table-bordered table-striped">

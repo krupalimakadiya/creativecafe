@@ -11,7 +11,13 @@ class Comment_model extends CI_model {
     
     public function delete($comment_id) {
         $this->db->where('comment_id', $comment_id);
-        $this->db->delete('comment_master');
+        if($this->db->delete('comment_master'))
+        {
+              return true;
+        } else {
+            return false;
+        }    
+        
     }
 
     public function update_active($comment_id, $status) {
@@ -20,7 +26,11 @@ class Comment_model extends CI_model {
             'status' => 1
         );
         $this->db->where('comment_id', $comment_id);
-        $this->db->update('comment_master', $data);
+        if($this->db->update('comment_master', $data)){
+              return true;
+        } else {
+            return false;
+        }
     }
 
     public function update_deactive($comment_id, $status) {
@@ -29,7 +39,12 @@ class Comment_model extends CI_model {
             'status' => 0
         );
         $this->db->where('comment_id', $comment_id);
-        $this->db->update('comment_master', $data);
+        if($this->db->update('comment_master', $data)){
+              return true;
+        } else {
+            return false;
+        }    
+        
     }
 
 }

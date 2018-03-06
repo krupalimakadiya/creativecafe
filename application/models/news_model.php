@@ -10,11 +10,7 @@ class News_model extends CI_model {
     }
     
       public function insert($data) {
-       // $data = array('title' => $title,'date' => $date,'image' => $image,
-           // 'description' => $description ); //1= active //0-deactive
             $this->db->insert('news_master',$data);
-           // print_r($data);
-           // die();
             return $this->db->insert_id();
   }
         function update_filename($news_id,$filename) {

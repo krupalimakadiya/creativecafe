@@ -41,7 +41,11 @@ class Art_category_model extends CI_model {
 
     public function delete($art_category_id) {
         $this->db->where('art_category_id', $art_category_id);
-        $this->db->delete('art_category_master');
+        if($this->db->delete('art_category_master')){
+              return true;
+        } else {
+            return false;
+        }            
     }
 
     public function update_active($art_category_id, $art_category_status) {
@@ -50,7 +54,13 @@ class Art_category_model extends CI_model {
             'art_category_status' => 1
         );
         $this->db->where('art_category_id', $art_category_id);
-        $this->db->update('art_category_master', $data);
+        if($this->db->update('art_category_master', $data))
+        {
+              return true;
+        } else {
+            return false;
+        }    
+        
     }
 
     public function update_deactive($art_category_id, $art_category_status) {
@@ -59,7 +69,12 @@ class Art_category_model extends CI_model {
             'art_category_status' => 0
         );
         $this->db->where('art_category_id', $art_category_id);
-        $this->db->update('art_category_master', $data);
+        if($this->db->update('art_category_master', $data)){
+              return true;
+        } else {
+            return false;
+        }    
+        
     }
 
 }

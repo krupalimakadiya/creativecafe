@@ -42,7 +42,12 @@ class State_model extends CI_model {
 
     public function delete($state_id) {
         $this->db->where('state_id', $state_id);
-        $this->db->delete('state_master');
+        if($this->db->delete('state_master'))
+        {
+                  return true;
+        } else {
+            return false;        
+        }
     }
 
     public function update_active($state_id, $state_status) {
@@ -51,7 +56,11 @@ class State_model extends CI_model {
             'state_status' => 1
         );
         $this->db->where('state_id', $state_id);
-        $this->db->update('state_master', $data);
+        if($this->db->update('state_master', $data))
+        {            return true;
+        } else {
+            return false;
+        }
     }
 
     public function update_deactive($state_id, $state_status) {
@@ -60,7 +69,12 @@ class State_model extends CI_model {
             'state_status' => 0
         );
         $this->db->where('state_id', $state_id);
-        $this->db->update('state_master', $data);
+        if($this->db->update('state_master', $data))
+        {
+                  return true;
+        } else {
+            return false;        
+        }
     }
 
     //used in importp method for get country id from coutry name

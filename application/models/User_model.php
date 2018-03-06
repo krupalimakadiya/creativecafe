@@ -80,7 +80,12 @@ class User_model extends CI_model {
 
     public function delete($user_id) {
         $this->db->where('user_id', $user_id);
-        $this->db->delete('user_master');
+        if($this->db->delete('user_master'))
+        {
+              return true;
+        } else {
+            return false;
+        }            
     }
 
     public function update_active($user_id, $user_status) {
@@ -89,7 +94,11 @@ class User_model extends CI_model {
             'user_status' => 1
         );
         $this->db->where('user_id', $user_id);
-        $this->db->update('user_master', $data);
+        if($this->db->update('user_master', $data))
+        {            return true;
+        } else {
+            return false;
+        }
     }
 
     public function update_deactive($user_id, $user_status) {
@@ -98,7 +107,11 @@ class User_model extends CI_model {
             'user_status' => 0
         );
         $this->db->where('user_id', $user_id);
-        $this->db->update('user_master', $data);
+        if($this->db->update('user_master', $data))
+        {                     return true;
+        } else {
+            return false;
+        }
     }
 
 }

@@ -44,7 +44,13 @@ class Exhibition_model extends CI_Model {
 
     public function delete($exhibition_id) {
         $this->db->where('exhibition_id', $exhibition_id);
-        $this->db->delete('exhibition_master');
+        if($this->db->delete('exhibition_master'))
+        {
+              return true;
+        } else {
+            return false;
+        }    
+        
     }
 
     public function update_active($exhibition_id, $exhibition_status) {
@@ -53,7 +59,11 @@ class Exhibition_model extends CI_Model {
             'exhibition_status' => 1
         );
         $this->db->where('exhibition_id', $exhibition_id);
-        $this->db->update('exhibition_master', $data);
+        if($this->db->update('exhibition_master', $data))
+        {      return true;
+        } else {
+            return false;
+        }
     }
 
     public function update_deactive($exhibition_id, $exhibition_status) {
@@ -62,7 +72,12 @@ class Exhibition_model extends CI_Model {
             'exhibition_status' => 0
         );
         $this->db->where('exhibition_id', $exhibition_id);
-        $this->db->update('exhibition_master', $data);
-    }
+        if($this->db->update('exhibition_master', $data))
+        {
+          return true;
+        } else {
+            return false;
+        }
 
+}
 }
