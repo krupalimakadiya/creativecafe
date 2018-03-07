@@ -59,10 +59,8 @@ class Post_model extends CI_model {
               return true;
         } else {
             return false;
-        }    
-        
+        }            
     }
-
     public function update_deactive($post_id, $post_status) {
         $data = array(
             'post_id' => $post_id,
@@ -77,4 +75,30 @@ class Post_model extends CI_model {
         }
     }
 
+    public function update_ispublished($post_id, $ispublished) {
+        $data = array(
+            'post_id' => $post_id,
+            'ispublished' => 1
+        );
+        $this->db->where('post_id', $post_id);
+        if($this->db->update('post_master', $data))
+        {
+              return true;
+        } else {
+            return false;
+        }            
+    }
+    public function update_isnotpublished($post_id, $ispublished) {
+        $data = array(
+            'post_id' => $post_id,
+            'ispublished' => 0
+        );
+        $this->db->where('post_id', $post_id);
+        if($this->db->update('post_master', $data))
+        {
+                  return true;
+        } else {
+            return false;        
+        }
+    }
 }

@@ -102,7 +102,7 @@ class Artist extends MY_Controller {
     }
 
     public function editp() {
-        $config['upload_path'] = $this->config->item('image_url');
+        $config['upload_path'] = $this->config->item('image_path');
         $config['allowed_types'] = 'gif|jpg|png';
         $config['max_size'] = 800;
         $config['max_width'] = 2024;
@@ -115,8 +115,7 @@ class Artist extends MY_Controller {
         if (!$this->upload->do_upload('artist_profile')) {
             $error = array('error' => $this->upload->display_errors());
             print_r($error);
-        } else {
-           
+        } else {           
             $this->artist_model->update_data($_POST['artist_id'], $_POST['first_name'], $_POST['last_name'], $_POST['mobile'], $_POST['email'], $_POST['password'], $newfilename, $_POST['country_id'], $_POST['state_id'], $_POST['city_id'], $_POST['pincode']);
             redirect("artist");
         }
