@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2018 at 05:16 PM
+-- Generation Time: Mar 07, 2018 at 04:47 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -60,19 +60,21 @@ CREATE TABLE IF NOT EXISTS `artist_master` (
   `pincode` int(10) NOT NULL,
   `artist_status` int(10) NOT NULL,
   PRIMARY KEY (`artist_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=125 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=127 ;
 
 --
 -- Dumping data for table `artist_master`
 --
 
 INSERT INTO `artist_master` (`artist_id`, `first_name`, `last_name`, `mobile`, `email`, `password`, `artist_profile`, `country_id`, `state_id`, `city_id`, `pincode`, `artist_status`) VALUES
-(118, 'krupi', 'makadiya', '8000167777', 'krupalimakadiya123@gmail.com', '123456', '1518876574OT-0465.JPG', 38, 19, 18, 789654123, 1),
+(118, 'keval', 'patel', '7878827777', 'krupalimakadiya123@gmail.com', '123456', '1520430884OT-0466.JPG', 36, 13, 15, 394101, 1),
 (120, 'ruchi', 'patel', '9875214630', 'ruchi@gmail.com', '456321', '1518853017OT-0459.JPG', 10, 8, 10, 7896541, 0),
 (121, 'tarun', 'vaishnani', '785412036', 'tarun@gmail.com', 'tarun', '311248695.jpg', 35, 14, 16, 987456, 0),
 (122, 'poonam', 'patel', '7854120', 'email123@gmail.com', '123456', '1518851962images (1).jpg', 35, 14, 16, 123456, 0),
 (123, 'priya', 'mk', '78541203', 'priya@gmail.com', 'priya', '1518852046images.jpg', 35, 14, 16, 123456, 0),
-(124, 'arjun', 'shah123', '4563217890', 'arjun@gmail.com', '123456', '1518919946images.jpg', 35, 14, 16, 123654, 0);
+(124, 'arjun', 'shah123', '4563217890', 'arjun@gmail.com', '123456', '1518919946images.jpg', 35, 14, 16, 123654, 0),
+(125, 'keval', 'mk', 'dnfjkn', 'email123@gmail.com', '123456', '', 28, 21, 13, 0, 0),
+(126, 'dummy123', 'dummy123', 'dummy123', 'dummy@gmail.com', 'dummy', '1520408290OT-0462.JPG', 28, 21, 13, 394101, 0);
 
 -- --------------------------------------------------------
 
@@ -84,70 +86,39 @@ CREATE TABLE IF NOT EXISTS `art_category_master` (
   `art_category_id` int(10) NOT NULL AUTO_INCREMENT,
   `art_category_name` varchar(50) NOT NULL,
   `art_category_status` int(10) NOT NULL,
+  `art_sub_cat_id` int(10) NOT NULL,
+  `art_category_leval` int(10) NOT NULL,
+  `url_code` varchar(200) NOT NULL,
   PRIMARY KEY (`art_category_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=45 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=82 ;
 
 --
 -- Dumping data for table `art_category_master`
 --
 
-INSERT INTO `art_category_master` (`art_category_id`, `art_category_name`, `art_category_status`) VALUES
-(6, 'wood print', 1),
-(21, 'jewellary', 0),
-(22, 'design', 0),
-(23, 'video', 0),
-(26, 'photos', 0),
-(32, 'metal', 0),
-(41, 'fabric paint', 0),
-(42, 'dummy1', 0),
-(43, 'xyz', 0),
-(44, 'krupi', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `art_subcategory2_master`
---
-
-CREATE TABLE IF NOT EXISTS `art_subcategory2_master` (
-  `art_subcategory2_id` int(20) NOT NULL AUTO_INCREMENT,
-  `art_category_id` int(20) NOT NULL,
-  `art_subcategory_id` int(20) NOT NULL,
-  `art_subcategory2_name` varchar(50) NOT NULL,
-  `art_subcategory2_status` int(11) NOT NULL,
-  PRIMARY KEY (`art_subcategory2_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
-
---
--- Dumping data for table `art_subcategory2_master`
---
-
-INSERT INTO `art_subcategory2_master` (`art_subcategory2_id`, `art_category_id`, `art_subcategory_id`, `art_subcategory2_name`, `art_subcategory2_status`) VALUES
-(1, 42, 0, '', 0),
-(2, 42, 1, 'dummy111', 0),
-(3, 6, 2, 'wood print11', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `art_subcategory_master`
---
-
-CREATE TABLE IF NOT EXISTS `art_subcategory_master` (
-  `art_subcategory_id` int(20) NOT NULL AUTO_INCREMENT,
-  `art_category_id` varchar(20) NOT NULL,
-  `art_subcategory_name` varchar(50) NOT NULL,
-  `art_subcategory_status` int(10) NOT NULL,
-  PRIMARY KEY (`art_subcategory_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `art_subcategory_master`
---
-
-INSERT INTO `art_subcategory_master` (`art_subcategory_id`, `art_category_id`, `art_subcategory_name`, `art_subcategory_status`) VALUES
-(1, '42', 'dummy11', 1),
-(2, '6', 'wood print1', 0);
+INSERT INTO `art_category_master` (`art_category_id`, `art_category_name`, `art_category_status`, `art_sub_cat_id`, `art_category_leval`, `url_code`) VALUES
+(56, 'krupali', 0, 0, 1, '3Koq7cs5xjgIBytlm'),
+(57, 'krupali1', 0, 56, 2, '3Koq7csxjg5IBytlm'),
+(59, 'photography', 0, 0, 1, 'gVZhtxpDOTR6AFk7'),
+(63, 'animal', 0, 59, 2, 'wXVC9o1jNf8bWFQJ'),
+(64, 'black&white', 0, 59, 2, 'meYVtsPK157hc8xj'),
+(65, 'nature', 0, 59, 2, 'A2WzNp4I1ntj3Hwc'),
+(66, 'novel', 0, 60, 2, 'LzBxi7YV0h8Wseuq'),
+(67, 'music', 0, 0, 1, 'uqGD67kF4NCh583g'),
+(68, 'rock', 0, 67, 2, '2kZ1ioLns4h9Ypfc'),
+(69, 'hip hop', 0, 67, 2, 'slGyZOfxAItBcgv0'),
+(70, 'pop', 0, 67, 2, 'htLukezVd6I1a7yQ'),
+(71, 'Dance', 0, 0, 1, 'NMz95gDrufUs7oWT'),
+(72, 'salsa', 0, 71, 2, 'd8vzk1H6utNnBr7m'),
+(73, 'Break dance', 0, 71, 2, 'OkdXpgHQb9MKeF8n'),
+(74, 'Art', 0, 0, 1, 'Ad2VloCJ8pYjnSRy'),
+(75, 'design', 0, 74, 2, 'VsSjwDWo7OzNc1xM'),
+(76, 'tatoo', 0, 74, 2, 'pQPXWaxjm7NE9Yy5'),
+(77, 'cartoon', 0, 74, 2, 'E3guWZdrAvROh7iP'),
+(78, 'sketch', 0, 74, 2, 'ACvnI194Fb8KVDmN'),
+(79, 'Design', 0, 0, 1, '6RVrIUaOfiBq519Y'),
+(80, 'Fabric paint', 0, 79, 2, 'bdAxtkq5c28SywGY'),
+(81, 'Graphics Design', 0, 79, 2, 'YVzbDIvrJgOLCcRA');
 
 -- --------------------------------------------------------
 
@@ -219,6 +190,31 @@ INSERT INTO `comment_master` (`comment_id`, `user_id`, `comment`, `status`) VALU
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contactus_master`
+--
+
+CREATE TABLE IF NOT EXISTS `contactus_master` (
+  `contact_id` int(10) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(20) NOT NULL,
+  `subject` varchar(300) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `mobile` int(11) NOT NULL,
+  `message` varchar(2000) NOT NULL,
+  `contact_status` int(10) NOT NULL,
+  PRIMARY KEY (`contact_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `contactus_master`
+--
+
+INSERT INTO `contactus_master` (`contact_id`, `first_name`, `subject`, `email`, `mobile`, `message`, `contact_status`) VALUES
+(1, 'keval', 'dummy', 'dummy@gmail.com', 2147483647, 'dummy mesg', 0),
+(2, 'xyz', 'xyz', 'xyz@gmail.com', 2147483647, 'wedmjknkdm', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `country_master`
 --
 
@@ -235,19 +231,15 @@ CREATE TABLE IF NOT EXISTS `country_master` (
 
 INSERT INTO `country_master` (`country_id`, `country_name`, `country_status`) VALUES
 (10, 'usa123', 0),
-(18, 'Zafrabad...', 1),
+(18, 'Zafrabad...123', 1),
 (19, 'usa', 1),
-(20, 'waerjkh', 1),
 (21, 'mk123', 1),
-(22, 'kerjnkm', 1),
 (23, 'mk', 1),
 (25, 'temp', 1),
 (27, 'temp1234', 1),
 (28, 'India', 1),
-(29, 'afghansitan', 0),
-(30, 'pakistan', 0),
-(31, 'xyz', 0),
-(32, 'abc', 0),
+(31, 'xyz', 1),
+(32, 'abc', 1),
 (33, 'qerert', 0),
 (34, 'qwert', 0),
 (35, 'China', 0),
@@ -267,6 +259,19 @@ INSERT INTO `country_master` (`country_id`, `country_name`, `country_status`) VA
 (49, 'c4', 0),
 (50, 'raksh', 0),
 (51, 'raksh', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `email_sc_master`
+--
+
+CREATE TABLE IF NOT EXISTS `email_sc_master` (
+  `sc_id` int(100) NOT NULL AUTO_INCREMENT,
+  `email_id` varchar(200) NOT NULL,
+  `sc_status` int(10) NOT NULL,
+  PRIMARY KEY (`sc_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -359,8 +364,7 @@ INSERT INTO `news_master` (`news_id`, `title`, `date`, `image`, `description`, `
 CREATE TABLE IF NOT EXISTS `post_master` (
   `post_id` int(100) NOT NULL AUTO_INCREMENT,
   `art_category_id` int(100) NOT NULL,
-  `art_subcategory_id` int(100) NOT NULL,
-  `art_subcategory2_id` int(100) NOT NULL,
+  `art_sub_cat_id` int(100) DEFAULT NULL,
   `file_type` varchar(100) NOT NULL,
   `image` varchar(1000) DEFAULT NULL,
   `project_audio` varchar(1000) DEFAULT NULL,
@@ -368,22 +372,21 @@ CREATE TABLE IF NOT EXISTS `post_master` (
   `Description` varchar(5000) NOT NULL,
   `artist_id` int(20) NOT NULL,
   `post_status` int(20) NOT NULL,
+  `ispublished` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`post_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=60 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=68 ;
 
 --
 -- Dumping data for table `post_master`
 --
 
-INSERT INTO `post_master` (`post_id`, `art_category_id`, `art_subcategory_id`, `art_subcategory2_id`, `file_type`, `image`, `project_audio`, `project_video`, `Description`, `artist_id`, `post_status`) VALUES
-(31, 21, 1, 2, 'audio', NULL, 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/269943960&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true', '', 'wekrtjgyuklm                                        ', 118, 0),
-(35, 22, 1, 2, 'video', NULL, '', 'https://www.youtube.com/embed/5gIpqS-Qpzw', ' ds,flghmkmds,.fm,                                       ', 118, 0),
-(49, 22, 0, 0, '', NULL, NULL, 'https://www.youtube.com/embed/8NCdO7uTX_8', '', 118, 0),
-(55, 44, 1, 0, 'image', '1519029636B612_20170429_104405.jpg', '', '', 'this is one of the my favrite pic                                        ', 118, 0),
-(56, 42, 1, 2, 'image', '1519181039OT-0462.JPG', '', '', '                                        this is flover image', 118, 0),
-(57, 6, 2, 3, 'image', '1519528879OT-0456.JPG', '', '', '     this is flower                                                   ', 118, 0),
-(58, 6, 2, 3, 'image', '1519529090OT-0459.JPG', '', '', '                                 sdfjkgrt                        ', 118, 0),
-(59, 42, 1, 2, 'image', '1519529132OT-0463.JPG', '', '', '     sdsfrgthyuji                                                   ', 118, 0);
+INSERT INTO `post_master` (`post_id`, `art_category_id`, `art_sub_cat_id`, `file_type`, `image`, `project_audio`, `project_video`, `Description`, `artist_id`, `post_status`, `ispublished`) VALUES
+(62, 56, 57, 'image', '152032460828377676_1947482875324502_8895143476383973376_n.jpg', '', '', 'wedrfwed                            ', 118, 1, 0),
+(63, 59, 63, 'image', '1520350229OT-0457.JPG', '', '', 'gtsdcfvgb                            ', 118, 1, 1),
+(64, 59, 63, 'audio', NULL, 'https://www.youtube.com/embed/xu3BK23OdOw', '', ' rjtgfjkndfnkns                           ', 118, 0, NULL),
+(65, 59, 63, 'audio', NULL, 'https://www.youtube.com/embed/xu3BK23OdOw', '', ' rjtgfjkndfnkns                           ', 118, 0, NULL),
+(66, 71, 72, 'audio', NULL, 'https://www.youtube.com/embed/0SZigTb-iqo', '', '  this is audio                          ', 118, 0, NULL),
+(67, 59, 63, 'image', '1520430583OT-0465.JPG', '', '', 'this is an image                            ', 118, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -432,30 +435,6 @@ INSERT INTO `state_master` (`state_id`, `country_id`, `state_name`, `state_statu
 (23, 35, 'C1', 0),
 (24, 30, 'p1', 0),
 (25, 38, 'aa1', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `suggestion_master`
---
-
-CREATE TABLE IF NOT EXISTS `suggestion_master` (
-  `suggestion_id` int(10) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(20) NOT NULL,
-  `subject` varchar(300) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `mobile` int(11) NOT NULL,
-  `message` varchar(2000) NOT NULL,
-  `suggestion_status` varchar(10) NOT NULL,
-  PRIMARY KEY (`suggestion_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `suggestion_master`
---
-
-INSERT INTO `suggestion_master` (`suggestion_id`, `first_name`, `subject`, `email`, `mobile`, `message`, `suggestion_status`) VALUES
-(1, 'keval', 'dummy', 'dummy@gmail.com', 2147483647, 'dummy mesg', '');
 
 -- --------------------------------------------------------
 

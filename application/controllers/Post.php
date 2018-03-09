@@ -32,13 +32,25 @@ class Post extends MY_Controller {
         $this->post_model->update_active($post_id, $post_status);
         redirect('post');
     }
-
+        
     public function update_status_deactive($post_id) {
         $post_status = $this->input->get('post_status');
         $this->post_model->update_deactive($post_id, $post_status);
         redirect('post');
     }
-
+//update_status_ispublished
+    public function update_status_ispublished($post_id) {
+        $post_status = $this->input->get('ispublished');
+        $this->post_model->update_ispublished($post_id, $ispublished);
+        redirect('post');
+    }
+        
+    public function update_status_isnotpublished($post_id) {
+        $post_status = $this->input->get('ispublished');
+        $this->post_model->update_isnotpublished($post_id, $ispublished);
+        redirect('post');
+    }
+    
     /*public function importp() {
         $file = $_FILES['upload']['tmp_name'];
         $handle = fopen($file, "r");

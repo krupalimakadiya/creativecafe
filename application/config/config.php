@@ -26,18 +26,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 $config['base_url'] = 'http://localhost/creativecafe/';
 $config['static_url'] = 'http://localhost/AdminLTE/';
-$config['static_url1'] = 'L:\xampp\htdocs/event/';
-//$config['static_url1'] = 'C:/wamp/www/event/';
+//$config['static_url1'] = 'L:\xampp\htdocs/event/';
+$config['static_url1'] = 'C:/wamp/www/event/';
 $config['static_url2'] = 'http://localhost/event/';
-$config['image_path'] = 'L:\xampp\htdocs\artist_image';
-//$config['image_path'] = 'C:\wamp\www\artist_image';
-$config['image_path'] = 'http://localhost/artist_image/';
-$config['image_url'] = 'L:\xampp\htdocs\artist_image';
-//$config['image_url'] = 'C:\wamp\www\artist_image';
-//$config['image_path']='http://localhost/artist_image/';
+//$config['image_path'] = 'L:\xampp\htdocs\artist_image';
+$config['image_path'] = 'C:\wamp\www\artist_image';
+$config['image_url'] = 'http://localhost/artist_image/';
+//$config['image_url'] = 'L:\xampp\htdocs\artist_image';
 $config['post_url'] = 'http://localhost/post/';
-//$config['post_path']='C:\wamp\www\post';
-$config['post_path'] = 'L:\xampp\htdocs\post';
+$config['post_path']='C:\wamp\www\post';
+//$config['post_path'] = 'L:\xampp\htdocs\post';
 /*
   |--------------------------------------------------------------------------
   | Index File
