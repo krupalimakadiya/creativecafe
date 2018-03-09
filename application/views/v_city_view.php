@@ -4,6 +4,7 @@
         <?php
         $this->load->view('admin/header_include');
         ?>
+        
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -31,8 +32,8 @@
                                 <h3 class="box-title"><label>City Master</label></h3>
                                 <p align="right">
                                     <a href="<?php echo site_url("city/add_city") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
-                                    <a href="<?php echo site_url("city/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
-                                    <a href="<?php echo site_url("city/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
+                                    <!--<a href="<?php echo site_url("city/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
+                                    <a href="<?php echo site_url("city/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a>--></p>
                                 <?php
                                 $message = $this->session->flashdata('message');
                                 $success = $this->session->flashdata('success');

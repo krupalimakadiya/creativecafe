@@ -4,6 +4,32 @@
         <?php
        $this->load->view('admin/header_include');
         ?>
+          <script type="text/javascript">
+function formValidator()
+{
+ var city_name=document.getElementById('city_name');
+ 
+ if(isAlphabet(city_name,"Enter your city name in letters"))
+  {
+        return true;
+    }
+     return false;
+ }
+function isAlphabet(elem,helperMsg)
+ {
+  var alphaExp=/^[a-zA-Z]+$/;
+  if(elem.value.match(alphaExp))
+    {
+       return true;
+    }
+  else
+    {
+     alert(helperMsg);
+     elem.focus();
+     return false;
+    }
+}
+ </script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <script>
             $("document").ready(function () {
@@ -59,7 +85,7 @@
                             if (isset($update_data)) {
                                 ?>
 
-                            <form name="cityfrm" method="POST" action="<?php echo site_url("city/editp") ?>" role="form" autocomplete="off">
+                              <form name="cityfrm" method="POST" action="<?php echo site_url("city/editp") ?>" role="form" autocomplete="off" onsubmit='return formValidator()'>
                                     <input type="hidden" name="city_id" value="<?php echo $update_data['city_id'] ?>" />
 
                                     <!-- text input -->
@@ -100,17 +126,17 @@
 
                                     <div class="form-group">
                                         <label>City Name</label>
-                                        <input type="text" class="form-control"name="city_name" value="<?php echo $update_data['city_name'] ?>" required="" >
+                                        <input type="text" class="form-control"name="city_name" id="city_name" value="<?php echo $update_data['city_name'] ?>" required="" >
                                     </div>
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary" value="submit">Submit</button>
                                     </div>
                                 </form>
-                                <?php
+                                    <?php
                             } else {
                                 ?>
-                            <form name="cityfrm" method="POST" autocomplete="off" action="<?php echo site_url("city/addp") ?>" role="form" >
+              <form name="cityfrm" method="POST" autocomplete="off" action="<?php echo site_url("city/addp") ?>" role="form" onsubmit='return formValidator()'>
 
                                     <!-- text input -->
                                     <div class="form-group">
@@ -135,14 +161,13 @@
 
                                     <div class="form-group">
                                         <label>City Name</label>
-                                        <input type="text" class="form-control" required="" name="city_name"  placeholder="Enter City Name....">
+                                        <input type="text" class="form-control" required="" id="city_name" name="city_name"  placeholder="Enter City Name....">
                                     </div>
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary" value="submit">Submit</button>
                                     </div>
-                                </form>
-                                <?php
+                                </form>                  <?php
                             }
                             ?>
                         </div>

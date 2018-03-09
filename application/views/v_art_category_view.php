@@ -73,7 +73,7 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Check</th>
+                                                <th><input type="checkbox"  id="select_all" />&nbsp;Check</th>
                                                 <th>Sr No.</th>
                                                 <th>Category Name</th>
                                                 <th>Is Root</th>
@@ -87,7 +87,7 @@
                                             foreach ($art_category_list as $art_category) {
                                                 ?>
                                                 <tr>
-                                                    <td><input type="checkbox" name="art_category_id[]" value="<?php echo $art_category->art_category_id ?>"/></td>
+                                                    <td><input type="checkbox" name="art_category_id[]" class="checkbox" value="<?php echo $art_category->art_category_id ?>"/></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $art_category->art_category_name ?></td>
                                                     <td><?PHP echo $art_category->art_sub_cat_id == 0 ? 'Root' : 'Sub-Category'; ?></td>

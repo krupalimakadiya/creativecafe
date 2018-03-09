@@ -4,6 +4,32 @@
         <?php
         $this->load->view('admin/header_include');
         ?>
+        <script type="text/javascript">
+function formValidator()
+{
+ var country_name=document.getElementById('country_name');
+ 
+ if(isAlphabet(country_name,"Enter your country name in letters"))
+  {
+        return true;
+    }
+     return false;
+ }
+function isAlphabet(elem,helperMsg)
+ {
+  var alphaExp=/^[a-zA-Z]+$/;
+  if(elem.value.match(alphaExp))
+    {
+       return true;
+    }
+  else
+    {
+     alert(helperMsg);
+     elem.focus();
+     return false;
+    }
+}
+ </script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -43,13 +69,13 @@
                                         <?php
                                         if (isset($update_data)) {
                                             ?>
-                                        <form role="form" name="countryfrm" method="POST" autocomplete="off" action="<?php echo site_url("country/editp") ?>">
+                                        <form role="form" name="countryfrm" method="POST" autocomplete="off" action="<?php echo site_url("country/editp") ?>" onsubmit='return formValidator()' >
                                                 <!-- text input -->
-                                                <input type="hidden" class="form-control" name="country_id" required="" value="<?php echo $update_data['country_id'] ?>">
+                                                <input type="hidden" class="form-control" name="country_id" required=""  value="<?php echo $update_data['country_id'] ?>">
 
                                                 <div class="form-group">
                                                     <label>country name</label>
-                                                    <input type="text" class="form-control" name="country_name" required="" value="<?php echo $update_data['country_name'] ?>">
+                                                    <input type="text" class="form-control" name="country_name" required="" id="country_name" value="<?php echo $update_data['country_name'] ?>">
 
                                                 </div>
                                                 <div class="form-group">
@@ -60,11 +86,11 @@
                                             <?php
                                         } else {
                                             ?>
-                                        <form role="form" name="countryfrm" method="POST" action="<?php echo site_url("country/addp") ?>" autocomplete="off">
+                                        <form role="form" name="countryfrm" method="POST" action="<?php echo site_url("country/addp") ?>" autocomplete="off" onsubmit='return formValidator()'>
                                                 <!-- text input -->
                                                 <div class="form-group">
                                                     <label>country name</label>
-                                                    <input type="text" class="form-control" name="country_name" required="" placeholder="Enter your country name...">
+                                                    <input type="text" class="form-control" id="country_name" name="country_name" required="" placeholder="Enter your country name...">
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" name="submit" class="btn btn-primary">submit

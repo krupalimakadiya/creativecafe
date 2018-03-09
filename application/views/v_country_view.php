@@ -4,6 +4,7 @@
         <?php
         $this->load->view('admin/header_include');
         ?>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
 
@@ -30,6 +31,8 @@
                         <div class="box box-info">
                             <div class="box-header with-border">
                                 <h3 class="box-title"><label>Country Master</label></h3>
+                                     
+                           
                                 <p align="right">
                                     <a href="<?php echo site_url("country/add_country") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
                                     <a href="<?php echo site_url("country/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
@@ -78,8 +81,8 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Check</th>
-                                                <th>Sr No.</th>
+                                                <th><input type="checkbox"  id="select_all" />&nbsp;Check</th>
+                                               <th>Sr No.</th>
                                                 <th>Country Name</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
@@ -92,7 +95,7 @@
                                             foreach ($country_list as $country) {
                                                 ?>
                                                 <tr>
-                                                    <td><input type="checkbox" name="country_id[]"  value="<?php echo $country->country_id; ?>" /></td>
+                                                    <td><input type="checkbox" name="country_id[]"  class="checkbox" value="<?php echo $country->country_id; ?>"  id="select_all" /></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $country->country_name ?></td>
                                                     <td><?php
@@ -115,7 +118,7 @@
                                                             </button>
 
                                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                                <li> <a onclick="openView(<?= $country->country_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                                <li> <a onclick="openView(<?php echo $country->country_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
                                                                 <li>    <a href="<?php echo site_url("country/edit_data/$country->country_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                                 <li>    <a href="<?php echo site_url("country/delete/$country->country_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
@@ -132,7 +135,7 @@
                                                             </ul>
                                                         </div>
 
-                                                        <div id="myModal<?= $country->country_id ?>" class="modal fade" role="dialog">
+                                                        <div id="myModal<?php echo $country->country_id ?>" class="modal fade" role="dialog">
                                                             <div class="modal-dialog">
                                                                 <!-- Modal content-->
                                                                 <div class="modal-content">
@@ -242,6 +245,5 @@
                 $("#example1").datatable();
             });
         </script>
-
     </body>
 </html>

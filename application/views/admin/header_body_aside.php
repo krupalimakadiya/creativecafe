@@ -46,7 +46,7 @@
         </li>
         <li class="treeview">
             <a href="#">
-                <i class="fa fa-circle-o"></i> <span>Country Master</span>
+                <i class="fa fa-circle-o"></i> <span>Master</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -63,6 +63,12 @@
             </a>
         </li>
         <li>
+            <a href="<?PHP echo site_url('Contact_us') ?>">
+                <i class="fa fa-circle-o"></i> <span>Contact Us Master</span>
+            </a>
+        </li>   
+
+        <li>
             <a href="<?PHP echo site_url('comment') ?>">
                 <i class="fa fa-comments"></i> <span>Comment Master</span>
             </a>
@@ -74,11 +80,11 @@
             </a>
         </li>
 
-        <!--<li>
+        <li>
             <a href="<?PHP echo site_url('event') ?>">
                 <i class="fa fa-circle-o"></i> <span>Event Master</span>
             </a>
-        </li>-->
+        </li>
 
         <li>
             <a href="<?PHP echo site_url('exhibition') ?>">

@@ -38,13 +38,13 @@
                 <?php
                 echo $this->session->flashdata('message');
                 ?>
-                <form action="<?php echo site_url('login/checkdata') ?>" method="post" name="loginfrm">
+                <form action="<?php echo site_url('login/checkdata') ?>" method="post" name="loginfrm" autocomplete="off">
                     <div class="form-group has-feedback">
-                        <input type="email" class="form-control" placeholder="Email" name="email">
+                        <input type="email" class="form-control" placeholder="Email" name="email" required="">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="Password" name="password">
+                        <input type="password" class="form-control" placeholder="Password" name="password" required="">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
                     <div class="row">
@@ -70,8 +70,8 @@
                         </div>-->
                 <!-- /.social-auth-links -->
 
-                <a href="<?php echo site_url('changepwd/index') ?>">I forgot my password</a><br>
-                <a href="register.html" class="text-center">Register a new membership</a>
+                <a href="#">I forgot my password</a><br>
+                <!--<a href="register.html" class="text-center">Register a new membership</a>-->
 
             </div>
             <!-- /.login-box-body -->

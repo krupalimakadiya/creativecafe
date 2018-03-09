@@ -30,8 +30,8 @@ $this->load->view('admin/header_body_aside');
                                 <h3 class="box-title"><label>Artist Master</label></h3>
                                 <p align="right">
                                     <a href="<?php echo site_url("artist/add_artist") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
-                                    <a href="<?php echo site_url("artist/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
-                                    <a href="<?php echo site_url("artist/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
+                                 <!--   <a href="<?php echo site_url("artist/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
+                                    <a href="<?php echo site_url("artist/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a>--></p>
                                 <?php
                                 $message = $this->session->flashdata('message');
                                 $success = $this->session->flashdata('success');
@@ -76,7 +76,7 @@ $this->load->view('admin/header_body_aside');
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Check</th>
+                                                   <th><input type="checkbox"  id="select_all" />&nbsp;Check</th>
                                                 <th>Id</th>
                                                 <th>First Name</th>
                                                 <th>Last Name</th>                                              
@@ -93,7 +93,7 @@ $this->load->view('admin/header_body_aside');
                                             foreach ($artist_list as $artist) {
                                                 ?>
                                                 <tr>
-                                                    <td><input type="checkbox" name="artist_id[]" value="<?php echo $artist->artist_id ?>"</td>
+                                                    <td><input type="checkbox" name="artist_id[]" class="checkbox" value="<?php echo $artist->artist_id ?>"</td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $artist->first_name ?></td>
                                                     <td><?PHP echo $artist->last_name ?></td>                                                   
