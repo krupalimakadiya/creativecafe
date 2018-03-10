@@ -50,13 +50,12 @@ class Art_category extends My_Controller {
     }
 
     public function editp() {
-        $art_category_leval = $_POST['art_category_id_1'] == 0 ? 1 : 2;
+        $art_category_leval = $_POST['art_category_id'] == 0 ? 1 : 2;
         $category_data = $this->art_category_model->check_data($_POST['art_category_name'], $_POST['art_category_id_1'], $art_category_leval);
         if (isset($category_data)) {
             $this->session->set_flashdata('message', 'Record already exists...');
             redirect('art_category');
         } else {
-            $art_category_leval = $_POST['art_category_id_1'] == 0 ? 1 : 2;
             $categoryarray = array(
                 "art_category_name" => $_POST['art_category_name'],
                 "art_sub_cat_id" => $_POST['art_category_id'],
