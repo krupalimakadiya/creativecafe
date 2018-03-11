@@ -2,7 +2,6 @@
 <html>
     <head>
         <?php
-      //  include('admin/header_include.php');  
         $this->load->view('admin/header_include.php');
           ?>
   
