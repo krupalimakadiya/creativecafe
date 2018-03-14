@@ -11,7 +11,6 @@ class Event extends My_Controller {
 
     public function index() {
         $data['event_list'] = $this->event_model->geteventlist();
-
         $this->load->view('v_event_view', $data);
     }
 

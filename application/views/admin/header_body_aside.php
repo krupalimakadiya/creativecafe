@@ -92,6 +92,17 @@
             </a>
         </li>   
 
+        <li>
+            <a href="<?PHP echo site_url('email_sc') ?>">
+                <i class="fa fa-circle-o"></i> <span>Email Sc Master</span>
+            </a>
+        </li>   
+
+        <li>
+            <a href="<?PHP echo site_url('email_send_master') ?>">
+                <i class="fa fa-circle-o"></i> <span>Email Send Master</span>
+            </a>
+        </li>   
 
         <li>
             <a href="<?PHP echo site_url('site') ?>">
