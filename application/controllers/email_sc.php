@@ -10,16 +10,9 @@ class Email_sc extends My_Controller {
     }
 
     public function index() {
-        $data['emailsc_list'] = $this->email_sc_model->getemaillist();
+        $data['emailsc_list'] = $this->email_sc_model->get_email_list();
         $this->load->view('v_email_sc_view', $data);
     }
-
-    public function view_country() {
-        $data['contactus_list'] = $this->email_sc_model->getcontactlist();
-        $this->load->view('v_contact_us_view', $data);
-    }
-
- 
 
     public function delete($sc_id) {
         $this->email_sc_model->delete($sc_id);
@@ -27,16 +20,43 @@ class Email_sc extends My_Controller {
         redirect("email_sc");
     }
 
+    public function addp()
+    {
+          $subject = "Detail";
+        $message = "<html>
+                            <head>
+                            <title>Detail</title>
+                            </head>                            
+                            <body>                            
+                            <table cellspacing=\"0\" cellpadding=\"10\" border=\"1\" align=\"left\">
+                            <tr>
+                            <td align=\"left\" width=\"150px\" background=\"#EEEEEE\">Name:</td>
+                            <td align=\"left\"> $user_name</td>
+                            </tr>
+                            <tr>
+                            <td align=\"left\" width=\"150px\" background=\"#EEEEEE\">Password:</td>
+                            <td align=\"left\"> $user_pwd</td>
+                            </tr>
+                            </table>                            
+                            </body>
+                            </html>
+                            ";
+
+        $from = "info.cafecreative@gmail.com";
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
+        $headers .= "From: $from" . "\r\n";
+        mail($user_email, $subject, $message, $headers);
+
+    }
   
     public function deletemultiple() {
          
-        $contact_id = $_POST['contact_id'];
-        
-        
+        $contact_id = $_POST['contact_id'];              
         $i = 0;
         while ($i < count($contact_id)) {
           if (isset($_POST['submit'])) {
-                if ($this->contact_us_model->delete($contact_id[$i])) {
+                if ($this->email_sc_model->delete($contact_id[$i])) {
                     print_r($contact_id);
         exit();
                     $this->session->set_flashdata('success', 'Contact Detail Is Delete Successfully..');
@@ -45,16 +65,16 @@ class Email_sc extends My_Controller {
                 }
             }
             if (isset($_POST['submit1'])) {
-                $this->contact_us_model->update_active($contact_id[$i]);
+                $this->email_sc_model->update_active($contact_id[$i]);
                     $this->session->set_flashdata('success', 'Contact Detail Is Activated Successfully..');
               }
             if (isset($_POST['submit2'])) {
-                $this->contact_us_model->update_deactive($contact_id[$i]);
+                $this->email_sc_model->update_deactive($contact_id[$i]);
                 $this->session->set_flashdata('success', 'Contact Detail Is Deactivated Successfully..');
             }
             $i++;
         }
-        redirect("contact_us");
+        redirect("email_sc");
     }
 
 }
