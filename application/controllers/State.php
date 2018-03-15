@@ -9,13 +9,7 @@ class State extends MY_Controller {
         $this->load->model('country_model');
         $this->load->model('state_model');
     }
-
-    /*public function view_state() {
-        $data['country_list'] = $this->country_model->getcountrylist();
-        $data['state_list'] = $this->state_model->getstatelist();
-        $this->load->view('v_state_view', $data);
-    }*/
-
+    
     public function add_state() {
         $data['country_list'] = $this->country_model->getcountrylist();
         $data['state_list'] = $this->state_model->getstatelist();

@@ -12,7 +12,6 @@ class Email_sc_model extends CI_model {
   
     public function delete($sc_id) {
         $this->db->where('sc_id', $sc_id);
-
         if ($this->db->delete('email_sc_master')) {
             return true;
         } else {

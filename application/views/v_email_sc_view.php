@@ -79,8 +79,7 @@ $this->load->view('admin/header_body_aside');
                                             <tr>
                                                   <th><input type="checkbox"  id="select_all" />&nbsp;Check</th>
                                                 <th>Sr No.</th>
-                                                <th>Email </th>
-                                              
+                                                <th>Email </th>                                              
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -92,8 +91,7 @@ $this->load->view('admin/header_body_aside');
                                                 ?>
                                                 <tr>
                                                     <td><input type="checkbox" name="sc_id[]" class="checkbox" value="<?php echo $email_sc->sc_id; ?>" /></td>
-                                                    <td><?PHP echo $cnt++; ?> </td>
-                                   
+                                                    <td><?PHP echo $cnt++; ?> </td>                                   
                                                       <td><?PHP echo $email_sc->email_id     ?></td>
                                                
                                                     <td> 
@@ -122,11 +120,11 @@ $this->load->view('admin/header_body_aside');
                                                                         <table  width="40%">
                                                                             <tr>
                                                                                 <td><label>Contact ID</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $email_sc->contact_id ?></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $email_sc->sc_id ?></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td><label>Contact Name</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $email_sc->name ?></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $email_sc->email_id ?></td>
                                                                             </tr>
 
                                                                         </table>
@@ -157,7 +155,7 @@ $this->load->view('admin/header_body_aside');
                                             <li>    <input type="submit" name="submit" value="Delete Selected" onclick="return confirm('Are You Sure You Want to Delete ?')"/></li>                     
                                             <li>    <input type="submit" name="submit1" value="Active Selected" onclick="return confirm('Are You Sure You Want to active all records ?')"/></li>                                                                
                                             <li>     <input type="submit" name="submit2" value="Deactive Selected" onclick="return confirm('Are You Sure You Want to Deactive all record ?')"/></li>                     
-
+   
                                         </ul>
                                     </div>
 
@@ -165,11 +163,12 @@ $this->load->view('admin/header_body_aside');
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer">
-
+<input type="button" name="send" value="send" action="<?php echo site_url('email_sc/addp')?>" class="btn btn-primary">
+                               
                                 <p align="right"><i class="glyphicon glyphicon-ok" style="color:green" ></i>&nbsp;&nbsp;&nbsp;&nbsp;<label>Indicates Activated</label>
                                     <br/>
-                                    <i class="glyphicon glyphicon-remove" style="color:red" ></i>&nbsp;<label>Indicates Deactivated</label>
-                                </p>
+                                    <i class="glyphicon glyphicon-remove" style="color:red" ></i>&nbsp;<label>Indicates Deactivated</label><br/>
+                                     </p>
                             </div>
                         </div>
                         <!-- /.box -->
