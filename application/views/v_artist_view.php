@@ -42,7 +42,7 @@ $this->load->view('admin/header_body_aside');
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $message ?>
+                                            <?php echo  $message ?>
                                         </div>
                                         <?php
                                     }
@@ -53,7 +53,7 @@ $this->load->view('admin/header_body_aside');
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $success ?>
+                                            <?php echo  $success ?>
                                         </div>
                                         <?php
                                     }
@@ -64,7 +64,7 @@ $this->load->view('admin/header_body_aside');
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $fail ?>
+                                            <?php echo  $fail ?>
                                         </div>
                                         <?php
                                     }
@@ -76,7 +76,7 @@ $this->load->view('admin/header_body_aside');
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                   <th><input type="checkbox"  id="select_all" />&nbsp;Check</th>
+                                                <th><input type="checkbox"  id="select_all" />&nbsp;Check</th>
                                                 <th>Id</th>
                                                 <th>First Name</th>
                                                 <th>Last Name</th>                                              
@@ -120,7 +120,7 @@ $this->load->view('admin/header_body_aside');
                                                             </button>
 
                                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                                <li> <a onclick="openView(<?= $artist->artist_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                                <li> <a onclick="openView(<?php echo $artist->artist_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
                                                                 <li>    <a href="<?php echo site_url("artist/edit_data/$artist->artist_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                                 <li>    <a href="<?php echo site_url("artist/delete/$artist->artist_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
@@ -136,7 +136,7 @@ $this->load->view('admin/header_body_aside');
                                                                     ?></li>
                                                             </ul>
                                                         </div>
-                                                        <div id="myModal<?= $artist->artist_id ?>" class="modal fade" role="dialog">
+                                                        <div id="myModal<?php echo $artist->artist_id ?>" class="modal fade" role="dialog">
                                                             <div class="modal-dialog">
                                                                 <!-- Modal content-->
                                                                 <div class="modal-content">
@@ -186,6 +186,9 @@ $this->load->view('admin/header_body_aside');
                                                                                 <td><label>Image</label></td>
                                                                                 <td>:&nbsp;&nbsp;<img src="<?php echo $this->config->item('image_url')?><?php echo $artist->artist_profile?>"  height="100" width="100" alt="image"></td>
                                                                             </tr>
+                                                                              <tr>
+                                                                                <td><label>User type</label></td>
+                                                                          <td>:&nbsp;&nbsp;<?php echo $artist->user_type ?></td>   </tr>
                                                                         </table>
                                                                     </div>
                                                                     <div class="modal-footer">

@@ -4,7 +4,6 @@
         <?php
         $this->load->view('admin/header_include');
         ?>
-        
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -44,7 +43,7 @@
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $message ?>
+                                            <?php echo  $message ?>
                                         </div>
                                         <?php
                                     }
@@ -54,7 +53,7 @@
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $success ?>
+                                            <?php echo  $success ?>
                                         </div>
                                         <?php
                                     }
@@ -64,7 +63,7 @@
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $fail ?>
+                                            <?php echo  $fail ?>
                                         </div>
                                         <?php
                                     }
@@ -74,13 +73,13 @@
                             </div>
 
 
-                                <div class="box-body">
+                            <div class="box-body">
                                 <form name="frm" method="post" action="<?php echo site_url('city/deletemultiple'); ?>">
 
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Check</th>
+                                            <th><input type="checkbox"  id="select_all" />&nbsp;Check</th>
                                                 <th>Sr No.</th>
                                                 <th>Country Name</th>
                                                 <th>State Name</th>
@@ -95,7 +94,7 @@
                                             foreach ($city_list as $city) {
                                                 ?>
                                                 <tr>
-                                                    <td><input type="checkbox" name="city_id[]" value="<?php echo $city->city_id ?>"/></td>
+                                                    <td><input type="checkbox" name="city_id[]" class="checkbox" value="<?php echo $city->city_id ?>"/></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $city->country_name ?></td>
                                                     <td><?PHP echo $city->state_name ?></td>
@@ -120,7 +119,7 @@
                                                             </button>
 
                                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                                <li> <a onclick="openView(<?= $city->city_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                                <li> <a onclick="openView(<?php echo $city->city_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
                                                                 <li>    <a href="<?php echo site_url("city/edit_data/$city->city_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                                 <li>    <a href="<?php echo site_url("city/delete/$city->city_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
@@ -137,7 +136,7 @@
                                                             </ul>
                                                         </div>
 
-                                                        <div id="myModal<?= $city->city_id ?>" class="modal fade" role="dialog">
+                                                        <div id="myModal<?php echo  $city->city_id ?>" class="modal fade" role="dialog">
                                                             <div class="modal-dialog">
                                                                 <!-- Modal content-->
                                                                 <div class="modal-content">

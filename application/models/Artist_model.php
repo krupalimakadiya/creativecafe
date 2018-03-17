@@ -55,7 +55,7 @@ class Artist_model extends CI_model {
       return $this->db->insert_id();
       } */
 
-    public function update_data($artist_id, $first_name, $last_name, $mobile, $email, $password, $newfilename, $country_id, $state_id, $city_id, $pincode) {
+    public function update_data($artist_id, $first_name, $last_name, $mobile, $email, $password, $newfilename, $country_id, $state_id, $city_id, $pincode,$user_type) {
 
         $data = array(
             //         'artist_id' => $artist_id,
@@ -69,7 +69,9 @@ class Artist_model extends CI_model {
             'state_id' => $state_id,
             'city_id' => $city_id,
             'pincode' => $pincode,
+            'user_type' => $user_type
         );
+    
         $this->db->where('artist_id', $artist_id);
         $this->db->update('artist_master', $data);
     }
@@ -89,6 +91,7 @@ class Artist_model extends CI_model {
             'artist_status' => 1
         );
         $this->db->where('artist_id', $artist_id);
+      
         if ($this->db->update('artist_master', $data)) {
             return true;
         } else {
@@ -108,4 +111,5 @@ class Artist_model extends CI_model {
             return false;
         }
     }
-}    
+
+}

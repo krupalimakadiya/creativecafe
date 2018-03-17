@@ -35,10 +35,13 @@ class User extends MY_Controller {
 
         public function addp() {
         $user_data = $this->user_model->check_data($_POST['email'],$_POST['mobile']);
+    
         if (isset($user_data)) {
             $this->session->set_flashdata('message','record already exists...');            
             redirect('user');
-        } else {
+        }
+      
+        else {
             $this->user_model->insert($_POST['first_name'],$_POST['last_name'],$_POST['country_id'],$_POST['state_id'],$_POST['city_id'],$_POST['pincode'],$_POST['email'],$_POST['mobile'],$_POST['password']);
              $this->session->set_flashdata('message','insert successfully...');
             redirect('user');
@@ -62,21 +65,75 @@ class User extends MY_Controller {
         $data['state_list'] = $this->state_model->getstatelist();
         $data['city_list'] = $this->city_model->getcitylist();
         $data['user_list'] = $this->user_model->getuserlist();
+        
         $this->load->view('v_user_form', $data);
     }
 
     public function editp() {
-        $user_data = $this->user_model->check_data($_POST['email'],$_POST['mobile']);
-        if (isset($user_data)) {
-            $this->session->set_flashdata('message','record already exists...');            
+        $userid = $this->input->post('user_id');
+         $first_name = $this->input->post('first_name');
+         $last_name= $this->input->post('last_name');
+          $country_id = $this->input->post('country_id');
+          $state_id= $this->input->post('state_id');
+           $city_id = $this->input->post('city_id');
+            $pincode = $this->input->post('pincode');
+             $email = $this->input->post('email');
+               $mobile= $this->input->post('mobile');
+                 $password= $this->input->post('password');
+                 
+      $data= $this->user_model->check_data($email,$mobile);
+      /*echo "<pre>";
+    print_r($data);
+        die();*/
+     
+      if (isset($data["email"]) && intval($data["email"]) > 0  ) 
+          {
+     if($data["email"] != $email)
+          {
+                   $this->session->set_flashdata('message','record already exists...');            
             redirect('user');
-        } else {
+            exit;
+          }
+            }
+            elseif ( isset($data["mobile"])  &&  intval($data["mobile"]) > 0) 
+                {
+            if($data["mobile"] != $mobile)
+          {
+                   $this->session->set_flashdata('message','record already exists...');            
+            redirect('user');
+            exit;
+          }
+        }
+      /*  $user_data = $this->user_model->check_data($_POST['email'],$_POST['mobile']);
+        $user_data1 = $this->user_model->check_data1($_POST['email']);
+          $user_data2 = $this->user_model->check_data2($_POST['mobile']);
+          //print_r($user_data);
+          //die();
+      if (isset($user_data)) {
+          //echo "step1";
         
-        $this->user_model->update_data($_POST['user_id'], $_POST['first_name'],$_POST['last_name'],$_POST['country_id'],$_POST['state_id'],$_POST['city_id'],$_POST['pincode'],$_POST['email'],$_POST['mobile'],$_POST['password']);
-             $this->session->set_flashdata('message','Record Updated Successfully...');       
+          //die();
+            $this->session->set_flashdata('message','record already exists...');            
+           redirect('user');
+        } 
+        elseif (isset ($user_data1)) {
+            echo "step2";
+             $this->session->set_flashdata('message','record already exists...');            
+            redirect('user');
+       }
+        elseif (isset ($user_data2)) {
+             $this->session->set_flashdata('message','record already exists...');            
+            redirect('user');
+       }*/
+        
+    else {
+        echo "step 2 ";
+        $data=$this->user_model->update_data($_POST['user_id'], $_POST['first_name'],$_POST['last_name'],$_POST['country_id'],$_POST['state_id'],$_POST['city_id'],$_POST['pincode'],$_POST['email'],$_POST['mobile'],$_POST['password']);
+       
+        $this->session->set_flashdata('message','Record Updated Successfully...');       
         redirect("user");
-    }}
-
+    }
+    }
     public function update_data($user_id) {
         $data['user_list'] = $this->user_model->getuserlist();
         $data['country_list'] = $this->country_model->getcountrylist();

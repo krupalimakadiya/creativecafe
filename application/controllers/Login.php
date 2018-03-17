@@ -12,10 +12,15 @@ class Login extends CI_Controller {
     public function index() {
         $this->load->view('login_frm');
     }
+    public function forgot() {
+        $this->load->view('forgot_frm');
+    }
 
     public function checkdata() {
+        
         $checkdata = $this->login_model->validate($_POST['email'], $_POST['password']);
         if (isset($checkdata['admin_id'])) {
+            
             $userdata = $checkdata;
             $this->session->set_userdata('admin_id', $userdata['admin_id']);
             $this->session->set_userdata('email', $userdata['email']);

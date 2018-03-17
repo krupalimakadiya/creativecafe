@@ -44,7 +44,7 @@ $this->load->view('admin/header_body_aside');
                                             ?>
                                         <div class="alert alert-success">       <!--green model-->
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $message ?>
+                                            <?php echo $message ?>
                                         </div>
                                         <?php
                                     }
@@ -54,7 +54,7 @@ $this->load->view('admin/header_body_aside');
                                         ?>
                                         <div class="alert alert-success">       <!--green model-->
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $success ?>
+                                            <?php echo $success ?>
                                         </div>
                                         <?php
                                     }
@@ -64,7 +64,7 @@ $this->load->view('admin/header_body_aside');
                                         ?>
                                         <div class="alert alert-success">       <!--green model-->
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $fail ?>
+                                            <?php echo $fail ?>
                                         </div>
                                         <?php
                                     }
@@ -78,7 +78,7 @@ $this->load->view('admin/header_body_aside');
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Check</th>
+                                                 <th><input type="checkbox"  id="select_all" />&nbsp;Check</th>
                                                 <th>Sr No.</th>
                                                 <th>Title</th>
                                                 <th>file</th>
@@ -94,7 +94,7 @@ $this->load->view('admin/header_body_aside');
                                             foreach ($event_list as $event) {
                                                 ?>
                                                 <tr>
-                                                    <td><input type="checkbox" name="event_id[]"  value="<?php echo $event->event_id; ?>" /></td>
+                                                    <td><input type="checkbox" name="event_id[]" class="checkbox" class="checkbox" value="<?php echo $event->event_id; ?>" /></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $event->title ?></td>
                                                  <td><?PHP echo $event->file ?></td>
@@ -126,7 +126,7 @@ $this->load->view('admin/header_body_aside');
                                                             </button>
 
                                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                                <li> <a onclick="openView(<?= $event->event_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                                <li> <a onclick="openView(<?php echo $event->event_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
                                                                 <li>    <a href="<?php echo site_url("event/edit_data/$event->event_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                                 <li>    <a href="<?php echo site_url("event/delete/$event->event_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php

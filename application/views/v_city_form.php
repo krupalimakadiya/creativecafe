@@ -4,7 +4,7 @@
         <?php
        $this->load->view('admin/header_include');
         ?>
-          <script type="text/javascript">
+             <script type="text/javascript">
 function formValidator()
 {
  var city_name=document.getElementById('city_name');
@@ -30,6 +30,7 @@ function isAlphabet(elem,helperMsg)
     }
 }
  </script>
+    
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <script>
             $("document").ready(function () {
@@ -85,7 +86,7 @@ function isAlphabet(elem,helperMsg)
                             if (isset($update_data)) {
                                 ?>
 
-                              <form name="cityfrm" method="POST" action="<?php echo site_url("city/editp") ?>" role="form" autocomplete="off" onsubmit='return formValidator()'>
+                            <form name="cityfrm" method="POST" action="<?php echo site_url("city/editp") ?>" role="form" autocomplete="off" onsubmit='return formValidator()'>
                                     <input type="hidden" name="city_id" value="<?php echo $update_data['city_id'] ?>" />
 
                                     <!-- text input -->
@@ -133,10 +134,10 @@ function isAlphabet(elem,helperMsg)
                                         <button type="submit" class="btn btn-primary" value="submit">Submit</button>
                                     </div>
                                 </form>
-                                    <?php
+                                <?php
                             } else {
                                 ?>
-              <form name="cityfrm" method="POST" autocomplete="off" action="<?php echo site_url("city/addp") ?>" role="form" onsubmit='return formValidator()'>
+                            <form name="cityfrm" method="POST" autocomplete="off" action="<?php echo site_url("city/addp") ?>" role="form" onsubmit='return formValidator()'>
 
                                     <!-- text input -->
                                     <div class="form-group">
@@ -167,7 +168,8 @@ function isAlphabet(elem,helperMsg)
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary" value="submit">Submit</button>
                                     </div>
-                                </form>                  <?php
+                                </form>
+                                <?php
                             }
                             ?>
                         </div>

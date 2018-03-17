@@ -5,6 +5,34 @@
 $this->load->view('admin/header_include');
         ?>
     </head>
+                 <script type="text/javascript">
+function formValidator()
+{
+ var title=document.getElementById('title');
+ if(isAlphabet(title,"Enter your title in letters"))
+  {
+         return true;
+  }
+   return false;
+ }
+  
+function isAlphabet(elem,helperMsg)
+ {
+  var alphaExp=/^[a-zA-Z]+$/;
+  if(elem.value.match(alphaExp))
+    {
+       return true;
+    }
+  else
+    {
+     alert(helperMsg);
+     elem.focus();
+     return false;
+    }
+}
+ </script>
+
+
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
 
@@ -70,11 +98,11 @@ $this->load->view('admin/header_body_aside');
                                             <?php
                                         } else {
                                             ?>
-                                        <form role="form" name="newsfrm" method="POST" action="<?php echo site_url("news/do_upload") ?>" enctype="multipart/form-data" autocomplete="off">
+                                        <form role="form" name="newsfrm" method="POST" action="<?php echo site_url("news/do_upload") ?>" enctype="multipart/form-data" autocomplete="off" onsubmit='return formValidator()' >
                                                 <!-- text input -->
                                                 <div class="form-group">
                                                     <label>Title</label>
-                                                    <input type="text" class="form-control" name="title" placeholder="Enter your News Title" required="">
+                                                    <input type="text" class="form-control" name="title" id="title" placeholder="Enter your News Title" required="">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Date:</label>

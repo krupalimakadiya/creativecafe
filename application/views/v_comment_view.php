@@ -41,7 +41,7 @@ $this->load->view('admin/header_body_aside');
                                         ?>
                                         <div class="alert alert-success">       <!--green model-->
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $message ?>
+                                            <?php echo $message ?>
                                         </div>
                                         <?php
                                     }
@@ -51,7 +51,7 @@ $this->load->view('admin/header_body_aside');
                                         ?>
                                         <div class="alert alert-success">       <!--green model-->
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $success ?>
+                                            <?php echo $success ?>
                                         </div>
                                         <?php
                                     }
@@ -61,7 +61,7 @@ $this->load->view('admin/header_body_aside');
                                         ?>
                                         <div class="alert alert-success">       <!--green model-->
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $fail ?>
+                                            <?php echo $fail ?>
                                         </div>
                                         <?php
                                     }
@@ -75,7 +75,7 @@ $this->load->view('admin/header_body_aside');
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                            <th>Check</th>
+                                                 <th><input type="checkbox"  id="select_all" />&nbsp;Check</th>
                                                 <th>Sr No.</th>
                                                 <th>User ID</th>
                                                 <th>Comment Name</th>
@@ -89,7 +89,7 @@ $this->load->view('admin/header_body_aside');
                                             foreach ($comment_list as $comment) {
                                                 ?>
                                                 <tr>
-                                                    <td><input type="checkbox" name="comment_id[]"  value="<?php echo $comment->comment_id; ?>" /></td>
+                                                    <td><input type="checkbox" name="comment_id[]" class="checkbox" value="<?php echo $comment->comment_id; ?>" /></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $comment->user_id ?></td>
                                                     <td><?PHP echo $comment->comment ?></td>
@@ -113,8 +113,8 @@ $this->load->view('admin/header_body_aside');
                                                             </button>
 
                                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                                <li> <a onclick="openView(<?= $comment->comment_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
-                                                                <li>    <a href="<?php echo site_url("comment/edit_data/$comment->comment_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
+                                                                <li> <a onclick="openView(<?php echo $comment->comment_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                               <!-- <li>    <a href="<?php echo site_url("comment/edit_data/$comment->comment_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>-->
                                                                 <li>    <a href="<?php echo site_url("comment/delete/$comment->comment_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
                                                                     if ($comment->status == '0') {
@@ -130,7 +130,7 @@ $this->load->view('admin/header_body_aside');
                                                             </ul>
                                                         </div>
 
-                                                        <div id="myModal<?= $comment->comment_id ?>" class="modal fade" role="dialog">
+                                                        <div id="myModal<?php echo $comment->comment_id ?>" class="modal fade" role="dialog">
                                                             <div class="modal-dialog">
                                                                 <!-- Modal content-->
                                                                 <div class="modal-content">

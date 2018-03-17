@@ -4,6 +4,116 @@
         <?php
 $this->load->view('admin/header_include');
         ?>
+                <script type="text/javascript">
+function formValidator()
+{
+ var first_name=document.getElementById('first_name');
+ var last_name=document.getElementById('last_name');
+ var country_id=document.getElementById('country_id');
+  var state_id=document.getElementById('state_id');
+   var city_id=document.getElementById('city_id');
+    var pincode=document.getElementById('pincode');
+  var email=document.getElementById('email');
+   var mobile=document.getElementById('mobile');
+ if(isAlphabet(first_name,"Enter your first name in letters"))
+  {
+         if(isAlphabet(last_name,"Enter your last name in letters"))
+             {
+                  if(madeSelection(country_id,"choose country"))
+                   {
+                        if(madeSelection(state_id,"choose state"))
+                            {
+                                  if(madeSelection(city_id,"choose city"))
+                                       {
+                                           if(isNumeric(pincode,"Enter pincode in 6 digits only..."))
+                                                {
+                                                    if(emailValidator(email,"enter a valid email address"))
+                                                          {
+                                                               if(lengthRestriction(mobile,10,10))
+                                                                    {
+                                                                         return true;
+                                                                    }
+                                                           }    
+                                                }
+                                       }
+                              }             
+                     }
+              }
+       }
+     return false;
+ }
+ 
+function isAlphabet(elem,helperMsg)
+ {
+  var alphaExp=/^[a-zA-Z]+$/;
+  if(elem.value.match(alphaExp))
+    {
+       return true;
+    }
+  else
+    {
+     alert(helperMsg);
+     elem.focus();
+     return false;
+    }
+}
+function madeSelection(elem,helperMsg)
+ {       
+if(elem.value == "--select--")
+    {
+     alert(helperMsg);
+     elem.focus();
+     return false;
+    }
+else
+ {
+  return true;
+ }
+}
+function isNumeric(elem,helperMsg)
+ {
+  var numericExpression=/^[0-9]{6}$/;
+  if(elem.value.match(numericExpression))
+    {
+       return true;
+    }
+  else
+    {
+     alert(helperMsg);
+     elem.focus();
+     return false;
+    }
+}
+function emailValidator(elem,helperMsg)
+ {
+  var emailExp=/^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-Z0-9]{2,4}$/;
+  if(elem.value.match(emailExp))
+    {
+       return true;
+    }
+  else
+    {
+     alert(helperMsg);
+     elem.focus();
+     return false;
+    }
+}
+function lengthRestriction(elem,min,max)
+ {
+  var ulnput=elem.value;
+  if(ulnput.length>=min && ulnput.length<=max)
+    {
+       return true;
+    }
+  else
+    {
+     alert("please enter Mobile number in 10 Digits ");
+     elem.focus();
+     return false;
+ 
+   }
+}
+ </script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <script>
             $("document").ready(function () {
@@ -152,7 +262,7 @@ $this->load->view('admin/header_body_aside');
 
                                     <div class="form-group">
                                         <label>Pincode</label>
-                                        <input type="text" class="form-control" name="pincode" required="" value="<?php echo $update_data['pincode'] ?>">
+                                        <input type="text" class="form-control" name="pincode" required=""  value="<?php echo $update_data['pincode'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Email ID</label>
@@ -175,22 +285,22 @@ $this->load->view('admin/header_body_aside');
                             } else {
                                 ?>
 
-                                <form name="userfrm" method="POST" action="<?php echo site_url("user/addp") ?>" role="form" autocomplete="off" >
+                                <form name="userfrm" method="POST" action="<?php echo site_url("user/addp") ?>" role="form" autocomplete="off" onsubmit='return formValidator()' >
                                     <div class="form-group">
                                         <label>First name</label>
-                                        <input type="text" class="form-control" name="first_name" required="" placeholder="Enter your first name...">
+                                        <input type="text" class="form-control" name="first_name" id="first_name" required="" placeholder="Enter your first name...">
                                     </div>
                                     <div class="form-group">
                                         <label>Last name</label>
-                                        <input type="text" class="form-control" name="last_name" required="" placeholder="Enter your last name...">
+                                        <input type="text" class="form-control" name="last_name" required="" id="last_name" placeholder="Enter your last name...">
                                     </div>
-
-                                    <div class="form-group">
+                                       <div class="form-group">
                                         <label>Select Country_name</label>
                                         <select name="country_id" class="form-control" id="country_id">
                                             <option >--select--</option>
                                             <?php
-                                            foreach ($country_list as $country) {
+                                            foreach ($country_list as $country) 
+                                                {
                                                 ?>
                                                 <option value="<?php echo $country->country_id ?>" ><?php echo $country->country_name ?></option>
                                                 <?php
@@ -198,13 +308,12 @@ $this->load->view('admin/header_body_aside');
                                             ?>
                                         </select>
                                     </div>
-
-                                    <div class="form-group">
+                                         <div class="form-group">
                                         <label>Select State Name</label>
                                         <select name="state_id" id="state_id" class="form-control">
-                                            <option></option>
-
-                                        </select>
+                                            <option>
+                                            </option>
+                                      </select>
                                     </div>
 
                                     <div class="form-group">
@@ -214,19 +323,19 @@ $this->load->view('admin/header_body_aside');
 
                                     <div class="form-group">
                                         <label>Pincode</label>
-                                        <input type="text" class="form-control" name="pincode" required="" placeholder="Enter your pincode...">
+                                        <input type="text" class="form-control" name="pincode" id="pincode" required="" placeholder="Enter your pincode...">
                                     </div>
                                     <div class="form-group">
                                         <label>Email ID</label>
-                                        <input type="text" class="form-control" name="email" required="" placeholder="Enter your email...">
+                                        <input type="text" class="form-control" name="email" required="" id="email" placeholder="Enter your email...">
                                     </div>
                                     <div class="form-group">
                                         <label>Mobile</label>
-                                        <input type="text" class="form-control" name="mobile" required="" placeholder="Enter your mobile number...">
+                                        <input type="text" class="form-control" name="mobile" required="" id="mobile" placeholder="Enter your mobile number...">
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
-                                        <input type="password" class="form-control" name="password" required="" placeholder="Enter your password...">
+                                        <input type="password" class="form-control" name="password" required="" id="password" placeholder="Enter your password...">
                                     </div>
 
                                     <div class="form-group">

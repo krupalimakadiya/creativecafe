@@ -31,8 +31,8 @@
                                 <h3 class="box-title"><label>State Master</label></h3>
                                 <p align="right">
                                     <a href="<?php echo site_url("state/add_state") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
-                                   <!-- <a href="<?php echo site_url("state/import_state") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
-                                    <a href="<?php echo site_url("state/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a>--></p>
+                                   <a href="<?php echo site_url("state/import_state") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
+                                    <a href="<?php echo site_url("state/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
 
                                 <?php
                                 $message = $this->session->flashdata('message');
@@ -44,7 +44,7 @@
                                         ?>
                                         <div class="alert alert-success">       <!--green model-->
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $message ?>
+                                            <?php echo  $message ?>
                                         </div>
                                         <?php
                                     }
@@ -54,7 +54,7 @@
                                         ?>
                                         <div class="alert alert-success">       <!--green model-->
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $success ?>
+                                            <?php echo  $success ?>
                                         </div>
                                         <?php
                                     }
@@ -64,7 +64,7 @@
                                         ?>
                                         <div class="alert alert-success">       <!--green model-->
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $fail ?>
+                                            <?php echo  $fail ?>
                                         </div>
                                         <?php
                                     }
@@ -81,7 +81,7 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Check</th>
+                                                       <th><input type="checkbox"  id="select_all" />&nbsp;Check</th>
                                                 <th>Sr No.</th>
                                                 <th>Country Name</th>
                                                 <th>State Name</th>
@@ -95,7 +95,7 @@
                                             foreach ($state_list as $state) {
                                                 ?>
                                                 <tr>
-                                                    <td><input type="checkbox" name="state_id[]" value="<?php echo $state->state_id ?>"/></td>
+                                                    <td><input type="checkbox" name="state_id[]" class="checkbox" value="<?php echo $state->state_id ?>"/></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $state->country_name ?></td>
                                                     <td><?PHP echo $state->state_name ?></td>
@@ -119,7 +119,7 @@
                                                             </button>
 
                                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                                <li> <a onclick="openView(<?= $state->state_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                                <li> <a onclick="openView(<?php echo $state->state_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
                                                                 <li>    <a href="<?php echo site_url("state/edit_data/$state->state_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                                 <li>    <a href="<?php echo site_url("state/delete/$state->state_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
@@ -135,7 +135,7 @@
                                                                     ?></li>
                                                             </ul>
                                                         </div>
-                                                        <div id="myModal<?= $state->state_id ?>" class="modal fade" role="dialog">
+                                                        <div id="myModal<?php echo $state->state_id ?>" class="modal fade" role="dialog">
                                                             <div class="modal-dialog">
                                                                 <!-- Modal content-->
                                                                 <div class="modal-content">

@@ -4,6 +4,32 @@
         <?php
         $this->load->view('admin/header_include');
         ?>
+                    <script type="text/javascript">
+function formValidator()
+{
+ var title=document.getElementById('title');
+ if(isAlphabet(title,"Enter your title in letters"))
+  {
+         return true;
+  }
+   return false;
+ }
+  
+function isAlphabet(elem,helperMsg)
+ {
+  var alphaExp=/^[a-zA-Z]+$/;
+  if(elem.value.match(alphaExp))
+    {
+       return true;
+    }
+  else
+    {
+     alert(helperMsg);
+     elem.focus();
+     return false;
+    }
+}
+ </script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -45,13 +71,13 @@
                                         <?php
                                         if (isset($update_data)) {
                                             ?>
-                                        <form role="form" name="eventfrm" method="POST" autocomplete="off" action="<?php echo site_url("event/editp") ?>" enctype="multipart/form-data">
+                                        <form role="form" name="eventfrm" method="POST" autocomplete="off" action="<?php echo site_url("event/editp") ?>" enctype="multipart/form-data" onsubmit='return formValidator()'>
                                                 <!-- text input -->
                                                 <input type="hidden" class="form-control" name="event_id" value="<?php echo $update_data['event_id'] ?>">
 
                                                 <div class="form-group">
                                                     <label>Title</label>
-                                                    <input type="text" class="form-control" name="title" required="" value="<?php echo $update_data['title'] ?>">                                    
+                                                    <input type="text" class="form-control" name="title" required="" id="title" value="<?php echo $update_data['title'] ?>">                                    
                                                 </div>
                                                 <div class="form-group">
                                                     <label>File</label>
@@ -79,11 +105,11 @@
                                             <?php
                                         } else {
                                             ?>
-                                        <form role="form" name="eventfrm" method="POST" autocomplete="off" action="<?php echo site_url("event/do_upload") ?>" enctype="multipart/form-data">
+                                        <form role="form" name="eventfrm" method="POST" autocomplete="off" action="<?php echo site_url("event/do_upload") ?>" enctype="multipart/form-data" onsubmit='return formValidator()'>
                                                 <!-- text input -->
                                                 <div class="form-group">
                                                     <label>Title</label>
-                                                    <input type="text" class="form-control" name="title" placeholder="Enter your News Title" required="">
+                                                    <input type="text" class="form-control" name="title" id="title" placeholder="Enter your News Title" required="">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>File</label>

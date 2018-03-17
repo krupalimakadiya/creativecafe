@@ -103,23 +103,23 @@ class News extends My_Controller {
         while ($i < count($news_id)) {
             if (isset($_POST['submit'])) {
                 if ($this->news_model->delete($news_id[$i])) {
-                    $this->session->set_flashdata('success', 'Country Detail Is Delete Successfully..');
+                    $this->session->set_flashdata('success', 'News Detail Is Delete Successfully..');
                 } else {
-                    $this->session->set_flashdata('fail', 'Country Detail Is Not Delete. Please Try Again.');
+                    $this->session->set_flashdata('fail', 'News Detail Is Not Delete. Please Try Again.');
                 }
             }
             if (isset($_POST['submit1'])) {
                 if ($this->news_model->update_active($news_id[$i])) {
-                    $this->session->set_flashdata('success', 'Country Detail Is Deactivated Successfully..');
+                    $this->session->set_flashdata('success', 'News Detail Is Deactivated Successfully..');
                 } else {
-                    $this->session->set_flashdata('fail', 'Country Detail Is Not Deactivated.. Please Try Again.');
+                    $this->session->set_flashdata('fail', 'News Detail Is Not Deactivated.. Please Try Again.');
                 }
             }
             if (isset($_POST['submit2'])) {
                 if ($this->news_model->update_deactive($news_id[$i])) {
-                    $this->session->set_flashdata('success', 'Country Detail Is Activated Successfully..');
+                    $this->session->set_flashdata('success', 'News Detail Is Activated Successfully..');
                 } else {
-                    $this->session->set_flashdata('fail', 'Country Detail Is Not Activated.. Please Try Again.');
+                    $this->session->set_flashdata('fail', 'News Detail Is Not Activated.. Please Try Again.');
                 }
             }
             $i++;

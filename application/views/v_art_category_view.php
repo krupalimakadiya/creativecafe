@@ -40,7 +40,7 @@
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $message ?>
+                                            <?php echo  $message ?>
                                         </div>
                                         <?php
                                     }
@@ -50,7 +50,7 @@
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $success ?>
+                                            <?php echo  $success ?>
                                         </div>
                                         <?php
                                     }
@@ -60,7 +60,7 @@
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $fail ?>
+                                            <?php echo  $fail ?>
                                         </div>
                                         <?php
                                     }
@@ -72,8 +72,8 @@
                                 <form name="frm" method="post" action="<?php echo site_url('art_category/deletemultiple'); ?>">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
-                                            <tr>
-                                                <th><input type="checkbox"  id="select_all" />&nbsp;Check</th>
+                                            <tr>  <th><input type="checkbox"  id="select_all" />&nbsp;Check</th>
+                           
                                                 <th>Sr No.</th>
                                                 <th>Category Name</th>
                                                 <th>Is Root</th>
@@ -108,7 +108,7 @@
                                                                 <span class="caret"></span> <!-- caret -->
                                                             </button>
                                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                                <li> <a onclick="openView(<?= $art_category->art_category_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                                <li> <a onclick="openView(<?php echo $art_category->art_category_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
                                                                 <li>    <a href="<?php echo site_url("art_category/edit_data/$art_category->art_category_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
                                                                 <li>    <a href="<?php echo site_url("art_category/delete/$art_category->art_category_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
@@ -124,7 +124,7 @@
                                                                     ?></li>
                                                             </ul>
                                                         </div>
-                                                        <div id="myModal<?= $art_category->art_category_id ?>" class="modal fade" role="dialog">
+                                                        <div id="myModal<?php echo $art_category->art_category_id ?>" class="modal fade" role="dialog">
                                                             <div class="modal-dialog">
                                                                 <!-- Modal content-->
                                                                 <div class="modal-content">

@@ -75,7 +75,7 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Check</th>
+                                               <th><input type="checkbox"  id="select_all" />&nbsp;Check</th>
                                                 <th>Id</th>
                                                 <th>Art Category Name</th>
                                                 <th>Art Subcategory Name</th>
@@ -93,7 +93,7 @@
                                             foreach ($post_list as $post) {
                                                 ?>
                                                 <tr>
-                                                    <td><input type="checkbox" name="post_id[]" value="<?php echo $post->post_id ?>"</td>
+                                                    <td><input type="checkbox" name="post_id[]" class="checkbox"  value="<?php echo $post->post_id ?>"</td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $post->art_category_name ?></td>
                                                     <td><?php echo $post->art_category_name ?></td>
@@ -151,7 +151,7 @@
                                                                     ?></li>
                                                             </ul>
                                                         </div>
-                                                        <div id="myModal<?= $post->post_id ?>" class="modal fade" role="dialog">
+                                                        <div id="myModal<?php echo $post->post_id ?>" class="modal fade" role="dialog">
                                                             <div class="modal-dialog">
                                                                 <!-- Modal content-->
                                                                 <div class="modal-content">

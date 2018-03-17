@@ -4,8 +4,8 @@
         <?php
         $this->load->view('admin/header_include');
         ?>
-        <script type="text/javascript">
-            function formValidator()
+             <script type="text/javascript">
+function formValidator()
 {
  var state_name=document.getElementById('state_name');
  
@@ -29,7 +29,7 @@ function isAlphabet(elem,helperMsg)
      return false;
     }
 }
-            </script>
+ </script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -89,7 +89,7 @@ function isAlphabet(elem,helperMsg)
                                     </div>
                                     <div class="form-group">
                                         <label>State Name</label>
-                                        <input type="text" class="form-control"name="state_name" required="" id="state_name" value="<?php echo $update_data['state_name'] ?>" >
+                                        <input type="text" class="form-control"name="state_name" required="" id="state_name"  value="<?php echo $update_data['state_name'] ?>" >
 
                                     </div>
 
@@ -101,7 +101,7 @@ function isAlphabet(elem,helperMsg)
                             } else {
                                 ?>
 
-            <form name="statefrm" method="POST" action="<?php echo site_url("state/addp") ?>" role="form" autocomplete="off" onsubmit='return formValidator()'>
+                            <form name="statefrm" method="POST" action="<?php echo site_url("state/addp") ?>" role="form" autocomplete="off" onsubmit='return formValidator()'>
 
                                     <!-- text input -->
                                     <div class="form-group">
@@ -121,15 +121,13 @@ function isAlphabet(elem,helperMsg)
                                     <div class="form-group">
                                         <label>State_name</label>
                                         <input type="text" class="form-control"name="state_name" id="state_name" required=""  placeholder="Enter State Name....">
-
                                     </div>
 
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary" value="submit">Submit</button>
                                     </div>
                                 </form>
-                  
-                    <?php
+                                <?php
                             }
                             ?>
                         </div>

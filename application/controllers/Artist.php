@@ -53,6 +53,7 @@ class Artist extends MY_Controller {
         $config['max_height'] = 4000;
         $filename = $_FILES["artist_profile"]["name"];
           $extension = pathinfo($filename, PATHINFO_EXTENSION);
+         
           //        $extension = (explode(".", $filename));
           //$newfilename = $userid. "." . $extension;
           $newfilename= time().$filename;

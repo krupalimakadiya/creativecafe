@@ -29,10 +29,9 @@ $this->load->view('admin/header_body_aside');
                         <!-- Default box -->
                         <div class="box box-info">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><label>News Master</label></h3>
+                                <h3 class="box-title"><label>Bid Master</label></h3>
                                                                <p align="right">
-                                    <a href="<?php echo site_url("news/add_news") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
-                       
+                               
                                
                                 <?php
                                 $message = $this->session->flashdata('message');
@@ -74,16 +73,17 @@ $this->load->view('admin/header_body_aside');
 
 
                             <div class="box-body">
-                                <form name="frm" method="post" action="<?php echo site_url('news/deletemultiple'); ?>">
+                                <form name="frm" method="post" action="<?php echo site_url('bid/deletemultiple'); ?>">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                             <th><input type="checkbox"  id="select_all" />&nbsp;&nbsp;Check</th>
                                                 <th>Sr No.</th>
-                                                <th>Title</th>
-                                                <th>date</th>
-                                                <th>Image</th>
-                                                <th>Description</th>
+                                                <th>Exhibition id</th>
+                                                <th>Artist id</th>
+                                                <th>Bidamount</th>
+                                                <th>Remark</th>
+                                                <th>Date</th>
                                                 <th>Status</th>
                                                 <th>Action</th></tr>
                                         </thead>
@@ -91,20 +91,18 @@ $this->load->view('admin/header_body_aside');
                                             <?PHP
                                             $cnt = 1;
 
-                                            foreach ($news_list as $news) {
+                                            foreach ($bid_list as $bid) {
                                                 ?>
                                                 <tr>
-                                                    <td><input type="checkbox" name="news_id[]" class="checkbox" value="<?php echo $news->news_id; ?>" /></td>
+                                                    <td><input type="checkbox" name="bid_id[]" class="checkbox" value="<?php echo $bid->bid_id; ?>" /></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
-                                                    <td><?PHP echo $news->title ?></td>
-                                                    <td><?PHP echo $news->date ?></td>
-                                                    <td><image height="100" width="100" src="<?PHP echo base_url()?>news_image/<?php echo $news->image?>">
-                                                   </td>
-                                                  
-                                                    <td><?PHP echo $news->description ?></td>
-                                                    
-                                                    <td><?php
-                                                        if ($news->news_status == '0') {
+                                                    <td><?PHP echo $bid->title ?></td>
+                                                       <td><?PHP echo $bid->first_name ?></td>
+                                                       <td><?PHP echo $bid->bidamount ?></td>
+                                                       <td><?PHP echo $bid->remark ?></td>
+                                                       <td><?PHP echo $bid->date ?></td>
+                                                   <td><?php
+                                                        if ($bid->bid_status == '0') {
                                                             ?>
                                                             <i class="glyphicon glyphicon-remove" style="color:red"></i>
                                                             <?php
@@ -123,53 +121,56 @@ $this->load->view('admin/header_body_aside');
                                                             </button>
 
                                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                                <li> <a onclick="openView(<?php echo $news->news_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
-                                                                <li>    <a href="<?php echo site_url("news/edit_data/$news->news_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
-                                                                <li>    <a href="<?php echo site_url("news/delete/$news->news_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
+                                                                <li> <a onclick="openView(<?php echo $bid->bid_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                                <li>    <a href="<?php echo site_url("bid/delete/$bid->bid_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
-                                                                    if ($news->news_status == '0') {
+                                                                    if ($bid->bid_status == '0') {
                                                                         ?>
-                                                                        <a href="<?php echo site_url("news/update_status_active/$news->news_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
+                                                                        <a href="<?php echo site_url("bid/update_status_active/$bid->bid_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                         <?php
                                                                     } else {
                                                                         ?>
-                                                                        <a href="<?php echo site_url("news/update_status_deactive/$news->news_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
+                                                                        <a href="<?php echo site_url("bid/update_status_deactive/$bid->bid_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
                                                                         <?php
                                                                     }
                                                                     ?></li>
                                                             </ul>
                                                         </div>
 
-                                                        <div id="myModal<?php echo $news->news_id ?>" class="modal fade" role="dialog">
+                                                        <div id="myModal<?php echo $bid->bid_id ?>" class="modal fade" role="dialog">
                                                             <div class="modal-dialog">
                                                                 <!-- Modal content-->
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                        <h4 class="modal-title"><label>News Data</label></h4>
+                                                                        <h4 class="modal-title"><label>Bid Data</label></h4>
                                                                     </div>
                                                                     <div class="modal-body">
 
                                                                         <table  width="60%">
                                                                                                                            <tr>
-                                                                                <td><label>News ID</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $news->news_id ?></td>
+                                                                                <td><label>Bid ID</label></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $bid->bid_id ?></td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td><label>Title</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $news->title ?></td>
+                                                                                <td><label>Exhibition id</label></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $bid->title ?></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><label>Artist id</label></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $bid->first_name ?></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><label>Bidamount</label></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $bid->bidamount ?></td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td><label>Remark</label></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $bid->remark ?></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td><label>Date</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $news->date ?></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><label>Image</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $news->image ?></td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td><label>Description</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $news->description ?></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $bid->date ?></td>
                                                                             </tr>
                                                                             
                          </table>

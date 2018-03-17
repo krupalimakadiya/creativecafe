@@ -41,8 +41,8 @@ class Post_model extends CI_model {
 
     public function delete($post_id) {
         $this->db->where('post_id', $post_id);
-      if($this->db->delete('post_master'))
-      {      return true;
+     if ($this->db->delete('post_master')) {
+            return true;
         } else {
             return false;
         }
@@ -54,13 +54,16 @@ class Post_model extends CI_model {
             'post_status' => 1
         );
         $this->db->where('post_id', $post_id);
-        if($this->db->update('post_master', $data))
+       
+		 if($this->db->update('post_master', $data))
         {
-              return true;
-        } else {
+            return true;
+        }
+        else{
             return false;
-        }            
+        }
     }
+
     public function update_deactive($post_id, $post_status) {
         $data = array(
             'post_id' => $post_id,

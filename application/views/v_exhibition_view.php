@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-        $this->load->view('admin/header_include.php');
+        $this->load->view('admin/header_include');
           ?>
   
     </head>
@@ -80,12 +80,13 @@ $this->load->view('admin/header_body_aside');
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Check</th>
+                                                       <th><input type="checkbox"  id="select_all" />&nbsp;Check</th>
                                                 <th>Sr No.</th>
-                                                <th>Title</th>
-                                                <th>description</th>                                              
-                                               <th>date</th>                                                
-                                                <th>Status</th>
+                                                <th>Artist name</th>
+                                              <th>Title</th>
+                                                <th>description</th>
+                                               <th>date</th>
+                                               <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -95,11 +96,13 @@ $this->load->view('admin/header_body_aside');
                                             foreach ($exhibition_list as $exhibition) {
                                                 ?>
                                                 <tr>
-                                                    <td><input type="checkbox" name="exhibition_id[]" value="<?php echo $exhibition->exhibition_id ?>"/></td>
+                                                    <td><input type="checkbox" name="exhibition_id[]" class="checkbox" value="<?php echo $exhibition->exhibition_id ?>"/></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
+                                                     <td><?PHP echo $exhibition->first_name ?></td>
                                                     <td><?PHP echo $exhibition->title ?></td>
                                                     <td><?PHP echo $exhibition->description ?></td>
-                                                    <td><?PHP echo $exhibition->date ?></td>
+                                                <td><?PHP echo $exhibition->date ?></td>
+                                                 
                                                     <td><?php
                                                         if ($exhibition->exhibition_status == '0') {
                                                             ?>
@@ -120,8 +123,8 @@ $this->load->view('admin/header_body_aside');
                                                             </button>
 
                                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                                <li> <a onclick="openView(<?= $exhibition->exhibition_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
-                                                                <li>    <a href="<?php echo site_url("exhibition/delete/$exhibition->exhibition_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
+                                                                <li> <a onclick="openView(<?php echo $exhibition->exhibition_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                              <li>    <a href="<?php echo site_url("exhibition/delete/$exhibition->exhibition_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php   
                                                                     if ($exhibition->exhibition_status == '0') {
                                                                         ?>

@@ -8,6 +8,10 @@ class Exhibition_model extends CI_Model {
         $query = $this->db->query("select * from exhibition_master");
         return $query->result();
     }
+    /*public function getexhibitionlist   () {
+        $query = $this->db->query("select * from exhibition_master as e, artist_master as a where e.artist_id=a.artist_id");
+        return $query->result();
+    }*/
   public function insert($title,$description,$starting_time,$end_time,$date,$fees,$address) {
         $data = array(
             'title' => $title,
@@ -44,13 +48,11 @@ class Exhibition_model extends CI_Model {
 
     public function delete($exhibition_id) {
         $this->db->where('exhibition_id', $exhibition_id);
-        if($this->db->delete('exhibition_master'))
-        {
-              return true;
+       if ($this->db->delete('exhibition_master')) {
+            return true;
         } else {
             return false;
-        }    
-        
+        }
     }
 
     public function update_active($exhibition_id, $exhibition_status) {
@@ -59,9 +61,11 @@ class Exhibition_model extends CI_Model {
             'exhibition_status' => 1
         );
         $this->db->where('exhibition_id', $exhibition_id);
-        if($this->db->update('exhibition_master', $data))
-        {      return true;
-        } else {
+      if($this->db->update('exhibition_master', $data))
+        {
+            return true;
+        }
+        else{
             return false;
         }
     }
@@ -74,10 +78,11 @@ class Exhibition_model extends CI_Model {
         $this->db->where('exhibition_id', $exhibition_id);
         if($this->db->update('exhibition_master', $data))
         {
-          return true;
-        } else {
+            return true;
+        }
+        else{
             return false;
         }
+    }
 
-}
 }

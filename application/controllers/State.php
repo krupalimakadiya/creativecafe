@@ -96,14 +96,19 @@ class State extends MY_Controller {
             }
             $country_data = $this->state_model->getcountryid($country_name);
             $country_id = $country_data['country_id'];
+            $state_data = $this->state_model->check_data($country_id, $state_name);
+            if (isset($state_data['country_id']) && isset($state_data['state_name'])) {
+                continue;
+            }
             try {
                 $param = array(
                     'country_id' => $country_id
                     , 'state_name' => $state_name
-                    //, 'status' => 1
+                        //, 'status' => 1
                 );
-           
-                $this->state_model->insert($country_id,$state_name);
+
+                $data = $this->state_model->insert($country_id, $state_name);
+
                 $counter++;
             } catch (Exception $ex) {
                 
@@ -114,57 +119,47 @@ class State extends MY_Controller {
         redirect("state");
     }
 
-    public function export()
-    {
-        $this->load->dbutil(); 
-        $this->load->helper('file'); 
-        $this->load->helper('download'); 
-        $delimiter = ","; 
-        $newline = "\r\n"; 
-        $filename = "state_master.csv"; 
-     //   $query = "SELECT course_master_name as 'Course Name',book_name as 'Book Name',author_name as 'Author Name',publication_name as 'Publication Name',book_edition as 'Book Edition',book_quantity as 'Book Quantity' 
-     //   FROM college_master cm,college_course_master ccm,course_master com,book_master as b 
-     //   WHERE b.college_course_master_id = ccm.college_course_master_id and ccm.college_master_id = cm.college_master_id and ccm.course_master_id = com.course_master_id and ccm.college_master_id = $college_master_id"; 
+    public function export() {
+        $this->load->dbutil();
+        $this->load->helper('file');
+        $this->load->helper('download');
+        $delimiter = ",";
+        $newline = "\r\n";
+        $filename = "state_master.csv";
+        //   $query = "SELECT course_master_name as 'Course Name',book_name as 'Book Name',author_name as 'Author Name',publication_name as 'Publication Name',book_edition as 'Book Edition',book_quantity as 'Book Quantity' 
+        //   FROM college_master cm,college_course_master ccm,course_master com,book_master as b 
+        //   WHERE b.college_course_master_id = ccm.college_course_master_id and ccm.college_master_id = cm.college_master_id and ccm.course_master_id = com.course_master_id and ccm.college_master_id = $college_master_id"; 
         $query = "select country_name as 'Country Name', state_name as 'State Name' 
                 from country_master as c, state_master as s
                 where c.country_id=s.country_id";
-        $result = $this->db->query($query); 
-        $data = $this->dbutil->csv_from_result($result, $delimiter, $newline); 
+        $result = $this->db->query($query);
+        $data = $this->dbutil->csv_from_result($result, $delimiter, $newline);
         force_download($filename, $data);
-
-    }
-     public function deletemultiple() 
-    { 
-        $state_id = $_POST['state_id']; 
-        $i = 0; 
-        while($i<count($state_id)) 
-        { 
-            if(isset($_POST['submit'])) 
-            { 
-                
-                if($this->state_model->delete($state_id[$i])) 
-                { 
-                    $this->session->set_flashdata('success', 'State Detail Is Delete Successfully..'); 
-                     } 
-                else 
-                { 
-                    $this->session->set_flashdata('fail', 'State Detail Is Not Delete. Please Try Again.'); 
-                     } 
-            } 
-            if(isset($_POST['submit1'])) 
-            { 
-                $this->state_model->update_active($state_id[$i]);      
-               $this->session->set_flashdata('success', 'State Detail Is Activated Successfully..');
-                  } 
-            if(isset($_POST['submit2'])) 
-            { 
-               $this->state_model->update_deactive($state_id[$i]);
-                  $this->session->set_flashdata('success', 'State Detail Is Deactivated Successfully..'); 
-           } 
-            $i++; 
-        } 
-        redirect("state"); 
     }
 
-  
+    public function deletemultiple() {
+        $state_id = $_POST['state_id'];
+        $i = 0;
+        while ($i < count($state_id)) {
+            if (isset($_POST['submit'])) {
+
+                if ($this->state_model->delete($state_id[$i])) {
+                    $this->session->set_flashdata('success', 'State Detail Is Delete Successfully..');
+                } else {
+                    $this->session->set_flashdata('fail', 'State Detail Is Not Delete. Please Try Again.');
+                }
+            }
+            if (isset($_POST['submit1'])) {
+                $this->state_model->update_active($state_id[$i]);
+                $this->session->set_flashdata('success', 'State Detail Is Activated Successfully..');
+            }
+            if (isset($_POST['submit2'])) {
+                $this->state_model->update_deactive($state_id[$i]);
+                $this->session->set_flashdata('success', 'State Detail Is Deactivated Successfully..');
+            }
+            $i++;
+        }
+        redirect("state");
+    }
+
 }

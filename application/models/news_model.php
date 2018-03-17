@@ -24,7 +24,12 @@ class News_model extends CI_model {
     }
     public function delete($news_id) {
         $this->db->where('news_id', $news_id);
-        $this->db->delete('news_master');
+      
+		 if ($this->db->delete('news_master')) {
+            return true;
+        } else {
+            return false;
+        }
     }
     public function edit_data($news_id) {
         $query = $this->db->query("select * from news_master where news_id='$news_id'");
@@ -41,7 +46,13 @@ class News_model extends CI_model {
             'description' => $description
         );
         $this->db->where('news_id',$news_id );
-        $this->db->update('news_master',$data);
+       if($this->db->update('news_master', $data))
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     public function update_active($news_id, $news_status) {
         $data = array(
@@ -49,7 +60,13 @@ class News_model extends CI_model {
             'news_status' => 1
         );
         $this->db->where('news_id', $news_id);
-        $this->db->update('news_master', $data);
+       if($this->db->update('news_master', $data))
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public function update_deactive($news_id, $news_status) {

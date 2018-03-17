@@ -43,6 +43,7 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
-  <!--select and deselect all in datatable -->
-  <link rel="stylesheet" href="<?php echo $this->config->item('static_url') ?>js/jquery.min.js">
+  <!-- check uncheck data table-->
+   <link rel="stylesheet" href="<?php echo $this->config->item('static_url') ?>js/jquery.min.js">
+ 
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->

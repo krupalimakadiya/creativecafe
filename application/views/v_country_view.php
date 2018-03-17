@@ -43,11 +43,11 @@
                                 $fail = $this->session->flashdata('fail');
 
                                 if (isset($message)) {
-                                    if ($message != ' ') {
+                                    if ($message != ' ') {  
                                         ?>
                                         <div class="alert alert-success">       <!--green model-->
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $message ?>
+                                            <?php echo $message ?>
                                         </div>
                                         <?php
                                     }
@@ -57,7 +57,7 @@
                                         ?>
                                         <div class="alert alert-success">       <!--green model-->
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $success ?>
+                                            <?php echo  $success ?>
                                         </div>
                                         <?php
                                     }
@@ -67,7 +67,7 @@
                                         ?>
                                         <div class="alert alert-success">       <!--green model-->
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?= $fail ?>
+                                            <?php echo  $fail ?>
                                         </div>
                                         <?php
                                     }

@@ -2,8 +2,8 @@
 <html>
     <head>
         <?php
-      $this->load->view('admin/header_include');
-  ?>
+        $this->load->view('admin/header_include');
+        ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
 
@@ -11,13 +11,13 @@
 
             <header class="main-header">
                 <?php
-$this->load->view('admin/header_body');
+                $this->load->view('admin/header_body');
                 ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-$this->load->view('admin/header_body_aside');
+                $this->load->view('admin/header_body_aside');
                 ?>
             </aside>
 
@@ -29,19 +29,18 @@ $this->load->view('admin/header_body_aside');
                         <!-- Default box -->
                         <div class="box box-info">
                             <div class="box-header with-border">
-                                <h3 class="box-title"><label>News Master</label></h3>
-                                                               <p align="right">
-                                    <a href="<?php echo site_url("news/add_news") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add records</button></a> &nbsp;
-                       
-                               
-                                <?php
-                                $message = $this->session->flashdata('message');
-                                $success= $this->session->flashdata('success');
-                                $fail= $this->session->flashdata('fail');
-                                
-                                if (isset($message)) {
-                                    if ($message != ' ') {
-                                        ?>
+                                <h3 class="box-title"><label>Exhibition post Master</label></h3>
+                                <p align="right">
+
+
+                                    <?php
+                                    $message = $this->session->flashdata('message');
+                                    $success = $this->session->flashdata('success');
+                                    $fail = $this->session->flashdata('fail');
+
+                                    if (isset($message)) {
+                                        if ($message != ' ') {
+                                            ?>
                                         <div class="alert alert-success">       <!--green model-->
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
                                             <?php echo $message ?>
@@ -49,7 +48,7 @@ $this->load->view('admin/header_body_aside');
                                         <?php
                                     }
                                 }
-                                 if (isset($success)) {
+                                if (isset($success)) {
                                     if ($success != ' ') {
                                         ?>
                                         <div class="alert alert-success">       <!--green model-->
@@ -74,16 +73,15 @@ $this->load->view('admin/header_body_aside');
 
 
                             <div class="box-body">
-                                <form name="frm" method="post" action="<?php echo site_url('news/deletemultiple'); ?>">
+                                <form name="frm" method="post" action="<?php echo site_url('exhibition_post/deletemultiple'); ?>">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                            <th><input type="checkbox"  id="select_all" />&nbsp;&nbsp;Check</th>
+                                                <th><input type="checkbox"  id="select_all" />&nbsp;&nbsp;Check</th>
                                                 <th>Sr No.</th>
-                                                <th>Title</th>
-                                                <th>date</th>
-                                                <th>Image</th>
-                                                <th>Description</th>
+                                                <th>Exhibition name</th>
+                                                <th>Post id</th>
+                                                <th>Bidamount</th>
                                                 <th>Status</th>
                                                 <th>Action</th></tr>
                                         </thead>
@@ -91,20 +89,17 @@ $this->load->view('admin/header_body_aside');
                                             <?PHP
                                             $cnt = 1;
 
-                                            foreach ($news_list as $news) {
+                                            foreach ($exhibition_post_list as $exhibition_post) {
                                                 ?>
                                                 <tr>
-                                                    <td><input type="checkbox" name="news_id[]" class="checkbox" value="<?php echo $news->news_id; ?>" /></td>
+                                                    <td><input type="checkbox" name="exhibition_post_id[]" class="checkbox" value="<?php echo $exhibition_post->exhibition_post_id; ?>" /></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
-                                                    <td><?PHP echo $news->title ?></td>
-                                                    <td><?PHP echo $news->date ?></td>
-                                                    <td><image height="100" width="100" src="<?PHP echo base_url()?>news_image/<?php echo $news->image?>">
-                                                   </td>
-                                                  
-                                                    <td><?PHP echo $news->description ?></td>
-                                                    
+                                                    <td><?PHP echo $exhibition_post->title ?></td>
+                                                    <td><?PHP echo $exhibition_post->post_id ?></td>
+                                                    <td><?PHP echo $exhibition_post->bidamount ?></td>
+
                                                     <td><?php
-                                                        if ($news->news_status == '0') {
+                                                        if ($exhibition_post->exhibition_post_status == '0') {
                                                             ?>
                                                             <i class="glyphicon glyphicon-remove" style="color:red"></i>
                                                             <?php
@@ -123,56 +118,52 @@ $this->load->view('admin/header_body_aside');
                                                             </button>
 
                                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
-                                                                <li> <a onclick="openView(<?php echo $news->news_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
-                                                                <li>    <a href="<?php echo site_url("news/edit_data/$news->news_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
-                                                                <li>    <a href="<?php echo site_url("news/delete/$news->news_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
+                                                                <li> <a onclick="openView(<?php echo $exhibition_post->exhibition_post_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
+                                                                <li>    <a href="<?php echo site_url("exhibition_post/delete/$exhibition_post->exhibition_post_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
-                                                                    if ($news->news_status == '0') {
+                                                                    if ($exhibition_post->exhibition_post_status == '0') {
                                                                         ?>
-                                                                        <a href="<?php echo site_url("news/update_status_active/$news->news_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
+                                                                        <a href="<?php echo site_url("exhibition_post/update_status_active/$exhibition_post->exhibition_post_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                         <?php
                                                                     } else {
                                                                         ?>
-                                                                        <a href="<?php echo site_url("news/update_status_deactive/$news->news_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
+                                                                        <a href="<?php echo site_url("exhibition_post/update_status_deactive/$exhibition_post->exhibition_post_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
                                                                         <?php
                                                                     }
                                                                     ?></li>
                                                             </ul>
                                                         </div>
 
-                                                        <div id="myModal<?php echo $news->news_id ?>" class="modal fade" role="dialog">
+                                                        <div id="myModal<?php echo $exhibition_post->exhibition_post_id ?>" class="modal fade" role="dialog">
                                                             <div class="modal-dialog">
                                                                 <!-- Modal content-->
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
                                                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                        <h4 class="modal-title"><label>News Data</label></h4>
+                                                                        <h4 class="modal-title"><label>Exhibition post Data</label></h4>
                                                                     </div>
                                                                     <div class="modal-body">
 
                                                                         <table  width="60%">
-                                                                                                                           <tr>
-                                                                                <td><label>News ID</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $news->news_id ?></td>
+                                                                            <tr>
+                                                                                <td><label>Exhibition post id</label></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $exhibition_post->exhibition_post_id ?></td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td><label>Title</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $news->title ?></td>
+                                                                                <td><label>Exhibition id</label></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $exhibition_post->title ?></td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td><label>Date</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $news->date ?></td>
+                                                                                <td><label>Post id</label></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $exhibition_post->post_id ?></td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td><label>Image</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $news->image ?></td>
+                                                                                <td><label>Bidamount</label></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $exhibition_post->bidamount ?></td>
                                                                             </tr>
-                                                                            <tr>
-                                                                                <td><label>Description</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $news->description ?></td>
-                                                                            </tr>
-                                                                            
-                         </table>
+
+
+                                                                        </table>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -231,7 +222,7 @@ $this->load->view('admin/header_body_aside');
 
             <footer class="main-footer">
                 <?php
-$this->load->view('admin/footer_body');
+                $this->load->view('admin/footer_body');
                 ?>
             </footer>
 
@@ -242,24 +233,24 @@ $this->load->view('admin/footer_body');
         </div>
         <!-- ./wrapper -->
         <?php
-$this->load->view('admin/footer_include');
+        $this->load->view('admin/footer_include');
         ?>
         <script type="text/javascript">
             function openView(id) {
                 $('#myModal' + id).modal('show');
             }
         </script>
-       <script>
+        <script>
             $(function ()
             {
                 window.setTimeout(function ()
                 {
-                    $(".alert").fadeTo(500, 0).slideUp(500, function ()  {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function () {
                         $(this).remove();
                     });
                 }, 4000);
-                
-                 $("#example1").datatable();
+
+                $("#example1").datatable();
             });
         </script>
 

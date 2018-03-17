@@ -50,12 +50,11 @@ class City_model extends CI_model {
 
     public function delete($city_id) {
         $this->db->where('city_id', $city_id);
-       if( $this->db->delete('city_master'))
-       {
-                 return true;
+        if ($this->db->delete('city_master')) {
+            return true;
         } else {
             return false;
-        }       
+        }
     }
 
     public function drop_state($country_id) {
@@ -69,13 +68,13 @@ class City_model extends CI_model {
             'city_status' => 1
         );
         $this->db->where('city_id', $city_id);
-        if($this->db->update('city_master', $data))
+       if($this->db->update('city_master', $data))
         {
-              return true;
-        } else {
+            return true;
+        }
+        else{
             return false;
-        }    
-        
+        }
     }
 
     public function update_deactive($city_id, $city_status) {
@@ -84,11 +83,14 @@ class City_model extends CI_model {
             'city_status' => 0
         );
         $this->db->where('city_id', $city_id);
-        if($this->db->update('city_master', $data))
+       
+		if($this->db->update('city_master', $data))
         {
-          return true;
-        } else {
+            return true;
+        }
+        else{
             return false;
         }
     }
+
 }

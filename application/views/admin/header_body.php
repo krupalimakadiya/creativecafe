@@ -13,6 +13,8 @@
       </a>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+            
+            
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -29,8 +31,7 @@
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
-            
-              <!-- Menu Footer-->
+             <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
                   <a href="<?php echo site_url('changepwd/index')?>" class="btn btn-default btn-flat">Change password</a>
@@ -41,7 +42,6 @@
               </li>
             </ul>
           </li>
-       
         </ul>
       </div>
     </nav>

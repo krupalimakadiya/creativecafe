@@ -10,7 +10,11 @@ class Event_model extends CI_model {
     }
     
       public function insert($data) {
+       // $data = array('title' => $title,'date' => $date,'image' => $image,
+           // 'description' => $description ); //1= active //0-deactive
             $this->db->insert('event_master',$data);
+           // print_r($data);
+           // die();
             return $this->db->insert_id();
     }
         function update_filename($event_id,$filename) {
@@ -31,7 +35,11 @@ class Event_model extends CI_model {
     }
     public function delete($event_id) {
         $this->db->where('event_id', $event_id);
-        $this->db->delete('event_master');
+      if ($this->db->delete('event_master')) {
+            return true;
+        } else {
+            return false;
+        }
     }
     public function edit_data($event_id) {
         $query = $this->db->query("select * from event_master where event_id='$event_id'");
@@ -46,17 +54,24 @@ class Event_model extends CI_model {
             'image' => $data['image'],
             'description' => $data['description']
         );
+       /* print_r($data);
+        die();*/
         $this->db->where('event_id', $data['event_id']);
         $this->db->update('event_master', $data);
     }
-    
     public function update_active($event_id, $event_status) {
         $data = array(
             'event_id' => $event_id,
             'event_status' => 1
         );
         $this->db->where('event_id', $event_id);
-        $this->db->update('event_master', $data);
+       if($this->db->update('event_master', $data))
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public function update_deactive($event_id, $event_status) {
@@ -65,7 +80,13 @@ class Event_model extends CI_model {
             'event_status' => 0
         );
         $this->db->where('event_id', $event_id);
-        $this->db->update('event_master', $data);
+      if($this->db->update('event_master', $data))
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }
