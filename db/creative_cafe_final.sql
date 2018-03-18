@@ -37,7 +37,9 @@ CREATE TABLE `artist_master` (
 INSERT INTO `artist_master` (`artist_id`, `first_name`, `last_name`, `mobile`, `email`, `password`, `artist_profile`, `country_id`, `state_id`, `city_id`, `pincode`, `artist_status`, `user_type`) VALUES
 (118,	'keval',	'patel',	'7878827777',	'krupalimakadiya123@gmail.com',	'123456',	'1520942771IMG-20180117-WA0022.jpg',	36,	13,	15,	394101,	0,	'artist'),
 (127,	'krupali',	'makadiya',	'8000167777',	'krupali@gmail.com',	'123',	'',	28,	21,	13,	394101,	0,	'artist'),
-(128,	'vidhi',	'golakiya',	'9876543210',	'vidhi@gmail.com',	'123',	'',	28,	21,	13,	365214,	0,	'user');
+(128,	'vidhi',	'golakiya',	'9876543210',	'vidhi@gmail.com',	'123',	'',	28,	21,	13,	365214,	0,	'user'),
+(129,	'kalpesh',	'tank',	'8905578128',	'k.p.tank.143@gmail.com',	'123456',	'',	10,	8,	25,	395006,	0,	'artist'),
+(130,	'test',	'test',	'8905578128',	'test@gmail.com',	'test',	'',	10,	8,	10,	395006,	0,	'user');
 
 DROP TABLE IF EXISTS `art_category_master`;
 CREATE TABLE `art_category_master` (
@@ -129,13 +131,17 @@ CREATE TABLE `comment_master` (
   `user_id` int(20) NOT NULL,
   `comment` varchar(200) NOT NULL,
   `status` tinyint(1) NOT NULL,
+  `artist_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
   PRIMARY KEY (`comment_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `comment_master` (`comment_id`, `user_id`, `comment`, `status`) VALUES
-(1,	3,	'temp comment this is for practice',	1),
-(2,	10,	'this is first comment from cretive click',	1),
-(3,	10,	'this is first comment from cretive click',	0);
+INSERT INTO `comment_master` (`comment_id`, `user_id`, `comment`, `status`, `artist_id`, `post_id`) VALUES
+(1,	3,	'temp comment this is for practice',	1,	0,	0),
+(2,	10,	'this is first comment from cretive click',	1,	0,	0),
+(3,	10,	'this is first comment from cretive click',	0,	0,	0),
+(4,	0,	'                         hello\r\n                           ',	0,	118,	65),
+(5,	0,	'                            hello                        ',	0,	118,	65);
 
 DROP TABLE IF EXISTS `contactus_master`;
 CREATE TABLE `contactus_master` (
@@ -239,6 +245,24 @@ CREATE TABLE `exhibition_post_master` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `like_master`;
+CREATE TABLE `like_master` (
+  `like_id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`like_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `like_master` (`like_id`, `post_id`, `user_id`) VALUES
+(28,	64,	130),
+(29,	65,	130),
+(30,	72,	130),
+(31,	73,	130),
+(32,	64,	129),
+(33,	65,	129),
+(34,	72,	129),
+(35,	73,	129);
+
 DROP TABLE IF EXISTS `news_master`;
 CREATE TABLE `news_master` (
   `news_id` int(10) NOT NULL AUTO_INCREMENT,
@@ -269,19 +293,21 @@ CREATE TABLE `post_master` (
   `Description` varchar(5000) NOT NULL,
   `artist_id` int(20) NOT NULL,
   `price` decimal(12,2) NOT NULL,
+  `like_counter` bigint(20) NOT NULL,
   `post_status` int(20) NOT NULL,
   `ispublished` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `post_master` (`post_id`, `art_category_id`, `art_sub_cat_id`, `file_type`, `image`, `project_audio`, `project_video`, `Description`, `artist_id`, `price`, `post_status`, `ispublished`) VALUES
-(64,	59,	63,	'audio',	NULL,	'https://www.youtube.com/embed/xu3BK23OdOw',	'',	' rjtgfjkndfnkns                           ',	118,	0.00,	1,	1),
-(65,	59,	63,	'audio',	NULL,	'https://www.youtube.com/embed/xu3BK23OdOw',	'',	' rjtgfjkndfnkns                           ',	118,	0.00,	1,	1),
-(66,	71,	72,	'video',	NULL,	'',	'https://www.youtube.com/embed/0SZigTb-iqo',	'  this is video                          ',	118,	0.00,	0,	0),
-(68,	59,	63,	'image',	'1520682534recent-godrej-logo-design.png',	'',	'',	'logo id                            ',	118,	0.00,	0,	0),
-(69,	67,	70,	'video',	NULL,	'',	'https://www.youtube.com/embed/-JOAqkm5ieQ',	'polampol movie song ',	118,	0.00,	0,	0),
-(71,	59,	63,	'image',	'1520738505images (2).jpg',	'',	'',	'erfnjknsd,mnm ',	118,	0.00,	0,	0),
-(72,	59,	64,	'audio',	'',	'https://www.youtube.com/watch?v=z9b1Ei-TF4E',	'',	'                     ssdasd                               ',	127,	5000.00,	1,	1);
+INSERT INTO `post_master` (`post_id`, `art_category_id`, `art_sub_cat_id`, `file_type`, `image`, `project_audio`, `project_video`, `Description`, `artist_id`, `price`, `like_counter`, `post_status`, `ispublished`) VALUES
+(64,	59,	63,	'audio',	NULL,	'https://www.youtube.com/embed/xu3BK23OdOw',	'',	' rjtgfjkndfnkns                           ',	129,	0.00,	2,	1,	1),
+(65,	59,	63,	'audio',	NULL,	'https://www.youtube.com/embed/xu3BK23OdOw',	'',	' rjtgfjkndfnkns                           ',	129,	0.00,	2,	1,	1),
+(66,	71,	72,	'video',	NULL,	'',	'https://www.youtube.com/embed/0SZigTb-iqo',	'  this is video                          ',	129,	0.00,	0,	1,	0),
+(68,	59,	63,	'image',	'1520682534recent-godrej-logo-design.png',	'',	'',	'logo id                            ',	129,	0.00,	0,	1,	0),
+(69,	67,	70,	'video',	NULL,	'',	'https://www.youtube.com/embed/-JOAqkm5ieQ',	'polampol movie song ',	129,	0.00,	0,	1,	0),
+(71,	59,	63,	'image',	'1520738505images (2).jpg',	'',	'',	'erfnjknsd,mnm ',	129,	0.00,	0,	1,	0),
+(72,	59,	64,	'audio',	'',	'https://www.youtube.com/watch?v=z9b1Ei-TF4E',	'',	'                     ssdasd                               ',	129,	5000.00,	2,	1,	1),
+(73,	56,	57,	'audio',	'',	'https://www.youtube.com/watch?v=z9b1Ei-TF4E',	'',	'                     afasd                               ',	129,	500.00,	2,	1,	1);
 
 DROP TABLE IF EXISTS `site_review_master`;
 CREATE TABLE `site_review_master` (
@@ -320,4 +346,4 @@ INSERT INTO `state_master` (`state_id`, `country_id`, `state_name`, `state_statu
 (26,	28,	'gfhn',	0),
 (27,	28,	'sxdfnks',	0);
 
--- 2018-03-13 18:36:26
+-- 2018-03-18 05:01:12
