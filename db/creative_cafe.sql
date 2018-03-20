@@ -128,20 +128,32 @@ INSERT INTO `city_master` (`city_id`, `country_id`, `state_id`, `city_name`, `ci
 DROP TABLE IF EXISTS `comment_master`;
 CREATE TABLE `comment_master` (
   `comment_id` int(20) NOT NULL AUTO_INCREMENT,
-  `user_id` int(20) NOT NULL,
   `comment` varchar(200) NOT NULL,
-  `status` tinyint(1) NOT NULL,
-  `artist_id` int(11) NOT NULL,
+  `artist_id` int(10) NOT NULL,
   `post_id` int(11) NOT NULL,
-  PRIMARY KEY (`comment_id`)
+  `user_name` varchar(200) NOT NULL,
+  `comment_date` datetime NOT NULL,
+  PRIMARY KEY (`comment_id`),
+  KEY `artist_id` (`artist_id`),
+  CONSTRAINT `comment_master_ibfk_1` FOREIGN KEY (`artist_id`) REFERENCES `artist_master` (`artist_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `comment_master` (`comment_id`, `user_id`, `comment`, `status`, `artist_id`, `post_id`) VALUES
-(1,	3,	'temp comment this is for practice',	1,	0,	0),
-(2,	10,	'this is first comment from cretive click',	1,	0,	0),
-(3,	10,	'this is first comment from cretive click',	0,	0,	0),
-(4,	0,	'                         hello\r\n                           ',	0,	118,	65),
-(5,	0,	'                            hello                        ',	0,	118,	65);
+INSERT INTO `comment_master` (`comment_id`, `comment`, `artist_id`, `post_id`, `user_name`, `comment_date`) VALUES
+(6,	'kalpesh',	129,	64,	'kalpesh tank',	'2018-03-18 14:50:06'),
+(7,	'parth',	129,	64,	'kalpesh tank',	'2018-03-18 14:50:17'),
+(8,	'kalpesh',	129,	64,	'kalpesh tank',	'2018-03-18 14:50:30'),
+(9,	'kakaakkaka',	129,	64,	'kalpesh tank',	'2018-03-18 14:50:37'),
+(10,	'',	129,	64,	'kalpesh tank',	'2018-03-18 14:50:39'),
+(11,	'afsdfs',	129,	64,	'kalpesh tank',	'2018-03-18 14:50:42'),
+(12,	'hello',	129,	65,	'kalpesh tank',	'2018-03-18 14:52:06'),
+(13,	'hy',	129,	65,	'kalpesh tank',	'2018-03-18 14:52:22'),
+(14,	'hru',	129,	65,	'kalpesh tank',	'2018-03-18 14:52:26'),
+(15,	'kp',	129,	65,	'kalpesh tank',	'2018-03-18 14:52:31'),
+(16,	'hello',	129,	65,	'kalpesh tank',	'2018-03-18 14:59:40'),
+(17,	'hello',	129,	73,	'kalpesh tank',	'2018-03-18 15:00:47'),
+(18,	'heello',	127,	65,	'krupali makadiya',	'2018-03-19 20:12:12'),
+(19,	's',	127,	65,	'krupali makadiya',	'2018-03-19 20:12:18'),
+(20,	'hello',	127,	74,	'krupali makadiya',	'2018-03-19 20:13:13');
 
 DROP TABLE IF EXISTS `contactus_master`;
 CREATE TABLE `contactus_master` (
@@ -223,16 +235,16 @@ CREATE TABLE `exhibition_master` (
   `artist_id` int(11) NOT NULL,
   `title` varchar(300) NOT NULL,
   `description` varchar(2000) NOT NULL,
-  `date` varchar(100) NOT NULL,
-  `exhibition_status` varchar(10) NOT NULL,
+  `from_date` datetime NOT NULL,
+  `to_date` datetime NOT NULL,
+  `exhibition_status` varchar(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`exhibition_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `exhibition_master` (`exhibition_id`, `artist_id`, `title`, `description`, `date`, `exhibition_status`) VALUES
-(4,	0,	'nkjhgf',	'<p>This is my textarea to be replaced with CKEditor.</p>\r\n',	'02/06/2018 - 02/27/2018',	'1'),
-(5,	0,	'dummy exhibition',	'<p>This is my textarea to be replaced with CKEditor.</p>\r\n',	'02/25/2018 - 02/25/2018',	'0'),
-(6,	118,	'dummy',	'dummy',	'78/1/2018',	''),
-(7,	118,	'today',	'today',	'2018-03-09',	'');
+INSERT INTO `exhibition_master` (`exhibition_id`, `artist_id`, `title`, `description`, `from_date`, `to_date`, `exhibition_status`) VALUES
+(8,	127,	'test',	'new',	'2018-03-01 00:00:00',	'2018-03-20 22:39:37',	'0'),
+(9,	127,	'test2',	'test',	'2018-03-02 00:00:00',	'2018-03-20 22:39:47',	'0'),
+(10,	127,	'new date',	'kalpesh',	'2018-02-28 00:00:00',	'2018-04-21 00:00:00',	'0');
 
 DROP TABLE IF EXISTS `exhibition_post_master`;
 CREATE TABLE `exhibition_post_master` (
@@ -244,24 +256,27 @@ CREATE TABLE `exhibition_post_master` (
   PRIMARY KEY (`exhibition_post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `exhibition_post_master` (`exhibition_post_id`, `exhibition_id`, `post_id`, `bidamount`, `exhibition_post_status`) VALUES
+(23,	10,	64,	0,	0),
+(24,	10,	65,	0,	0),
+(25,	10,	71,	0,	0);
 
 DROP TABLE IF EXISTS `like_master`;
 CREATE TABLE `like_master` (
   `like_id` int(11) NOT NULL AUTO_INCREMENT,
   `post_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`like_id`)
+  `artist_id` int(10) NOT NULL,
+  PRIMARY KEY (`like_id`),
+  KEY `artist_id` (`artist_id`),
+  CONSTRAINT `like_master_ibfk_1` FOREIGN KEY (`artist_id`) REFERENCES `artist_master` (`artist_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `like_master` (`like_id`, `post_id`, `user_id`) VALUES
+INSERT INTO `like_master` (`like_id`, `post_id`, `artist_id`) VALUES
 (28,	64,	130),
 (29,	65,	130),
 (30,	72,	130),
-(31,	73,	130),
-(32,	64,	129),
-(33,	65,	129),
-(34,	72,	129),
-(35,	73,	129);
+(61,	74,	127),
+(83,	65,	127);
 
 DROP TABLE IF EXISTS `news_master`;
 CREATE TABLE `news_master` (
@@ -286,6 +301,7 @@ CREATE TABLE `post_master` (
   `post_id` int(100) NOT NULL AUTO_INCREMENT,
   `art_category_id` int(100) NOT NULL,
   `art_sub_cat_id` int(100) DEFAULT NULL,
+  `post_title` varchar(100) DEFAULT NULL,
   `file_type` varchar(100) NOT NULL,
   `image` varchar(1000) DEFAULT NULL,
   `project_audio` varchar(1000) DEFAULT NULL,
@@ -294,20 +310,22 @@ CREATE TABLE `post_master` (
   `artist_id` int(20) NOT NULL,
   `price` decimal(12,2) NOT NULL,
   `like_counter` bigint(20) NOT NULL,
+  `comment_counter` bigint(20) NOT NULL,
   `post_status` int(20) NOT NULL,
   `ispublished` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `post_master` (`post_id`, `art_category_id`, `art_sub_cat_id`, `file_type`, `image`, `project_audio`, `project_video`, `Description`, `artist_id`, `price`, `like_counter`, `post_status`, `ispublished`) VALUES
-(64,	59,	63,	'audio',	NULL,	'https://www.youtube.com/embed/xu3BK23OdOw',	'',	' rjtgfjkndfnkns                           ',	129,	0.00,	2,	1,	1),
-(65,	59,	63,	'audio',	NULL,	'https://www.youtube.com/embed/xu3BK23OdOw',	'',	' rjtgfjkndfnkns                           ',	129,	0.00,	2,	1,	1),
-(66,	71,	72,	'video',	NULL,	'',	'https://www.youtube.com/embed/0SZigTb-iqo',	'  this is video                          ',	129,	0.00,	0,	1,	0),
-(68,	59,	63,	'image',	'1520682534recent-godrej-logo-design.png',	'',	'',	'logo id                            ',	129,	0.00,	0,	1,	0),
-(69,	67,	70,	'video',	NULL,	'',	'https://www.youtube.com/embed/-JOAqkm5ieQ',	'polampol movie song ',	129,	0.00,	0,	1,	0),
-(71,	59,	63,	'image',	'1520738505images (2).jpg',	'',	'',	'erfnjknsd,mnm ',	129,	0.00,	0,	1,	0),
-(72,	59,	64,	'audio',	'',	'https://www.youtube.com/watch?v=z9b1Ei-TF4E',	'',	'                     ssdasd                               ',	129,	5000.00,	2,	1,	1),
-(73,	56,	57,	'audio',	'',	'https://www.youtube.com/watch?v=z9b1Ei-TF4E',	'',	'                     afasd                               ',	129,	500.00,	2,	1,	1);
+INSERT INTO `post_master` (`post_id`, `art_category_id`, `art_sub_cat_id`, `post_title`, `file_type`, `image`, `project_audio`, `project_video`, `Description`, `artist_id`, `price`, `like_counter`, `comment_counter`, `post_status`, `ispublished`) VALUES
+(64,	59,	63,	'as',	'audio',	NULL,	'https://www.youtube.com/embed/xu3BK23OdOw',	'',	' rjtgfjkndfnkns                           ',	127,	0.00,	1,	6,	1,	1),
+(65,	59,	63,	'saadas',	'audio',	NULL,	'https://www.youtube.com/embed/xu3BK23OdOw',	'',	' rjtgfjkndfnkns                           ',	127,	0.00,	1,	8,	1,	1),
+(66,	71,	72,	're',	'video',	NULL,	'',	'https://www.youtube.com/embed/0SZigTb-iqo',	'  this is video                          ',	127,	0.00,	0,	0,	1,	0),
+(68,	59,	63,	'e',	'image',	'1520682534recent-godrej-logo-design.png',	'',	'',	'logo id                            ',	127,	0.00,	0,	0,	1,	0),
+(69,	67,	70,	'kl',	'video',	NULL,	'',	'https://www.youtube.com/embed/-JOAqkm5ieQ',	'polampol movie song ',	127,	0.00,	0,	0,	1,	0),
+(71,	59,	63,	'sd',	'image',	'1520738505images (2).jpg',	'',	'',	'erfnjknsd,mnm ',	127,	0.00,	0,	0,	1,	0),
+(72,	59,	64,	'sad',	'audio',	'',	'https://www.youtube.com/watch?v=z9b1Ei-TF4E',	'',	'                     ssdasd                               ',	127,	5000.00,	1,	0,	1,	1),
+(73,	56,	57,	'kp',	'audio',	'',	'https://www.youtube.com/watch?v=z9b1Ei-TF4E',	'',	'                     afasd                               ',	127,	500.00,	1,	1,	1,	1),
+(74,	56,	57,	'test',	'audio',	'',	'https://www.youtube.com/watch?v=PT1Nqm3dU_0&list=RDMMPT1Nqm3dU_0',	'',	'                new post                                    ',	127,	500.00,	1,	1,	1,	1);
 
 DROP TABLE IF EXISTS `site_review_master`;
 CREATE TABLE `site_review_master` (
@@ -346,4 +364,4 @@ INSERT INTO `state_master` (`state_id`, `country_id`, `state_name`, `state_statu
 (26,	28,	'gfhn',	0),
 (27,	28,	'sxdfnks',	0);
 
--- 2018-03-18 05:01:12
+-- 2018-03-20 18:25:02
