@@ -75,10 +75,9 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                               <th><input type="checkbox"  id="select_all" />&nbsp;Check</th>
+                                                <th><input type="checkbox"  id="select_all" />&nbsp;Check</th>
                                                 <th>Id</th>
-                                                <th>Art Category Name</th>
-                                                <th>Art Subcategory Name</th>
+                                                <th>Art Category Name</th>                                
                                                 <th>File Type</th>                                              
                                                 <th>Description</th>
                                                 <th>Artist ID</th>
@@ -95,50 +94,44 @@
                                                 <tr>
                                                     <td><input type="checkbox" name="post_id[]" class="checkbox"  value="<?php echo $post->post_id ?>"</td>
                                                     <td><?PHP echo $cnt++; ?> </td>
-                                                    <td><?PHP echo $post->art_category_name ?></td>
-                                                    <td><?php echo $post->art_category_name ?></td>
+                                                    <td><?PHP echo $post->art_category_name ?></td>                                                
                                                     <td><?PHP echo $post->file_type ?></td>                                                   
                                                     <td><?PHP echo $post->Description ?></td>                                                    
                                                     <td><?PHP echo $post->artist_id ?></td>       
                                                     <td><?php
                                                         if ($post->ispublished == '0') {
                                                             ?>
-                                                            <i class="glyphicon glyphicon-ok" style="color:green"></i>
+                                                            <i class="glyphicon glyphicon-remove" style="color:red" ></i>
                                                             <?php
                                                         } else {
                                                             ?>
-                                                            <i class="glyphicon glyphicon-remove" style="color:red" ></i>
-
+                                                            <i class="glyphicon glyphicon-ok" style="color:green"></i>
                                                             <?php
                                                         }
                                                         ?></td>
                                                     <td><?php
-                                                    if($post->ispublished == '0')
-                                                    {
-                                                        if ($post->post_status == '0') {
-                                                            ?>
-                                                            <i class="glyphicon glyphicon-remove" style="color:red"></i>
-                                                            <?php
-                                                        } else {
-                                                            ?>
-                                                            <i class="glyphicon glyphicon-ok" style="color:green" ></i>
-                                                            
-                                                            <?php
-                                                    }}
+                                                        if ($post->ispublished == '1') {
+                                                            if ($post->post_status == '0') {
+                                                                ?>
+                                                                <i class="glyphicon glyphicon-remove" style="color:red"></i>
+                                                                <?php
+                                                            } else {
+                                                                ?>
+                                                                <i class="glyphicon glyphicon-ok" style="color:green" ></i>
+                                                                <?php
+                                                            }
+                                                        }
                                                         ?></td>
                                                     <td> <div class="dropdown">
-
                                                             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Action
                                                                 <span class="caret"></span> <!-- caret -->
                                                             </button>
-
                                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
                                                                 <li> <a onclick="openView(<?= $post->post_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
                                                                 <li>    <a href="<?php echo site_url("post/delete/$post->post_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
-                                                                    if($post->ispublished == '0')
-                                                    {    
-                                                                if ($post->post_status == '0') {
+                                                                    if ($post->ispublished == '1') {
+                                                                          if ($post->post_status == '0') {
                                                                         ?>
                                                                         <a href="<?php echo site_url("post/update_status_active/$post->post_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
                                                                         <?php
@@ -146,8 +139,8 @@
                                                                         ?>
                                                                         <a href="<?php echo site_url("post/update_status_deactive/$post->post_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
                                                                         <?php
+                                                                        }
                                                                     }
-                                                    }
                                                                     ?></li>
                                                             </ul>
                                                         </div>

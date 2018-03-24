@@ -11,7 +11,7 @@ class Post_model extends CI_model {
                 art_category_master as ac 
                 where 
                 p.artist_id=artist.artist_id AND 
-                p.art_category_id=ac.art_category_id ");
+                p.art_category_id=ac.art_category_id");
       return $query->result();
     }
 

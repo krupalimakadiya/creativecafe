@@ -85,7 +85,8 @@ $this->load->view('admin/header_body_aside');
                                                 <th>Artist name</th>
                                               <th>Title</th>
                                                 <th>description</th>
-                                               <th>date</th>
+                                               <th>From Date</th>
+                                               <th>To Date</th>
                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -101,7 +102,8 @@ $this->load->view('admin/header_body_aside');
                                                      <td><?PHP echo $exhibition->first_name ?></td>
                                                     <td><?PHP echo $exhibition->title ?></td>
                                                     <td><?PHP echo $exhibition->description ?></td>
-                                                <td><?PHP echo $exhibition->date ?></td>
+                                                    <td><?php echo $exhibition->from_date ?></td>
+                                                    <td><?php echo $exhibition->to_date ?></td>
                                                  
                                                     <td><?php
                                                         if ($exhibition->exhibition_status == '0') {
