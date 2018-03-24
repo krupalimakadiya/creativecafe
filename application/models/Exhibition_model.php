@@ -4,14 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Exhibition_model extends CI_Model {
 
-    public function getexhibitionlist   () {
-        $query = $this->db->query("select * from exhibition_master");
-        return $query->result();
-    }
-    /*public function getexhibitionlist   () {
+    public function getexhibitionlist() {
         $query = $this->db->query("select * from exhibition_master as e, artist_master as a where e.artist_id=a.artist_id");
         return $query->result();
-    }*/
+    }
   public function insert($title,$description,$starting_time,$end_time,$date,$fees,$address) {
         $data = array(
             'title' => $title,
@@ -55,7 +51,7 @@ class Exhibition_model extends CI_Model {
         }
     }
 
-    public function update_active($exhibition_id, $exhibition_status) {
+    public function update_active($exhibition_id) {
         $data = array(
             'exhibition_id' => $exhibition_id,
             'exhibition_status' => 1
@@ -70,7 +66,7 @@ class Exhibition_model extends CI_Model {
         }
     }
 
-    public function update_deactive($exhibition_id, $exhibition_status) {
+    public function update_deactive($exhibition_id) {
         $data = array(
             'exhibition_id' => $exhibition_id,
             'exhibition_status' => 0

@@ -49,7 +49,7 @@ class Art_category_model extends CI_model {
         }
     }
 
-    public function update_active($art_category_id, $art_category_status) {
+    public function update_active($art_category_id) {
         $data = array(
             'art_category_id' => $art_category_id,
             'art_category_status' => 1
@@ -65,7 +65,7 @@ class Art_category_model extends CI_model {
         }
     }
 
-    public function update_deactive($art_category_id, $art_category_status) {
+    public function update_deactive($art_category_id) {
         $data = array(
             'art_category_id' => $art_category_id,
             'art_category_status' => 0

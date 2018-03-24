@@ -10,8 +10,7 @@ class Country_model extends CI_model {
     }
 
     public function insert($country_data) {
-        $data = array('country_name' => $country_data); //1= active //0-deactive
-      
+        $data = array('country_name' => $country_data); //1= active //0-deactive      
         $this->db->insert('country_master', $data);
     }
 
@@ -42,31 +41,28 @@ class Country_model extends CI_model {
         }
     }
 
-    public function update_active($country_id, $country_status) {
+    public function update_active($country_id) {
         $data = array(
             'country_id' => $country_id,
             'country_status' => 1
         );
         $this->db->where('country_id', $country_id);
-       if($this->db->update('country_master', $data))
-       {
-           return true;
-       }else {
-     return false;
-       }
+        if ($this->db->update('country_master', $data)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public function update_deactive($country_id, $country_status) {
+    public function update_deactive($country_id) {
         $data = array(
             'country_id' => $country_id,
             'country_status' => 0
         );
         $this->db->where('country_id', $country_id);
-        if($this->db->update('country_master', $data))
-        {
+        if ($this->db->update('country_master', $data)) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }

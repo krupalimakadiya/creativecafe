@@ -62,7 +62,7 @@ class City_model extends CI_model {
         return $query->result();
     }
 
-    public function update_active($city_id, $city_status) {
+    public function update_active($city_id) {
         $data = array(
             'city_id' => $city_id,
             'city_status' => 1
@@ -77,7 +77,7 @@ class City_model extends CI_model {
         }
     }
 
-    public function update_deactive($city_id, $city_status) {
+    public function update_deactive($city_id) {
         $data = array(
             'city_id' => $city_id,
             'city_status' => 0

@@ -5,10 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Forgot extends CI_Controller {
 
     public function index() {
-        //$this->load->view('changepwd_view');
-           $this->load->view('forgot_frm');
-          
-           
+           $this->load->view('forgot_frm');                     
     }
     
    
@@ -27,15 +24,7 @@ $em_data = $data['email_lst']['email'];
 
   $get_data = $data['get_lst']['email'];
  $get_data1 = $data['get_lst']['password'];
- /* $subject = "Detail";
-        $message = "echo $get_data1";
-
-        $from = "kinu.makadiya@gmail.com";
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
-        $headers .= "From: $from" . "\r\n";
-        mail($get_data, $subject, $message, $headers);*/
-$config = Array(
+ $config = Array(
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_port' => 465,
@@ -59,21 +48,16 @@ $config = Array(
         } else {
             show_error($this->email->print_debugger());
         }
-
-
  }
     public function changepass() {
-
         $oldpwd = md5($this->input->post('oldpwd'));        
         $newpwd = md5($this->input->post('newpwd'));
         $confirmpwd = md5($this->input->post('confirmpwd'));
         $admin_id = $this->session->userdata('admin_id');
         $this->load->model('changepwd_model');
-
         
         if ($newpwd = $confirmpwd) {
-            $data = $this->changepwd_model->getidpass($admin_id, $oldpwd);
-           
+            $data = $this->changepwd_model->getidpass($admin_id, $oldpwd);           
             if (isset($data['admin_id'])) {
                 $this->changepwd_model->change_data($admin_id, $newpwd);
                 $this->session->set_flashdata('message', 'pwd is change');

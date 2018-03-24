@@ -48,7 +48,7 @@ class Post_model extends CI_model {
         }
     }
 
-    public function update_active($post_id, $post_status) {
+    public function update_active($post_id) {
         $data = array(
             'post_id' => $post_id,
             'post_status' => 1
@@ -64,7 +64,7 @@ class Post_model extends CI_model {
         }
     }
 
-    public function update_deactive($post_id, $post_status) {
+    public function update_deactive($post_id) {
         $data = array(
             'post_id' => $post_id,
             'post_status' => 0

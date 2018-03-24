@@ -14,11 +14,6 @@ class Country extends My_Controller {
         $this->load->view('v_country_view', $data);
     }
 
-    /*    public function view_country() {
-      $data['country_list'] = $this->country_model->getcountrylist();
-      $this->load->view('v_country_view', $data);
-      } */
-
     public function add_country() {
         $data['country_list'] = $this->country_model->getcountrylist();
         $this->load->view('v_country_form', $data);
@@ -148,5 +143,4 @@ class Country extends My_Controller {
         }
         redirect("country");
     }
-
 }

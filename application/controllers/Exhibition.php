@@ -8,20 +8,7 @@ class exhibition extends MY_Controller {
         parent::__construct();
         $this->load->model('exhibition_model');
     }
-public function add_exhibition() {
-     //   $data['news_list'] = $this->news_model->getnewslist();
-        $this->load->view('v_exhibition_form');
-    }
-    public function view_exhibition() {
-        $data['exhibition_list'] = $this->exhibition_model->getexhibitionlist();
-        $this->load->view('v_exhibition_view', $data);
-    }
-
-  /*  public function add_exhibition() {
-        $data['exhibition_list'] = $this->exhibition_model->getexhibitionlist();
-        $this->load->view('v_exhibition_view', $data);
-    }*/
-
+      
     public function import() {
         $this->load->view('import_exhibition');
     }
@@ -115,7 +102,7 @@ public function update_status_active($exhibition_id) {
             } 
             if(isset($_POST['submit2'])) 
             { 
-                if($this->category_model->update_deactive($exhibition_id[$i])) 
+                if($this->exhibition_model->update_deactive($exhibition_id[$i])) 
                 {             
                     $this->session->set_flashdata('success', 'Exhibition Detail Is Activated Successfully..'); 
                      } 

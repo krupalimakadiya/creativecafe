@@ -40,21 +40,13 @@
                 ?>
                 <form action="<?php echo site_url('forgot/forgorpwd') ?>" method="post" name="loginfrm">
                     <div class="form-group has-feedback">
-                        <input type="email" class="form-control" placeholder="Email" name="email" >
+                        <input type="email" class="form-control" placeholder="Email" name="email" required="" >
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     </div>
-                    <!--<div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="new password" name="newpwd">
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="confirm password" name="confirmpwd">
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                    </div>-->
                     <div class="row">
                         <div class="col-xs-8">
                             <div class="checkbox icheck">
-                              
+
                             </div>
                         </div>
                         <!-- /.col -->
@@ -64,19 +56,6 @@
                         <!-- /.col -->
                     </div>
                 </form>
-
-                <!--        <div class="social-auth-links text-center">
-                            <p>- OR -</p>
-                            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
-                                Facebook</a>
-                            <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
-                                Google+</a>
-                        </div>-->
-                <!-- /.social-auth-links -->
-
-               <!-- <a href="<?php echo site_url('changepwd/index') ?>">I forgot my password</a><br>-->
-                <!--<a href="register.html" class="text-center">Register a new membership</a>-->
-
             </div>
             <!-- /.login-box-body -->
         </div>
@@ -88,14 +67,5 @@
         <script src="<?php $this->config->item('static_url') ?>bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <!-- iCheck -->
         <script src="<?php $this->config->item('static_url') ?>plugins/iCheck/icheck.min.js"></script>
-        <script>
-            $(function () {
-                $('input').iCheck({
-                    checkboxClass: 'icheckbox_square-blue',
-                    radioClass: 'iradio_square-blue',
-                    increaseArea: '20%' // optional
-                });
-            });
-        </script>
     </body>
 </html>

@@ -1,7 +1,6 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Artist_model extends CI_model {
 
     public function getartistlist() {
@@ -48,35 +47,33 @@ class Artist_model extends CI_model {
     public function edit_data($artist_id) {
         $query = $this->db->query("select * from  artist_master  where artist_id='$artist_id' ");
         return $query->row_array();
-    }
-
-    /*  public function update_data($artist_data) {
-      $this->db->update('artist_master',$artist_data);
-      return $this->db->insert_id();
-      } */
-
-    public function update_data($artist_id, $first_name, $last_name, $mobile, $email, $password, $newfilename, $country_id, $state_id, $city_id, $pincode,$user_type) {
-
+    }    
+    
+    public function update_data($artist_id, $first_name, $last_name, $mobile, $email, $password, $newfilename, $country_id, $state_id, $city_id, $pincode,$user_type){
         $data = array(
-            //         'artist_id' => $artist_id,
+           'artist_id' => $artist_id,
             'first_name' => $first_name,
             'last_name' => $last_name,
             'mobile' => $mobile,
             'email' => $email,
             'password' => $password,
-            'artist_profile' => $newfilename,
             'country_id' => $country_id,
             'state_id' => $state_id,
             'city_id' => $city_id,
             'pincode' => $pincode,
+            //'artist_status'=>$artist_status,
             'user_type' => $user_type
-        );
-    
+        );    
+        print_r($data);
+        //die();
+           if ($newfilename != '') {
+            $data['artist_profile'] = $newfilename;
+           }
         $this->db->where('artist_id', $artist_id);
         $this->db->update('artist_master', $data);
     }
 
-    public function delete($artist_id) {
+    public function delete($artist_id){
         $this->db->where('artist_id', $artist_id);
         if ($this->db->delete('artist_master')) {
             return true;
@@ -85,27 +82,26 @@ class Artist_model extends CI_model {
         }
     }
 
-    public function update_active($artist_id, $artist_status) {
+    public function update_active($artist_id){
         $data = array(
             'artist_id' => $artist_id,
             'artist_status' => 1
         );
-        $this->db->where('artist_id', $artist_id);
-      
-        if ($this->db->update('artist_master', $data)) {
+        $this->db->where('artist_id', $artist_id);      
+        if ($this->db->update('artist_master', $data)){
             return true;
         } else {
             return false;
         }
     }
 
-    public function update_deactive($artist_id, $artist_status) {
+    public function update_deactive($artist_id) {
         $data = array(
             'artist_id' => $artist_id,
             'artist_status' => 0
         );
         $this->db->where('artist_id', $artist_id);
-        if ($this->db->update('artist_master', $data)) {
+        if ($this->db->update('artist_master', $data)){
             return true;
         } else {
             return false;

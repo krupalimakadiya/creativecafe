@@ -91,7 +91,7 @@ $this->load->view('admin/header_body_aside');
                                                 <tr>
                                                     <td><input type="checkbox" name="comment_id[]" class="checkbox" value="<?php echo $comment->comment_id; ?>" /></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
-                                                    <td><?PHP echo $comment->user_id ?></td>
+                                                    <td><?PHP echo $comment->artist_id ?></td>
                                                     <td><?PHP echo $comment->comment ?></td>
                                                     <td><?php
                                                         if ($comment->status == '0') {
@@ -147,7 +147,7 @@ $this->load->view('admin/header_body_aside');
                                                                             </tr>
                                                                             <tr>
                                                                                 <td><label>User ID</label></td>
-                                                                                <td>:&nbsp;&nbsp;<?php echo $comment->user_id ?></td>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $comment->artist_id ?></td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td><label>Comment</label></td>

@@ -54,22 +54,14 @@ class Comment extends My_Controller{
             { 
                 if($this->comment_model->update_active($comment_id[$i])) 
                 {             
-                    $this->session->set_flashdata('success', 'Comment Detail Is Deactivated Successfully..'); 
-                } 
-                else 
-                { 
-                    $this->session->set_flashdata('fail', 'Comment Detail Is Not Deactivated.. Please Try Again.'); 
-                } 
+                    $this->session->set_flashdata('success', 'Comment Detail Is activated Successfully..');              
+                }
             } 
             if(isset($_POST['submit2'])) 
             { 
                 if($this->comment_model->update_deactive($comment_id[$i])) 
                 {             
-                    $this->session->set_flashdata('success', 'Comment Detail Is Activated Successfully..'); 
-                } 
-                else 
-                { 
-                    $this->session->set_flashdata('fail', 'Comment Detail Is Not Activated.. Please Try Again.'); 
+                    $this->session->set_flashdata('success', 'Comment Detail Is Deactivated Successfully..'); 
                 } 
             } 
             $i++; 

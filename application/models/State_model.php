@@ -50,7 +50,7 @@ class State_model extends CI_model {
         }
     }
 
-    public function update_active($state_id, $state_status) {
+    public function update_active($state_id) {
         $data = array(
             'state_id' => $state_id,
             'state_status' => 1
@@ -63,7 +63,7 @@ class State_model extends CI_model {
         }
     }
 
-    public function update_deactive($state_id, $state_status) {
+    public function update_deactive($state_id) {
         $data = array(
             'state_id' => $state_id,
             'state_status' => 0

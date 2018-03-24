@@ -82,8 +82,8 @@ $this->load->view('admin/header_body_aside');
                                                 <th>Last Name</th>                                              
                                                 <th>Mobile</th>
                                                 <th>City</th>
-                                                <th>Password</th>
-                                                <th>Status</th>
+                                                <th>User Type</th>
+                                                <th>Status</th>                                                
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -92,15 +92,14 @@ $this->load->view('admin/header_body_aside');
                                             $cnt = 1;
                                             foreach ($artist_list as $artist) {
                                                 ?>
-                                                <tr>
-                                                    <td><input type="checkbox" name="artist_id[]" class="checkbox" value="<?php echo $artist->artist_id ?>"</td>
+                                                <tr>                                                    
+                                                    <td><input type="checkbox" name="artist_id[]" class="checkbox" value="<?php echo $artist->artist_id ?>"></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $artist->first_name ?></td>
                                                     <td><?PHP echo $artist->last_name ?></td>                                                   
                                                     <td><?PHP echo $artist->mobile ?></td>                                                    
                                                     <td><?PHP echo $artist->city_name ?></td>
-                                                    <td><?PHP echo $artist->password ?></td>
-
+                                                    <td><?PHP echo $artist->user_type ?></td>
                                                     <td><?php
                                                         if ($artist->artist_status == '0') {
                                                             ?>
@@ -109,16 +108,14 @@ $this->load->view('admin/header_body_aside');
                                                         } else {
                                                             ?>
                                                             <i class="glyphicon glyphicon-ok" style="color:green" ></i>
-
                                                             <?php
                                                         }
                                                         ?></td>
-                                                    <td> <div class="dropdown">
-
+                                                    <td> 
+                                                        <div class="dropdown">
                                                             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Action
                                                                 <span class="caret"></span> <!-- caret -->
                                                             </button>
-
                                                             <ul class="dropdown-menu" role="menu"> <!-- class dropdown-menu -->
                                                                 <li> <a onclick="openView(<?php echo $artist->artist_id ?>);"><i class="fa fa-search"></i><label>View</label></a> </li>                     
                                                                 <li>    <a href="<?php echo site_url("artist/edit_data/$artist->artist_id") ?>" onclick="return confirm('you want to edit...........')"><i class="fa fa-edit"></i><label>Edit</label></a></li>
@@ -219,9 +216,9 @@ $this->load->view('admin/header_body_aside');
                                                 <li>    <input type="submit" name="submit" value="Delete Selected" onclick="return confirm('Are You Sure You Want to Delete ?')"/></li>                     
                                                 <li>    <input type="submit" name="submit1" value="Active Selected" onclick="return confirm('Are You Sure You Want to active all records ?')"/></li>                                                                
                                                 <li>     <input type="submit" name="submit2" value="Deactive Selected" onclick="return confirm('Are You Sure You Want to Deactive all record ?')"/></li>                     
-
                                             </ul>
                                         </div>
+                                    </div>
                                 </form>
 
                                 <p align="right"><i class="glyphicon glyphicon-ok" style="color:green" ></i>&nbsp;&nbsp;&nbsp;&nbsp;<label>Indicates Activated</label>
@@ -230,32 +227,19 @@ $this->load->view('admin/header_body_aside');
                                 </p>
                             </div>
                         </div>
-
-                        </div>
-                        <!-- /.box -->
-                    </section>
+</section>
 
                 </section>
             </div>
             <!-- /.col -->
-        </div>
-        <!-- /.row -->
-        <!-- Main content -->
-        <!-- /.content -->
-
-        <!-- /.content-wrapper -->
+        </div>     
 
         <footer class="main-footer">
             <?php
          $this->load->view('admin/footer_body');
    ?>
         </footer>
-
-
-        <!-- Add the sidebar's background. This div must be placed
-             immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
-
         <!-- ./wrapper -->
         <?php
 $this->load->view('admin/footer_include');
@@ -278,7 +262,5 @@ $this->load->view('admin/footer_include');
                 $("#example1").datatable();
             });
         </script>
-
-
     </body>
 </html>

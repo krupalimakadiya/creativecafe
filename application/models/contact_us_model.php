@@ -8,7 +8,8 @@ class Contact_us_model extends CI_model {
         $query = $this->db->query("select * from contactus_master");
         return $query->result();
     }
- public function delete($contact_id) {
+
+    public function delete($contact_id) {
         $this->db->where('contact_id', $contact_id);
         if ($this->db->delete('contactus_master')) {
             return true;
@@ -16,32 +17,29 @@ class Contact_us_model extends CI_model {
             return false;
         }
     }
-   public function update_active($contact_id, $contact_status) {
+
+    public function update_active($contact_id) {
         $data = array(
             'contact_id' => $contact_id,
             'contact_status' => 1
         );
         $this->db->where('contact_id', $contact_id);
-       if($this->db->update('contactus_master', $data))
-        {
+        if ($this->db->update('contactus_master', $data)) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
-    public function update_deactive($contact_id, $contact_status) {
+    public function update_deactive($contact_id) {
         $data = array(
             'contact_id' => $contact_id,
             'contact_status' => 0
         );
         $this->db->where('contact_id', $contact_id);
-       if($this->db->update('contactus_master', $data))
-        {
+        if ($this->db->update('contactus_master', $data)) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }

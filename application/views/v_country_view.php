@@ -4,12 +4,9 @@
         <?php
         $this->load->view('admin/header_include');
         ?>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
-
         <div class="wrapper">
-
             <header class="main-header">
                 <?php
                 $this->load->view('admin/header_body');
@@ -77,7 +74,7 @@
 
 
                             <div class="box-body">
-                                <form name="frm" method="post" action="<?php echo site_url('country/deletemultiple'); ?>">
+                                <form name="frm" method="post" action="<?php echo site_url('country/deletemultiple') ?>">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
@@ -106,7 +103,6 @@
                                                         } else {
                                                             ?>
                                                             <i class="glyphicon glyphicon-ok" style="color:green" ></i>
-
                                                             <?php
                                                         }
                                                         ?></td>
@@ -197,12 +193,7 @@
                                     <i class="glyphicon glyphicon-remove" style="color:red" ></i>&nbsp;<label>Indicates Deactivated</label>
                                 </p>
                             </div>
-                        </div>
-                        <!-- /.box -->
-                        </div>
-                        <!-- /.col -->
-                        </div>
-                        <!-- /.row -->
+                        </div>                     
                     </section>
 
                 </section>

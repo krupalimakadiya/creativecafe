@@ -185,20 +185,20 @@
                                     <input type="hidden" name="artist_id" value="<?php echo $update_data['artist_id'] ?>" />
                                     <div class="form-group">
                                         <label>First name</label>
-                                        <input type="text" class="form-control" name="first_name" id="first_name"  value="<?php echo $update_data['first_name'] ?>">
+                                        <input type="text" class="form-control" name="first_name" id="first_name"  value="<?php echo $update_data['first_name'] ?>" required="">
                                     </div>
                                     <div class="form-group">
                                         <label>Last name</label>
-                                        <input type="text" class="form-control" name="last_name" id="last_name" value="<?php echo $update_data['last_name'] ?>">
+                                        <input type="text" class="form-control" name="last_name" id="last_name" value="<?php echo $update_data['last_name'] ?>" required="">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Mobile</label>
-                                        <input type="text" class="form-control" name="mobile" id="mobile" value="<?php echo $update_data['mobile'] ?>">
+                                        <input type="text" class="form-control" name="mobile" id="mobile" value="<?php echo $update_data['mobile'] ?>" required="">
                                     </div>
                                     <div class="form-group">
                                         <label>Email ID</label>
-                                        <input type="text" class="form-control" name="email" id="email" value="<?php echo $update_data['email'] ?>">
+                                        <input type="email" class="form-control" name="email" id="email" value="<?php echo $update_data['email'] ?>" required="">
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
@@ -206,7 +206,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Artist profile</label>
-                                        <input type="file" class="form-control" name="artist_profile" id="artist_profile" required="" value="<?php echo $update_data['artist_profile'] ?>">
+                                        <input type="file" class="form-control" name="artist_profile" id="artist_profile"  value="<?php echo $update_data['artist_profile'] ?>">
                                     </div>
                                     <div class="form-group">
                                         <label>Country_name</label>                                     
@@ -233,7 +233,6 @@
                                             foreach ($state_list as $state) {
                                                 if ($state->state_id == $update_data['state_id']) {
                                                     ?>
-                                                                                                                                                                       <!-- <option selected value="<?//php echo $state->state_id ?>"> <?php //echo $state->state_name           ?></option>-->
                                                     <option value="<?php echo $state->state_id; ?>"selected="selected"><?php echo $state->state_name; ?></option>
                                                     <?php
                                                 }
@@ -271,17 +270,17 @@
                                             if($update_data['user_type'] == 'artist')
                                             {
                                                 ?>
-                                            <option selected>artist</option>
-                                             <option>user</option>
+                                            <option value="artist" selected>artist</option>
+                                             <option value="user">user</option>
                                             <?PHP
                                             }
                                             ?>
                                               <?PHP
                                             if($update_data['user_type'] == 'user')
                                             {
-                                                ?>
-                                            <option selected>artist</option>
-                                             <option selected>user</option>
+                                                ?>                                            
+                                            <option value="user" selected>user</option>
+                                            <option value="artist">artist</option>
                                             <?PHP
                                             }
                                             ?>
@@ -307,11 +306,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Mobile</label>
-                                        <input type="text" class="form-control" name="mobile"  id="mobile" placeholder="Enter your mobile number..." required="">
+                                        <input type="text" class="form-control" name="mobile"  id="mobile" placeholder="Enter your mobile number" required="">
                                     </div>
                                     <div class="form-group">
                                         <label>Email ID</label>
-                                        <input type="text" class="form-control" name="email" required="" id="email" placeholder="Enter your email...">
+                                        <input type="Email" class="form-control" name="email" required="" id="email" placeholder="Enter your email...">
                                     </div>
                                     <div class="form-group">
                                         <label>Password</label>
@@ -319,7 +318,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Profile Picture</label>
-                                        <input type="file" class="form-control" name="artist_profile" required="" >
+                                        <input type="file" class="form-control" name="artist_profile" >
                                     </div>
 
                                     <div class="form-group">
@@ -357,9 +356,8 @@
                                         <label>Select User type</label>
                                         <select class="form-control" required="" name="user_type">
                                             <option >--select--</option>
-                                            <option>artist</option>
-                                            <option>user</option>
-                                            
+                                            <option value="artist">artist</option>
+                                            <option value="user">user</option>                                            
                                         </select>
                                     </div>
 

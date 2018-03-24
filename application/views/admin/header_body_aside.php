@@ -30,11 +30,6 @@
             </a>
         </li>
         <li>
-            <a href="<?PHP echo site_url('user') ?>">
-                <i class="fa fa-user"></i> <span>User Master</span>
-            </a>
-        </li>
-        <li>
             <a href="<?PHP echo site_url('artist') ?>">
                 <i class="fa fa-user"></i> <span>Artist Master</span>
             </a>
@@ -62,12 +57,7 @@
                 <i class="fa fa-circle-o"></i> <span>Art Category Master</span>
             </a>
         </li>
-        <li>
-            <a href="<?PHP echo site_url('Contact_us') ?>">
-                <i class="fa fa-circle-o"></i> <span>Contact Us Master</span>
-            </a>
-        </li>   
-
+        
         <li>
             <a href="<?PHP echo site_url('comment') ?>">
                 <i class="fa fa-comments"></i> <span>Comment Master</span>
@@ -93,17 +83,27 @@
         </li>   
 
         <li>
-            <a href="<?PHP echo site_url('email_sc') ?>">
-                <i class="fa fa-circle-o"></i> <span>Email Sc Master</span>
+            <a href="<?php echo site_url('exhibition_post')?>">
+                <i class="fa fa-circle-o"></i><span>Exhibition Post Master</span></a>
+        </li>
+        
+        <li>
+            <a href="<?php echo site_url('bid')?>">
+                <i class="fa fa-circle-o"></i><span>Bid Master</span></a>
+        </li>
+        
+        <li>
+            <a href="<?PHP echo site_url('Contact_us') ?>">
+                <i class="fa fa-circle-o"></i> <span>Contact Us Master</span>
             </a>
         </li>   
 
         <li>
-            <a href="<?PHP echo site_url('email_send_master') ?>">
-                <i class="fa fa-circle-o"></i> <span>Email Send Master</span>
+            <a href="<?PHP echo site_url('email_sc') ?>">
+                <i class="fa fa-circle-o"></i> <span>Email Sc Master</span>
             </a>
         </li>   
-
+        
         <li>
             <a href="<?PHP echo site_url('site') ?>">
                 <i class="fa fa-circle-o"></i> <span>Site Review Master</span>

@@ -35,7 +35,7 @@
                                 <div class="box box-info">
                                     <div class="box-header with-border">
                                         <h3 class="box-title"><label> Exhibition Master</label></h3>
-                                        <a href="<?php echo site_url("exhibition/view_exhibition") ?>" class="btn btn-primary pull-right">
+                                        <a href="<?php echo site_url("exhibition") ?>" class="btn btn-primary pull-right">
                                             <label class="fa fa-icon label-btn-icon"></label>
                                             &nbsp;<label class="label-btn-fonts">View Records</label>
                                         </a>
