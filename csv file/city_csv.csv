@@ -1,0 +1,277 @@
+country Name,state name,city name
+India,Gujarat,Ahmedabad
+India,Gujarat,Surat
+India,Gujarat,Vadodara
+India,Gujarat,Rajkot
+India,Gujarat,Gandhinagar
+India,Gujarat,Jamnagar
+India,Gujarat,Junagadh
+India,Gujarat,Bhavnagar
+India,Gujarat,Bhuj 
+India,Gujarat,Navsari
+India,Gujarat,Dwarka
+India,Gujarat,Anand
+India,Gujarat,Patan
+India,Gujarat,Gandhidham
+India,Gujarat,Nadiad
+India,Gujarat,Khambhat
+India,Gujarat,Ankleshwar
+India,Gujarat,Palitana
+India,Gujarat,Porbandar
+India,Gujarat,Veraval
+India,Gujarat,Morbi
+India,Gujarat,Vapi
+India,Gujarat,Godhra
+India,Gujarat,Gondal
+India,Gujarat,Palanpur
+India,Gujarat,Vyara 
+India,Gujarat,Bharuch 
+India,Gujarat,Mehsana
+India,Gujarat,Bardoli
+India,Gujarat,Jetpur
+India,Gujarat,Amreli
+India,Delhi,New Delhi
+India,Delhi,Gurgaon
+India,Delhi,Connaught
+India,Delhi,Karol Bagh
+India,Delhi,Mehrauli 
+India,Delhi,Chanakyapuri 
+India,Delhi,Ghaziabad
+India,Delhi,Dwarka
+India,Delhi,Nangloi
+India,Delhi,Faridabad
+India,Delhi,Shahdara
+India,Delhi,Najafgarh 
+India,Delhi,Rohini
+India,Delhi,Shalimar Bagh 
+India,Maharashtra,Mumbai
+India,Maharashtra,Nashik 
+India,Maharashtra,Aurangabad
+India,Maharashtra,Nagpur 
+India,Maharashtra,Solapur
+India,Maharashtra,Thane
+India,Maharashtra,Kalyan 
+India,Maharashtra,Navi Mumbai 
+India,Maharashtra,Kolhapur
+India,Maharashtra,Pimpri-Chinchwad
+India,Maharashtra,Dombivli 
+India,Maharashtra,Malegaon
+India,Maharashtra,Vasai-Virar
+India,Maharashtra,Jalgaon
+India,Maharashtra,Panvel
+India,Maharashtra,Nagpur
+India,Rajasthan,Jaipur
+India,Rajasthan,Udaipur
+India,Rajasthan,Jodhpur
+India,Rajasthan,Kota 
+India,Rajasthan,Bikaner 
+India,Rajasthan,Ajmer 
+India,Rajasthan,Alwar
+India,Rajasthan,Jaisalmer 
+India,Rajasthan,Chittorgarh
+India,Rajasthan,Kishangarh 
+India,Rajasthan,Pushkar
+India,Rajasthan,Beawar
+India,Rajasthan,Bharatpur 
+India,Rajasthan,Amer
+India,Rajasthan,Bundi
+India,Rajasthan,Bilara 
+India,Rajasthan,Nathdwara 
+India,Rajasthan,Abu 
+India,Madhya Pradesh,Bhopal
+India,Madhya Pradesh,Indore 
+India,Madhya Pradesh,Jabalpur 
+India,Madhya Pradesh,Ujjain 
+India,Madhya Pradesh,Gwalior
+India,Madhya Pradesh,Satna 
+India,Madhya Pradesh,Panna
+India,Madhya Pradesh,Rewa
+India,Madhya Pradesh,Hosangabad
+India,Jammu and Kashmir,Jammu
+India,Jammu and Kashmir,Srinagar
+India,Jammu and Kashmir,Leh Ladakh
+India,Jammu and Kashmir,Gulmarg
+India,Jammu and Kashmir,Sonamarg
+India,Jammu and Kashmir,Pahalgam
+India,Goa,Panaji
+India,Goa,Margao 
+India,Goa,Calangute 
+India,Goa,Mapusa
+India,Goa,Ponda
+India,Goa,Candolim
+India,Goa,Old Goa
+India,Goa,Anjuna 
+India,Goa,Baga
+India,Goa,Canacona 
+India,Goa,Bardez 
+India,Goa,Mormugao
+India,Goa,Salcete
+India,Goa,Colva
+India,Sikkim,Gangtok
+India,Sikkim,Namchi 
+India,Sikkim,Pelling
+India,Sikkim,Gyalshing 
+India,Sikkim,Lachung
+India,Sikkim,Yuksom 
+India,Sikkim,Ravangla
+India,Sikkim,Jorethang
+India,Sikkim,Singtam
+India,Sikkim,Rangpo 
+India,Sikkim,Rinchenpong
+India,Sikkim,Zuluk 
+India,Kerala,Thiruvananthapuram
+India,Kerala,Kochi 
+India,Kerala,Kozhikode
+India,Kerala,Thrissur
+India,Kerala,Alleppey 
+India,Kerala,Kollam
+India,Kerala,Kannur
+India,Kerala,Palakkad
+India,Kerala,Kottayam
+India,Kerala,Varkala
+India,Kerala,Ernakulam
+India,Kerala,Munnar
+India,Tamil Nadu,Chennai
+India,Tamil Nadu,Coimbatore
+India,Tamil Nadu,Madurai
+India,Tamil Nadu,Salem
+India,Tamil Nadu,Thanjavur
+India,Tamil Nadu,Vellore
+India,Tamil Nadu,Tiruchirappalli 
+India,Tamil Nadu,Tirunelveli
+India,Tamil Nadu,Erode 
+India,Tamil Nadu,Dindigul 
+India,Tamil Nadu,Kanchipuram 
+India,Telangana,Hyderabad
+India,Telangana,Warangal
+India,Telangana,Khammam
+India,Telangana,Karimnagar 
+India,Telangana,Suryapet
+India,Telangana,Siddipet 
+India,Telangana,Ramagundam
+India,Telangana,Nalgonda
+India,Telangana,Karimnagar
+India,Telangana,Sangareddy
+India,Telangana,Nizamabad 
+India,Telangana,Miryalaguda
+India,Himachal Pradesh,Shimla
+India,Himachal Pradesh,Mandi 
+India,Himachal Pradesh,Dharamshala
+India,Himachal Pradesh,Manali 
+India,Himachal Pradesh,Chamba
+India,Himachal Pradesh,Nahan
+India,Himachal Pradesh,Bilaspur 
+India,Himachal Pradesh,Kasauli 
+India,Himachal Pradesh,Dalhousie
+India,Himachal Pradesh,Solan 
+India,Himachal Pradesh,Parwanoo 
+India,Himachal Pradesh,Palampur 
+India,Himachal Pradesh,Kullu
+India,Arunachal Pradesh,Itanagar 
+India,Arunachal Pradesh,Basar 
+India,Arunachal Pradesh,Hawai 
+India,Arunachal Pradesh,Changlang 
+India,Arunachal Pradesh,Lumla
+India,Arunachal Pradesh,Etalin
+India,Arunachal Pradesh,Gandhigram
+India,Haryana,Gurgaon
+India,Haryana,Rewari 
+India,Haryana,Rohtak 
+India,Haryana,Chandigarh
+India,Haryana,Hisar 
+India,Haryana,Karnal 
+India,Haryana,Faridabad 
+India,Haryana,Panchkula 
+India,Punjab,Jalandhar 
+India,Punjab,Amritsar
+India,Punjab,Ludhiana
+India,Punjab,Chandigarh
+India,Punjab,Bathinda 
+India,Punjab,Patiala 
+India,Punjab,Hoshiarpur 
+India,Uttar Pradesh,Lucknow
+India,Uttar Pradesh,Kanpur 
+India,Uttar Pradesh,Allahabad
+India,Uttar Pradesh,Agra
+India,Uttar Pradesh,Varanasi
+India,Uttar Pradesh,Bareilly 
+India,Uttar Pradesh,Meerut
+India,Chhattisgarh,Raipur
+India,Chhattisgarh,Bilaspur 
+India,Chhattisgarh,Bhilai 
+India,Chhattisgarh,Korba 
+India,Chhattisgarh,Jagdalpur 
+India,Chhattisgarh,Durg 
+India,Chhattisgarh,Ambikapur 
+India,Chhattisgarh,Raigarh 
+India,Uttarakhand,Dehradun
+India,Uttarakhand,Haridwar
+India,Uttarakhand,Rishikesh
+India,Uttarakhand,Mussoorie
+India,Uttarakhand,Haldwani
+India,Uttarakhand,Pauri
+India,Uttarakhand,Roorkee 
+India,Uttarakhand,Nainital 
+India,Uttarakhand,Ranikhet 
+India,Andhra Pradesh,Visakhapatnam 
+India,Andhra Pradesh,Tirupati 
+India,Andhra Pradesh,Vijayawada 
+India,Andhra Pradesh,Kakinada
+India,Andhra Pradesh,Rajahmundry
+India,Andhra Pradesh,Guntur 
+India,Andhra Pradesh,Eluru 
+India,Karnataka,Bangalore
+India,Karnataka,Mangalore
+India,Karnataka,Hubli 
+India,Karnataka,Gulbarga
+India,Karnataka,Bijapur 
+India,Karnataka,Belgaum 
+India,Odisha,Bhubaneswar 
+India,Odisha,Sambalpur 
+India,Odisha,Cuttack
+India,Odisha,Berhamur
+India,Odisha,Roureka
+Japan,Kanagawa,Yokohama 
+Japan,Kanagawa,Kawasaki 
+Japan,Kanagawa,Kamakura 
+Japan,Kanagawa,Yokosuka
+Japan,Kanagawa,Odawara 
+Japan,Hyogo,Kobe
+Japan,Hyogo,Himeji 
+Japan,Hyogo,Nishinomiya 
+Japan,Hyogo,Akashi
+Japan,Hyogo,Ashiya 
+Japan,Osaka,Daito
+Japan,Osaka,Fuijidera
+Japan,Osaka,Habijino
+Japan,Osaka,Hannan
+Japan,Osaka,Hirakata
+Japan,Tokyo,Nara
+Japan,Tokyo,Naha
+Japan,Tokyo,Yokohama 
+Japan,Tokyo,Hiroshima
+USA,California,Los Angeles
+USA,California,San Francisco
+USA,California,San Diego
+USA,California,Sacramento
+USA,California,San Jose
+USA,Florida,Orlando 
+USA,Florida,Miami
+USA,Florida,Jacksonvill
+USA,Florida,Tampa
+USA,Florida,Fort Lauderdale 
+USA,Massachusetts,Boston
+USA,Massachusetts,Worcester
+USA,Massachusetts,Cambridge
+USA,Massachusetts,Springfield
+USA,Massachusetts,Salem
+USA,Colorado,Denver
+USA,Colorado,Colorado 
+USA,Colorado,Boulder 
+USA,Colorado,Aurora
+USA,Colorado,Fort Collins
+USA,Illinois,Chicago
+USA,Illinois,Springfield
+USA,Illinois,Peoria 
+USA,Illinois,Rockford 
+USA,Illinois,Champaign 
