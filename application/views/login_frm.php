@@ -69,7 +69,6 @@
             <!-- /.login-box-body -->
         </div>
         <!-- /.login-box -->
-
         <!-- jQuery 3 -->
         <script src="<?php $this->config->item('static_url') ?>bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap 3.3.7 -->

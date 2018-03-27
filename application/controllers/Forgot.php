@@ -9,8 +9,7 @@ class Forgot extends CI_Controller {
     }
     
    
-    public function forgorpwd() {
-        
+    public function forgorpwd() {        
     $this->load->model('forgot_model');
     $email =$this->input->post('email');
     $data['email_lst']=$this->forgot_model->validate($email);

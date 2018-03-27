@@ -2,56 +2,54 @@
 <html>
     <head>
         <?php
-       $this->load->view('admin/header_include');
+        $this->load->view('admin/header_include');
         ?>
-             <script type="text/javascript">
-function formValidator()
-{
- var city_name=document.getElementById('city_name');
- 
- if(isAlphabet(city_name,"Enter your city name in letters"))
-  {
-        return true;
-    }
-     return false;
- }
-function isAlphabet(elem,helperMsg)
- {
-  var alphaExp=/^[a-zA-Z]+$/;
-  if(elem.value.match(alphaExp))
-    {
-       return true;
-    }
-  else
-    {
-     alert(helperMsg);
-     elem.focus();
-     return false;
-    }
-}
- </script>
-    
+        <script type="text/javascript">
+            function formValidator()
+            {
+                var city_name = document.getElementById('city_name');
+                if (isAlphabet(city_name, "Enter your city name in letters"))
+                {
+                    return true;
+                }
+                return false;
+            }
+            function isAlphabet(elem, helperMsg)
+            {
+                var alphaExp = /^[a-zA-Z]+$/;
+                if (elem.value.match(alphaExp))
+                {
+                    return true;
+                } else
+                {
+                    alert(helperMsg);
+                    elem.focus();
+                    return false;
+                }
+            }
+        </script>
+
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <script>
-            $("document").ready(function () {
-                // $("#state").hide();
-                $("#country_id").change(function () {
-                    $("#state_id").show();
-                    var id = $(this).val();
+                 $("document").ready(function () {
+                     // $("#state").hide();
+                     $("#country_id").change(function () {
+                         $("#state_id").show();
+                         var id = $(this).val();
 
-                    $.ajax({
-                        url: "<?php echo site_url("city/drop_state") ?>",
-                        type: "POST",
-                        data: {country_id: id},
-                        success: function (result) {
-                            //alert(result);
-                            $("#state_id").html(result);
-                        }
+                         $.ajax({
+                             url: "<?php echo site_url("city/drop_state") ?>",
+                             type: "POST",
+                             data: {country_id: id},
+                             success: function (result) {
+                                 //alert(result);
+                                 $("#state_id").html(result);
+                             }
 
-                    });
-                });
+                         });
+                     });
 
-            });
+                 });
         </script>
 
     </head>
@@ -82,11 +80,11 @@ function isAlphabet(elem,helperMsg)
                         </div>
 
                         <div class="box-body">
-                          <?php
+                            <?php
                             if (isset($update_data)) {
                                 ?>
 
-                            <form name="cityfrm" method="POST" action="<?php echo site_url("city/editp") ?>" role="form" autocomplete="off" onsubmit='return formValidator()'>
+                                <form name="cityfrm" method="POST" action="<?php echo site_url("city/editp") ?>" role="form" autocomplete="off" onsubmit='return formValidator()'>
                                     <input type="hidden" name="city_id" value="<?php echo $update_data['city_id'] ?>" />
 
                                     <!-- text input -->
@@ -137,7 +135,7 @@ function isAlphabet(elem,helperMsg)
                                 <?php
                             } else {
                                 ?>
-                            <form name="cityfrm" method="POST" autocomplete="off" action="<?php echo site_url("city/addp") ?>" role="form" onsubmit='return formValidator()'>
+                                <form name="cityfrm" method="POST" autocomplete="off" action="<?php echo site_url("city/addp") ?>" role="form" onsubmit='return formValidator()'>
 
                                     <!-- text input -->
                                     <div class="form-group">
@@ -177,20 +175,20 @@ function isAlphabet(elem,helperMsg)
                     </div>
                     <!-- /.box -->
                 </section></div>           
-                <!-- Main content -->
-            </div>
-            <!-- /.content-wrapper -->
-            <footer class="main-footer">
-<?php
-include('admin/footer_body.php');
-?>
-            </footer>
-            <!-- Add the sidebar's background. This div must be placed
-                 immediately after the control sidebar -->
-            <div class="control-sidebar-bg"></div>
-                <!-- ./wrapper -->
-<?php
-include('admin/footer_include.php');
-?>
+            <!-- Main content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer">
+            <?php
+            include('admin/footer_body.php');
+            ?>
+        </footer>
+        <!-- Add the sidebar's background. This div must be placed
+             immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+        <!-- ./wrapper -->
+        <?php
+        include('admin/footer_include.php');
+        ?>
     </body>
 </html>

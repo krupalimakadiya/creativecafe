@@ -14,13 +14,6 @@ class Contact_us extends My_Controller {
         $this->load->view('v_contact_us_view', $data);
     }
 
-    public function view_country() {
-        $data['contactus_list'] = $this->contact_us_model->getcontactlist();
-        $this->load->view('v_contact_us_view', $data);
-    }
-
- 
-
     public function delete($contact_id) {
         $this->contact_us_model->delete($contact_id);
         $this->session->set_flashdata('message', 'record deleted successfully...');
@@ -42,11 +35,8 @@ class Contact_us extends My_Controller {
     }
 
   
-    public function deletemultiple() {
-         
+    public function deletemultiple() {         
         $contact_id = $_POST['contact_id'];
-        
-        
         $i = 0;
         while ($i < count($contact_id)) {
           if (isset($_POST['submit'])) {

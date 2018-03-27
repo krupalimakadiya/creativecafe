@@ -54,25 +54,9 @@ public function update_status_active($exhibition_id) {
     }
     
     
-    /*    public function export()
-    {
-        $this->load->dbutil(); 
-        $this->load->helper('file'); 
-        $this->load->helper('download'); 
-        $delimiter = ","; 
-        $newline = "\r\n"; 
-        $filename = "art_category_master.csv"; 
-        $query = "select art_category_name as 'Art Category Name' 
-                from art_category_master";
-                 $result = $this->db->query($query); 
-        $data = $this->dbutil->csv_from_result($result, $delimiter, $newline); 
-        force_download($filename, $data);
-
-    }*/
-
+    
      public function deletemultiple() 
-    { 
-      
+    {       
         $exhibition_id= $_POST['exhibition_id']; 
         $i = 0; 
         while($i<count($exhibition_id)) 

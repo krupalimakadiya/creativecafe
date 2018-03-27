@@ -56,10 +56,8 @@ class city extends MY_Controller {
             $this->session->set_flashdata('message', 'record already exists...');
             redirect('city');
         } else {
-
         $this->city_model->update_data($_POST['city_id'], $_POST['country_id'], $_POST['state_id'], $_POST['city_name']);
-        $this->session->set_flashdata('message','update succesfully');
-        
+        $this->session->set_flashdata('message','update succesfully');        
         redirect("city");
     }
     }

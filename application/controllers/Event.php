@@ -19,89 +19,74 @@ class Event extends My_Controller {
         $this->load->view('v_event_frm', $data);
     }
 
-
-   public function do_upload() {
+    public function do_upload() {
         $event_id = $this->input->post('event_id');
         $title = $this->input->post('title');
-      $date = $this->input->post('date');
-     $description = $this->input->post('description');
-           $this->load->library('upload');
-          
-           if (!empty($_FILES['image']['name'])) {
-          $date = date_create();
-               $filename = $_FILES["image"]["name"];
-             $extension = pathinfo($filename, PATHINFO_EXTENSION);
+        $date = $this->input->post('date');
+        $description = $this->input->post('description');
+        $this->load->library('upload');
+
+        if (!empty($_FILES['image']['name'])) {
+            $date = date_create();
+            $filename = $_FILES["image"]["name"];
+            $extension = pathinfo($filename, PATHINFO_EXTENSION);
             $result_img1 = "eventimage-" . date_timestamp_get($date);
-              $newname= $result_img1.".".$extension;
-           $attachment_path1 = $this->config->item("static_url1") . 'event_image/';
+            $newname = $result_img1 . "." . $extension;
+            $attachment_path1 = $this->config->item("static_url1") . 'event_image/';
             $config['upload_path'] = $attachment_path1;
             $config['file_ext_tolower'] = TRUE;
             $config['allowed_types'] = 'gif|jpg|jpeg|png|JPEG|PNG|JPG|pdf|PDF';
             $config['max_size'] = 1024 * 1024 * 5;
-             $config['file_name'] = $result_img1;
+            $config['file_name'] = $result_img1;
             $this->upload->initialize($config);
             if (!$this->upload->do_upload('image')) {
                 $this->session->set_flashdata('message', $this->upload->display_errors());
             }
-          }    
-          
-                $config['upload_path']          = './event_image/';
-                $config['upload_path']          = './event_file/';
-                $config['allowed_types']        = 'pdf|doc';
-                $config['allowed_types']        = 'gif|jpg|png';
-                $config['max_size']             = 5000;
-                $config['max_width']            = 5024;
-                $config['max_height']           = 6468;
-                
-        
-            if (!empty($_FILES['file']['name'])) {
-            
+        }
+
+        $config['upload_path'] = './event_image/';
+        $config['upload_path'] = './event_file/';
+        $config['allowed_types'] = 'pdf|doc';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 5000;
+        $config['max_width'] = 5024;
+        $config['max_height'] = 6468;
+        if (!empty($_FILES['file']['name'])) {
             $date = date_create();
-             $filename1 = $_FILES["file"]["name"];
-              
+            $filename1 = $_FILES["file"]["name"];
+
             $extension1 = pathinfo($filename1, PATHINFO_EXTENSION);
             $result_img2 = "eventfile-" . date_timestamp_get($date);
-               $newname1= $result_img2.".".$extension1;
-          
+            $newname1 = $result_img2 . "." . $extension1;
+
             $attachment_path = $this->config->item("static_url1") . 'event_file/';
             $config['upload_path'] = $attachment_path;
             $config['file_ext_tolower'] = TRUE;
             $config['allowed_types'] = 'gif|jpg|jpeg|png|JPEG|PNG|JPG|pdf|PDF';
             $config['max_size'] = 1024 * 1024 * 5;
-               
             $config['file_name'] = $result_img2;
-                $this->upload->initialize($config);
-         
+            $this->upload->initialize($config);
             if (!$this->upload->do_upload('file')) {
                 $this->session->set_flashdata('message', $this->upload->display_errors());
             }
         }
         $this->load->model('event_model');
-        
-             
-
         $data = array('title' => $_POST['title'],
             'file' => $newname1 . $this->upload->data("file"),
             'date' => $_POST['date'],
             'image' => $newname . $this->upload->data("image"),
             'description' => $_POST['description']
         );
-        
+
         $this->event_model->insert($data);
         $this->session->set_flashdata('message', "Entry successfully added.");
         redirect("event/index");
-    
     }
-   
+
     public function delete($event_id) {
         $this->event_model->delete($event_id);
-
         $this->session->set_flashdata('message', 'record deleted successfully...');
-        redirect("event/index");
-
-        $this->session->set_flashdata('message','record deleted successfully...');            
         redirect("event");
-
     }
 
     public function update_status_active($event_id) {
@@ -144,25 +129,22 @@ class Event extends My_Controller {
             $i++;
         }
 
-      redirect("event"); 
-
+        redirect("event");
     }
-   
+
     public function edit_data($event_id) {
         $data['update_data'] = $this->event_model->edit_data($event_id);
-       $data['event_list'] = $this->event_model->geteventlist();
-        
+        $data['event_list'] = $this->event_model->geteventlist();
         $this->load->view('v_event_frm', $data);
     }
 
-        public function editp() 
-            {
-           $event_id = $this->input->post('event_id');
+    public function editp() {
+        $event_id = $this->input->post('event_id');
         $title = $this->input->post('title');
-         $title = $this->input->post('file');
+        $title = $this->input->post('file');
         $date = $this->input->post('date');
-         $title = $this->input->post('image');
-      
+        $title = $this->input->post('image');
+
         $description = $this->input->post('description');
         $this->load->library('upload');
         if (!empty($_FILES['image']['name'])) {
@@ -171,7 +153,7 @@ class Event extends My_Controller {
             $extension = pathinfo($filename, PATHINFO_EXTENSION);
             $result_img1 = "eventimage-" . date_timestamp_get($date);
             $newname = $result_img1 . "." . $extension;
-          //  print_r($newname);
+            //  print_r($newname);
             $attachment_path1 = $this->config->item("static_url1") . 'event_image/';
             $config['upload_path'] = $attachment_path1;
             $config['file_ext_tolower'] = TRUE;
@@ -192,8 +174,8 @@ class Event extends My_Controller {
             $extension1 = pathinfo($filename1, PATHINFO_EXTENSION);
             $result_img2 = "eventfile-" . date_timestamp_get($date);
             $newname1 = $result_img2 . "." . $extension1;
-       //     print_r($newname1);
-     
+            //     print_r($newname1);
+
             $attachment_path = $this->config->item("static_url1") . 'event_file/';
             $config['upload_path'] = $attachment_path;
             $config['file_ext_tolower'] = TRUE;
@@ -208,10 +190,10 @@ class Event extends My_Controller {
                 $this->session->set_flashdata('message', $this->upload->display_errors());
             }
         }
-  
-         $data = array(
+
+        $data = array(
             'event_id' => $_POST ['event_id'],
-              'title' => $_POST['title'],
+            'title' => $_POST['title'],
             'file' => $newname1 . $this->upload->data("file"),
             'date' => $_POST['date'],
             'image' => $newname . $this->upload->data("image"),
@@ -221,15 +203,11 @@ class Event extends My_Controller {
 //        print_r($data);
 //        die();
         $this->load->model('event_model');
-     $this->event_model->update_data($data);
-      $this->session->set_flashdata('message', 'record updated successfully...');
-      redirect("event/index");
-    
+        $this->event_model->update_data($data);
+        $this->session->set_flashdata('message', 'record updated successfully...');
+     
         redirect("event");
-
     }
-
-
 
 }
 

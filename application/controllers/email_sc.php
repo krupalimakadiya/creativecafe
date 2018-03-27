@@ -38,19 +38,6 @@ class Email_sc extends My_Controller {
         $this->load->view('v_email_sc_view',$data);
     }
 
-    public function addp() {
-        
-        /* foreach ($list as $name => $address)
-          {
-          $this->email->clear();
-
-          $this->email->to($address);
-          $this->email->from('info.cafecreative@gmail.com');
-          $this->email->subject('this is test '.$name);
-          $this->email->message('Hi '.$name.' Here is information from creativecafe..');
-          $this->email->send();
-          } */
-    }
 
     public function delete($sc_id) {
         $this->email_sc_model->delete($sc_id);

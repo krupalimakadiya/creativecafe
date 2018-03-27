@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-$this->load->view('admin/header_include');
+        $this->load->view('admin/header_include');
         ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -11,12 +11,12 @@ $this->load->view('admin/header_include');
             <header class="main-header">
                 <?php
                 $this->load->view('admin/header_body');
-?>
+                ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-$this->load->view('admin/header_body_aside');
+                $this->load->view('admin/header_body_aside');
                 ?>
             </aside>
             <!-- Content Wrapper. Contains page content -->
@@ -42,7 +42,7 @@ $this->load->view('admin/header_body_aside');
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?php echo  $message ?>
+                                            <?php echo $message ?>
                                         </div>
                                         <?php
                                     }
@@ -53,7 +53,7 @@ $this->load->view('admin/header_body_aside');
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?php echo  $success ?>
+                                            <?php echo $success ?>
                                         </div>
                                         <?php
                                     }
@@ -64,7 +64,7 @@ $this->load->view('admin/header_body_aside');
                                         ?>
                                         <div class="alert alert-success">
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
-                                            <?php echo  $fail ?>
+                                            <?php echo $fail ?>
                                         </div>
                                         <?php
                                     }
@@ -181,11 +181,11 @@ $this->load->view('admin/header_body_aside');
                                                                             </tr> 
                                                                             <tr>
                                                                                 <td><label>Image</label></td>
-                                                                                <td>:&nbsp;&nbsp;<img src="<?php echo $this->config->item('image_url')?><?php echo $artist->artist_profile?>"  height="100" width="100" alt="image"></td>
+                                                                                <td>:&nbsp;&nbsp;<img src="<?php echo $this->config->item('image_url') ?><?php echo $artist->artist_profile ?>"  height="100" width="100" alt="image"></td>
                                                                             </tr>
-                                                                              <tr>
+                                                                            <tr>
                                                                                 <td><label>User type</label></td>
-                                                                          <td>:&nbsp;&nbsp;<?php echo $artist->user_type ?></td>   </tr>
+                                                                                <td>:&nbsp;&nbsp;<?php echo $artist->user_type ?></td>   </tr>
                                                                         </table>
                                                                     </div>
                                                                     <div class="modal-footer">
@@ -227,7 +227,7 @@ $this->load->view('admin/header_body_aside');
                                 </p>
                             </div>
                         </div>
-</section>
+                    </section>
 
                 </section>
             </div>
@@ -236,13 +236,13 @@ $this->load->view('admin/header_body_aside');
 
         <footer class="main-footer">
             <?php
-         $this->load->view('admin/footer_body');
-   ?>
+            $this->load->view('admin/footer_body');
+            ?>
         </footer>
         <div class="control-sidebar-bg"></div>
         <!-- ./wrapper -->
         <?php
-$this->load->view('admin/footer_include');
+        $this->load->view('admin/footer_include');
         ?>
         <script type="text/javascript">
             function openView(id) {

@@ -182,16 +182,12 @@
                               </section>
                 </section>
                         <!-- /.box -->
-                        </div>
-            
+                        </div>            
                         <!-- /.col -->
                         </div>
                         <!-- /.row -->
-              
-
-                <!-- Main content -->
-                <!-- /.content -->
-            </div>
+                            
+          
             <!-- /.content-wrapper -->
 
             <footer class="main-footer">
