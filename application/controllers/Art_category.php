@@ -26,14 +26,14 @@ class Art_category extends My_Controller {
 
     public function addp() {
         $art_category_leval = $_POST['art_sub_category_id'] == 0 ? 1 : 2;
-        $category_data = $this->art_category_model->check_data($_POST['art_category_name'], '', $art_category_leval);
+        $category_data = $this->art_category_model->check_data(ucwords($_POST['art_category_name']), '', $art_category_leval);
         if (isset($category_data)) {
             $this->session->set_flashdata('message', 'Record already exists...');
             redirect('art_category');
         } else {
             $categoryarray = array(
-                "art_category_name" => $_POST['art_category_name'],
-                "art_sub_cat_id" => $_POST['art_sub_category_id'],
+                "art_category_name" =>ucwords($_POST['art_category_name']),
+                "art_sub_cat_id" => ucwords($_POST['art_sub_category_id']),
                 "art_category_leval" => $art_category_leval,
                 "url_code" => random_string('alnum', 16),
             ); //1= active //0-deactive
@@ -51,13 +51,13 @@ class Art_category extends My_Controller {
 
     public function editp() {
         $art_category_leval = $_POST['art_category_id'] == 0 ? 1 : 2;
-        $category_data = $this->art_category_model->check_data($_POST['art_category_name'], $_POST['art_category_id_1'], $art_category_leval);
+        $category_data = $this->art_category_model->check_data(ucwords($_POST['art_category_name']), $_POST['art_category_id_1'], $art_category_leval);
         if (isset($category_data)) {
             $this->session->set_flashdata('message', 'Record already exists...');
             redirect('art_category');
         } else {
             $categoryarray = array(
-                "art_category_name" => $_POST['art_category_name'],
+                "art_category_name" =>ucwords($_POST['art_category_name']),
                 "art_sub_cat_id" => $_POST['art_category_id'],
                 "art_category_leval" => $art_category_leval,
                 "url_code" => random_string('alnum', 16),

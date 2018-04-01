@@ -26,12 +26,12 @@ class State extends MY_Controller {
 
     
       public function addp() {
-        $state_data = $this->state_model->check_data($_POST['country_id'],$_POST['state_name']);
+        $state_data = $this->state_model->check_data($_POST['country_id'],ucwords($_POST['state_name']));
         if (isset($state_data)) {
             $this->session->set_flashdata('message','record already exists...');            
             redirect('state');
         } else {
-            $this->state_model->insert($_POST['country_id'],$_POST['state_name']);
+            $this->state_model->insert($_POST['country_id'],ucwords($_POST['state_name']));
              $this->session->set_flashdata('message','insert successfully...');
             redirect('state');
         }
@@ -45,13 +45,12 @@ class State extends MY_Controller {
     }
 
     public function editp() {
-        $state_data = $this->state_model->check_data($_POST['country_id'],$_POST['state_name']);
+        $state_data = $this->state_model->check_data($_POST['country_id'],ucwords($_POST['state_name']));
         if (isset($state_data)) {
             $this->session->set_flashdata('message','record already exists...');            
             redirect('state');
-        } else {
-        
-        $this->state_model->update_data($_POST['state_id'], $_POST['country_id'], $_POST['state_name']);
+        } else {        
+        $this->state_model->update_data($_POST['state_id'], $_POST['country_id'],ucwords($_POST['state_name']));
         $this->session->set_flashdata('message','update succesfully');
         redirect("state");
     }

@@ -47,7 +47,7 @@
                                                 <div class="form-group">
                                                     <label>Art Category Name</label>                                     
                                                     <select name="art_category_id" id="art_category_id" class="form-control">
-                                                        <option value="0" <?php echo $update_data['art_sub_cat_id'] == 0 ? "selected" : ""; ?>>root leval</option>
+                                                        <option value="0" <?php echo $update_data['art_sub_cat_id'] == 0 ? "selected" : ""; ?>>Root Leval</option>
                                                         <?php foreach ($art_category_list as $art_category) { ?>
                                                             <option value="<?php echo $art_category->art_category_id ?>" <?php echo $update_data['art_sub_cat_id'] == $art_category->art_category_id ? "selected" : ""; ?>><?php echo $art_category->art_category_name ?></option> 
                                                         <?php } ?>
@@ -69,7 +69,7 @@
                                                 <div class="form-group">
                                                     <label>Art sub-category name</label>                                     
                                                     <select name="art_sub_category_id" id="art_sub_category_id" class="form-control">
-                                                        <option value="0">root leval</option>
+                                                        <option value="0">Root Leval</option>
                                                         <?php
                                                         foreach ($art_category_list as $art_category) {
                                                             ?>
