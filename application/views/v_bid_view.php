@@ -2,8 +2,8 @@
 <html>
     <head>
         <?php
-      $this->load->view('admin/header_include');
-  ?>
+        $this->load->view('admin/header_include');
+        ?>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
 
@@ -11,13 +11,13 @@
 
             <header class="main-header">
                 <?php
-$this->load->view('admin/header_body');
+                $this->load->view('admin/header_body');
                 ?>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
                 <?php
-$this->load->view('admin/header_body_aside');
+                $this->load->view('admin/header_body_aside');
                 ?>
             </aside>
 
@@ -30,17 +30,15 @@ $this->load->view('admin/header_body_aside');
                         <div class="box box-info">
                             <div class="box-header with-border">
                                 <h3 class="box-title"><label>Bid Master</label></h3>
-                                                               <p align="right">
-                               
-                               
-                                <?php
-                                $message = $this->session->flashdata('message');
-                                $success= $this->session->flashdata('success');
-                                $fail= $this->session->flashdata('fail');
-                                
-                                if (isset($message)) {
-                                    if ($message != ' ') {
-                                        ?>
+                                <p align="right">
+                                    <?php
+                                    $message = $this->session->flashdata('message');
+                                    $success = $this->session->flashdata('success');
+                                    $fail = $this->session->flashdata('fail');
+
+                                    if (isset($message)) {
+                                        if ($message != ' ') {
+                                            ?>
                                         <div class="alert alert-success">       <!--green model-->
                                             <span class="semibold">Note:</span>&nbsp;&nbsp;
                                             <?php echo $message ?>
@@ -48,7 +46,7 @@ $this->load->view('admin/header_body_aside');
                                         <?php
                                     }
                                 }
-                                 if (isset($success)) {
+                                if (isset($success)) {
                                     if ($success != ' ') {
                                         ?>
                                         <div class="alert alert-success">       <!--green model-->
@@ -77,7 +75,7 @@ $this->load->view('admin/header_body_aside');
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                            <th><input type="checkbox"  id="select_all" />&nbsp;&nbsp;Check</th>
+                                                <th><input type="checkbox"  id="select_all" />&nbsp;&nbsp;Check</th>
                                                 <th>Sr No.</th>
                                                 <th>Exhibition id</th>
                                                 <th>Artist id</th>
@@ -97,11 +95,11 @@ $this->load->view('admin/header_body_aside');
                                                     <td><input type="checkbox" name="bid_id[]" class="checkbox" value="<?php echo $bid->bid_id; ?>" /></td>
                                                     <td><?PHP echo $cnt++; ?> </td>
                                                     <td><?PHP echo $bid->title ?></td>
-                                                       <td><?PHP echo $bid->first_name ?></td>
-                                                       <td><?PHP echo $bid->bidamount ?></td>
-                                                       <td><?PHP echo $bid->remark ?></td>
-                                                       <td><?PHP echo $bid->date ?></td>
-                                                   <td><?php
+                                                    <td><?PHP echo $bid->first_name ?></td>
+                                                    <td><?PHP echo $bid->bidamount ?></td>
+                                                    <td><?PHP echo $bid->remark ?></td>
+                                                    <td><?PHP echo $bid->date ?></td>
+                                                    <td><?php
                                                         if ($bid->bid_status == '0') {
                                                             ?>
                                                             <i class="glyphicon glyphicon-remove" style="color:red"></i>
@@ -148,7 +146,7 @@ $this->load->view('admin/header_body_aside');
                                                                     <div class="modal-body">
 
                                                                         <table  width="60%">
-                                                                                                                           <tr>
+                                                                            <tr>
                                                                                 <td><label>Bid ID</label></td>
                                                                                 <td>:&nbsp;&nbsp;<?php echo $bid->bid_id ?></td>
                                                                             </tr>
@@ -172,8 +170,8 @@ $this->load->view('admin/header_body_aside');
                                                                                 <td><label>Date</label></td>
                                                                                 <td>:&nbsp;&nbsp;<?php echo $bid->date ?></td>
                                                                             </tr>
-                                                                            
-                         </table>
+
+                                                                        </table>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -217,14 +215,11 @@ $this->load->view('admin/header_body_aside');
                             </div>
                         </div>
                         <!-- /.box -->
-                        </div>
-                        <!-- /.col -->
-                        </div>
                         <!-- /.row -->
                     </section>
 
                 </section>
-
+            </div>
                 <!-- Main content -->
                 <!-- /.content -->
             </div>
@@ -232,7 +227,7 @@ $this->load->view('admin/header_body_aside');
 
             <footer class="main-footer">
                 <?php
-$this->load->view('admin/footer_body');
+                $this->load->view('admin/footer_body');
                 ?>
             </footer>
 
@@ -243,24 +238,24 @@ $this->load->view('admin/footer_body');
         </div>
         <!-- ./wrapper -->
         <?php
-$this->load->view('admin/footer_include');
+        $this->load->view('admin/footer_include');
         ?>
         <script type="text/javascript">
             function openView(id) {
                 $('#myModal' + id).modal('show');
             }
         </script>
-       <script>
+        <script>
             $(function ()
             {
                 window.setTimeout(function ()
                 {
-                    $(".alert").fadeTo(500, 0).slideUp(500, function ()  {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function () {
                         $(this).remove();
                     });
                 }, 4000);
-                
-                 $("#example1").datatable();
+
+                $("#example1").datatable();
             });
         </script>
 

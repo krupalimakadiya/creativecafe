@@ -28,9 +28,6 @@
                         <div class="box box-info">
                             <div class="box-header with-border">
                                 <h3 class="box-title"><label>Post Master</label></h3>
-                                <p align="right">
-                                    <a href="<?php echo site_url("post/import") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-import"></i>&nbsp;Imports</button></a> &nbsp;
-                                    <a href="<?php echo site_url("post/export") ?>"><button class="btn btn-primary"><i class="glyphicon glyphicon-export"></i>&nbsp;Exports</button></a></p>
                                 <?php
                                 $message = $this->session->flashdata('message');
                                 $success = $this->session->flashdata('success');
@@ -77,9 +74,9 @@
                                             <tr>
                                                 <th><input type="checkbox"  id="select_all" />&nbsp;Check</th>
                                                 <th>Id</th>
+                                                <th>Post Title</th>
                                                 <th>Art Category Name</th>                                
                                                 <th>File Type</th>                                              
-                                                <th>Description</th>
                                                 <th>Artist ID</th>
                                                 <th>Is Published</th>
                                                 <th>Status</th>
@@ -94,9 +91,10 @@
                                                 <tr>
                                                     <td><input type="checkbox" name="post_id[]" class="checkbox"  value="<?php echo $post->post_id ?>"</td>
                                                     <td><?PHP echo $cnt++; ?> </td>
+                                                    <td><?php echo $post->post_title ?></td>													
                                                     <td><?PHP echo $post->art_category_name ?></td>                                                
                                                     <td><?PHP echo $post->file_type ?></td>                                                   
-                                                    <td><?PHP echo $post->Description ?></td>                                                    
+
                                                     <td><?PHP echo $post->artist_id ?></td>       
                                                     <td><?php
                                                         if ($post->ispublished == '0') {
@@ -131,14 +129,14 @@
                                                                 <li>    <a href="<?php echo site_url("post/delete/$post->post_id") ?>" onclick="return confirm('you want to delete...........')"><i class="fa fa-trash"></i><label>Delete</label></a></li>
                                                                 <li><?php
                                                                     if ($post->ispublished == '1') {
-                                                                          if ($post->post_status == '0') {
-                                                                        ?>
-                                                                        <a href="<?php echo site_url("post/update_status_active/$post->post_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
-                                                                        <?php
-                                                                    } else {
-                                                                        ?>
-                                                                        <a href="<?php echo site_url("post/update_status_deactive/$post->post_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
-                                                                        <?php
+                                                                        if ($post->post_status == '0') {
+                                                                            ?>
+                                                                            <a href="<?php echo site_url("post/update_status_active/$post->post_id") ?>"><i class="glyphicon glyphicon-ok" style="color:green"></i><label>Active</label></a>
+                                                                            <?php
+                                                                        } else {
+                                                                            ?>
+                                                                            <a href="<?php echo site_url("post/update_status_deactive/$post->post_id") ?>"><i class="glyphicon glyphicon-remove" style="color:red"></i><label>Deactive</label></a>
+                                                                            <?php
                                                                         }
                                                                     }
                                                                     ?></li>

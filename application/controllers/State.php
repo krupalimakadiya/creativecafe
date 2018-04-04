@@ -26,12 +26,12 @@ class State extends MY_Controller {
 
     
       public function addp() {
-        $state_data = $this->state_model->check_data($_POST['country_id'],$_POST['state_name']);
+        $state_data = $this->state_model->check_data($_POST['country_id'],ucwords($_POST['state_name']));
         if (isset($state_data)) {
             $this->session->set_flashdata('message','record already exists...');            
             redirect('state');
         } else {
-            $this->state_model->insert($_POST['country_id'],$_POST['state_name']);
+            $this->state_model->insert($_POST['country_id'],ucwords($_POST['state_name']));
              $this->session->set_flashdata('message','insert successfully...');
             redirect('state');
         }
@@ -45,13 +45,12 @@ class State extends MY_Controller {
     }
 
     public function editp() {
-        $state_data = $this->state_model->check_data($_POST['country_id'],$_POST['state_name']);
+        $state_data = $this->state_model->check_data($_POST['country_id'],ucwords($_POST['state_name']));
         if (isset($state_data)) {
             $this->session->set_flashdata('message','record already exists...');            
             redirect('state');
-        } else {
-        
-        $this->state_model->update_data($_POST['state_id'], $_POST['country_id'], $_POST['state_name']);
+        } else {        
+        $this->state_model->update_data($_POST['state_id'], $_POST['country_id'],ucwords($_POST['state_name']));
         $this->session->set_flashdata('message','update succesfully');
         redirect("state");
     }
@@ -126,9 +125,6 @@ class State extends MY_Controller {
         $delimiter = ",";
         $newline = "\r\n";
         $filename = "state_master.csv";
-        //   $query = "SELECT course_master_name as 'Course Name',book_name as 'Book Name',author_name as 'Author Name',publication_name as 'Publication Name',book_edition as 'Book Edition',book_quantity as 'Book Quantity' 
-        //   FROM college_master cm,college_course_master ccm,course_master com,book_master as b 
-        //   WHERE b.college_course_master_id = ccm.college_course_master_id and ccm.college_master_id = cm.college_master_id and ccm.course_master_id = com.course_master_id and ccm.college_master_id = $college_master_id"; 
         $query = "select country_name as 'Country Name', state_name as 'State Name' 
                 from country_master as c, state_master as s
                 where c.country_id=s.country_id";

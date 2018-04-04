@@ -5,33 +5,7 @@
 $this->load->view('admin/header_include');
         ?>
     </head>
-                 <script type="text/javascript">
-function formValidator()
-{
- var title=document.getElementById('title');
- if(isAlphabet(title,"Enter your title in letters"))
-  {
-         return true;
-  }
-   return false;
- }
-  
-function isAlphabet(elem,helperMsg)
- {
-  var alphaExp=/^[a-zA-Z]+$/;
-  if(elem.value.match(alphaExp))
-    {
-       return true;
-    }
-  else
-    {
-     alert(helperMsg);
-     elem.focus();
-     return false;
-    }
-}
- </script>
-
+            
 
     <body class="hold-transition skin-blue sidebar-mini">
         <div class="wrapper">
@@ -98,7 +72,7 @@ $this->load->view('admin/header_body_aside');
                                             <?php
                                         } else {
                                             ?>
-                                        <form role="form" name="newsfrm" method="POST" action="<?php echo site_url("news/do_upload") ?>" enctype="multipart/form-data" autocomplete="off" onsubmit='return formValidator()' >
+                                        <form role="form" name="newsfrm" method="POST" action="<?php echo site_url("news/do_upload") ?>" enctype="multipart/form-data" autocomplete="off">
                                                 <!-- text input -->
                                                 <div class="form-group">
                                                     <label>Title</label>

@@ -29,7 +29,7 @@ class Country extends My_Controller {
             $this->session->set_flashdata('message', 'record already exists...');
             redirect('country');
         } else {
-            $this->country_model->insert($_POST['country_name']);
+            $this->country_model->insert(ucwords($_POST['country_name']));
             $this->session->set_flashdata('message', 'insert successfully...');
             redirect('country');
         }
@@ -42,12 +42,12 @@ class Country extends My_Controller {
     }
 
     public function editp() {
-        $country_data = $this->country_model->check_data($_POST['country_name']);
+        $country_data = $this->country_model->check_data(ucwords($_POST['country_name']));
         if (isset($country_data)) {
             $this->session->set_flashdata('message', 'record already exists...');
             redirect('country');
         } else {
-            $this->country_model->update_data($_POST['country_id'], $_POST['country_name']);
+            $this->country_model->update_data($_POST['country_id'],ucwords($_POST['country_name']));
             $this->session->set_flashdata('message', 'record updated successfully...');
             redirect("country");
         }
