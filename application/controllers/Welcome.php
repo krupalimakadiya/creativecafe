@@ -7,9 +7,10 @@ class Welcome extends MY_Controller {
     public function index() {
         $this->load->model('welcome_model');
         $data['post'] = $this->welcome_model->get_total_post();
-        $data['artist'] = $this->welcome_model->get_total_artist();
-        $data['user'] = $this->welcome_model->get_total_user();
-        $this->load->view('welcome_message',$data);
+        $artis = $this->welcome_model->get_total_artist();
+        $data['total_artis'] = $artis[0]->total_artis;
+        $data['total_user'] = $this->welcome_model->get_total_user();
+        $this->load->view('welcome_message', $data);
     }
 
 }
